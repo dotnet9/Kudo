@@ -12,17 +12,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <AvaloniaResource Include="Assets\info-64x64.png" />
-	  <AvaloniaResource Include="Assets\no-register-background.png" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Avalonia" />
 		<PackageReference Include="CodeWF.Avalonia.Controls" />
 		<PackageReference Include="Irihi.Ursa" />
 		<PackageReference Include="ReactiveUI.Avalonia" />
 		<PackageReference Include="CodeWF.Avalonia.Log" />
-		<PackageReference Include="Prism.DryIoc.Avalonia" />
 		<PackageReference Include="CodeWF.Toolkit.EventBus" />
 		<PackageReference Include="CodeWF.Toolkit.Core" />
 		<PackageReference Include="VC-LTL" />

@@ -25,7 +25,7 @@
     <ProjectReference Include="..\..\src\Kudo.AvaloniaCommon\Kudo.AvaloniaCommon.csproj" />
     <ProjectReference Include="..\..\src\Kudo.AvaloniaCommon.Themes\Kudo.AvaloniaCommon.Themes.csproj" />
     <ProjectReference Include="..\..\src\Kudo.Dock.Themes\Kudo.Dock.Themes.csproj" />
-    <PackageReference Include="Prism.DryIoc.Avalonia" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
     <PackageReference Include="ReactiveUI.Avalonia" />
     <PackageReference Include="Semi.Avalonia" />
     <PackageReference Include="System.Reactive" />

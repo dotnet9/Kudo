@@ -6,13 +6,11 @@
              xmlns:lang="using:Localization.Kudo_Demo_Desktop.Views"
              xmlns:models="using:Kudo"
              xmlns:export="using:Kudo.Avalonia.Export"
-             xmlns:prism="http://prismlibrary.com/"
              xmlns:services="using:Kudo.Demo.Desktop.Services"
              xmlns:views="using:Kudo.Demo.Desktop.Views"
              xmlns:vm="using:Kudo.Demo.Desktop.ViewModels"
              xmlns:u="https://irihi.tech/ursa"
              x:Class="Kudo.Demo.Desktop.Views.MainRibbonView"
-             prism:ViewModelLocator.AutoWireViewModel="True"
              x:DataType="vm:MainRibbonViewModel">
     <Grid RowDefinitions="32,Auto"
           Background="Transparent"
