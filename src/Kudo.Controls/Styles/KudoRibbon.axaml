@@ -1,0 +1,56 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:k="https://codewf.com"
+        x:Class="Kudo.Controls.KudoRibbonStyles">
+  <!--
+    KudoRibbon 模板（AOT 兼容的静态编译样式）：页签条 + 快速访问槽 + 可折叠命令区。
+    Semi 移除后无隐式主题回落，样式 Template 直接生效。
+  -->
+  <Style Selector="k|KudoRibbon">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="ClipToBounds" Value="True" />
+    <Setter Property="ItemsPanel">
+      <ItemsPanelTemplate>
+        <StackPanel Orientation="Horizontal" />
+      </ItemsPanelTemplate>
+    </Setter>
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid RowDefinitions="32,Auto"
+              Background="Transparent"
+              ClipToBounds="True">
+          <Border Grid.Row="0"
+                  Background="{DynamicResource RibbonMenuTabStripBackground}">
+            <Grid ColumnDefinitions="Auto,*">
+              <Border Grid.Column="0"
+                      Classes="QuickToolBarRoot RibbonHeader">
+                <ContentPresenter Content="{TemplateBinding QuickAccessContent}"
+                                  VerticalAlignment="Center" />
+              </Border>
+              <ItemsPresenter Grid.Column="1"
+                              Name="PART_ItemsPresenter"
+                              ItemsPanel="{TemplateBinding ItemsPanel}" />
+            </Grid>
+          </Border>
+          <Border Grid.Row="1"
+                  Background="#FFFFFF"
+                  BorderThickness="0"
+                  ClipToBounds="True">
+            <ContentControl Name="PART_ContentHost"
+                            Height="{TemplateBinding ContentHeight}"
+                            Opacity="1"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Top">
+              <ContentControl.Transitions>
+                <Transitions>
+                  <DoubleTransition Property="Height" Duration="0:0:0.14" />
+                  <DoubleTransition Property="Opacity" Duration="0:0:0.08" />
+                </Transitions>
+              </ContentControl.Transitions>
+            </ContentControl>
+          </Border>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

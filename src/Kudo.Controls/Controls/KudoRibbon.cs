@@ -1,10 +1,8 @@
-using System.IO;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 using Avalonia.Layout;
-using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -51,46 +49,17 @@ public class KudoRibbon : TabStrip
         set => SetValue(ContentHeightProperty, value);
     }
 
-    private static ControlTheme? _theme;
-
     public KudoRibbon()
     {
-        // 直接以本地值指定 ControlTheme：绕开隐式主题查找——否则会沿基类链命中 Semi 的 TabStrip 主题
-        //（其模板无快速访问槽与命令区宿主，页签竖排），且样式/主题优先级均低于本地值。
-        try
-        {
-            _theme ??= (ControlTheme)AvaloniaXamlLoader.Load(
-                new Uri("avares://Kudo.Controls/Themes/KudoRibbonTheme.axaml"));
-        }
-        catch (Exception themeLoadEx)
-        {
-            File.WriteAllLines(
-                @"E:\github\temp_files\theme-load-error.txt",
-                new[] { themeLoadEx.ToString() });
-            throw;
-        }
-        SetCurrentValue(ThemeProperty, _theme);
+        // 页签条水平排布（局部值，确保 ItemsPresenter 使用横排面板）
         ItemsPanel = new FuncTemplate<Panel?>(() => new StackPanel { Orientation = Orientation.Horizontal });
         SelectionChanged += HandleSelectionChanged;
         AddHandler(InputElement.DoubleTappedEvent, HandleDoubleTapped, RoutingStrategies.Bubble, handledEventsToo: true);
     }
 
-    private bool _themeReapplied;
-
     protected override void OnApplyTemplate(TemplateAppliedEventArgs args)
     {
         base.OnApplyTemplate(args);
-        // 隐式主题解析发生在 Initialized（晚于构造器），会用沿基类链命中的 Semi TabStrip 主题
-        // 覆盖构造器里的本地值；此处在其之后回设本控件主题，触发模板按正确主题重新应用。
-        if (!_themeReapplied &&
-            _theme is not null &&
-            !ReferenceEquals(GetValue(ThemeProperty), _theme))
-        {
-            _themeReapplied = true;
-            SetValue(ThemeProperty, _theme);
-            return;
-        }
-
         _contentHost = args.NameScope.Find<ContentControl>("PART_ContentHost");
         ApplyExpanded(false);
         UpdateContent(expand: false);

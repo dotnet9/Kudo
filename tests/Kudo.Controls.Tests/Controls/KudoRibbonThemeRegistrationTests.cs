@@ -1,7 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Headless.XUnit;
-using Avalonia.Styling;
 using Avalonia.VisualTree;
 using Kudo.Controls;
 using Shouldly;
@@ -17,17 +16,14 @@ public sealed class KudoRibbonThemeRegistrationTests
     public void Ribbon_resolves_its_own_control_theme()
     {
         var ribbon = new KudoRibbon();
+        ribbon.Styles.AddRange(new KudoRibbonStyles());
         var window = new Window { Content = ribbon };
         window.Show();
-
-        var theme = ribbon.Theme;
-        theme.ShouldNotBeNull("KudoRibbon 默认主题未生效");
-        theme.ShouldBeOfType<ControlTheme>();
 
         var contentHost = ribbon.GetVisualDescendants()
             .OfType<ContentControl>()
             .FirstOrDefault(c => c.Name == "PART_ContentHost");
-        contentHost.ShouldNotBeNull("自身 ControlTheme 未生效（PART_ContentHost 缺失）");
+        contentHost.ShouldNotBeNull("样式模板未生效（PART_ContentHost 缺失）");
 
         window.Close();
     }

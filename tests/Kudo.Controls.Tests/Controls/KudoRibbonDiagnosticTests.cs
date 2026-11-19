@@ -17,6 +17,7 @@ public sealed class KudoRibbonDiagnosticTests
     public void Ribbon_template_host_is_ours_not_semis()
     {
         var ribbon = new KudoRibbon();
+        ribbon.Styles.AddRange(new KudoRibbonStyles());
         var window = new Window { Content = ribbon };
         window.Show();
 
