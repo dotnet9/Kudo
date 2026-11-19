@@ -2,6 +2,7 @@ using System.Windows.Input;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Avalonia.Input;
+using Avalonia.Media;
 using Avalonia.Reactive;
 using Avalonia.Styling;
 using Avalonia;
@@ -48,6 +49,16 @@ public sealed class IconButtonTests
 
         button.IconPlacement = IconPlacement.Left;
         button.IconPlacement.ShouldBe(IconPlacement.Left);
+    }
+
+    [Fact]
+    public void Icon_roundtrips_geometry()
+    {
+        TestRuntime.EnsureInitialized();
+        var geometry = Geometry.Parse("M 0 0 L 4 4 L 8 0");
+        var button = new IconButton { Icon = geometry };
+
+        button.Icon.ShouldBeSameAs(geometry);
     }
 
     [Fact]

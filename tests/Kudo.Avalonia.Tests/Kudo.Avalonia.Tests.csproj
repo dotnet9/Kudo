@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Avalonia.Headless" />
     <PackageReference Include="TKCode.Arc.Icons.Lucide" />
   </ItemGroup>
 </Project>
