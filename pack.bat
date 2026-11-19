@@ -29,10 +29,9 @@ echo [4/4] Packing SDK packages...
 for %%P in (
     "src\Kudo.Core\Kudo.Core.csproj"
     "src\Kudo.Avalonia\Kudo.Avalonia.csproj"
-    "src\Kudo.AvaloniaCommon\Kudo.AvaloniaCommon.csproj"
-    "src\Kudo.AvaloniaCommon.Themes\Kudo.AvaloniaCommon.Themes.csproj"
+    "src\Kudo.Controls\Kudo.Controls.csproj"
+    "src\Kudo.Themes\Kudo.Themes.csproj"
     "src\Kudo.Dock.Themes\Kudo.Dock.Themes.csproj"
-    "src\Kudo.Themes.Semi\Kudo.Themes.Semi.csproj"
     "src\Kudo.Avalonia.3D\Kudo.Avalonia.3D.csproj"
 ) do (
     dotnet pack %%~P -c %CONFIGURATION% --no-restore -m:1 -p:UseSharedCompilation=false -p:GeneratePackageOnBuild=false -p:WarningsNotAsErrors=NU5104 -o "%PACKAGES_DIR%"

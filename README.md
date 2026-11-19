@@ -162,9 +162,9 @@ Render workload 通过 Avalonia Headless + Skia 渲染完整 Visual Tree，仅�
 
 ## 本地打包验收
 
-Windows 下运行 `pack.bat net11.0` 或 `pack.bat net10.0`。脚本会依次执行对应目标框架的 Release Restore、Build、全部测试、格式与 Analyzer 校验、Benchmark Smoke 和 7 个 SDK 工程打包。产物位于 `artifacts/packages`。
+Windows 下运行 `pack.bat net11.0` 或 `pack.bat net10.0`。脚本会依次执行对应目标框架的 Release Restore、Build、全部测试、格式与 Analyzer 校验、Benchmark Smoke 和 6 个 SDK 工程打包。产物位于 `artifacts/packages`。
 
-1. `src` 下 7 个 SDK 工程均可生成包含所选目标框架资产的本地包产物。
+1. `src` 下 6 个 SDK 工程均可生成包含所选目标框架资产的本地包产物。
 2. 每个包包含本 README、MIT License 元数据和正确的 GitHub 仓库地址。
 3. Desktop Demo 兼作功能验收入口，Ribbon 可按需加载 Renderer、Edge Styles、3D 和大图性能示例。
 
