@@ -28,7 +28,7 @@
                        IsVisible="{TemplateBinding ShowIcon}"
                        IsHitTestVisible="False"
                        Stretch="Uniform"
-                       Source="avares://Kudo.AvaloniaCommon.Themes/Assets/dlg-info.png" />
+                       Source="avares://Kudo.Themes/Assets/dlg-info.png" />
                 <ContentControl x:Name="PART_Content"
                                 Margin="0,0,0,24"
                                 HorizontalContentAlignment="Center"
@@ -70,10 +70,10 @@
     </Style>
 
     <Style Selector="^:warning /template/ Image#NotificationIcon">
-      <Setter Property="Source" Value="avares://Kudo.AvaloniaCommon.Themes/Assets/notifaction-warning-outline.png" />
+      <Setter Property="Source" Value="avares://Kudo.Themes/Assets/notifaction-warning-outline.png" />
     </Style>
     <Style Selector="^:success /template/ Image#NotificationIcon">
-      <Setter Property="Source" Value="avares://Kudo.AvaloniaCommon.Themes/Assets/notification-success.png" />
+      <Setter Property="Source" Value="avares://Kudo.Themes/Assets/notification-success.png" />
     </Style>
   </ControlTheme>
 </ResourceDictionary>

@@ -1,4 +1,4 @@
-<Styles x:Class="Kudo.AvaloniaCommon.Themes.CommonTheme"
+<Styles x:Class="Kudo.Themes.KudoTheme"
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <StyleInclude Source="/Themes/_index.axaml" />

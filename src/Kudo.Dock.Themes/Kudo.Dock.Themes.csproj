@@ -15,6 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Kudo.AvaloniaCommon.Themes\Kudo.AvaloniaCommon.Themes.csproj" />
+    <ProjectReference Include="..\Kudo.Themes\Kudo.Themes.csproj" />
   </ItemGroup>
 </Project>

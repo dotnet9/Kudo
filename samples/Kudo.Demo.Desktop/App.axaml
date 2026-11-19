@@ -2,7 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:codewf="https://codewf.com"
              xmlns:k="https://codewf.com"
-             xmlns:ncommon="clr-namespace:Kudo.AvaloniaCommon.Themes;assembly=Kudo.AvaloniaCommon.Themes"
              xmlns:ndock="clr-namespace:Kudo.Dock.Themes;assembly=Kudo.Dock.Themes"
              xmlns:semi="https://irihi.tech/semi"
              x:Class="Kudo.Demo.Desktop.App"
@@ -24,7 +23,7 @@
         <k:KudoSemiTheme />
         <codewf:ACSemiTheme />
         <codewf:DockSemiTheme Locale="en-US" />
-        <ncommon:CommonTheme />
+        <k:KudoTheme />
         <ndock:KudoDockTheme />
         <StyleInclude Source="avares://Kudo.Demo.Desktop/Styles/_index.axaml" />
     </Application.Styles>

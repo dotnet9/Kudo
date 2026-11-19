@@ -7,6 +7,7 @@
 		<Nullable>enable</Nullable>
 		<IsPackable>true</IsPackable>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<Description>Kudo 画布、设计器与桌面控件的统一主题资源。</Description>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -21,10 +22,11 @@
 		<PackageReference Include="CodeWF.Avalonia.DataGrid" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" />
 		<PackageReference Include="Semi.Avalonia" />
+		<PackageReference Include="Semi.Avalonia.ColorPicker" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Kudo.AvaloniaCommon\Kudo.AvaloniaCommon.csproj" />
+		<ProjectReference Include="..\Kudo.Avalonia\Kudo.Avalonia.csproj" />
 		<ProjectReference Include="..\Kudo.Controls\Kudo.Controls.csproj" />
 	</ItemGroup>
 </Project>

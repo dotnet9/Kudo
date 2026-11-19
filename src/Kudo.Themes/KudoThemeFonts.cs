@@ -1,6 +1,6 @@
 using Avalonia.Media;
 
-namespace Kudo.AvaloniaCommon.Themes;
+namespace Kudo.Themes;
 
 /// <summary>
 ///     Kudo 公共主题提供的稳定字体入口。
@@ -8,7 +8,7 @@ namespace Kudo.AvaloniaCommon.Themes;
 public static class KudoThemeFonts
 {
     private const string DefaultAssetUri =
-        "avares://Kudo.AvaloniaCommon.Themes/Assets/Fonts/NotoSansSC-6.ttf";
+        "avares://Kudo.Themes/Assets/Fonts/NotoSansSC-6.ttf";
 
     /// <summary>
     ///     默认字体在主题资源字典中的键。

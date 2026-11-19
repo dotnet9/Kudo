@@ -8,7 +8,7 @@ Kudo 是基于 Avalonia 的开源模块化图形建模与节点编辑 SDK，内�
 
 ## 源码依赖
 
-本仓库不使用 Git 子模块，也没有私有 NuGet 源依赖：SDK 全部源码位于 `src/`（含桌面基础设施 `Kudo.AvaloniaCommon`、`Kudo.AvaloniaCommon.Themes`、`Kudo.Dock.Themes`），第三方库（Avalonia、Semi、Ursa、CodeWF Toolkit、SkiaSharp 等）统一在 `Directory.Packages.props` 中从 nuget.org 固定版本，克隆后直接 `dotnet restore` 即可还原。
+本仓库不使用 Git 子模块，也没有私有 NuGet 源依赖：SDK 全部源码位于 `src/`（含控件层 `Kudo.Controls`、统一主题层 `Kudo.Themes` 与停靠主题 `Kudo.Dock.Themes`），第三方库（Avalonia、Semi、Ursa、CodeWF Toolkit、SkiaSharp 等）统一在 `Directory.Packages.props` 中从 nuget.org 固定版本，克隆后直接 `dotnet restore` 即可还原。
 
 需要产出 NuGet 包时运行 `pack.bat`（含构建、测试与格式校验的完整流程）或 `pack_quick.bat`（仅打包），产物输出到 `artifacts/packages`。
 
@@ -19,10 +19,10 @@ Kudo 是基于 Avalonia 的开源模块化图形建模与节点编辑 SDK，内�
 ```xml
 <PackageReference Include="Kudo.Core" />
 <PackageReference Include="Kudo.Avalonia" />
-<PackageReference Include="Kudo.Themes.Semi" />
+<PackageReference Include="Kudo.Themes" />
 ```
 
-只处理模型和 JSON 时引用 `Kudo.Core`；需要桌面设计器时增加 `Kudo.Avalonia` 和 `Kudo.Themes.Semi`；需要 3D 预览时再增加 `Kudo.Avalonia.3D`。版本统一在 `Directory.Packages.props` 中维护。
+只处理模型和 JSON 时引用 `Kudo.Core`；需要桌面设计器时增加 `Kudo.Avalonia` 和 `Kudo.Themes`；需要 3D 预览时再增加 `Kudo.Avalonia.3D`。版本统一在 `Directory.Packages.props` 中维护。
 
 ```csharp
 using Kudo;
@@ -86,10 +86,8 @@ var canvas = new GraphCanvas { Document = document };
 - `Kudo.Core`：不依赖界面的图模型、算法、序列化、文档会话、运行时、校验和命令契约。
 - `Kudo.Avalonia`：Avalonia 画布、Designer、Dock 工作区、属性编辑器及 PNG/SVG/PDF 导出打印。
 - `Kudo.Controls`：按 Arc 范式沉淀的自研控件（图标按钮等），样式随控件内聚。
-- `Kudo.AvaloniaCommon`：桌面应用公共控件、转换器与帮助类（窗口外壳辅助、输入行为等）。
-- `Kudo.AvaloniaCommon.Themes`：公共控件的 Semi 风格主题资源（Ribbon、TitleBar、Shell 样式等）。
 - `Kudo.Dock.Themes`：Dock 停靠组件的 Semi 风格主题。
-- `Kudo.Themes.Semi`：Kudo 控件与 Semi 语义色的主题映射入口。
+- `Kudo.Themes`：Kudo 控件、画布设计器与桌面控件的统一主题资源（Arc/Semi 映射层）。
 - `Kudo.Avalonia.3D`：可选 OpenGL 3D 预览控件和软件渲染 fallback，代码命名空间为 `Kudo.Avalonia.ThreeD`。
 
 模型编辑建议通过 `GraphDocumentEditor` 执行命令并消费 `GraphChangeSet`；直接修改公开模型后，调用 `Synchronize` 显式通知缓存和会话。开发期仍允许调整这些 API，当前不承诺兼容层。

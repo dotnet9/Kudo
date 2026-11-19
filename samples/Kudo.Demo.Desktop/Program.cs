@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 using Avalonia.Media;
-using Kudo.AvaloniaCommon.Themes;
+using Kudo.Themes;
 using TKCode.Arc;
 using TKCode.Arc.Motion;
 

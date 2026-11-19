@@ -23,6 +23,7 @@
     <PackageReference Include="Irihi.Ursa" />
     <PackageReference Include="Irihi.Ursa.Themes.Semi" />
     <ProjectReference Include="..\..\src\Kudo.Controls\Kudo.Controls.csproj" />
+    <ProjectReference Include="..\..\src\Kudo.Themes\Kudo.Themes.csproj" />
     <ProjectReference Include="..\..\src\Kudo.Dock.Themes\Kudo.Dock.Themes.csproj" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
     <PackageReference Include="TKCode.Arc" />
@@ -37,7 +38,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Kudo.Avalonia\Kudo.Avalonia.csproj" />
-    <ProjectReference Include="..\..\src\Kudo.Themes.Semi\Kudo.Themes.Semi.csproj" />
     <ProjectReference Include="..\Kudo.Demo\Kudo.Demo.csproj" />
     <ProjectReference Include="..\..\src\Kudo.Core\Kudo.Core.csproj" />
     <ProjectReference Include="..\..\src\Kudo.Avalonia.3D\Kudo.Avalonia.3D.csproj" />

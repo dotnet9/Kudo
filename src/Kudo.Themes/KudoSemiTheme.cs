@@ -1,7 +1,7 @@
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 
-namespace Kudo.Themes.Semi;
+namespace Kudo.Themes;
 
 public sealed class KudoSemiTheme : Styles
 {
