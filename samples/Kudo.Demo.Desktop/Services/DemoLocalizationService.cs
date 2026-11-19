@@ -5,7 +5,6 @@ using Kudo.Demo.Desktop.Localization;
 using CodeWF.Toolkit.Lang;
 using CodeWF.Toolkit.Lang.Json;
 using Semi.Avalonia;
-using Ursa.Themes.Semi;
 using CommonLanguage = global::Localization.Kudo_Demo_Desktop.Application.Common;
 
 namespace Kudo.Demo.Desktop.Services;
@@ -77,7 +76,6 @@ public sealed class DemoLocalizationService
         ArgumentNullException.ThrowIfNull(application);
         var culture = EffectiveCulture;
         SemiTheme.OverrideLocaleResources(application, culture);
-        UrsaSemiTheme.OverrideLocaleResources(application, culture);
     }
 
     private CultureInfo ResolveCulture(DemoLanguagePreference preference) => preference switch

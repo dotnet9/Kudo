@@ -16,8 +16,6 @@
     <PackageReference Include="CodeWF.Avalonia.Lang" />
     <PackageReference Include="CodeWF.Toolkit.Lang" />
     <PackageReference Include="CodeWF.Toolkit.Logging" />
-    <PackageReference Include="Irihi.Ursa" />
-    <PackageReference Include="Irihi.Ursa.Themes.Semi" />
     <ProjectReference Include="..\..\src\Kudo.Controls\Kudo.Controls.csproj" />
     <ProjectReference Include="..\..\src\Kudo.Themes\Kudo.Themes.csproj" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />

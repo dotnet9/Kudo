@@ -52,21 +52,7 @@
   <Style Selector="ComboBox.FormCombo ComboBoxItem">
     <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
   </Style>
-  <Style Selector="u|AutoCompleteBox.FormAutoComplete">
-    <Setter Property="Height" Value="{StaticResource Kudo.Form.ControlHeight}" />
-    <Setter Property="MinHeight" Value="{StaticResource Kudo.Form.ControlHeight}" />
-    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
-  </Style>
-  <Style Selector="u|AutoCompleteBox.FormAutoComplete /template/ TextBox#PART_TextBox">
-    <Setter Property="Padding" Value="{StaticResource Kudo.Form.Input.Padding}" />
-    <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource SemiColorBorder}" />
-    <Setter Property="BorderThickness" Value="1" />
-  </Style>
-  <Style Selector="u|AutoCompleteBox.FormAutoComplete ListBoxItem">
-    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
-  </Style>
-  <Style Selector=":is(u|NumericUpDown).FormNumber">
+  <Style Selector=":is(NumericUpDown).FormNumber">
     <Setter Property="Height" Value="{StaticResource Kudo.Form.ControlHeight}" />
     <Setter Property="MinHeight" Value="{StaticResource Kudo.Form.ControlHeight}" />
     <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
@@ -75,7 +61,7 @@
     <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
     <Setter Property="HorizontalContentAlignment" Value="Left" />
   </Style>
-  <Style Selector=":is(u|NumericUpDown).FormNumber /template/ TextBox#PART_TextBox">
+  <Style Selector=":is(NumericUpDown).FormNumber /template/ TextBox#PART_TextBox">
     <Setter Property="Padding" Value="{StaticResource Kudo.Form.Input.Padding}" />
     <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
     <Setter Property="BorderBrush" Value="{DynamicResource SemiColorBorder}" />
@@ -86,18 +72,5 @@
     <Setter Property="MinHeight" Value="{StaticResource Kudo.Form.ControlHeight}" />
     <Setter Property="Padding" Value="{StaticResource Kudo.Form.Button.SmallPadding}" />
     <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
-  </Style>
-  <Style Selector="u|IconButton.RowToolButton">
-    <Setter Property="Width" Value="{StaticResource RowToolButtonWidth}" />
-    <Setter Property="Height" Value="{StaticResource RowToolButtonHeight}" />
-    <Setter Property="MinWidth" Value="{StaticResource RowToolButtonWidth}" />
-    <Setter Property="MinHeight" Value="{StaticResource RowToolButtonHeight}" />
-    <Setter Property="Padding" Value="0" />
-    <Setter Property="Theme" Value="{DynamicResource BorderlessIconButton}" />
-  </Style>
-  <Style Selector="u|IconButton.RowToolButton /template/ PathIcon">
-    <Setter Property="Width" Value="{StaticResource RowToolButtonIconSize}" />
-    <Setter Property="Height" Value="{StaticResource RowToolButtonIconSize}" />
-    <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
   </Style>
 </Styles>

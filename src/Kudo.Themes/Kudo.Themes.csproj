@@ -18,7 +18,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia" />
-		<PackageReference Include="Irihi.Ursa.Themes.Semi" />
 		<PackageReference Include="Semi.Avalonia" />
 		<PackageReference Include="Semi.Avalonia.ColorPicker" />
 	</ItemGroup>
