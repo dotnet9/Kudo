@@ -70,7 +70,7 @@
                            Foreground="#FFFFFF"
                            Text="{i18n:I18n {x:Static lang:MainWindow.ComponentDemo}}" />
             </Border>
-            <ComboBox x:Name="LanguageComboBox"
+            <arc:Select x:Name="LanguageComboBox"
                       Classes="ShellTitleBarComboBox"
                       Width="132"
                       DisplayMemberBinding="{Binding DisplayName}"

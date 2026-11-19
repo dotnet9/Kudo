@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:semi="https://irihi.tech/semi">
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <Color x:Key="Colors.TitleBar.Foreground">#F8FAFC</Color>
   <Color x:Key="Colors.Title">#E8EEF7</Color>
   <Color x:Key="Colors.Primary.Text">#C9D3E1</Color>

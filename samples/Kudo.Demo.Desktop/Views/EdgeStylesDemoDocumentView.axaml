@@ -1,4 +1,5 @@
 <UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:arc="https://github.com/AIDotNet/TKCode.Arc"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -34,7 +35,7 @@
                 <TextBlock Grid.Column="2"
                            VerticalAlignment="Center"
                            Text="{i18n:I18n {x:Static lang:MainWindow.EdgeStylePreset}}" />
-                <ComboBox x:Name="EdgePresetCombo"
+                <arc:Select x:Name="EdgePresetCombo"
                           Grid.Column="4"
                           ItemsSource="{Binding StylePresets}"
                           SelectedItem="{Binding SelectedStylePreset, Mode=TwoWay}"
@@ -42,7 +43,7 @@
                 <TextBlock Grid.Column="6"
                            VerticalAlignment="Center"
                            Text="{i18n:I18n {x:Static lang:MainWindow.CanvasTheme}}" />
-                <ComboBox x:Name="CanvasThemeCombo"
+                <arc:Select x:Name="CanvasThemeCombo"
                           Grid.Column="8"
                           ItemsSource="{Binding CanvasThemes}"
                           SelectedItem="{Binding SelectedTheme, Mode=TwoWay}" />
