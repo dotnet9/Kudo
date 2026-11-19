@@ -9,9 +9,6 @@
     <PackageReference Include="Avalonia" />
     <PackageReference Include="Avalonia.Controls.ColorPicker" />
     <PackageReference Include="Avalonia.Skia" />
-    <PackageReference Include="Dock.Avalonia" />
-    <PackageReference Include="Dock.Model.Mvvm" />
-    <PackageReference Include="CodeWF.Avalonia.Dock" />
     <PackageReference Include="CodeWF.Avalonia.Lang" />
     <PackageReference Include="CodeWF.Toolkit.Lang" />
     <PackageReference Include="CodeWF.Avalonia.TreeDataGrid" />

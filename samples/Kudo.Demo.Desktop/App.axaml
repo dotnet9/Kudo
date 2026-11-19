@@ -2,18 +2,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:codewf="https://codewf.com"
              xmlns:k="https://codewf.com"
-             xmlns:ndock="clr-namespace:Kudo.Dock.Themes;assembly=Kudo.Dock.Themes"
              xmlns:semi="https://irihi.tech/semi"
              x:Class="Kudo.Demo.Desktop.App"
              RequestedThemeVariant="Light">
 
-    <Application.DataTemplates>
-        <k:GraphDockContentTemplate />
-    </Application.DataTemplates>
-
     <Application.Resources>
         <ResourceDictionary>
-            <ControlRecycling x:Key="ControlRecyclingKey" TryToUseIdAsKey="True" />
         </ResourceDictionary>
     </Application.Resources>
 
@@ -22,9 +16,7 @@
         <semi:UrsaSemiTheme Locale="en-US" />
         <k:KudoSemiTheme />
         <codewf:ACSemiTheme />
-        <codewf:DockSemiTheme Locale="en-US" />
         <k:KudoTheme />
-        <ndock:KudoDockTheme />
         <StyleInclude Source="avares://Kudo.Demo.Desktop/Styles/_index.axaml" />
     </Application.Styles>
 </Application>

@@ -21,7 +21,6 @@
     <Project Path="src/Kudo.Controls/Kudo.Controls.csproj" />
     <Project Path="src/Kudo.Themes/Kudo.Themes.csproj" />
     <Project Path="src/Kudo.Core/Kudo.Core.csproj" />
-    <Project Path="src/Kudo.Dock.Themes/Kudo.Dock.Themes.csproj" />
     <Project Path="src/Kudo.Avalonia.3D/Kudo.Avalonia.3D.csproj" />
   </Folder>
   <Folder Name="/Samples/">

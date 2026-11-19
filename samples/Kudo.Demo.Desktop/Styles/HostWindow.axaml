@@ -1,9 +1,0 @@
-<Styles xmlns="https://github.com/avaloniaui"
-        xmlns:dock="using:Dock.Avalonia.Controls">
-    <Style Selector="dock|HostWindow">
-        <Setter Property="DocumentChromeControlsWholeWindow" Value="True" />
-        <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
-        <Setter Property="TransparencyBackgroundFallback" Value="{DynamicResource SemiColorBackground0}" />
-        <Setter Property="TransparencyLevelHint" Value="None" />
-    </Style>
-</Styles>

@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using Avalonia;
-using CodeWF.Avalonia.Dock.Themes;
 using Kudo.Avalonia;
 using Kudo.Demo.Desktop.Localization;
 using CodeWF.Toolkit.Lang;
@@ -79,10 +78,6 @@ public sealed class DemoLocalizationService
         var culture = EffectiveCulture;
         SemiTheme.OverrideLocaleResources(application, culture);
         UrsaSemiTheme.OverrideLocaleResources(application, culture);
-        foreach (var dockTheme in application.Styles.OfType<DockSemiTheme>())
-        {
-            dockTheme.Locale = culture;
-        }
     }
 
     private CultureInfo ResolveCulture(DemoLanguagePreference preference) => preference switch
