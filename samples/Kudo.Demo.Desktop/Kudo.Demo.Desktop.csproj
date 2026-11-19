@@ -16,7 +16,6 @@
     <PackageReference Include="CodeWF.Avalonia.Log" />
     <PackageReference Include="CodeWF.Avalonia.Lang" />
     <PackageReference Include="CodeWF.Toolkit.Lang" />
-    <PackageReference Include="CodeWF.Toolkit.Files" />
     <PackageReference Include="CodeWF.Toolkit.Logging" />
     <PackageReference Include="Irihi.Ursa" />
     <PackageReference Include="Irihi.Ursa.Themes.Semi" />
