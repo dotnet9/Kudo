@@ -8,7 +8,7 @@ Kudo 是基于 Avalonia 的开源模块化图形建模与节点编辑 SDK，内�
 
 ## 源码依赖
 
-本仓库不使用 Git 子模块，也没有私有 NuGet 源依赖：SDK 全部源码位于 `src/`（控件层 `Kudo.Controls` 含图标按钮、Ribbon 与属性面板，统一主题层 `Kudo.Themes`），第三方库（Avalonia、TKCode.Arc、CodeWF Log/Lang/EventBus、SkiaSharp 等）统一在 `Directory.Packages.props` 中从 nuget.org 固定版本，克隆后直接 `dotnet restore` 即可还原。
+本仓库不使用 Git 子模块，也没有私有 NuGet 源依赖：SDK 全部源码位于 `src/`（控件层 `Kudo.Controls` 含图标按钮、Ribbon 与属性面板，统一主题层 `Kudo.Themes`），第三方库（Avalonia、TKCode.Arc、CodeWF Log/Lang/EventBus、SkiaSharp 等；UI 组件零第三方——TKCode.Arc + 自研 Kudo.Controls 全覆盖）统一在 `Directory.Packages.props` 中从 nuget.org 固定版本，克隆后直接 `dotnet restore` 即可还原。
 
 需要产出 NuGet 包时运行 `pack.bat`（含构建、测试与格式校验的完整流程）或 `pack_quick.bat`（仅打包），产物输出到 `artifacts/packages`。
 
