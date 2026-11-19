@@ -424,3 +424,6 @@ FodyWeavers.xsd
 
 # Official VS Code C# Dev Kit Extension exclusion
 #*.lscache
+
+# Demo 运行时写出的本机设置（工作台布局等）
+Kudo.Demo.Desktop.config

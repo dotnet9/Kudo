@@ -1,56 +1,12 @@
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Linq;
 using System.ComponentModel;
-using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using Avalonia.Interactivity;
 using Kudo.Avalonia.Docking;
 using Kudo.Core.Documents;
 using TKCode.Arc;
 
 namespace Kudo.Demo.Desktop.Services;
-
-/// <summary>停靠工具窗条目：Arc DockPane 的数据源适配。</summary>
-public sealed class DockToolItem : INotifyPropertyChanged, IDockItem
-{
-    private string _title;
-
-    public DockToolItem(string id, string title, Control content, DockSide side)
-    {
-        DockId = id;
-        _title = title;
-        Content = content;
-        Side = side;
-    }
-
-    public string DockId { get; }
-
-    public string DockTitle
-    {
-        get => _title;
-        set
-        {
-            if (_title == value)
-            {
-                return;
-            }
-
-            _title = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DockTitle)));
-        }
-    }
-
-    public DockSide Side { get; }
-
-    public Control Content { get; }
-
-    /// <summary>重命名工具窗标题。</summary>
-    public void Rename(string title) => DockTitle = title;
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-}
 
 /// <summary>停靠文档条目：一个画板会话对应一个文档页签。</summary>
 public sealed class DockDocumentItem : INotifyPropertyChanged, IDockItem
@@ -84,43 +40,28 @@ public sealed class DockDocumentItem : INotifyPropertyChanged, IDockItem
 }
 
 /// <summary>
-///     基于 Arc DockLayout 的主窗口停靠工作台：工具窗走 ToolsSource、画板文档走 DocumentsSource，
-///     页签关闭经 PaneClosing 取消后转确认流程。
+///     基于 Arc DockLayout 的主窗口停靠工作台。工具窗布局树声明在 MainWindow.axaml（左 18% / 中 60% 文档 /
+///     右 22% / 底 22%），本类只负责：文档页签走 DocumentsSource 动态增删、工具窗可见性与标题、页签关闭转确认流程。
 /// </summary>
 public sealed class MainWindowDockWorkspace : IDisposable
 {
     private readonly DockLayout _layout;
     private readonly GraphDocumentManager _documents;
     private readonly Func<GraphDocumentSession, Control> _contentFactory;
-    private readonly List<DockToolItem> _toolItems = [];
-    private readonly ObservableCollection<DockToolItem> _toolsSource = [];
     private readonly ObservableCollection<DockDocumentItem> _documentsSource = [];
     private bool _isDisposed;
 
     public MainWindowDockWorkspace(
         DockLayout layout,
         GraphDocumentManager documents,
-        Func<GraphDocumentSession, Control> contentFactory,
-        IEnumerable<GraphDockToolDefinition> toolDefinitions)
+        Func<GraphDocumentSession, Control> contentFactory)
     {
         _layout = layout ?? throw new ArgumentNullException(nameof(layout));
         _documents = documents ?? throw new ArgumentNullException(nameof(documents));
         _contentFactory = contentFactory ?? throw new ArgumentNullException(nameof(contentFactory));
 
-        foreach (var definition in toolDefinitions)
-        {
-            _toolItems.Add(new DockToolItem(
-                definition.Id,
-                definition.Title,
-                (Control)definition.Content,
-                MapSide(definition.Placement)));
-        }
-
-        _layout.ToolTemplate = new ToolPaneTemplate();
         _layout.DocumentTemplate = new DocumentPaneTemplate();
-        _layout.ToolsSource = _toolsSource;
         _layout.DocumentsSource = _documentsSource;
-        _toolsSource.CollectionChanged += HandleToolsChanged;
         _layout.ActivePaneChanged += HandleActivePaneChanged;
         _layout.PaneClosing += HandlePaneClosing;
         _documents.SessionsChanged += HandleSessionsChanged;
@@ -171,52 +112,60 @@ public sealed class MainWindowDockWorkspace : IDisposable
     }
 
     public bool IsToolVisible(string id) =>
-        _toolItems.Any(item => item.DockId == id && _toolsSource.Contains(item));
+        _layout.Workspace.FindPane(id)?.IsVisible ?? false;
 
     public bool SetToolVisible(string id, bool isVisible)
     {
-        var item = _toolItems.FirstOrDefault(candidate => candidate.DockId == id);
-        if (item is null)
+        if (_layout.Workspace.FindPane(id) is not { } pane)
         {
             return false;
         }
 
-        var contains = _toolsSource.Contains(item);
-        if (isVisible && !contains)
+        if (pane.IsVisible == isVisible)
         {
-            _toolsSource.Add(item);
-            return true;
+            return isVisible;
         }
 
-        if (!isVisible && contains)
-        {
-            _toolsSource.Remove(item);
-            return false;
-        }
-
-        return contains;
+        pane.IsVisible = isVisible;
+        ToolVisibilityChanged?.Invoke(
+            this, new GraphDockToolVisibilityChangedEventArgs(id, isVisible));
+        return isVisible;
     }
 
     public bool ToggleTool(string id) => SetToolVisible(id, !IsToolVisible(id));
 
     public IReadOnlyDictionary<string, bool> CaptureToolVisibility() =>
-        _toolItems
-            .OrderBy(item => item.DockId, StringComparer.Ordinal)
-            .ToDictionary(item => item.DockId, item => _toolsSource.Contains(item));
+        ToolIds
+            .OrderBy(id => id, StringComparer.Ordinal)
+            .ToDictionary(id => id, id => IsToolVisible(id));
 
     public void ApplyToolVisibility(IReadOnlyDictionary<string, bool> visibility)
     {
-        foreach (var item in _toolItems)
+        foreach (var id in ToolIds)
         {
-            var isVisible = visibility.TryGetValue(item.DockId, out var value) ? value : true;
-            SetToolVisible(item.DockId, isVisible);
+            if (visibility.TryGetValue(id, out var isVisible))
+            {
+                SetToolVisible(id, isVisible);
+            }
         }
     }
 
     /// <summary>更新工具窗标题（语言切换、属性上下文变化时）。</summary>
     public void SetToolTitle(string id, string title)
     {
-        _toolItems.FirstOrDefault(item => item.DockId == id)?.Rename(title);
+        if (_layout.Workspace.FindPane(id) is { } pane)
+        {
+            pane.Title = title;
+        }
+    }
+
+    /// <summary>激活工具窗所在分组中的该页签（如“输出”）。</summary>
+    public void ActivateTool(string id)
+    {
+        if (_layout.Workspace.FindPane(id) is { } pane)
+        {
+            _layout.Activate(pane);
+        }
     }
 
     public void Dispose()
@@ -230,9 +179,23 @@ public sealed class MainWindowDockWorkspace : IDisposable
         _layout.ActivePaneChanged -= HandleActivePaneChanged;
         _layout.PaneClosing -= HandlePaneClosing;
         _documents.SessionsChanged -= HandleSessionsChanged;
-        _toolsSource.Clear();
         _documentsSource.Clear();
     }
+
+    /// <summary>全部工具窗 Id（与 MainWindow.axaml 中声明的 DockPane.Id 一一对应）。</summary>
+    private static IEnumerable<string> ToolIds =>
+    [
+        "GraphToolbox",
+        "GraphDocumentsTool",
+        "GraphProperties",
+        "GraphDiagnostics",
+        "GraphValidation",
+        "GraphRuntimeVariables",
+        "GraphRuntimeBreakpoints",
+        "GraphRuntimeCallStack",
+        "GraphRuntimeTrace"
+    ];
+
 
     private DockDocumentItem? FindDocumentItem(GraphDocumentSession session) =>
         _documentsSource.FirstOrDefault(item => ReferenceEquals(item.Session, session));
@@ -281,53 +244,6 @@ public sealed class MainWindowDockWorkspace : IDisposable
         {
             _documentsSource.Remove(item);
         }
-    }
-
-    private static DockSide MapSide(GraphDockToolPlacement placement) => placement switch
-    {
-        GraphDockToolPlacement.Right => DockSide.Right,
-        GraphDockToolPlacement.Bottom => DockSide.Bottom,
-        _ => DockSide.Left
-    };
-
-    private void HandleToolsChanged(object? sender, NotifyCollectionChangedEventArgs args)
-    {
-        if (args.Action is NotifyCollectionChangedAction.Add)
-        {
-            foreach (DockToolItem item in args.NewItems!.OfType<DockToolItem>())
-            {
-                ToolVisibilityChanged?.Invoke(
-                    this, new GraphDockToolVisibilityChangedEventArgs(item.DockId, true));
-            }
-        }
-        else if (args.Action is NotifyCollectionChangedAction.Remove)
-        {
-            foreach (DockToolItem item in args.OldItems!.OfType<DockToolItem>())
-            {
-                ToolVisibilityChanged?.Invoke(
-                    this, new GraphDockToolVisibilityChangedEventArgs(item.DockId, false));
-            }
-        }
-    }
-
-    /// <summary>工具窗模板：按条目生成配置好的 DockPane（Id/标题由 IDockItem 契约同步）。</summary>
-    private sealed class ToolPaneTemplate : IDataTemplate
-    {
-        public Control Build(object? item)
-        {
-            var tool = (DockToolItem)item!;
-            return new DockPane
-            {
-                Id = tool.DockId,
-                PreferredSide = tool.Side,
-                CanClose = true,
-                CanFloat = true,
-                CanAutoHide = true,
-                Content = tool.Content
-            };
-        }
-
-        public bool Match(object? data) => data is DockToolItem;
     }
 
     /// <summary>文档页签模板：承载画板视图，可关闭。</summary>

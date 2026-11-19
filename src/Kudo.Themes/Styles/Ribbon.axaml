@@ -8,27 +8,26 @@
   </Design.PreviewWith>
 
   <!-- Add Styles Here -->
-  <Style Selector="TabStrip.RibbonMenuTabs">
-    <Setter Property="Theme" Value="{StaticResource TrapezoidShapedTabStrip}" />
-    <Setter Property="Height" Value="{StaticResource RibbonMenuTabStripHeight}" />
+  <Style Selector="k|KudoRibbon.RibbonMenuTabs">
+    <Setter Property="MinHeight" Value="{StaticResource RibbonMenuTabStripHeight}" />
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="CornerRadius" Value="{StaticResource RibbonMenuTabsCornerRadius}" />
     <Setter Property="Padding" Value="0" />
     <Setter Property="ClipToBounds" Value="True" />
-    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
     <Setter Property="VerticalAlignment" Value="Top" />
   </Style>
-  <Style Selector="TabStrip.RibbonMenuTabs.Left">
+  <Style Selector="k|KudoRibbon.RibbonMenuTabs.Left">
     <Setter Property="HorizontalAlignment" Value="Left" />
   </Style>
-  <Style Selector="TabStrip.RibbonMenuTabs.Center">
+  <Style Selector="k|KudoRibbon.RibbonMenuTabs.Center">
     <Setter Property="HorizontalAlignment" Value="Center" />
   </Style>
-  <Style Selector="TabStrip.RibbonMenuTabs.Right">
+  <Style Selector="k|KudoRibbon.RibbonMenuTabs.Right">
     <Setter Property="HorizontalAlignment" Value="Right" />
   </Style>
-  <Style Selector="TabStrip.RibbonMenuTabs /template/ Border#PART_BorderSeparator">
+  <Style Selector="k|KudoRibbon.RibbonMenuTabs /template/ Border#PART_BorderSeparator">
     <Setter Property="Height" Value="0" />
     <Setter Property="MinHeight" Value="0" />
     <Setter Property="BorderThickness" Value="0" />

@@ -13,39 +13,29 @@
              xmlns:lucide="https://github.com/AIDotNet/TKCode.Arc/lucide"
              x:Class="Kudo.Demo.Desktop.Views.MainRibbonView"
              x:DataType="vm:MainRibbonViewModel">
-    <Grid RowDefinitions="32,Auto"
-          Background="Transparent"
-          ClipToBounds="True">
-        <Border x:Name="RibbonHeaderBackground"
-                Grid.Row="0"
-                Background="{DynamicResource RibbonMenuTabStripBackground}">
-            <Grid ColumnDefinitions="Auto,*">
-                <Border Grid.Column="0"
-                        Classes="QuickToolBarRoot RibbonHeader">
-                    <StackPanel Orientation="Horizontal"
-                                VerticalAlignment="Center">
-                        <k:IconButton x:Name="QuickCreateGraphButton"
-                                      Classes="QuickToolButton"
-                                      Icon="{lucide:LucideGeometry Plus}"
-                                      helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.NewCanvas}}"
-                                      Command="{Binding CreateGraph}" />
-                        <k:IconButton x:Name="QuickOpenGraphButton"
-                                      Classes="QuickToolButton"
-                                      Icon="{lucide:LucideGeometry FolderOpen}"
-                                      helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.OpenFile}}"
-                                      Command="{Binding OpenGraphCommand}" />
-                        <k:IconButton x:Name="QuickSaveGraphButton"
-                                      Classes="QuickToolButton"
-                                      Icon="{lucide:LucideGeometry Save}"
-                                      helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.SaveCurrentCanvas}}"
-                                      Command="{Binding SaveGraphCommand}" />
-                    </StackPanel>
-                </Border>
-                <TabStrip x:Name="RibbonTabs"
-                          Classes="RibbonMenuTabs Left"
-                          Grid.Column="1"
-                          SelectedIndex="0"
-                          VerticalAlignment="Top">
+    <k:KudoRibbon x:Name="RibbonControl"
+                  Classes="RibbonMenuTabs Left"
+                  SelectedIndex="0">
+        <k:KudoRibbon.QuickAccessContent>
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <k:IconButton x:Name="QuickCreateGraphButton"
+                              Classes="QuickToolButton"
+                              Icon="{lucide:LucideGeometry Plus}"
+                              helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.NewCanvas}}"
+                              Command="{Binding CreateGraph}" />
+                <k:IconButton x:Name="QuickOpenGraphButton"
+                              Classes="QuickToolButton"
+                              Icon="{lucide:LucideGeometry FolderOpen}"
+                              helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.OpenFile}}"
+                              Command="{Binding OpenGraphCommand}" />
+                <k:IconButton x:Name="QuickSaveGraphButton"
+                              Classes="QuickToolButton"
+                              Icon="{lucide:LucideGeometry Save}"
+                              helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.SaveCurrentCanvas}}"
+                              Command="{Binding SaveGraphCommand}" />
+            </StackPanel>
+        </k:KudoRibbon.QuickAccessContent>
                     <TabStripItem Classes="RibbonMenuTab Start" Content="{i18n:I18n {x:Static lang:MainWindow.FileTab}}">
                         <TabStripItem.Tag>
                             <ScrollViewer HorizontalScrollBarVisibility="Auto"
@@ -969,27 +959,5 @@
                             </ScrollViewer>
                         </TabStripItem.Tag>
                     </TabStripItem>
-                </TabStrip>
-            </Grid>
-        </Border>
-        <Border Grid.Row="1"
-                Margin="0"
-                Background="#FFFFFF"
-                BorderThickness="0"
-                CornerRadius="0"
-                ClipToBounds="True">
-            <ContentControl x:Name="RibbonContent"
-                            Height="{StaticResource RibbonMenuContentHeight}"
-                            Opacity="1"
-                            HorizontalContentAlignment="Stretch"
-                            VerticalContentAlignment="Top">
-                <ContentControl.Transitions>
-                    <Transitions>
-                        <DoubleTransition Property="Height" Duration="0:0:0.14" />
-                        <DoubleTransition Property="Opacity" Duration="0:0:0.08" />
-                    </Transitions>
-                </ContentControl.Transitions>
-            </ContentControl>
-        </Border>
-    </Grid>
+    </k:KudoRibbon>
 </UserControl>

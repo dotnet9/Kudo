@@ -7,12 +7,13 @@ using Avalonia.Reactive;
 using Avalonia.Styling;
 using Avalonia;
 using Kudo.Controls;
+using Kudo.Controls.Tests.TestInfrastructure;
 using Shouldly;
 using Xunit;
 
 namespace Kudo.Controls.Tests;
 
-/// <summary>IconButton 基础契约：默认值、属性回读、Flyout 与 Command 承载自原生 Button。</summary>
+[Collection("KudoControls-headless")]
 public sealed class IconButtonTests
 {
     [Fact]
@@ -25,6 +26,15 @@ public sealed class IconButtonTests
         button.Content.ShouldBeNull();
         button.Command.ShouldBeNull();
         button.ShouldBeAssignableTo<Button>();
+    }
+
+    [Fact]
+    public void Icon_roundtrips_geometry()
+    {
+        var geometry = Geometry.Parse("M 0 0 L 4 4 L 8 0");
+        var button = new IconButton { Icon = geometry };
+
+        button.Icon.ShouldBeSameAs(geometry);
     }
 
     [Fact]
@@ -49,16 +59,6 @@ public sealed class IconButtonTests
 
         button.IconPlacement = IconPlacement.Left;
         button.IconPlacement.ShouldBe(IconPlacement.Left);
-    }
-
-    [Fact]
-    public void Icon_roundtrips_geometry()
-    {
-        TestRuntime.EnsureInitialized();
-        var geometry = Geometry.Parse("M 0 0 L 4 4 L 8 0");
-        var button = new IconButton { Icon = geometry };
-
-        button.Icon.ShouldBeSameAs(geometry);
     }
 
     [Fact]

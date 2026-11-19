@@ -107,7 +107,89 @@
                 ClipToBounds="True">
             <Grid>
                 <arc:DockLayout x:Name="WorkspaceDock"
-                                IsVisible="False" />
+                                IsVisible="False">
+                    <arc:DockLayout.Workspace>
+                        <arc:DockWorkspace>
+                            <!-- 原版布局：左 18%（任务管理器/模型库页签组）· 中 60% 文档区 · 右 22% 属性 · 底 22% 日志组 -->
+                            <arc:DockSplit Orientation="Vertical">
+                                <arc:DockSplit Orientation="Horizontal" Size="78">
+                                    <arc:DockGroup Size="18">
+                                        <arc:DockPane Id="GraphToolbox"
+                                                      Title="{i18n:I18n {x:Static lang:MainWindow.ModelLibrary}}"
+                                                      CanClose="False"
+                                                      CanFloat="True"
+                                                      CanAutoHide="True">
+                                            <ContentControl x:Name="ToolboxHost" />
+                                        </arc:DockPane>
+                                        <arc:DockPane Id="GraphDocumentsTool"
+                                                      Title="{i18n:I18n {x:Static lang:MainWindow.TaskManager}}"
+                                                      CanClose="False"
+                                                      CanFloat="True"
+                                                      CanAutoHide="True">
+                                            <ContentControl x:Name="DocumentsHost" />
+                                        </arc:DockPane>
+                                    </arc:DockGroup>
+                                    <arc:DockDocumentArea Size="60">
+                                        <arc:DockGroup />
+                                    </arc:DockDocumentArea>
+                                    <arc:DockGroup Size="22">
+                                        <arc:DockPane Id="GraphProperties"
+                                                      Title="{i18n:I18n {x:Static lang:MainWindow.Properties}}"
+                                                      CanClose="False"
+                                                      CanFloat="True"
+                                                      CanAutoHide="True">
+                                            <ContentControl x:Name="PropertiesHost" />
+                                        </arc:DockPane>
+                                    </arc:DockGroup>
+                                </arc:DockSplit>
+                                <arc:DockGroup Size="22">
+                                    <arc:DockPane Id="GraphDiagnostics"
+                                                  Title="{i18n:I18n {x:Static lang:MainWindow.Output}}"
+                                                  CanClose="False"
+                                                  CanFloat="True"
+                                                  CanAutoHide="True">
+                                        <ContentControl x:Name="DiagnosticsHost" />
+                                    </arc:DockPane>
+                                    <arc:DockPane Id="GraphValidation"
+                                                  Title="{i18n:I18n {x:Static lang:MainWindow.ValidationPanel}}"
+                                                  CanClose="False"
+                                                  CanFloat="True"
+                                                  CanAutoHide="True">
+                                        <ContentControl x:Name="ValidationHost" />
+                                    </arc:DockPane>
+                                    <arc:DockPane Id="GraphRuntimeVariables"
+                                                  Title="{i18n:I18n {x:Static lang:MainWindow.RuntimeVariables}}"
+                                                  CanClose="False"
+                                                  CanFloat="True"
+                                                  CanAutoHide="True">
+                                        <ContentControl x:Name="RuntimeVariablesHost" />
+                                    </arc:DockPane>
+                                    <arc:DockPane Id="GraphRuntimeBreakpoints"
+                                                  Title="{i18n:I18n {x:Static lang:MainWindow.RuntimeBreakpoints}}"
+                                                  CanClose="False"
+                                                  CanFloat="True"
+                                                  CanAutoHide="True">
+                                        <ContentControl x:Name="RuntimeBreakpointsHost" />
+                                    </arc:DockPane>
+                                    <arc:DockPane Id="GraphRuntimeCallStack"
+                                                  Title="{i18n:I18n {x:Static lang:MainWindow.RuntimeCallStack}}"
+                                                  CanClose="False"
+                                                  CanFloat="True"
+                                                  CanAutoHide="True">
+                                        <ContentControl x:Name="RuntimeCallStackHost" />
+                                    </arc:DockPane>
+                                    <arc:DockPane Id="GraphRuntimeTrace"
+                                                  Title="{i18n:I18n {x:Static lang:MainWindow.RuntimeTrace}}"
+                                                  CanClose="False"
+                                                  CanFloat="True"
+                                                  CanAutoHide="True">
+                                        <ContentControl x:Name="RuntimeTraceHost" />
+                                    </arc:DockPane>
+                                </arc:DockGroup>
+                            </arc:DockSplit>
+                        </arc:DockWorkspace>
+                    </arc:DockLayout.Workspace>
+                </arc:DockLayout>
                 <k:GraphWorkspaceSkeleton x:Name="WorkspaceSkeleton"
                                           Margin="0" />
             </Grid>

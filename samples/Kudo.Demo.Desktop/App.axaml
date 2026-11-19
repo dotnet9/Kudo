@@ -14,7 +14,6 @@
     <Application.Styles>
         <semi:SemiTheme Locale="en-US" />
         <semi:UrsaSemiTheme Locale="en-US" />
-        <k:KudoSemiTheme />
         <codewf:ACSemiTheme />
         <k:KudoTheme />
         <StyleInclude Source="avares://Kudo.Demo.Desktop/Styles/_index.axaml" />

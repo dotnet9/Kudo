@@ -1,4 +1,4 @@
-<Styles x:Class="Kudo.Themes.KudoSemiTheme"
+<Styles
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:k="https://codewf.com"

@@ -1,5 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Presenters;
 using Avalonia.Input;
 using Avalonia.VisualTree;
 using Avalonia.Threading;
@@ -27,7 +29,6 @@ internal sealed class MainWindowBehavior : IDisposable
 {
     private readonly MainWindow _window;
     private readonly DockLayout _workspaceDock;
-    private readonly MainRibbonBehavior _ribbonBehavior;
     private const string ToolboxToolId = "GraphToolbox";
     private const string DocumentsToolId = "GraphDocumentsTool";
     private const string PropertiesToolId = "GraphProperties";
@@ -56,6 +57,7 @@ internal sealed class MainWindowBehavior : IDisposable
     private readonly GraphRuntimeTraceView _runtimeTrace = new();
     private readonly DemoApplicationSettingsStore _settingsStore;
     private readonly MainWindowDockWorkspace _dockWorkspace;
+    private readonly MainRibbonView _ribbonView;
     private readonly MainWindowViewModel _viewModel;
     private readonly MainRibbonViewModel _ribbonViewModel;
     private readonly DocumentWorkspaceCoordinator _workspaceCoordinator;
@@ -115,14 +117,13 @@ internal sealed class MainWindowBehavior : IDisposable
             throw new InvalidOperationException("MainRibbon control was not found.");
         _ribbonViewModel = ribbonView.DataContext as MainRibbonViewModel ??
             throw new InvalidOperationException("MainRibbonViewModel was not wired to MainRibbonView.");
+        _ribbonView = ribbonView;
         _workspaceCoordinator = new DocumentWorkspaceCoordinator(
             _documents,
             _viewModel);
         CodeWF.Toolkit.EventBus.EventBus.Default.Subscribe(this);
-        _ribbonBehavior = new MainRibbonBehavior(
-            ribbonView,
-            workspaceSettings.IsRibbonExpanded,
-            PersistWorkspaceSettings);
+        ribbonView.Ribbon.IsExpanded = workspaceSettings.IsRibbonExpanded;
+        ribbonView.Ribbon.PropertyChanged += HandleRibbonPropertyChanged;
 
         _documentHost = new MainWindowDocumentHost(
             _documents,
@@ -147,67 +148,12 @@ internal sealed class MainWindowBehavior : IDisposable
         _dockWorkspace = new MainWindowDockWorkspace(
             _workspaceDock,
             _documents,
-            session => (Control)_documentHost.CreateContent(session),
-            [
-                new GraphDockToolDefinition(
-                    ToolboxToolId,
-                    L(MainWindowLanguage.ModelLibrary),
-                    _toolbox,
-                    GraphDockToolPlacement.LeftBottom,
-                    GraphDockToolRole.Toolbox),
-                new GraphDockToolDefinition(
-                    DocumentsToolId,
-                    L(MainWindowLanguage.TaskManager),
-                    _documentExplorer,
-                    GraphDockToolPlacement.LeftTop,
-                    GraphDockToolRole.Documents),
-                new GraphDockToolDefinition(
-                    PropertiesToolId,
-                    L(MainWindowLanguage.Properties),
-                    _properties,
-                    GraphDockToolPlacement.Right,
-                    GraphDockToolRole.Properties),
-                new GraphDockToolDefinition(
-                    DiagnosticsToolId,
-                    L(MainWindowLanguage.Output),
-                    _diagnostics,
-                    GraphDockToolPlacement.Bottom,
-                    GraphDockToolRole.Diagnostics),
-                new GraphDockToolDefinition(
-                    ValidationToolId,
-                    L(MainWindowLanguage.ValidationPanel),
-                    _validation,
-                    GraphDockToolPlacement.Bottom,
-                    GraphDockToolRole.Custom),
-                new GraphDockToolDefinition(
-                    RuntimeVariablesToolId,
-                    L(MainWindowLanguage.RuntimeVariables),
-                    _runtimeVariables,
-                    GraphDockToolPlacement.Bottom,
-                    GraphDockToolRole.Custom),
-                new GraphDockToolDefinition(
-                    RuntimeBreakpointsToolId,
-                    L(MainWindowLanguage.RuntimeBreakpoints),
-                    _runtimeBreakpoints,
-                    GraphDockToolPlacement.Bottom,
-                    GraphDockToolRole.Custom),
-                new GraphDockToolDefinition(
-                    RuntimeCallStackToolId,
-                    L(MainWindowLanguage.RuntimeCallStack),
-                    _runtimeCallStack,
-                    GraphDockToolPlacement.Bottom,
-                    GraphDockToolRole.Custom),
-                new GraphDockToolDefinition(
-                    RuntimeTraceToolId,
-                    L(MainWindowLanguage.RuntimeTrace),
-                    _runtimeTrace,
-                    GraphDockToolPlacement.Bottom,
-                    GraphDockToolRole.Custom)
-            ]);
+            session => (Control)_documentHost.CreateContent(session));
+        AssignToolContent(window);
         _workspaceService = new MainWindowWorkspaceService(
             _dockWorkspace,
             _settingsStore,
-            () => _ribbonBehavior.IsExpanded,
+            () => ribbonView.Ribbon.IsExpanded,
             () => ActiveView,
             AppendLog,
             () => UpdateWorkspace());
@@ -347,6 +293,25 @@ internal sealed class MainWindowBehavior : IDisposable
         QueueWorkspaceDataLoad();
     }
 
+    /// <summary>把工具窗控件装入 MainWindow.axaml 声明的停靠占位符。</summary>
+    private void AssignToolContent(MainWindow window)
+    {
+        SetToolHost(window, "ToolboxHost", _toolbox);
+        SetToolHost(window, "DocumentsHost", _documentExplorer);
+        SetToolHost(window, "PropertiesHost", _properties);
+        SetToolHost(window, "DiagnosticsHost", _diagnostics);
+        SetToolHost(window, "ValidationHost", _validation);
+        SetToolHost(window, "RuntimeVariablesHost", _runtimeVariables);
+        SetToolHost(window, "RuntimeBreakpointsHost", _runtimeBreakpoints);
+        SetToolHost(window, "RuntimeCallStackHost", _runtimeCallStack);
+        SetToolHost(window, "RuntimeTraceHost", _runtimeTrace);
+    }
+
+    private static void SetToolHost(MainWindow window, string hostName, Control content)
+    {
+        window.FindControl<ContentControl>(hostName)!.Content = content;
+    }
+
     private GraphDocumentSession? ActiveSession => _documents.ActiveSession;
 
     private GraphDocumentView? ActiveView =>
@@ -386,6 +351,14 @@ internal sealed class MainWindowBehavior : IDisposable
         }
     }
 
+    private void HandleRibbonPropertyChanged(object? sender, AvaloniaPropertyChangedEventArgs args)
+    {
+        if (args.Property.Name == nameof(Kudo.Controls.KudoRibbon.IsExpanded))
+        {
+            PersistWorkspaceSettings();
+        }
+    }
+
     private void HandleWindowClosed(object? sender, EventArgs e)
     {
         Dispose();
@@ -403,6 +376,7 @@ internal sealed class MainWindowBehavior : IDisposable
         _window.Closed -= HandleWindowClosed;
         _window.KeyDown -= HandleWindowKeyDown;
         I18nManager.Instance.CultureChanged -= HandleCultureChanged;
+        _ribbonView.Ribbon.PropertyChanged -= HandleRibbonPropertyChanged;
         _workspaceLoadCancellation.Cancel();
         _dockWorkspace.ToolVisibilityChanged -= HandleToolVisibilityChanged;
         _dockWorkspace.ActiveDocumentChanged -= HandleActiveGraphDocumentChanged;
@@ -411,7 +385,6 @@ internal sealed class MainWindowBehavior : IDisposable
         _runtimeTools.Dispose();
         _dockWorkspace.DocumentCloseRequested -= HandleDocumentCloseRequested;
         _dockWorkspace.Dispose();
-        _ribbonBehavior.Dispose();
         CodeWF.Toolkit.EventBus.EventBus.Default.Unsubscribe(this);
         _ribbonViewModel.Dispose();
         _viewModel.Dispose();
