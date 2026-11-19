@@ -1,6 +1,13 @@
 // 属性编辑控件工厂：集中创建字段布局并绑定提交事件，避免各内置编辑器重复搭建 UI。
 using Avalonia;
 using Avalonia.Controls;
+using ArcCheckbox = global::TKCode.Arc.Checkbox;
+using ArcColorPicker = global::TKCode.Arc.ColorPicker;
+using ArcCombobox = global::TKCode.Arc.Combobox;
+using Combobox = global::TKCode.Arc.Combobox;
+using ArcDatePicker = global::TKCode.Arc.DatePicker;
+using ArcInput = global::TKCode.Arc.Input;
+using ArcSelectItem = global::TKCode.Arc.SelectItem;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -106,19 +113,19 @@ internal static class GraphPropertyEditorControls
         editor.IsTabStop = !isReadOnly;
     }
 
-    public static ComboBox CreateEnumEditor<T>(
+    public static Combobox CreateEnumEditor<T>(
         string name,
         T value,
         Func<T, string> format) where T : struct, Enum
     {
         var items = Enum.GetValues<T>()
-            .Select(enumValue => new ComboBoxItem
+            .Select(enumValue => new ArcSelectItem
             {
                 Content = format(enumValue),
                 Tag = enumValue
             })
             .ToArray();
-        return new ComboBox
+        return new ArcCombobox
         {
             Name = name,
             ItemsSource = items,
@@ -127,8 +134,8 @@ internal static class GraphPropertyEditorControls
         };
     }
 
-    public static T GetEnumValue<T>(ComboBox editor, T fallback) where T : struct, Enum =>
-        editor.SelectedItem is ComboBoxItem { Tag: T value } ? value : fallback;
+    public static T GetEnumValue<T>(Combobox editor, T fallback) where T : struct, Enum =>
+        editor.SelectedItem is ArcSelectItem { Tag: T value } ? value : fallback;
 
     /// <summary>
     /// 文本框失焦时提交；单行编辑器还可使用 Enter 提交。
@@ -156,7 +163,7 @@ internal static class GraphPropertyEditorControls
         };
     }
 
-    public static void AttachSelectionCommit(ComboBox editor, Action commit) =>
+    public static void AttachSelectionCommit(global::TKCode.Arc.Combobox editor, Action commit) =>
         editor.SelectionChanged += (_, _) => commit();
 
     public static void AttachNumericCommit(NumericUpDown editor, Action commit) =>
@@ -235,16 +242,13 @@ internal sealed class GraphColorEditor : Grid
     public GraphColorEditor(string name, string? value, string clearTooltip)
     {
         _hasExplicitColor = TryParseColor(value, out var color);
-        Picker = new ColorPicker
+        Picker = new ArcColorPicker
         {
             Name = name,
             Color = _hasExplicitColor ? color : Colors.Black,
-            IsAlphaEnabled = true,
-            IsAlphaVisible = true,
             HorizontalAlignment = HorizontalAlignment.Stretch,
             VerticalAlignment = VerticalAlignment.Center
         };
-        Picker[!StyledElement.ThemeProperty] = new DynamicResourceExtension("HexSimpleColorPicker");
         ClearButton = GraphPropertyEditorControls.CreateIconActionButton(
             $"{name}ClearButton",
             clearTooltip,
@@ -277,7 +281,7 @@ internal sealed class GraphColorEditor : Grid
 
     public event EventHandler? ValueChanged;
 
-    public ColorPicker Picker { get; }
+    public global::TKCode.Arc.ColorPicker Picker { get; }
 
     public IconButton ClearButton { get; }
 

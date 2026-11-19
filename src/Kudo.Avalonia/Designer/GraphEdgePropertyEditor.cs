@@ -86,10 +86,10 @@ internal static class GraphEdgePropertyEditor
         GraphPropertyEditorContext editorContext,
         string edgeId,
         TextBox labelEditor,
-        ComboBox routingEditor,
-        ComboBox stylePresetEditor,
-        ComboBox sourceMarkerEditor,
-        ComboBox targetMarkerEditor,
+        global::TKCode.Arc.Combobox routingEditor,
+        global::TKCode.Arc.Combobox stylePresetEditor,
+        global::TKCode.Arc.Combobox sourceMarkerEditor,
+        global::TKCode.Arc.Combobox targetMarkerEditor,
         Action<string> notifyEditCommitted)
     {
         var edge = editorContext.Session.Document.Edges

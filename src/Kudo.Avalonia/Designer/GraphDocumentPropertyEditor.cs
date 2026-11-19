@@ -121,17 +121,17 @@ internal static class GraphDocumentPropertyEditor
             1000,
             1,
             "0.##");
-        var minimapEditor = new CheckBox
+        var minimapEditor = new global::TKCode.Arc.Checkbox
         {
             Name = "CanvasMinimapVisibleEditor",
             IsChecked = settings.IsMinimapVisible
         };
-        var lodEditor = new CheckBox
+        var lodEditor = new global::TKCode.Arc.Checkbox
         {
             Name = "CanvasLevelOfDetailEnabledEditor",
             IsChecked = settings.IsLevelOfDetailEnabled
         };
-        var showPortsEditor = new CheckBox
+        var showPortsEditor = new global::TKCode.Arc.Checkbox
         {
             Name = "CanvasShowPortsEditor",
             IsChecked = settings.ShowPorts
@@ -285,9 +285,9 @@ internal static class GraphDocumentPropertyEditor
         AvaloniaNumericUpDown simplifiedThresholdEditor,
         AvaloniaNumericUpDown labelThresholdEditor,
         AvaloniaNumericUpDown portThresholdEditor,
-        ComboBox portLabelVisibilityEditor,
-        ComboBox symbolNameVisibilityEditor,
-        ComboBox symbolDescriptionVisibilityEditor,
+        global::TKCode.Arc.Combobox portLabelVisibilityEditor,
+        global::TKCode.Arc.Combobox symbolNameVisibilityEditor,
+        global::TKCode.Arc.Combobox symbolDescriptionVisibilityEditor,
         Action<string> notifyEditCommitted)
     {
         if (!TryReadThreshold(simplifiedThresholdEditor, out var simplifiedThreshold) ||

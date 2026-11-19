@@ -34,7 +34,7 @@ public sealed class GraphVariablesView : GraphDesignerPanel
             FontSize = 11,
             Foreground = SecondaryTextBrush
         };
-        _watchExpression = new TextBox
+        _watchExpression = new global::TKCode.Arc.Input
         {
             Name = "WatchExpressionTextBox",
             PlaceholderText = L(VariablesLanguage.WatchPlaceholder),

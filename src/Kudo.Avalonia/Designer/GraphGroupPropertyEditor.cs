@@ -77,7 +77,7 @@ internal static class GraphGroupPropertyEditor
         string groupId,
         TextBox titleEditor,
         TextBox paddingEditor,
-        ComboBox stateEditor,
+        global::TKCode.Arc.Combobox stateEditor,
         TextBox propertiesEditor,
         Action<string> notifyEditCommitted)
     {

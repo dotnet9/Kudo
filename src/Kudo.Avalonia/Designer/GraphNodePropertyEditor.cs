@@ -47,7 +47,7 @@ internal static class GraphNodePropertyEditor
             180,
             1,
             "0.##");
-        var lockEditor = new CheckBox
+        var lockEditor = new global::TKCode.Arc.Checkbox
         {
             Name = "NodeLockedEditor",
             IsChecked = node.IsLocked,
@@ -454,15 +454,15 @@ internal static class GraphNodePropertyEditor
     private static void ApplyAppearance(
         GraphPropertyEditorContext editorContext,
         string nodeId,
-        ComboBox visualModeEditor,
-        ComboBox stretchEditor,
+        global::TKCode.Arc.Combobox visualModeEditor,
+        global::TKCode.Arc.Combobox stretchEditor,
         GraphPercentageEditor opacityEditor,
-        ComboBox nameVisibilityEditor,
-        ComboBox descriptionVisibilityEditor,
-        ComboBox portLabelVisibilityEditor,
+        global::TKCode.Arc.Combobox nameVisibilityEditor,
+        global::TKCode.Arc.Combobox descriptionVisibilityEditor,
+        global::TKCode.Arc.Combobox portLabelVisibilityEditor,
         GraphColorEditor textForegroundEditor,
         NumericUpDown textFontSizeEditor,
-        ComboBox textFontWeightEditor,
+        global::TKCode.Arc.Combobox textFontWeightEditor,
         Action<string> notifyEditCommitted)
     {
         if (!TryCreateAppearance(
@@ -493,15 +493,15 @@ internal static class GraphNodePropertyEditor
     private static void PreviewAppearance(
         GraphPropertyEditorContext editorContext,
         string nodeId,
-        ComboBox visualModeEditor,
-        ComboBox stretchEditor,
+        global::TKCode.Arc.Combobox visualModeEditor,
+        global::TKCode.Arc.Combobox stretchEditor,
         GraphPercentageEditor opacityEditor,
-        ComboBox nameVisibilityEditor,
-        ComboBox descriptionVisibilityEditor,
-        ComboBox portLabelVisibilityEditor,
+        global::TKCode.Arc.Combobox nameVisibilityEditor,
+        global::TKCode.Arc.Combobox descriptionVisibilityEditor,
+        global::TKCode.Arc.Combobox portLabelVisibilityEditor,
         GraphColorEditor textForegroundEditor,
         NumericUpDown textFontSizeEditor,
-        ComboBox textFontWeightEditor)
+        global::TKCode.Arc.Combobox textFontWeightEditor)
     {
         if (!TryCreateAppearance(
                 editorContext,
@@ -563,15 +563,15 @@ internal static class GraphNodePropertyEditor
     private static bool TryCreateAppearance(
         GraphPropertyEditorContext editorContext,
         string nodeId,
-        ComboBox visualModeEditor,
-        ComboBox stretchEditor,
+        global::TKCode.Arc.Combobox visualModeEditor,
+        global::TKCode.Arc.Combobox stretchEditor,
         GraphPercentageEditor opacityEditor,
-        ComboBox nameVisibilityEditor,
-        ComboBox descriptionVisibilityEditor,
-        ComboBox portLabelVisibilityEditor,
+        global::TKCode.Arc.Combobox nameVisibilityEditor,
+        global::TKCode.Arc.Combobox descriptionVisibilityEditor,
+        global::TKCode.Arc.Combobox portLabelVisibilityEditor,
         GraphColorEditor textForegroundEditor,
         NumericUpDown textFontSizeEditor,
-        ComboBox textFontWeightEditor,
+        global::TKCode.Arc.Combobox textFontWeightEditor,
         out NodeModel node,
         out GraphNodeAppearance appearance)
     {
@@ -667,11 +667,11 @@ internal static class GraphNodePropertyEditor
         _ => L(PropertiesLanguage.NodeVisualModeAuto)
     };
 
-    private static ComboBox CreateOptionalLabelVisibilityEditor(
+    private static global::TKCode.Arc.Combobox CreateOptionalLabelVisibilityEditor(
         string name,
         GraphLabelVisibility? value)
     {
-        var items = new List<ComboBoxItem>
+        var items = new List<global::TKCode.Arc.SelectItem>
         {
             new()
             {
@@ -679,12 +679,12 @@ internal static class GraphNodePropertyEditor
                 Tag = null
             }
         };
-        items.AddRange(Enum.GetValues<GraphLabelVisibility>().Select(visibility => new ComboBoxItem
+        items.AddRange(Enum.GetValues<GraphLabelVisibility>().Select(visibility => new global::TKCode.Arc.SelectItem
         {
             Content = FormatLabelVisibility(visibility),
             Tag = visibility
         }));
-        return new ComboBox
+        return new global::TKCode.Arc.Combobox
         {
             Name = name,
             ItemsSource = items,
@@ -693,8 +693,8 @@ internal static class GraphNodePropertyEditor
         };
     }
 
-    private static GraphLabelVisibility? GetOptionalLabelVisibility(ComboBox editor) =>
-        editor.SelectedItem is ComboBoxItem { Tag: GraphLabelVisibility value } ? value : null;
+    private static GraphLabelVisibility? GetOptionalLabelVisibility(global::TKCode.Arc.Combobox editor) =>
+        editor.SelectedItem is global::TKCode.Arc.SelectItem { Tag: GraphLabelVisibility value } ? value : null;
 
     private static string FormatLabelVisibility(GraphLabelVisibility visibility) => visibility switch
     {

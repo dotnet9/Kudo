@@ -213,7 +213,7 @@ internal static class GraphNodeDefinitionPropertyEditor
         GraphNodePropertyDefinition property,
         Action<string> notifyEditCommitted)
     {
-        var editor = new CheckBox
+        var editor = new global::TKCode.Arc.Checkbox
         {
             Name = CreateEditorName(property),
             IsChecked = ToBoolean(GetPropertyValue(node, property))
@@ -276,7 +276,7 @@ internal static class GraphNodeDefinitionPropertyEditor
                 notifyEditCommitted);
     }
 
-    private static ComboBox CreateComboBoxEditor(
+    private static global::TKCode.Arc.Combobox CreateComboBoxEditor(
         GraphPropertyEditorContext editorContext,
         NodeModel node,
         GraphNodePropertyDefinition property,
@@ -286,13 +286,13 @@ internal static class GraphNodeDefinitionPropertyEditor
     {
 
         var items = options
-            .Select(option => new ComboBoxItem
+            .Select(option => new global::TKCode.Arc.SelectItem
             {
                 Content = option.DisplayName,
                 Tag = option.Value
             })
             .ToArray();
-        var editor = new ComboBox
+        var editor = new global::TKCode.Arc.Combobox
         {
             Name = CreateEditorName(property),
             ItemsSource = items,
@@ -304,7 +304,7 @@ internal static class GraphNodeDefinitionPropertyEditor
         editor.IsEnabled = !editorContext.IsReadOnly && !property.IsReadOnly;
         AttachSelectionCommit(editor, () =>
         {
-            if (editor.SelectedItem is not ComboBoxItem { Tag: string selected })
+            if (editor.SelectedItem is not global::TKCode.Arc.SelectItem { Tag: string selected })
             {
                 return;
             }
