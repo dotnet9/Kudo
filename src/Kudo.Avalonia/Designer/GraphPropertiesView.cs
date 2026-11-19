@@ -154,7 +154,7 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
 
     private string _contextTitle = GraphLocalization.Get(PropertiesLanguage.Properties);
     private readonly Border _root;
-    private readonly CodeWF.Avalonia.TreeDataGrid.PropertyGrid.PropertyGrid _propertyGrid = new();
+    private readonly Kudo.Controls.PropertyGrid.PropertyGrid _propertyGrid = new();
     private IDisposable? _customContentLifetime;
     private GraphPropertyPanelItems? _panelItems;
 
@@ -257,7 +257,7 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
 
         Context = editorContext.PropertyContext;
         _panelItems = CreatePanelItems(editorContext);
-        var items = new List<CodeWF.Avalonia.TreeDataGrid.PropertyGrid.PropertyItem>();
+        var items = new List<Kudo.Controls.PropertyGrid.PropertyItem>();
 
         if (Context.Kind == GraphPropertyTargetKind.GroupSelection)
         {
@@ -331,10 +331,10 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
             () => RefreshCore(EditorContext));
     }
 
-    private Control? GetCustomPropertyEditor(CodeWF.Avalonia.TreeDataGrid.PropertyGrid.PropertyItem item) =>
+    private Control? GetCustomPropertyEditor(Kudo.Controls.PropertyGrid.PropertyItem item) =>
         _panelItems?.GetCustomEditor(item);
 
-    private void HandlePropertyPreviewing(object? sender, CodeWF.Avalonia.TreeDataGrid.PropertyGrid.PropertyValuePreviewEventArgs e)
+    private void HandlePropertyPreviewing(object? sender, Kudo.Controls.PropertyGrid.PropertyValuePreviewEventArgs e)
     {
         if (_panelItems is not null && _panelItems.HandlePreview(e.Item, e.NewValue))
         {
@@ -342,7 +342,7 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
         }
     }
 
-    private void HandlePropertyCommitted(object? sender, CodeWF.Avalonia.TreeDataGrid.PropertyGrid.PropertyValueChangedEventArgs e)
+    private void HandlePropertyCommitted(object? sender, Kudo.Controls.PropertyGrid.PropertyValueChangedEventArgs e)
     {
         _panelItems?.HandleCommit(e.Item, e.OldValue, e.NewValue);
     }

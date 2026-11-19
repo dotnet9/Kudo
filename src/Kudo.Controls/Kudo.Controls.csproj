@@ -8,7 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="PropertyGrid\I18n\*.json" WithCulture="false" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.Controls.ColorPicker" />
+    <PackageReference Include="CodeWF.Avalonia.Lang" />
+    <PackageReference Include="Semi.Avalonia" />
+    <PackageReference Include="TreeDataGrid.Avalonia" />
   </ItemGroup>
 
 </Project>
