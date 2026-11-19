@@ -9,7 +9,7 @@ using VAlignment = Avalonia.Layout.VerticalAlignment;
 using Kudo.Avalonia;
 using Kudo.Core.Documents;
 using Kudo.Core.Runtime;
-using Kudo.Controls.PropertyGrid;
+using CodeWF.Avalonia.TreeDataGrid.PropertyGrid;
 using static Kudo.Avalonia.Designer.GraphPropertyValueConverter;
 using PropertiesLanguage = global::Localization.Kudo_Avalonia.Designer.GraphPropertiesView;
 

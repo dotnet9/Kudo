@@ -11,6 +11,7 @@
     <PackageReference Include="Avalonia.Skia" />
     <PackageReference Include="CodeWF.Avalonia.Lang" />
     <PackageReference Include="CodeWF.Toolkit.Lang" />
+    <PackageReference Include="CodeWF.Avalonia.TreeDataGrid" />
     <PackageReference Include="HarfBuzzSharp" />
     <PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" />
     <PackageReference Include="HarfBuzzSharp.NativeAssets.macOS" />
