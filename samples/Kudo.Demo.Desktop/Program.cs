@@ -25,6 +25,7 @@ class Program
             .With(new FontManagerOptions { DefaultFamilyName = KudoThemeFonts.DefaultFamilyName })
             .UseArc(arc => arc
                 .UseArcControls()
+                .UseArcDock()
                 .WithTheme(theme => theme
                     .Appearance(ArcAppearance.Light)
                     .MotionLevel(ArcMotionLevel.Reduced)))

@@ -26,6 +26,7 @@
     <PackageVersion Include="Irihi.Ursa" Version="2.2.0" />
     <PackageVersion Include="Irihi.Ursa.Themes.Semi" Version="2.2.0" />
     <PackageVersion Include="TKCode.Arc" Version="1.0.0" />
+    <PackageVersion Include="TKCode.Arc.Dock" Version="1.0.0" />
     <PackageVersion Include="TKCode.Arc.Icons.Lucide" Version="1.0.0" />
     <PackageVersion Include="CodeWF.Avalonia.Lang" Version="12.1.4.27" />
     <PackageVersion Include="Silk.NET.OpenGL" Version="2.23.0" />

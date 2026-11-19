@@ -27,6 +27,7 @@
     <ProjectReference Include="..\..\src\Kudo.Dock.Themes\Kudo.Dock.Themes.csproj" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
     <PackageReference Include="TKCode.Arc" />
+    <PackageReference Include="TKCode.Arc.Dock" />
     <PackageReference Include="TKCode.Arc.Icons.Lucide" />
     <PackageReference Include="ReactiveUI.Avalonia" />
     <PackageReference Include="Semi.Avalonia" />
