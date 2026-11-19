@@ -8,7 +8,7 @@ namespace Kudo.Demo.Desktop.Services;
 internal sealed class MainWindowDocumentService(
     GraphDocumentManager documents,
     MainWindowDocumentHost documentHost,
-    GraphDockLayoutFactory dockFactory,
+    MainWindowDockWorkspace dockWorkspace,
     MainWindowDialogService dialogService,
     GraphDocumentDraftAutosaveService draftAutosave,
     Action<string, string?> appendLog)
@@ -20,7 +20,7 @@ internal sealed class MainWindowDocumentService(
             view.Canvas.ClearSelection();
         }
 
-        dockFactory.ActivateDocument(session);
+        dockWorkspace.ActivateDocument(session);
     }
 
     public async Task RenameAsync(GraphDocumentSession session)
@@ -71,7 +71,7 @@ internal sealed class MainWindowDocumentService(
             var copy = await documents.DuplicateAsync(
                 session,
                 CreateCopyTitle(session.Document.Title));
-            dockFactory.ActivateDocument(copy);
+            dockWorkspace.ActivateDocument(copy);
             appendLog(
                 F(
                     MainWindowLanguage.TaskDuplicated,
@@ -88,9 +88,9 @@ internal sealed class MainWindowDocumentService(
 
     public Task CloseActiveAsync()
     {
-        if (dockFactory.ActiveDocument is { } document)
+        if (dockWorkspace.ActiveSession is { } session)
         {
-            dockFactory.CloseDockable(document);
+            return CloseAsync(session);
         }
 
         return Task.CompletedTask;

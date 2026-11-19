@@ -13,7 +13,7 @@ internal sealed class MainWindowDraftCoordinator : IDisposable
     private readonly Window _window;
     private readonly GraphDocumentManager _documents;
     private readonly GraphDocumentDraftAutosaveService _draftAutosave;
-    private readonly GraphDockLayoutFactory _dockFactory;
+    private readonly MainWindowDockWorkspace _dockWorkspace;
     private readonly MainWindowViewModel _viewModel;
     private readonly MainWindowDialogService _dialogService;
     private readonly Action<string, string?> _appendLog;
@@ -27,7 +27,7 @@ internal sealed class MainWindowDraftCoordinator : IDisposable
         Window window,
         GraphDocumentManager documents,
         GraphDocumentDraftAutosaveService draftAutosave,
-        GraphDockLayoutFactory dockFactory,
+        MainWindowDockWorkspace dockWorkspace,
         MainWindowViewModel viewModel,
         MainWindowDialogService dialogService,
         Action<string, string?> appendLog)
@@ -36,7 +36,7 @@ internal sealed class MainWindowDraftCoordinator : IDisposable
         _documents = documents ?? throw new ArgumentNullException(nameof(documents));
         _draftAutosave = draftAutosave ??
             throw new ArgumentNullException(nameof(draftAutosave));
-        _dockFactory = dockFactory ?? throw new ArgumentNullException(nameof(dockFactory));
+        _dockWorkspace = dockWorkspace ?? throw new ArgumentNullException(nameof(dockWorkspace));
         _viewModel = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
         _dialogService = dialogService ??
             throw new ArgumentNullException(nameof(dialogService));
@@ -87,7 +87,7 @@ internal sealed class MainWindowDraftCoordinator : IDisposable
             }
 
             _viewModel.RestoredDraftCount = result.Sessions.Count;
-            _dockFactory.ActivateDocument(result.Sessions[^1]);
+            _dockWorkspace.ActivateDocument(result.Sessions[^1]);
             _appendLog(
                 F(MainWindowLanguage.DraftsRestored, result.Sessions.Count),
                 F(MainWindowLanguage.DraftsRestoredStatus, result.Sessions.Count));

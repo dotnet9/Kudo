@@ -1,10 +1,10 @@
 using Avalonia.Controls;
-using Dock.Avalonia.Controls;
 using Kudo.Avalonia.Docking;
 using Kudo.Demo.Desktop.ViewModels;
 using Kudo.Demo.Desktop.Views;
 using Kudo.Core.Documents;
 using Kudo.Demo.Desktop.Services;
+using TKCode.Arc;
 
 namespace Kudo.Demo.Desktop.Behaviors;
 
@@ -12,7 +12,7 @@ internal sealed class MainWindowBehaviorBootstrapper
 {
     private readonly MainWindow _window;
     private readonly MainRibbonView _ribbon;
-    private readonly DockControl _workspaceDock;
+    private readonly DockLayout _workspaceDock;
     private readonly GraphWorkspaceSkeleton _workspaceSkeleton;
     private readonly DemoApplicationSettingsStore _settingsStore;
     private readonly GraphDocumentDraftStore? _draftStore;
@@ -28,7 +28,7 @@ internal sealed class MainWindowBehaviorBootstrapper
         _window = window ?? throw new ArgumentNullException(nameof(window));
         _ribbon = window.FindControl<MainRibbonView>(MainWindowControlNames.Ribbon) ??
             throw new InvalidOperationException("MainRibbon control was not found.");
-        _workspaceDock = window.FindControl<DockControl>(MainWindowControlNames.WorkspaceDock) ??
+        _workspaceDock = window.FindControl<DockLayout>(MainWindowControlNames.WorkspaceDock) ??
             throw new InvalidOperationException("WorkspaceDock control was not found.");
         _workspaceSkeleton = window.FindControl<GraphWorkspaceSkeleton>(MainWindowControlNames.WorkspaceSkeleton) ??
             throw new InvalidOperationException("WorkspaceSkeleton control was not found.");

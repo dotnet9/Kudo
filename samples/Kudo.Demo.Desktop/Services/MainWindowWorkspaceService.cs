@@ -6,7 +6,7 @@ using MainWindowLanguage = global::Localization.Kudo_Demo_Desktop.Views.MainWind
 namespace Kudo.Demo.Desktop.Services;
 
 internal sealed class MainWindowWorkspaceService(
-    GraphDockLayoutFactory dockFactory,
+    MainWindowDockWorkspace dockWorkspace,
     DemoApplicationSettingsStore settingsStore,
     Func<bool> isRibbonExpanded,
     Func<GraphDocumentView?> activeViewProvider,
@@ -20,7 +20,7 @@ internal sealed class MainWindowWorkspaceService(
 
     public void ToggleTool(string toolId, string displayName)
     {
-        if (!dockFactory.ToggleTool(toolId))
+        if (!dockWorkspace.ToggleTool(toolId))
         {
             appendLog(
                 F(MainWindowLanguage.ToolPanelNotFound, displayName),
@@ -28,7 +28,7 @@ internal sealed class MainWindowWorkspaceService(
             return;
         }
 
-        var action = dockFactory.IsToolVisible(toolId)
+        var action = dockWorkspace.IsToolVisible(toolId)
             ? L(MainWindowLanguage.ToolPanelShown)
             : L(MainWindowLanguage.ToolPanelHidden);
         appendLog(
@@ -42,7 +42,7 @@ internal sealed class MainWindowWorkspaceService(
         {
             IsRibbonExpanded = isRibbonExpanded(),
             ToolVisibility = new Dictionary<string, bool>(
-                dockFactory.CaptureToolVisibility(),
+                dockWorkspace.CaptureToolVisibility(),
                 StringComparer.Ordinal)
         };
         if (settingsStore.TrySaveWorkspace(settings, out var error))

@@ -5,7 +5,7 @@ using Avalonia.VisualTree;
 using Avalonia.Threading;
 using CodeWF.Toolkit.EventBus;
 using CodeWF.Avalonia.Log;
-using Dock.Avalonia.Controls;
+using TKCode.Arc;
 using Kudo.Avalonia;
 using Kudo.Demo;
 using Kudo;
@@ -26,7 +26,7 @@ namespace Kudo.Demo.Desktop.Behaviors;
 internal sealed class MainWindowBehavior : IDisposable
 {
     private readonly MainWindow _window;
-    private readonly DockControl _workspaceDock;
+    private readonly DockLayout _workspaceDock;
     private readonly MainRibbonBehavior _ribbonBehavior;
     private const string ToolboxToolId = "GraphToolbox";
     private const string DocumentsToolId = "GraphDocumentsTool";
@@ -55,7 +55,7 @@ internal sealed class MainWindowBehavior : IDisposable
     private readonly GraphCallStackView _runtimeCallStack = new();
     private readonly GraphRuntimeTraceView _runtimeTrace = new();
     private readonly DemoApplicationSettingsStore _settingsStore;
-    private readonly GraphDockLayoutFactory _dockFactory;
+    private readonly MainWindowDockWorkspace _dockWorkspace;
     private readonly MainWindowViewModel _viewModel;
     private readonly MainRibbonViewModel _ribbonViewModel;
     private readonly DocumentWorkspaceCoordinator _workspaceCoordinator;
@@ -63,6 +63,7 @@ internal sealed class MainWindowBehavior : IDisposable
     private readonly MainWindowWorkspaceService _workspaceService;
     private readonly MainWindowShortcutHandler _shortcutHandler;
     private readonly MainWindowDocumentHost _documentHost;
+    private readonly MainWindowDocumentService _documentService;
     private readonly MainWindowRuntimeTools _runtimeTools;
     private readonly MainWindowDraftCoordinator _draftCoordinator;
     private readonly CancellationTokenSource _workspaceLoadCancellation = new();
@@ -91,7 +92,7 @@ internal sealed class MainWindowBehavior : IDisposable
         TimeSpan? draftAutosaveDelay)
     {
         _window = window ?? throw new ArgumentNullException(nameof(window));
-        _workspaceDock = window.FindControl<DockControl>(MainWindowControlNames.WorkspaceDock) ??
+        _workspaceDock = window.FindControl<DockLayout>(MainWindowControlNames.WorkspaceDock) ??
             throw new InvalidOperationException("WorkspaceDock control was not found.");
         _viewModel = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
         _settingsStore = settingsStore ?? throw new ArgumentNullException(nameof(settingsStore));
@@ -143,8 +144,10 @@ internal sealed class MainWindowBehavior : IDisposable
         _properties.BackgroundImageRequested += SelectNodeBackgroundImage;
         I18nManager.Instance.CultureChanged += HandleCultureChanged;
 
-        _dockFactory = new GraphDockLayoutFactory(
-            _documentHost.CreateContent,
+        _dockWorkspace = new MainWindowDockWorkspace(
+            _workspaceDock,
+            _documents,
+            session => (Control)_documentHost.CreateContent(session),
             [
                 new GraphDockToolDefinition(
                     ToolboxToolId,
@@ -202,7 +205,7 @@ internal sealed class MainWindowBehavior : IDisposable
                     GraphDockToolRole.Custom)
             ]);
         _workspaceService = new MainWindowWorkspaceService(
-            _dockFactory,
+            _dockWorkspace,
             _settingsStore,
             () => _ribbonBehavior.IsExpanded,
             () => ActiveView,
@@ -240,13 +243,13 @@ internal sealed class MainWindowBehavior : IDisposable
         var sampleService = new MainWindowSampleService(
             _documents,
             _graphTextProvider,
-            session => _dockFactory.ActivateDocument(session),
+            session => _dockWorkspace.ActivateDocument(session),
             AppendLog);
         var fileService = new MainWindowFileService(
             _window,
             _documents,
             () => ActiveSession,
-            session => _dockFactory.ActivateDocument(session),
+            session => _dockWorkspace.ActivateDocument(session),
             AppendLog,
             () => UpdateWorkspace());
         var outputService = new MainWindowOutputService(
@@ -262,7 +265,7 @@ internal sealed class MainWindowBehavior : IDisposable
                     new GraphStructureValidationRule()
                 ]).Rules;
                 _validation.Refresh(ActiveSession?.Document);
-                _dockFactory.SetToolVisible(ValidationToolId, true);
+                _dockWorkspace.SetToolVisible(ValidationToolId, true);
             },
             AppendLog);
         _nodeAssetService = new MainWindowNodeAssetService(
@@ -278,27 +281,29 @@ internal sealed class MainWindowBehavior : IDisposable
             _ribbonViewModel,
             () => ActiveView,
             () => ActiveSession,
-            session => _dockFactory.ActivateDocument(session));
+            session => _dockWorkspace.ActivateDocument(session));
         var dialogService = new MainWindowDialogService(_window);
         _documentHost.Configure(
             () => _nodeCatalog,
             contextMenuFactory.Create,
             nodeDropHandler: null,
             modelingService.AddNode);
-        var documentService = new MainWindowDocumentService(
+        _documentService = new MainWindowDocumentService(
             _documents,
             _documentHost,
-            _dockFactory,
+            _dockWorkspace,
             dialogService,
             draftAutosave,
             AppendLog);
+        _dockWorkspace.DocumentCloseRequested += (_, session) =>
+            _ = _documentService.CloseAsync(session);
         var actions = new MainWindowActions(
             _workspaceService,
             sampleService,
             fileService,
             outputService,
             modelingService,
-            documentService,
+            _documentService,
             selectionService,
             layoutService,
             editService,
@@ -320,22 +325,16 @@ internal sealed class MainWindowBehavior : IDisposable
         _documentExplorer.RenameRequestedCommand = _viewModel.RenameRequestedCommand;
         _documentExplorer.DuplicateRequestedCommand = _viewModel.DuplicateRequestedCommand;
         _documentExplorer.CloseRequestedCommand = _viewModel.CloseRequestedCommand;
-        _dockFactory.ActiveGraphDocumentChanged += HandleActiveGraphDocumentChanged;
+        _dockWorkspace.ActiveDocumentChanged += HandleActiveGraphDocumentChanged;
 
-        var layout = _dockFactory.CreateDockLayout(_documents);
-        _dockFactory.InitLayout(layout);
-        _workspaceDock.Factory = _dockFactory;
-        _workspaceDock.Layout = layout;
-        GraphDockLayout.ConfigureWorkspace(_workspaceDock);
-
-        _dockFactory.ApplyToolVisibility(workspaceSettings.ToolVisibility);
-        _dockFactory.SetToolVisible(DiagnosticsToolId, true);
-        _dockFactory.ToolVisibilityChanged += HandleToolVisibilityChanged;
+        _dockWorkspace.ApplyToolVisibility(workspaceSettings.ToolVisibility);
+        _dockWorkspace.SetToolVisible(DiagnosticsToolId, true);
+        _dockWorkspace.ToolVisibilityChanged += HandleToolVisibilityChanged;
         _draftCoordinator = new MainWindowDraftCoordinator(
             _window,
             _documents,
             draftAutosave,
-            _dockFactory,
+            _dockWorkspace,
             _viewModel,
             dialogService,
             AppendLog);
@@ -351,7 +350,7 @@ internal sealed class MainWindowBehavior : IDisposable
     private GraphDocumentSession? ActiveSession => _documents.ActiveSession;
 
     private GraphDocumentView? ActiveView =>
-        _dockFactory.ActiveDocument is { Session: var session }
+        _dockWorkspace.ActiveSession is { } session
             ? _documentHost.GetView(session)
             : null;
 
@@ -373,6 +372,20 @@ internal sealed class MainWindowBehavior : IDisposable
         return false;
     }
 
+    private async void HandleDocumentCloseRequested(object? sender, GraphDocumentSession session)
+    {
+        try
+        {
+            await _documentService.CloseAsync(session);
+        }
+        catch (Exception exception)
+        {
+            AppendLog(
+                F(MainWindowLanguage.OpenFailed, exception.Message),
+                L(MainWindowLanguage.CloseCanvasDialogTitle));
+        }
+    }
+
     private void HandleWindowClosed(object? sender, EventArgs e)
     {
         Dispose();
@@ -391,12 +404,13 @@ internal sealed class MainWindowBehavior : IDisposable
         _window.KeyDown -= HandleWindowKeyDown;
         I18nManager.Instance.CultureChanged -= HandleCultureChanged;
         _workspaceLoadCancellation.Cancel();
-        _dockFactory.ToolVisibilityChanged -= HandleToolVisibilityChanged;
-        _dockFactory.ActiveGraphDocumentChanged -= HandleActiveGraphDocumentChanged;
+        _dockWorkspace.ToolVisibilityChanged -= HandleToolVisibilityChanged;
+        _dockWorkspace.ActiveDocumentChanged -= HandleActiveGraphDocumentChanged;
         _draftCoordinator.Dispose();
         _documentHost.Dispose();
         _runtimeTools.Dispose();
-        _dockFactory.Dispose();
+        _dockWorkspace.DocumentCloseRequested -= HandleDocumentCloseRequested;
+        _dockWorkspace.Dispose();
         _ribbonBehavior.Dispose();
         CodeWF.Toolkit.EventBus.EventBus.Default.Unsubscribe(this);
         _ribbonViewModel.Dispose();
@@ -450,7 +464,7 @@ internal sealed class MainWindowBehavior : IDisposable
     private void OpenRuntimeTool(string toolId)
     {
         _runtimeTools.Refresh();
-        _dockFactory.SetToolVisible(toolId, true);
+        _dockWorkspace.SetToolVisible(toolId, true);
     }
 
     private void OpenCanvasDisplaySettings()
@@ -463,7 +477,7 @@ internal sealed class MainWindowBehavior : IDisposable
 
         view.EditorContext.Selection.Clear();
         _properties.EditorContext = view.PropertyEditorContext;
-        _dockFactory.SetToolVisible(PropertiesToolId, true);
+        _dockWorkspace.SetToolVisible(PropertiesToolId, true);
     }
 
     private void AppendLog(string logMessage, string? statusMessage = null)
@@ -518,10 +532,7 @@ internal sealed class MainWindowBehavior : IDisposable
 
     private void SetToolTitle(string toolId, string title)
     {
-        if (_dockFactory.TryGetTool(toolId, out var tool) && tool is not null)
-        {
-            tool.Title = title;
-        }
+        _dockWorkspace.SetToolTitle(toolId, title);
     }
 
     private void UpdatePropertiesToolTitle(NodeModel? node)
@@ -743,7 +754,7 @@ internal sealed class MainWindowBehavior : IDisposable
                         return;
                     }
 
-                    _dockFactory.ActivateDocument(startupSession);
+                    _dockWorkspace.ActivateDocument(startupSession);
                 },
                 DispatcherPriority.Background);
         }

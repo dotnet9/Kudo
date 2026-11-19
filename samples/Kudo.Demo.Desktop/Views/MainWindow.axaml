@@ -12,6 +12,7 @@
                      xmlns:views="using:Kudo.Demo.Desktop.Views"
                      xmlns:vm="using:Kudo.Demo.Desktop.ViewModels"
                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:arc="https://github.com/AIDotNet/TKCode.Arc"
                      mc:Ignorable="d"
                      d:DesignWidth="1280"
                      d:DesignHeight="800"
@@ -105,10 +106,8 @@
                 CornerRadius="0"
                 ClipToBounds="True">
             <Grid>
-                <DockControl x:Name="WorkspaceDock"
-                             InitializeFactory="False"
-                             InitializeLayout="False"
-                             IsVisible="False" />
+                <arc:DockLayout x:Name="WorkspaceDock"
+                                IsVisible="False" />
                 <k:GraphWorkspaceSkeleton x:Name="WorkspaceSkeleton"
                                           Margin="0" />
             </Grid>
