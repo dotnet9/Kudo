@@ -16,7 +16,6 @@ for %%P in (
     "src\Kudo.Avalonia\Kudo.Avalonia.csproj"
     "src\Kudo.Controls\Kudo.Controls.csproj"
     "src\Kudo.Themes\Kudo.Themes.csproj"
-    "src\Kudo.Dock.Themes\Kudo.Dock.Themes.csproj"
     "src\Kudo.Avalonia.3D\Kudo.Avalonia.3D.csproj"
 ) do (
     echo   %%~nP

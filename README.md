@@ -8,7 +8,7 @@ Kudo 是基于 Avalonia 的开源模块化图形建模与节点编辑 SDK，内�
 
 ## 源码依赖
 
-本仓库不使用 Git 子模块，也没有私有 NuGet 源依赖：SDK 全部源码位于 `src/`（含控件层 `Kudo.Controls`、统一主题层 `Kudo.Themes` 与停靠主题 `Kudo.Dock.Themes`），第三方库（Avalonia、Semi、Ursa、CodeWF Toolkit、SkiaSharp 等）统一在 `Directory.Packages.props` 中从 nuget.org 固定版本，克隆后直接 `dotnet restore` 即可还原。
+本仓库不使用 Git 子模块，也没有私有 NuGet 源依赖：SDK 全部源码位于 `src/`（控件层 `Kudo.Controls` 含图标按钮、Ribbon 与属性面板，统一主题层 `Kudo.Themes`），第三方库（Avalonia、TKCode.Arc、CodeWF Log/Lang/EventBus、SkiaSharp 等）统一在 `Directory.Packages.props` 中从 nuget.org 固定版本，克隆后直接 `dotnet restore` 即可还原。
 
 需要产出 NuGet 包时运行 `pack.bat`（含构建、测试与格式校验的完整流程）或 `pack_quick.bat`（仅打包），产物输出到 `artifacts/packages`。
 
@@ -85,9 +85,8 @@ var canvas = new GraphCanvas { Document = document };
 
 - `Kudo.Core`：不依赖界面的图模型、算法、序列化、文档会话、运行时、校验和命令契约。
 - `Kudo.Avalonia`：Avalonia 画布、Designer、Dock 工作区、属性编辑器及 PNG/SVG/PDF 导出打印。
-- `Kudo.Controls`：按 Arc 范式沉淀的自研控件（图标按钮等），样式随控件内聚。
-- `Kudo.Dock.Themes`：Dock 停靠组件的 Semi 风格主题。
-- `Kudo.Themes`：Kudo 控件、画布设计器与桌面控件的统一主题资源（Arc/Semi 映射层）。
+- `Kudo.Controls`：按 Arc 范式沉淀的自研控件（IconButton 图标按钮、KudoRibbon Ribbon 外壳、PropertyGrid 动态属性面板模型），样式随控件内聚。
+- `Kudo.Themes`：Kudo 控件、画布设计器与桌面控件的统一主题资源（Arc 映射层 + 亮色令牌自持）。
 - `Kudo.Avalonia.3D`：可选 OpenGL 3D 预览控件和软件渲染 fallback，代码命名空间为 `Kudo.Avalonia.ThreeD`。
 
 模型编辑建议通过 `GraphDocumentEditor` 执行命令并消费 `GraphChangeSet`；直接修改公开模型后，调用 `Synchronize` 显式通知缓存和会话。开发期仍允许调整这些 API，当前不承诺兼容层。
