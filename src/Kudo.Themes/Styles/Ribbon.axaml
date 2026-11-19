@@ -18,13 +18,14 @@
     <Setter Property="HorizontalAlignment" Value="Stretch" />
     <Setter Property="VerticalAlignment" Value="Top" />
   </Style>
-  <Style Selector="k|KudoRibbon.RibbonMenuTabs.Left">
+  <!-- Left/Center/Right 变体只影响页签条在整条 Ribbon 内的对齐，Ribbon 本体始终铺满 -->
+  <Style Selector="k|KudoRibbon.RibbonMenuTabs.Left /template/ ItemsPresenter#PART_ItemsPresenter">
     <Setter Property="HorizontalAlignment" Value="Left" />
   </Style>
-  <Style Selector="k|KudoRibbon.RibbonMenuTabs.Center">
+  <Style Selector="k|KudoRibbon.RibbonMenuTabs.Center /template/ ItemsPresenter#PART_ItemsPresenter">
     <Setter Property="HorizontalAlignment" Value="Center" />
   </Style>
-  <Style Selector="k|KudoRibbon.RibbonMenuTabs.Right">
+  <Style Selector="k|KudoRibbon.RibbonMenuTabs.Right /template/ ItemsPresenter#PART_ItemsPresenter">
     <Setter Property="HorizontalAlignment" Value="Right" />
   </Style>
   <Style Selector="k|KudoRibbon.RibbonMenuTabs /template/ Border#PART_BorderSeparator">
