@@ -79,3 +79,13 @@ public sealed class SampleGraphsTests
         document.Nodes.Any(n => n.Id == edge.Source.NodeId && n.Ports.Any(p => p.Id == edge.Source.PortId)) &&
         document.Nodes.Any(n => n.Id == edge.Target.NodeId && n.Ports.Any(p => p.Id == edge.Target.PortId));
 }
+
+public sealed class SampleGraphsBoundaryTests
+{
+    [Fact]
+    public void LargeWorkflowDocument_rejects_less_than_two_nodes()
+    {
+        Should.Throw<ArgumentOutOfRangeException>(
+            () => SampleGraphs.CreateLargeWorkflowDocument(1));
+    }
+}
