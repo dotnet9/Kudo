@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:semi="https://irihi.tech/semi" xmlns:kudo="using:Kudo.Themes">
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:kudo="using:Kudo.Themes">
   <FontFamily x:Key="NotoSansSC">{x:Static kudo:KudoThemeFonts.DefaultFontFamily}</FontFamily>
   <x:Double x:Key="Kudo.Typography.Title.FontSize">16</x:Double>
   <x:Double x:Key="Kudo.Typography.Header.FontSize">14</x:Double>

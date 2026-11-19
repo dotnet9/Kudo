@@ -27,4 +27,6 @@
   <SolidColorBrush x:Key="SemiColorWarning" Color="#FC8800" />
   <SolidColorBrush x:Key="SemiColorWarningLight" Color="#FFF8EA" />
   <SolidColorBrush x:Key="SemiColorWarningLightActive" Color="#FED998" />
+  <SolidColorBrush x:Key="SemiColorSecondary" Color="#0095EE" />
+  <SolidColorBrush x:Key="SemiColorSecondaryLightActive" Color="#95D8F8" />
 </ResourceDictionary>

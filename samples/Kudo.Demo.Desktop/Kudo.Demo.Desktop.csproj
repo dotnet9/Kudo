@@ -23,7 +23,6 @@
     <PackageReference Include="TKCode.Arc.Dock" />
     <PackageReference Include="TKCode.Arc.Icons.Lucide" />
     <PackageReference Include="ReactiveUI.Avalonia" />
-    <PackageReference Include="Semi.Avalonia" />
     <PackageReference Include="System.Reactive" />
     <PackageReference Include="System.Drawing.Common" PrivateAssets="all" />
     <PackageReference Include="VC-LTL" />
