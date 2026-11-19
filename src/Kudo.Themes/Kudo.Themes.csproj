@@ -18,8 +18,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia" />
-		<PackageReference Include="CodeWF.Avalonia.Controls" />
-		<PackageReference Include="CodeWF.Avalonia.DataGrid" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" />
 		<PackageReference Include="Semi.Avalonia" />
 		<PackageReference Include="Semi.Avalonia.ColorPicker" />

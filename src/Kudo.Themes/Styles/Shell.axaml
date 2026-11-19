@@ -1,12 +1,9 @@
 <Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codewf="https://codewf.com" xmlns:u="https://irihi.tech/ursa">
-  <StyleInclude Source="Shell/Windows.axaml" />
   <StyleInclude Source="Shell/Validation.axaml" />
-  <StyleInclude Source="Shell/DialogContent.axaml" />
   <StyleInclude Source="Shell/Forms.axaml" />
   <StyleInclude Source="Shell/DialogHeader.axaml" />
   <StyleInclude Source="Shell/Loading.axaml" />
   <StyleInclude Source="Shell/Surface.axaml" />
-  <StyleInclude Source="Shell/Login.axaml" />
   <StyleInclude Source="Shell/QuickToolBar.axaml" />
   <StyleInclude Source="Shell/TitleBar.axaml" />
   <StyleInclude Source="Shell/StatusBar.axaml" />

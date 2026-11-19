@@ -17,28 +17,6 @@
     <Setter Property="HorizontalAlignment" Value="Right" />
     <Setter Property="ClipToBounds" Value="True" />
   </Style>
-  <Style Selector="codewf|StatusBadge.TaskBarStatusBadge">
-    <Setter Property="MinHeight" Value="{StaticResource TaskBarStatusPillHeight}" />
-    <Setter Property="Margin" Value="{StaticResource TaskBarStatusBadgeMargin}" />
-    <Setter Property="Padding" Value="{StaticResource TaskBarStatusBadgePadding}" />
-    <Setter Property="CornerRadius" Value="{StaticResource TaskBarStatusBadgeCornerRadius}" />
-    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Caption.FontSize}" />
-    <Setter Property="VerticalAlignment" Value="Center" />
-  </Style>
-  <Style Selector="codewf|StatusBadge.TaskBarModeBadge">
-    <Setter Property="MinHeight" Value="{StaticResource TaskBarStatusPillHeight}" />
-    <Setter Property="Margin" Value="{StaticResource TaskBarStatusBadgeMargin}" />
-    <Setter Property="Padding" Value="{StaticResource TaskBarStatusBadgePadding}" />
-    <Setter Property="CornerRadius" Value="{StaticResource TaskBarStatusBadgeCornerRadius}" />
-    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Caption.FontSize}" />
-    <Setter Property="VerticalAlignment" Value="Center" />
-  </Style>
-  <Style Selector="codewf|StatusBadge.TaskBarModeBadge /template/ SelectableTextBlock#PART_RightText">
-    <Setter Property="IsVisible" Value="False" />
-  </Style>
-  <Style Selector="codewf|StatusBadge.TaskBarModeBadge /template/ Border#PART_LeftTextBorder">
-    <Setter Property="CornerRadius" Value="{StaticResource TaskBarStatusBadgeCornerRadius}" />
-  </Style>
   <Style Selector="TextBlock.TaskBarItemHeader">
     <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />
     <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Caption.FontSize}" />

@@ -1,4 +1,4 @@
-using CodeWF.Avalonia.Controls.Controls;
+using TKCode.Arc;
 using Kudo.Demo.Desktop.Behaviors;
 using Kudo.Demo.Desktop.Services;
 using Kudo.Demo.Desktop.ViewModels;
@@ -6,7 +6,7 @@ using Kudo.Core.Documents;
 
 namespace Kudo.Demo.Desktop.Views;
 
-public partial class MainWindow : CodeWFWindow
+public partial class MainWindow : ArcWindow
 {
     public MainWindow() : this(DemoApplicationSettingsStore.CreateDefault())
     {

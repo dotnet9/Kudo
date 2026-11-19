@@ -1,7 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <ControlTheme x:Key="VComboBox" TargetType="ComboBox"
-                BasedOn="{StaticResource CodeWFVComboBoxBaseTheme}">
+                BasedOn="{StaticResource {x:Type ComboBox}}">
     <Style Selector="^ /template/ PathIcon#DropDownGlyph">
       <Setter Property="Height" Value="{DynamicResource ComboBoxIconHeight}" />
       <Setter Property="Margin" Value="{DynamicResource ComboBoxIconMargin}" />
