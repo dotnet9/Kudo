@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Kudo.Avalonia\Kudo.Avalonia.csproj" />
     <ProjectReference Include="..\..\samples\Kudo.Demo\Kudo.Demo.csproj" />
+    <ProjectReference Include="..\..\samples\Kudo.Demo.Desktop\Kudo.Demo.Desktop.csproj" />
   </ItemGroup>
 
   <ItemGroup>
