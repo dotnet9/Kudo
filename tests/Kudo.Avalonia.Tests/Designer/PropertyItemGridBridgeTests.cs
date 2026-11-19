@@ -6,6 +6,7 @@ using Kudo.Avalonia;
 using Kudo.Avalonia.Designer;
 using Kudo.Controls.PropertyModel;
 using Kudo.Core.Documents;
+using Kudo.Avalonia.Tests.TestInfrastructure;
 using Shouldly;
 using Xunit;
 
@@ -15,13 +16,13 @@ namespace Kudo.Avalonia.Tests.DesignerTests;
 ///     属性面板桥接集成契约：EditorContext → PropertyItem 条目 → Arc PropertyGrid 行。
 ///     在 Headless UI 线程上挂载窗口后验证（挂载后才生成 Arc 行）。
 /// </summary>
-[Collection("KudoControls-headless")]
 public sealed class PropertyItemGridBridgeTests
 {
     [Fact]
     public void Editor_context_produces_non_empty_arc_grid()
     {
-        Kudo.Avalonia.Tests.TestInfrastructure.TestRuntime.EnsureInitialized();
+        TestRuntime.Run(() =>
+        {
         var document = SampleDocument();
         var session = new GraphDocumentSession(document);
 
@@ -47,12 +48,14 @@ public sealed class PropertyItemGridBridgeTests
             .ShouldNotBeNull().Cast<object>().ShouldNotBeEmpty();
 
         window.Close();
+        });
     }
 
     [Fact]
     public void ReadOnly_context_marks_items_readonly()
     {
-        Kudo.Avalonia.Tests.TestInfrastructure.TestRuntime.EnsureInitialized();
+        TestRuntime.Run(() =>
+        {
         var document = SampleDocument();
         var session = new GraphDocumentSession(document);
 
@@ -69,6 +72,7 @@ public sealed class PropertyItemGridBridgeTests
         view.EditorContext.IsReadOnly.ShouldBeTrue();
 
         window.Close();
+        });
     }
 
     private static GraphDocument SampleDocument()

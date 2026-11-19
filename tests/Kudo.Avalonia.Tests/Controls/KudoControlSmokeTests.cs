@@ -13,7 +13,8 @@ public sealed class KudoControlSmokeTests
     [Fact]
     public void Loading_view_defaults_to_loading_state()
     {
-        TestRuntime.EnsureInitialized();
+        TestRuntime.Run(() =>
+        {
         var view = new GraphLoadingView();
 
         view.IsLoading.ShouldBeTrue();
@@ -22,26 +23,31 @@ public sealed class KudoControlSmokeTests
         view.ErrorMessage.ShouldBeNull();
         view.RetryText.ShouldBeNull();
         view.RetryCommand.ShouldBeNull();
+        });
     }
 
     [Fact]
     public void Loading_host_defaults_to_show_loading()
     {
-        TestRuntime.EnsureInitialized();
+        TestRuntime.Run(() =>
+        {
         var host = new GraphLoadingHost();
 
         host.IsLoading.ShouldBeFalse();
         host.LoadedContent.ShouldBeNull();
+        });
     }
 
     [Fact]
     public void Skeleton_configures_five_by_five_grid()
     {
-        TestRuntime.EnsureInitialized();
-        var skeleton = new GraphWorkspaceSkeleton();
+        TestRuntime.Run(() =>
+        {
+            var skeleton = new GraphWorkspaceSkeleton();
 
-        skeleton.RowDefinitions.Count.ShouldBe(3);
-        skeleton.ColumnDefinitions.Count.ShouldBe(5);
-        skeleton.Children.Count.ShouldBe(4);
+            skeleton.RowDefinitions.Count.ShouldBe(3);
+            skeleton.ColumnDefinitions.Count.ShouldBe(5);
+            skeleton.Children.Count.ShouldBe(4);
+        });
     }
 }
