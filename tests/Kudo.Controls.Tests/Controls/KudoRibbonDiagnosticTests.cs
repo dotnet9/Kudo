@@ -1,9 +1,12 @@
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Markup.Xaml;
 using Avalonia.VisualTree;
+using Avalonia.Styling;
 using Kudo.Controls;
+using Kudo.Controls.Tests;
 using Shouldly;
-using Kudo.Controls.Tests.TestInfrastructure;
 using Xunit;
 
 namespace Kudo.Controls.Tests;
@@ -17,17 +20,14 @@ public sealed class KudoRibbonDiagnosticTests
         HeadlessTestRuntime.Run(() =>
         {
             var ribbon = new KudoRibbon();
+            var styles = (Styles)AvaloniaXamlLoader.Load(
+                new Uri("avares://Kudo.Controls/Styles/KudoRibbon.axaml"));
+            ribbon.Styles.AddRange(styles);
             var window = new Window { Content = ribbon };
             window.Show();
 
-            for (var i = 0; i < 6; i++)
-            {
-                ribbon.Items.Add(new TabStripItem
-                {
-                    Classes = { "RibbonMenuTab" },
-                    Content = $"页签{i}"
-                });
-            }
+            ribbon.Measure(new Size(1200, 40));
+            ribbon.Arrange(new Rect(0, 0, 1200, 40));
 
             var containers = ribbon.GetVisualDescendants().OfType<TabStripItem>().ToList();
             containers.Count.ShouldBe(6, $"容器数量不足（{containers.Count}/6）");

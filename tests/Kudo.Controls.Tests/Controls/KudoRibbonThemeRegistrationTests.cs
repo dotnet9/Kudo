@@ -3,7 +3,6 @@ using Avalonia.Controls;
 using Avalonia.Styling;
 using Avalonia.VisualTree;
 using Kudo.Controls;
-using Kudo.Controls.Tests.TestInfrastructure;
 using Shouldly;
 using Xunit;
 

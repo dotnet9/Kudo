@@ -1,17 +1,40 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Markup.Xaml;
+
+using Avalonia.Styling;
 using Avalonia.VisualTree;
 using Kudo.Controls;
+using Semi.Avalonia;
+using Kudo.Controls.Tests;
 using Shouldly;
-using Kudo.Controls.Tests.TestInfrastructure;
 using Xunit;
 
 namespace Kudo.Controls.Tests;
 
-/// <summary>回归：KudoRibbon 默认主题生效（页签横排），Semi TabStrip 主题在场也不回落。</summary>
+/// <summary>二分诊断：Semi TabStrip ControlTheme 参与下，KudoRibbon 页签仍横排。</summary>
 public sealed class KudoRibbonThemeProbeTests
 {
+    private static KudoRibbon BuildRibbon(bool withSemiTheme)
+    {
+        var ribbon = new KudoRibbon();
+        var myStyles = (Styles)AvaloniaXamlLoader.Load(
+            new Uri("avares://Kudo.Controls/Styles/KudoRibbon.axaml"));
+        ribbon.Styles.AddRange(myStyles);
+        if (withSemiTheme)
+        {
+            ribbon.Styles.AddRange(new Semi.Avalonia.SemiTheme());
+        }
+
+        for (var i = 0; i < 5; i++)
+        {
+            ribbon.Items.Add(new TabStripItem { Content = $"T{i}" });
+        }
+
+        return ribbon;
+    }
+
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
@@ -19,19 +42,12 @@ public sealed class KudoRibbonThemeProbeTests
     {
         HeadlessTestRuntime.Run(() =>
         {
-            var ribbon = new KudoRibbon();
-            if (withSemiTheme)
-            {
-                ribbon.Styles.AddRange(new Semi.Avalonia.SemiTheme());
-            }
-
-            for (var i = 0; i < 5; i++)
-            {
-                ribbon.Items.Add(new TabStripItem { Content = $"T{i}" });
-            }
-
+            var ribbon = BuildRibbon(withSemiTheme);
             var window = new Window { Content = ribbon };
             window.Show();
+
+            ribbon.Measure(new Size(1200, 40));
+            ribbon.Arrange(new Rect(0, 0, 1200, 40));
 
             var containers = ribbon.GetVisualDescendants().OfType<TabStripItem>().ToList();
             containers.Count.ShouldBe(5, $"容器数量 {containers.Count}/5");

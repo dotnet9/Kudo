@@ -19,6 +19,7 @@
     <PackageReference Include="HarfBuzzSharp.NativeAssets.Win32" />
     <PackageReference Include="Irihi.Ursa" />
 		<PackageReference Include="TKCode.Arc.Icons.Lucide" />
+		<PackageReference Include="TKCode.Arc" />
     <PackageReference Include="SkiaSharp" />
     <PackageReference Include="SkiaSharp.NativeAssets.Linux" />
     <PackageReference Include="SkiaSharp.NativeAssets.macOS" />

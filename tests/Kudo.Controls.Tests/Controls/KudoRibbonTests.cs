@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Media;
 using Kudo.Controls;
-using Kudo.Controls.Tests.TestInfrastructure;
+using Kudo.Controls.Tests;
 using Shouldly;
 using Xunit;
 
