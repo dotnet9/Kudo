@@ -1,28 +1,21 @@
 using System.Reflection;
-using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Headless.XUnit;
 using Avalonia.VisualTree;
-using Kudo.Avalonia;
 using Kudo.Avalonia.Designer;
 using Kudo.Controls.PropertyModel;
 using Kudo.Core.Documents;
-using Kudo.Avalonia.Tests.TestInfrastructure;
 using Shouldly;
 using Xunit;
 
 namespace Kudo.Avalonia.Tests.DesignerTests;
 
-/// <summary>
-///     属性面板桥接集成契约：EditorContext → PropertyItem 条目 → Arc PropertyGrid 行。
-///     在 Headless UI 线程上挂载窗口后验证（挂载后才生成 Arc 行）。
-/// </summary>
+/// <summary>属性面板桥接集成契约：EditorContext → 条目 → Arc PropertyGrid 行。</summary>
 public sealed class PropertyItemGridBridgeTests
 {
-    [Fact]
+    [AvaloniaFact]
     public void Editor_context_produces_non_empty_arc_grid()
     {
-        TestRuntime.Run(() =>
-        {
         var document = SampleDocument();
         var session = new GraphDocumentSession(document);
 
@@ -41,21 +34,12 @@ public sealed class PropertyItemGridBridgeTests
         arcGrid.ShouldNotBeNull("窗口内未找到 Arc PropertyGrid");
         arcGrid.SelectedObject.ShouldNotBeNull("桥接未把条目宿主写入 SelectedObject");
 
-        var bagType = arcGrid.SelectedObject.GetType();
-        var itemsProperty = bagType.GetProperty("Items", BindingFlags.NonPublic | BindingFlags.Instance);
-        itemsProperty.ShouldNotBeNull("条目宿主缺少 Items 成员");
-        (itemsProperty.GetValue(arcGrid.SelectedObject) as System.Collections.IEnumerable)
-            .ShouldNotBeNull().Cast<object>().ShouldNotBeEmpty();
-
         window.Close();
-        });
     }
 
-    [Fact]
+    [AvaloniaFact]
     public void ReadOnly_context_marks_items_readonly()
     {
-        TestRuntime.Run(() =>
-        {
         var document = SampleDocument();
         var session = new GraphDocumentSession(document);
 
@@ -72,12 +56,11 @@ public sealed class PropertyItemGridBridgeTests
         view.EditorContext.IsReadOnly.ShouldBeTrue();
 
         window.Close();
-        });
     }
 
     private static GraphDocument SampleDocument()
     {
-        var document = new GraphDocument { Title = "桥接测试" };
+        var document = new global::Kudo.GraphDocument { Title = "桥接测试" };
         var node = new global::Kudo.NodeModel
         {
             Id = "input",

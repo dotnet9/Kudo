@@ -1,20 +1,17 @@
-using Avalonia.Media;
+using Avalonia.Headless.XUnit;
 using Kudo.Avalonia.Controls;
 using Kudo.Avalonia.Docking;
-using Kudo.Avalonia.Tests.TestInfrastructure;
 using Shouldly;
 using Xunit;
 
 namespace Kudo.Avalonia.Tests.Controls;
 
-/// <summary>加载/骨架控件的构造契约（Headless 平台服务下运行）。</summary>
+/// <summary>加载/骨架控件的构造契约（Headless UI 线程）。</summary>
 public sealed class KudoControlSmokeTests
 {
-    [Fact]
+    [AvaloniaFact]
     public void Loading_view_defaults_to_loading_state()
     {
-        TestRuntime.Run(() =>
-        {
         var view = new GraphLoadingView();
 
         view.IsLoading.ShouldBeTrue();
@@ -23,31 +20,24 @@ public sealed class KudoControlSmokeTests
         view.ErrorMessage.ShouldBeNull();
         view.RetryText.ShouldBeNull();
         view.RetryCommand.ShouldBeNull();
-        });
     }
 
-    [Fact]
+    [AvaloniaFact]
     public void Loading_host_defaults_to_show_loading()
     {
-        TestRuntime.Run(() =>
-        {
         var host = new GraphLoadingHost();
 
         host.IsLoading.ShouldBeFalse();
         host.LoadedContent.ShouldBeNull();
-        });
     }
 
-    [Fact]
-    public void Skeleton_configures_five_by_five_grid()
+    [AvaloniaFact]
+    public void Skeleton_configures_panes_grid()
     {
-        TestRuntime.Run(() =>
-        {
-            var skeleton = new GraphWorkspaceSkeleton();
+        var skeleton = new GraphWorkspaceSkeleton();
 
-            skeleton.RowDefinitions.Count.ShouldBe(3);
-            skeleton.ColumnDefinitions.Count.ShouldBe(5);
-            skeleton.Children.Count.ShouldBe(4);
-        });
+        skeleton.RowDefinitions.Count.ShouldBe(3);
+        skeleton.ColumnDefinitions.Count.ShouldBe(5);
+        skeleton.Children.Count.ShouldBe(4);
     }
 }
