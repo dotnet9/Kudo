@@ -215,6 +215,7 @@ public sealed class DefaultGraphExportRenderer : IGraphExportRenderer
             labelLayout.Label,
             centerX - textWidth / 2,
             baseline,
+            SKTextAlign.Center,
             font,
             textPaint);
     }
@@ -618,16 +619,17 @@ public sealed class DefaultGraphExportRenderer : IGraphExportRenderer
         bool pointsRight)
     {
         var direction = pointsRight ? 1f : -1f;
-        using var path = new SKPath();
-        path.MoveTo(
+        var builder = new SKPathBuilder();
+        builder.MoveTo(
             (float)center.X - direction * radius * halfWidthFactor,
             (float)center.Y - radius);
-        path.LineTo(
+        builder.LineTo(
             (float)center.X + direction * radius * halfWidthFactor,
             (float)center.Y);
-        path.LineTo(
+        builder.LineTo(
             (float)center.X - direction * radius * halfWidthFactor,
             (float)center.Y + radius);
+        using var path = builder.Snapshot();
         canvas.DrawPath(path, paint);
     }
 
@@ -679,7 +681,7 @@ public sealed class DefaultGraphExportRenderer : IGraphExportRenderer
             using var image = stream is null ? null : SKImage.FromEncodedData(stream);
             if (image is not null)
             {
-                context.Canvas.DrawImage(image, contentRect);
+                context.Canvas.DrawImage(image, contentRect, new SKSamplingOptions(SKFilterMode.Linear));
                 return;
             }
         }
@@ -699,28 +701,28 @@ public sealed class DefaultGraphExportRenderer : IGraphExportRenderer
 
     private static SKPath CreatePath(GraphEdgePath route)
     {
-        var path = new SKPath();
-        path.MoveTo((float)route.Start.X, (float)route.Start.Y);
+        var builder = new SKPathBuilder();
+        builder.MoveTo((float)route.Start.X, (float)route.Start.Y);
         if (route.RoutingStyle == EdgeRoutingStyle.Bezier &&
             route.ControlPoint1 is { } control1 &&
             route.ControlPoint2 is { } control2)
         {
-            path.CubicTo(
+            builder.CubicTo(
                 (float)control1.X,
                 (float)control1.Y,
                 (float)control2.X,
                 (float)control2.Y,
                 (float)route.End.X,
                 (float)route.End.Y);
-            return path;
+            return builder.Snapshot();
         }
 
         foreach (var point in route.Points.Skip(1))
         {
-            path.LineTo((float)point.X, (float)point.Y);
+            builder.LineTo((float)point.X, (float)point.Y);
         }
 
-        return path;
+        return builder.Snapshot();
     }
 
     private static SKPaint CreateEdgePaint(EdgeModel edge, GraphExportTheme theme)
@@ -797,12 +799,12 @@ public sealed class DefaultGraphExportRenderer : IGraphExportRenderer
 
         var backX = tip.X - ux * MarkerSize;
         var backY = tip.Y - uy * MarkerSize;
-        using var path = new SKPath();
+        var builder = new SKPathBuilder();
         if (marker == EdgeMarker.Arrow)
         {
-            path.MoveTo((float)tip.X, (float)tip.Y);
-            path.LineTo((float)(backX + px * MarkerSize * 0.55), (float)(backY + py * MarkerSize * 0.55));
-            path.LineTo((float)(backX - px * MarkerSize * 0.55), (float)(backY - py * MarkerSize * 0.55));
+            builder.MoveTo((float)tip.X, (float)tip.Y);
+            builder.LineTo((float)(backX + px * MarkerSize * 0.55), (float)(backY + py * MarkerSize * 0.55));
+            builder.LineTo((float)(backX - px * MarkerSize * 0.55), (float)(backY - py * MarkerSize * 0.55));
         }
         else
         {
@@ -810,13 +812,14 @@ public sealed class DefaultGraphExportRenderer : IGraphExportRenderer
             var middleY = tip.Y - uy * MarkerSize * 0.55;
             var tailX = tip.X - ux * MarkerSize * 1.1;
             var tailY = tip.Y - uy * MarkerSize * 1.1;
-            path.MoveTo((float)tip.X, (float)tip.Y);
-            path.LineTo((float)(middleX + px * MarkerSize * 0.45), (float)(middleY + py * MarkerSize * 0.45));
-            path.LineTo((float)tailX, (float)tailY);
-            path.LineTo((float)(middleX - px * MarkerSize * 0.45), (float)(middleY - py * MarkerSize * 0.45));
+            builder.MoveTo((float)tip.X, (float)tip.Y);
+            builder.LineTo((float)(middleX + px * MarkerSize * 0.45), (float)(middleY + py * MarkerSize * 0.45));
+            builder.LineTo((float)tailX, (float)tailY);
+            builder.LineTo((float)(middleX - px * MarkerSize * 0.45), (float)(middleY - py * MarkerSize * 0.45));
         }
 
-        path.Close();
+        builder.Close();
+        using var path = builder.Snapshot();
         canvas.DrawPath(path, paint);
     }
 
@@ -897,7 +900,7 @@ public sealed class DefaultGraphExportRenderer : IGraphExportRenderer
                 break;
             }
 
-            canvas.DrawText(line, bounds.Left + 8, y, font, paint);
+            canvas.DrawText(line, bounds.Left + 8, y, SKTextAlign.Left, font, paint);
             y += fontSize * 1.45f;
         }
     }
@@ -943,7 +946,7 @@ public sealed class DefaultGraphExportRenderer : IGraphExportRenderer
         }
 
         using var font = CreateFont(text, fontFamily, size);
-        canvas.DrawText(text, x, y, font, paint);
+        canvas.DrawText(text, x, y, SKTextAlign.Left, font, paint);
     }
 
     private static SKFont CreateFont(string text, string fontFamily, float size)

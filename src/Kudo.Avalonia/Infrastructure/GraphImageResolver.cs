@@ -344,7 +344,11 @@ public sealed class GraphFileImageResolver : IGraphAnimatedImageResolver, IDispo
                 if (requiredFrame >= 0 && requiredFrame < skiaFrames.Count)
                 {
                     using var canvas = new SKCanvas(bitmap);
-                    canvas.DrawBitmap(skiaFrames[requiredFrame], 0, 0);
+                    canvas.DrawBitmap(
+                        skiaFrames[requiredFrame],
+                        0,
+                        0,
+                        new SKSamplingOptions(SKFilterMode.Linear));
                 }
 
                 var options = requiredFrame >= 0

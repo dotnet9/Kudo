@@ -151,6 +151,7 @@ internal static class GraphExportSymbolLabelLayout
             label.Text,
             (float)(label.Bounds.X + label.Bounds.Width / 2) - textWidth / 2,
             label.Baseline,
+            SKTextAlign.Left,
             font,
             paint);
     }

@@ -20,7 +20,6 @@ namespace Kudo.Controls;
 public class KudoRibbon : TabStrip
 {
     private ContentControl? _contentHost;
-    private bool _initializing;
 
     public static readonly StyledProperty<object?> QuickAccessContentProperty =
         AvaloniaProperty.Register<KudoRibbon, object?>(nameof(QuickAccessContent));

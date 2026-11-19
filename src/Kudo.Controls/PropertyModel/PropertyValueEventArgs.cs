@@ -33,7 +33,7 @@ public sealed class PropertyValuePreviewEventArgs : PropertyValueChangedEventArg
     public bool Cancel { get; set; }
 }
 
-/// <summary>绑定 <see cref="PropertyGrid.ValueCommittedCommand"/> 时传入的值变更参数。</summary>
+/// <summary>绑定 属性值提交时的事件参数。</summary>
 public sealed record PropertyValueChange(PropertyItem Item, object? OldValue, object? NewValue);
 
 /// <summary>路径或按钮编辑器触发浏览操作时的事件参数。</summary>

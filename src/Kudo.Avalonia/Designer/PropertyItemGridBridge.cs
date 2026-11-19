@@ -41,9 +41,14 @@ internal static class PropertyItemGridBridge
                 continue;
             }
 
-            if (item.VisibleWhen is not null)
+            if (item.VisibleWhen is not null && item.Id is not null)
             {
                 visiblePredicates[item.Id] = item.VisibleWhen;
+            }
+
+            if (item.Id is null)
+            {
+                continue;
             }
 
             properties.Add(BuildProperty(item, currentCategory, panelItems));
@@ -64,7 +69,7 @@ internal static class PropertyItemGridBridge
     {
         var isReadOnly = item.IsReadOnly || item.Kind == PropertyItemKind.ReadOnly;
         var propertyType = PropertyTypeOf(item.Kind);
-        var getter = new Func<object, object?>(_ => ReadValue(item));
+        var getter = new Func<object, object>(_ => ReadValue(item));
         Func<object, object?, object>? setter = null;
         if (!isReadOnly)
         {
@@ -78,7 +83,7 @@ internal static class PropertyItemGridBridge
 
                 panelItems.HandleCommit(item, oldValue, newValue);
                 item.Value = newValue;
-                return oldValue;
+                return oldValue ?? string.Empty;
             };
         }
 
@@ -87,7 +92,7 @@ internal static class PropertyItemGridBridge
                 .Select(option => new PropertyGridChoice(option, option))
                 .ToList()
             : null;
-        var property = new PropertyGridProperty(item.Id, propertyType, getter, setter)
+        var property = new PropertyGridProperty(item.Id ?? item.Name, propertyType, getter, setter)
         {
             DisplayName = item.Name,
             Category = string.IsNullOrEmpty(category) ? null : category,
@@ -111,7 +116,7 @@ internal static class PropertyItemGridBridge
         _ => typeof(string)
     };
 
-    private static object? ReadValue(PropertyItem item)
+    private static object ReadValue(PropertyItem item)
     {
         var text = item.Value as string;
         return item.Kind switch

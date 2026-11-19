@@ -28,7 +28,16 @@ public sealed class DockDocumentItem : INotifyPropertyChanged, IDockItem
     public Control Content { get; }
 
     /// <summary>同步画板页签标题（重命名后调用）。</summary>
-    public void Rename(string title) => DockTitle = title;
+    public void Rename(string title)
+    {
+        if (DockTitle == title)
+        {
+            return;
+        }
+
+        DockTitle = title;
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DockTitle)));
+    }
 
     event PropertyChangedEventHandler? INotifyPropertyChanged.PropertyChanged
     {

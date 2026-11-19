@@ -8,7 +8,8 @@
     <Deterministic>true</Deterministic>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <!-- RXUIBIND010：MainWindowWorkspaceState 为不可变快照 record，通过整体替换传播（语义正确），生成器的链式观察提示为误报 -->
+    <NoWarn>$(NoWarn);CS1591;RXUIBIND010</NoWarn>
     <Authors>Kudo Contributors</Authors>
     <Company>Kudo</Company>
     <RepositoryUrl>https://github.com/dotnet9/Kudo</RepositoryUrl>
