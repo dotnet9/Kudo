@@ -1,0 +1,68 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codewf="https://codewf.com" xmlns:u="https://irihi.tech/ursa">
+  <Style Selector="u|LoadingContainer.ShellLoadingContainer">
+    <Setter Property="Background" Value="{DynamicResource ShellLoadingOverlayBackground}" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="{StaticResource MotionDurationStandard}" />
+        <DoubleTransition Property="Opacity" Duration="{StaticResource MotionDurationStandard}" />
+      </Transitions>
+    </Setter>
+  </Style>
+  <Style Selector="StackPanel.ShellLoadingMessagePanel">
+    <Setter Property="Margin" Value="{StaticResource ShellLoadingMessagePanelMargin}" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="Spacing" Value="6" />
+    <Setter Property="MaxWidth" Value="{StaticResource ShellLoadingMessagePanelMaxWidth}" />
+  </Style>
+  <Style Selector="TextBlock.ShellLoadingTitle">
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="TextAlignment" Value="Center" />
+    <Setter Property="TextWrapping" Value="Wrap" />
+    <Setter Property="FontSize" Value="{StaticResource ShellLoadingTitleFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Strong.FontWeight}" />
+    <Setter Property="Foreground" Value="{DynamicResource ShellLoadingTitleForeground}" />
+  </Style>
+  <Style Selector="TextBlock.ShellLoadingMessage">
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="TextAlignment" Value="Center" />
+    <Setter Property="TextWrapping" Value="Wrap" />
+    <Setter Property="FontSize" Value="{StaticResource ShellLoadingMessageFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Medium.FontWeight}" />
+    <Setter Property="Foreground" Value="{DynamicResource ShellLoadingMessageForeground}" />
+  </Style>
+  <Style Selector="Button.ShellLoadingCancelButton">
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="Margin" Value="0,10,0,0" />
+    <Setter Property="MinWidth" Value="88" />
+    <Setter Property="Height" Value="{StaticResource Kudo.Dialog.Button.Height}" />
+    <Setter Property="MinHeight" Value="{StaticResource Kudo.Dialog.Button.MinHeight}" />
+    <Setter Property="Padding" Value="{StaticResource Kudo.Dialog.Button.Padding}" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Dialog.Button.FontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Emphasis.FontWeight}" />
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimary}" />
+    <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SemiColorPrimary}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="6" />
+  </Style>
+  <Style Selector="Button.ShellLoadingCancelButton /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="{StaticResource MotionDurationFast}" />
+        <BrushTransition Property="BorderBrush" Duration="{StaticResource MotionDurationFast}" />
+      </Transitions>
+    </Setter>
+  </Style>
+  <Style Selector="Button.ShellLoadingCancelButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimaryPointerover}" />
+    <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLightPointerover}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SemiColorPrimaryPointerover}" />
+  </Style>
+  <Style Selector="Button.ShellLoadingCancelButton:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimaryActive}" />
+    <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLightActive}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SemiColorPrimaryActive}" />
+  </Style>
+</Styles>

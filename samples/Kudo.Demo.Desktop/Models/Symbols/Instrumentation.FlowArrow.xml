@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Symbol Id="FlowArrow" NodeType="Industrial.FlowArrow" TemplateKey="Industrial.FlowArrow" IconText="-&gt;" Icon="Assets/Instrumentation.FlowArrow.svg" Resource="Assets/Instrumentation.FlowArrow.svg" Format="Kudo.Symbol/1" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.FlowArrow" DescriptionKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.FlowArrowDescription">
+  <DefaultSize Width="84" Height="42" />
+  <Ports>
+    <Port Id="Inlet" X="0.08" Y="0.5" DataType="Fluid" Kind="Input" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.FlowArrow.Inlet" />
+    <Port Id="Outlet" X="0.9" Y="0.5" DataType="Fluid" Kind="Output" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.FlowArrow.Outlet" />
+  </Ports>
+  <Properties>
+    <Property Name="IndustrialCategory" Type="String">Instrumentation</Property>
+    <Property Name="IndustrialEquipmentKind" Type="String">FlowArrow</Property>
+  </Properties>
+</Symbol>

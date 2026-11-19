@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Symbol Id="TextLabel" NodeType="Industrial.TextLabel" TemplateKey="Text" IconText="T" Format="Kudo.Symbol/1" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.TextLabel" DescriptionKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.TextLabelDescription">
+  <DefaultSize Width="120" Height="40" />
+  <Appearance VisualMode="Text" NameVisibility="Always">
+    <TextAppearance Foreground="#1F2937" FontSize="18" FontWeight="Medium" />
+  </Appearance>
+  <Properties>
+    <Property Name="IndustrialCategory" Type="String">Instrumentation</Property>
+    <Property Name="IndustrialEquipmentKind" Type="String">TextLabel</Property>
+  </Properties>
+</Symbol>

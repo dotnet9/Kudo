@@ -1,0 +1,134 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Double x:Key="ShellTitleBarHeight">34</x:Double>
+  <GridLength x:Key="ShellTitleBarGridLength">34</GridLength>
+  <x:Double x:Key="ShellHeaderBackgroundHeight">166</x:Double>
+  <x:Double x:Key="ShellHeaderImageOpacity">0.98</x:Double>
+  <x:Double x:Key="ShellLoadingMessagePanelMaxWidth">420</x:Double>
+  <x:Double x:Key="ShellLoadingTitleFontSize">19</x:Double>
+  <x:Double x:Key="ShellLoadingMessageFontSize">15</x:Double>
+  <x:Double x:Key="UnifiedDialogTitleBarHeight">34</x:Double>
+  <GridLength x:Key="UnifiedDialogTitleBarGridLength">34</GridLength>
+  <x:Double x:Key="DialogFooterHeight">56</x:Double>
+  <GridLength x:Key="DialogFooterGridLength">56</GridLength>
+  <x:Double x:Key="RowToolButtonWidth">26</x:Double>
+  <x:Double x:Key="RowToolButtonHeight">20</x:Double>
+  <x:Double x:Key="RowToolButtonIconSize">14</x:Double>
+  <x:Double x:Key="LoginTitleBarHeight">40</x:Double>
+  <x:Double x:Key="LoginLogoSize">24</x:Double>
+  <x:Double x:Key="LoginHeaderHeight">112</x:Double>
+  <x:Double x:Key="LoginTitleFontSize">14</x:Double>
+  <x:Double x:Key="LoginInputHeight">32</x:Double>
+  <x:Double x:Key="LoginButtonWidth">86</x:Double>
+  <x:Double x:Key="LoginButtonHeight">32</x:Double>
+
+  <Thickness x:Key="ShellMenuHostMargin">8,0,8,0</Thickness>
+  <Thickness x:Key="ShellMainContentMargin">8,0,8,0</Thickness>
+  <Thickness x:Key="ShellLoadingMessagePanelMargin">0,16,0,0</Thickness>
+  <Thickness x:Key="LoginTitleBarMargin">3</Thickness>
+  <Thickness x:Key="LoginLogoMargin">8</Thickness>
+  <Thickness x:Key="LoginTitleMargin">0,0,0,1</Thickness>
+  <Thickness x:Key="LoginInputPadding">8,2</Thickness>
+
+  <StaticResource x:Key="ShellWindowCornerRadius" ResourceKey="Kudo.Shape.Window.CornerRadius" />
+  <StaticResource x:Key="ShellTopCornerRadius" ResourceKey="Kudo.Shape.Window.TopCornerRadius" />
+  <StaticResource x:Key="ShellMainContentCornerRadius" ResourceKey="Kudo.Shape.Card.CornerRadius" />
+
+  <LinearGradientBrush x:Key="ShellHeaderOverlayBrush" StartPoint="0%,0%" EndPoint="0%,100%">
+    <GradientStop Color="#22055ABF" Offset="0" />
+    <GradientStop Color="#00FFFFFF" Offset="0.55" />
+    <GradientStop Color="#7DFFFFFF" Offset="1" />
+  </LinearGradientBrush>
+
+  <x:Double x:Key="QuickToolBarHeight">34</x:Double>
+  <Thickness x:Key="QuickToolBarMargin">8,0,8,4</Thickness>
+  <Thickness x:Key="QuickToolButtonMargin">2,0</Thickness>
+  <Thickness x:Key="QuickToolButtonPadding">6</Thickness>
+  <Thickness x:Key="QuickToolBarTitleMargin">10,0,8,0</Thickness>
+  <Thickness x:Key="QuickToolBarBorderThickness">0,0,0,1</Thickness>
+  <CornerRadius x:Key="QuickToolButtonCornerRadius">6</CornerRadius>
+  <CornerRadius x:Key="QuickToolBarCornerRadius">0</CornerRadius>
+  <x:Double x:Key="QuickToolButtonWidth">30</x:Double>
+  <x:Double x:Key="QuickToolButtonHeight">28</x:Double>
+
+  <x:Double x:Key="ShellTitleBarLogoSize">26</x:Double>
+  <x:Double x:Key="ShellTitleBarControlHeight">26</x:Double>
+  <x:Double x:Key="ShellTitleBarOptionButtonWidth">28</x:Double>
+  <x:Double x:Key="ShellTitleBarLanguageControlMinWidth">68</x:Double>
+  <x:Double x:Key="ShellTitleBarPathFontSize">13</x:Double>
+  <x:Double x:Key="ShellTitleBarPathHeight">22</x:Double>
+  <x:Double x:Key="ShellTitleBarPathMinWidth">360</x:Double>
+  <x:Double x:Key="ShellTitleBarPathMaxWidth">580</x:Double>
+  <x:Double x:Key="ShellTitleBarPathTextMaxWidth">542</x:Double>
+  <Thickness x:Key="ShellTitleBarLogoMargin">0,0,8,0</Thickness>
+  <Thickness x:Key="ShellTitleBarRightContentMargin">0,0,8,0</Thickness>
+  <Thickness x:Key="ShellTitleBarLanguageControlPadding">8,0</Thickness>
+  <Thickness x:Key="ShellTitleBarTitleMargin">0,0,0,1</Thickness>
+  <CornerRadius x:Key="ShellTitleBarControlCornerRadius">4</CornerRadius>
+  <Thickness x:Key="ShellTitleBarPathHostMargin">14,0,14,0</Thickness>
+  <Thickness x:Key="ShellTitleBarPathTextMargin">22,0,16,1</Thickness>
+
+  <x:Double x:Key="TaskBarHeight">28</x:Double>
+  <GridLength x:Key="TaskBarGridLength">28</GridLength>
+  <x:Double x:Key="TaskBarStatusPillHeight">20</x:Double>
+  <x:Double x:Key="TaskBarStatusIconSlotSize">16</x:Double>
+  <x:Double x:Key="TaskBarStatusIconSize">14</x:Double>
+  <x:Double x:Key="TaskBarStatusValueWidth">24</x:Double>
+  <Thickness x:Key="TaskBarBorderThickness">0,1,0,0</Thickness>
+  <Thickness x:Key="TaskBarLeftItemsMargin">16,0,4,0</Thickness>
+  <Thickness x:Key="TaskBarItemHeaderMargin">0,0,2,0</Thickness>
+  <Thickness x:Key="TaskBarItemValueMargin">0,0,8,0</Thickness>
+  <Thickness x:Key="TaskBarStatusPillPadding">7,0,8,0</Thickness>
+  <Thickness x:Key="TaskBarStatusPillMargin">0,0,8,0</Thickness>
+  <Thickness x:Key="TaskBarStatusBadgePadding">4,1</Thickness>
+  <Thickness x:Key="TaskBarStatusBadgeMargin">0,0,8,0</Thickness>
+  <Thickness x:Key="TaskBarStatusIconSlotMargin">0,0,5,0</Thickness>
+  <Thickness x:Key="TaskBarStatusNameMargin">0,0,4,0</Thickness>
+  <CornerRadius x:Key="TaskBarStatusPillCornerRadius">10</CornerRadius>
+  <StaticResource x:Key="TaskBarStatusBadgeCornerRadius" ResourceKey="Kudo.Shape.Pill.CornerRadius" />
+
+  <StaticResource x:Key="Kudo.Typography.Log.FontSize" ResourceKey="Kudo.Typography.Body.FontSize" />
+  <StaticResource x:Key="Kudo.Typography.LogSmall.FontSize" ResourceKey="Kudo.Typography.Caption.FontSize" />
+
+  <ResourceDictionary.ThemeDictionaries>
+    <ResourceDictionary x:Key="Default">
+      <SolidColorBrush x:Key="ShellTitleBarForeground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="ShellTitleBarControlBorderBrush" Color="#45FFFFFF" />
+      <SolidColorBrush x:Key="ShellHeaderFallbackBackgroundBrush" Color="#EAF4FF" />
+      <SolidColorBrush x:Key="ShellLoadingOverlayBackground" Color="#99FFFFFF" />
+      <SolidColorBrush x:Key="ShellLoadingTitleForeground" Color="#172033" />
+      <SolidColorBrush x:Key="ShellLoadingMessageForeground" Color="#344155" />
+      <SolidColorBrush x:Key="DialogTitleBarForeground" Color="#262626" />
+      <SolidColorBrush x:Key="FormLabelForeground" Color="#262626" />
+      <Color x:Key="DialogCaptionButtonForeground">#595959</Color>
+      <SolidColorBrush x:Key="LoginWindowBorderBrush" Color="#D3D3D3" />
+      <SolidColorBrush x:Key="LoginContentOverlayBackgroundBrush" Color="#DDFFFFFF" />
+    </ResourceDictionary>
+    <ResourceDictionary x:Key="Light">
+      <SolidColorBrush x:Key="ShellTitleBarForeground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="ShellTitleBarControlBorderBrush" Color="#45FFFFFF" />
+      <SolidColorBrush x:Key="ShellHeaderFallbackBackgroundBrush" Color="#EAF4FF" />
+      <SolidColorBrush x:Key="ShellLoadingOverlayBackground" Color="#99FFFFFF" />
+      <SolidColorBrush x:Key="ShellLoadingTitleForeground" Color="#172033" />
+      <SolidColorBrush x:Key="ShellLoadingMessageForeground" Color="#344155" />
+      <SolidColorBrush x:Key="DialogTitleBarForeground" Color="#262626" />
+      <SolidColorBrush x:Key="FormLabelForeground" Color="#262626" />
+      <Color x:Key="DialogCaptionButtonForeground">#595959</Color>
+      <SolidColorBrush x:Key="LoginWindowBorderBrush" Color="#D3D3D3" />
+      <SolidColorBrush x:Key="LoginContentOverlayBackgroundBrush" Color="#DDFFFFFF" />
+    </ResourceDictionary>
+    <ResourceDictionary x:Key="Dark">
+      <SolidColorBrush x:Key="ShellTitleBarForeground" Color="#F8FAFC" />
+      <SolidColorBrush x:Key="ShellTitleBarControlBorderBrush" Color="#45FFFFFF" />
+      <SolidColorBrush x:Key="ShellHeaderFallbackBackgroundBrush" Color="#1E2A3F" />
+      <SolidColorBrush x:Key="ShellLoadingOverlayBackground" Color="#AA111827" />
+      <SolidColorBrush x:Key="ShellLoadingTitleForeground" Color="#EBF2FF" />
+      <SolidColorBrush x:Key="ShellLoadingMessageForeground" Color="#CCD7E8" />
+      <SolidColorBrush x:Key="DialogTitleBarForeground" Color="#EBF2FF" />
+      <SolidColorBrush x:Key="FormLabelForeground" Color="#DCE7F5" />
+      <Color x:Key="DialogCaptionButtonForeground">#CCD7E8</Color>
+      <SolidColorBrush x:Key="LoginWindowBorderBrush" Color="#33465E" />
+      <SolidColorBrush x:Key="LoginContentOverlayBackgroundBrush" Color="#DD111827" />
+    </ResourceDictionary>
+  </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

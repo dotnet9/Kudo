@@ -1,0 +1,59 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:u="https://irihi.tech/ursa">
+  <Style Selector="DocumentControl[HasVisibleDockables=False] /template/ DocumentTabStrip#PART_TabStrip:not(:create)">
+    <Setter Property="IsVisible" Value="False" />
+  </Style>
+
+  <Style Selector="TextBlock.DockToolTitleText">
+    <Setter Property="Foreground" Value="{DynamicResource CodeWFToolTitleBarForegroundBrush}" />
+    <Setter Property="FontSize" Value="{DynamicResource CodeWFDockToolTitleFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Emphasis.FontWeight}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="HorizontalAlignment" Value="Left" />
+    <Setter Property="TextAlignment" Value="Left" />
+  </Style>
+
+  <Style Selector="PathIcon.DockToolTitleIcon">
+    <Setter Property="Width" Value="{DynamicResource CodeWFDockToolTitleIconSize}" />
+    <Setter Property="Height" Value="{DynamicResource CodeWFDockToolTitleIconSize}" />
+    <Setter Property="Foreground" Value="{DynamicResource CodeWFToolTitleBarButtonForegroundBrush}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+
+  <Style Selector="u|IconButton.DockTitleToolButton">
+    <Setter Property="Theme" Value="{StaticResource BorderlessIconButton}" />
+    <Setter Property="Height" Value="{DynamicResource CodeWFDockTitleToolButtonHeight}" />
+    <Setter Property="MinHeight" Value="{DynamicResource CodeWFDockTitleToolButtonHeight}" />
+    <Setter Property="Padding" Value="{DynamicResource CodeWFDockTitleToolButtonPadding}" />
+    <Setter Property="Margin" Value="{DynamicResource CodeWFDockTitleToolButtonMargin}" />
+    <Setter Property="Foreground" Value="{DynamicResource CodeWFToolTitleBarButtonForegroundBrush}" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Caption.FontSize}" />
+    <Setter Property="CornerRadius" Value="3" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+  </Style>
+
+  <Style Selector="u|IconButton.DockTitleToolButton:pointerover">
+    <Setter Property="Background" Value="{DynamicResource CodeWFToolTitleBarButtonPointerOverBackgroundBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource CodeWFToolTitleBarButtonForegroundBrush}" />
+  </Style>
+
+  <Style Selector="u|IconButton.DockTitleToolButton:disabled">
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />
+    <Setter Property="Opacity" Value="0.55" />
+  </Style>
+
+  <Style Selector="u|IconButton.DockTitleToolButton /template/ PathIcon">
+    <Setter Property="Width" Value="{DynamicResource CodeWFDockTitleToolButtonIconSize}" />
+    <Setter Property="Height" Value="{DynamicResource CodeWFDockTitleToolButtonIconSize}" />
+  </Style>
+
+  <Style Selector="ToolChromeControl /template/ Image#PART_PinIcon, ToolChromeControl /template/ Image#PART_CloseIcon">
+    <Setter Property="Width" Value="16" />
+    <Setter Property="Height" Value="16" />
+  </Style>
+
+  <Style Selector="ToolChromeControl">
+    <Setter Property="Theme" Value="{StaticResource CodeWFToolChromeControlTheme}" />
+  </Style>
+</Styles>

@@ -1,0 +1,63 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codewf="https://codewf.com" xmlns:u="https://irihi.tech/ursa">
+  <Style Selector="Grid.LoginTitleBarContent">
+    <Setter Property="Height" Value="{StaticResource LoginTitleBarHeight}" />
+    <Setter Property="Margin" Value="{StaticResource LoginTitleBarMargin}" />
+  </Style>
+  <Style Selector="Image.LoginTitleBarLogo">
+    <Setter Property="Width" Value="{StaticResource LoginLogoSize}" />
+    <Setter Property="Height" Value="{StaticResource LoginLogoSize}" />
+    <Setter Property="Margin" Value="{StaticResource LoginLogoMargin}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+  </Style>
+  <Style Selector="TextBlock.LoginTitleText">
+    <Setter Property="Foreground" Value="{DynamicResource ShellTitleBarForeground}" />
+    <Setter Property="FontSize" Value="{StaticResource LoginTitleFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Emphasis.FontWeight}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="Margin" Value="{StaticResource LoginTitleMargin}" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+  </Style>
+  <Style Selector="Border.LoginRoot">
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="CornerRadius" Value="0" />
+  </Style>
+  <Style Selector="Border.LoginHeaderBackground">
+    <Setter Property="Height" Value="{StaticResource LoginHeaderHeight}" />
+    <Setter Property="Background" Value="{DynamicResource ShellHeaderFallbackBackgroundBrush}" />
+    <Setter Property="CornerRadius" Value="{StaticResource ShellTopCornerRadius}" />
+    <Setter Property="ClipToBounds" Value="True" />
+  </Style>
+  <Style Selector="Border.LoginHeaderImage">
+    <Setter Property="Height" Value="{StaticResource LoginHeaderHeight}" />
+    <Setter Property="VerticalAlignment" Value="Top" />
+    <Setter Property="Background" Value="{DynamicResource ShellHeaderImageBrush}" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+  </Style>
+  <Style Selector="Border.LoginFormOverlay">
+    <Setter Property="Background" Value="{DynamicResource LoginContentOverlayBackgroundBrush}" />
+  </Style>
+  <Style Selector="TextBox.LoginInput">
+    <Setter Property="Height" Value="{StaticResource LoginInputHeight}" />
+    <Setter Property="MinHeight" Value="{StaticResource LoginInputHeight}" />
+    <Setter Property="Padding" Value="{StaticResource LoginInputPadding}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+  </Style>
+  <Style Selector="TextBlock.LoginError">
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorDanger}" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Caption.FontSize}" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="Button.LoginSubmit, Button.LoginCancel">
+    <Setter Property="Width" Value="{StaticResource LoginButtonWidth}" />
+    <Setter Property="Height" Value="{StaticResource LoginButtonHeight}" />
+  </Style>
+  <Style Selector="Button.LoginSubmit">
+    <Setter Property="Theme" Value="{DynamicResource SolidButton}" />
+  </Style>
+  <Style Selector="Button.LoginCancel">
+    <Setter Property="Theme" Value="{DynamicResource OutlineButton}" />
+  </Style>
+</Styles>

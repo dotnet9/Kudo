@@ -1,0 +1,31 @@
+<linker>
+  <assembly fullname="Kudo.Demo.Desktop" preserve="all" />
+  <assembly fullname="Kudo.Demo" preserve="all" />
+  <assembly fullname="Kudo.Core" preserve="all" />
+  <assembly fullname="Kudo.Avalonia" preserve="all" />
+  <assembly fullname="Kudo.Themes.Semi" preserve="all" />
+  <assembly fullname="Kudo.Avalonia.3D" preserve="all" />
+  <assembly fullname="Prism" preserve="all" />
+  <assembly fullname="Prism.Avalonia" preserve="all" />
+  <assembly fullname="Prism.DryIoc.Avalonia" preserve="all" />
+  <assembly fullname="DryIoc" preserve="all" />
+  <assembly fullname="ReactiveUI" preserve="all" />
+  <assembly fullname="ReactiveUI.Avalonia" preserve="all" />
+  <assembly fullname="Dock.Avalonia" preserve="all" />
+  <assembly fullname="Dock.Model" preserve="all" />
+  <assembly fullname="Dock.Model.Mvvm" preserve="all" />
+  <assembly fullname="CodeWF.Avalonia.Controls" preserve="all" />
+  <assembly fullname="CodeWF.Avalonia.Dock" preserve="all" />
+  <assembly fullname="CodeWF.Toolkit.Logging" preserve="all" />
+  <assembly fullname="CodeWF.Avalonia.Log" preserve="all" />
+  <assembly fullname="CodeWF.Toolkit.Core" preserve="all" />
+  <assembly fullname="Semi.Avalonia" preserve="all" />
+  <assembly fullname="Ursa" preserve="all" />
+  <assembly fullname="Ursa.Themes.Semi" preserve="all" />
+  <assembly fullname="CodeWF.Avalonia.Lang" preserve="all" />
+  <assembly fullname="CodeWF.Toolkit.Lang" preserve="all" />
+  <assembly fullname="System.Configuration.ConfigurationManager" preserve="all" />
+  <assembly fullname="Avalonia.Markup.Xaml">
+    <type fullname="Avalonia.Markup.Xaml.MarkupExtensions.ReflectionBindingExtension" preserve="all" />
+  </assembly>
+</linker>

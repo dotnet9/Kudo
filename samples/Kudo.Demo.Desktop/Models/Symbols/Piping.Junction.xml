@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Symbol Id="PipeJunction" NodeType="Industrial.PipeJunction" TemplateKey="Industrial.PipeJunction" IconText="J" Icon="Assets/Piping.Junction.svg" Resource="Assets/Piping.Junction.svg" Format="Kudo.Symbol/1" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.PipeJunction" DescriptionKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.PipeJunctionDescription">
+  <DefaultSize Width="54" Height="54" />
+  <Ports>
+    <Port Id="Inlet" X="0" Y="0.5" DataType="Fluid" Kind="InputOutput" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.PipeJunction.Inlet">
+      <Capacity MaxIncoming="Unlimited" MaxOutgoing="Unlimited" />
+      <IncomingDirection X="-1" Y="0" />
+      <OutgoingDirection X="-1" Y="0" />
+    </Port>
+    <Port Id="Outlet" X="1" Y="0.5" DataType="Fluid" Kind="InputOutput" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.PipeJunction.Outlet">
+      <Capacity MaxIncoming="Unlimited" MaxOutgoing="Unlimited" />
+      <IncomingDirection X="1" Y="0" />
+      <OutgoingDirection X="1" Y="0" />
+    </Port>
+    <Port Id="Top" X="0.5" Y="0" DataType="Fluid" Kind="InputOutput" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.PipeJunction.Top">
+      <Capacity MaxIncoming="Unlimited" MaxOutgoing="Unlimited" />
+      <IncomingDirection X="0" Y="-1" />
+      <OutgoingDirection X="0" Y="-1" />
+    </Port>
+    <Port Id="Bottom" X="0.5" Y="1" DataType="Fluid" Kind="InputOutput" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.PipeJunction.Bottom">
+      <Capacity MaxIncoming="Unlimited" MaxOutgoing="Unlimited" />
+      <IncomingDirection X="0" Y="1" />
+      <OutgoingDirection X="0" Y="1" />
+    </Port>
+  </Ports>
+  <PropertyDefinitions>
+    <Property Name="NominalDiameter" ValueKind="Integer" Unit="mm" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.NominalDiameter" GroupKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.BasicParameters">
+      <DefaultValue Type="Integer">50</DefaultValue>
+    </Property>
+  </PropertyDefinitions>
+  <Properties>
+    <Property Name="IndustrialCategory" Type="String">Piping</Property>
+    <Property Name="IndustrialEquipmentKind" Type="String">PipeJunction</Property>
+  </Properties>
+</Symbol>

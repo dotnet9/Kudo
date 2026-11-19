@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Symbol Id="Valve" NodeType="Industrial.Valve" TemplateKey="Industrial.Valve" IconText="V" Icon="Assets/BasicSymbols.Valve.svg" Resource="Assets/BasicSymbols.Valve.svg" Format="Kudo.Symbol/1" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.Valve" DescriptionKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.ValveDescription">
+  <DefaultSize Width="92" Height="54" />
+  <Ports>
+    <Port Id="Inlet" X="0.1" Y="0.54" DataType="Fluid" Kind="Input" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.Valve.Inlet" />
+    <Port Id="Outlet" X="0.9" Y="0.54" DataType="Fluid" Kind="Output" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.Valve.Outlet" />
+  </Ports>
+  <PropertyDefinitions>
+    <Property Name="OpenPercent" ValueKind="Percent" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.OpenPercent" GroupKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.BasicParameters">
+      <DefaultValue Type="Integer">100</DefaultValue>
+    </Property>
+    <Property Name="FailSafePosition" ValueKind="Choice" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.FailSafePosition" GroupKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.BasicParameters">
+      <DefaultValue Type="String">as-is</DefaultValue>
+      <Options>
+        <Option DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPropertyOption.FailSafePosition.Open">open</Option>
+        <Option DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPropertyOption.FailSafePosition.Closed">closed</Option>
+        <Option DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPropertyOption.FailSafePosition.AsIs">as-is</Option>
+      </Options>
+    </Property>
+  </PropertyDefinitions>
+  <Properties>
+    <Property Name="IndustrialCategory" Type="String">BasicSymbols</Property>
+    <Property Name="IndustrialEquipmentKind" Type="String">Valve</Property>
+  </Properties>
+</Symbol>

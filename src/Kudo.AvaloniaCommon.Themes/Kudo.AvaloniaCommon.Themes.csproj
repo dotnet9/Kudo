@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>$(KudoTargetFrameworks)</TargetFrameworks>
+		<LangVersion>preview</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsPackable>true</IsPackable>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<AvaloniaResource Include="Assets\Fonts\*" />
+		<AvaloniaResource Include="Assets\*.png" />
+		<AvaloniaResource Include="Assets\Brand\*.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Avalonia" />
+		<PackageReference Include="CodeWF.Avalonia.Controls" />
+		<PackageReference Include="CodeWF.Avalonia.DataGrid" />
+		<PackageReference Include="Irihi.Ursa.Themes.Semi" />
+		<PackageReference Include="Semi.Avalonia" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Kudo.AvaloniaCommon\Kudo.AvaloniaCommon.csproj" />
+	</ItemGroup>
+</Project>

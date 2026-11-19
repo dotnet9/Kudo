@@ -1,0 +1,117 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codewf="https://codewf.com" xmlns:u="https://irihi.tech/ursa">
+  <Style Selector="Border.ShellRoot">
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="CornerRadius" Value="0" />
+  </Style>
+  <Style Selector="Border.AppDialogRoot">
+    <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
+    <Setter Property="CornerRadius" Value="0" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="{StaticResource MotionDurationStandard}" />
+        <DoubleTransition Property="Opacity" Duration="{StaticResource MotionDurationStandard}" />
+      </Transitions>
+    </Setter>
+  </Style>
+  <Style Selector="Border.BusinessDialogRoot">
+    <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
+    <Setter Property="CornerRadius" Value="0" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="{StaticResource MotionDurationStandard}" />
+        <DoubleTransition Property="Opacity" Duration="{StaticResource MotionDurationStandard}" />
+      </Transitions>
+    </Setter>
+  </Style>
+  <Style Selector="Border.BuildModelDialogRoot">
+    <Setter Property="Padding" Value="0" />
+  </Style>
+  <Style Selector="codewf|CodeWFWindow.BusinessTransferDialog HeaderedContentControl">
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Dialog.Business.HeaderFontSize}" />
+    <Setter Property="FontWeight" Value="{StaticResource Kudo.Typography.Emphasis.FontWeight}" />
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
+  </Style>
+  <Style Selector="TextBlock.BusinessSummaryText">
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Dialog.Business.SummaryFontSize}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="Button.BusinessDialogButton">
+    <Setter Property="MinWidth" Value="{StaticResource Kudo.Dialog.Button.MinWidth}" />
+    <Setter Property="Height" Value="{StaticResource Kudo.Dialog.Business.Button.Height}" />
+    <Setter Property="MinHeight" Value="{StaticResource Kudo.Dialog.Business.Button.MinHeight}" />
+    <Setter Property="Padding" Value="{StaticResource Kudo.Dialog.Business.Button.Padding}" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Dialog.Button.FontSize}" />
+    <Setter Property="FontWeight" Value="{StaticResource Kudo.Typography.Regular.FontWeight}" />
+    <Setter Property="CornerRadius" Value="6" />
+  </Style>
+  <Style Selector="Button.BusinessDialogButton /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="{StaticResource MotionDurationFast}" />
+        <BrushTransition Property="BorderBrush" Duration="{StaticResource MotionDurationFast}" />
+      </Transitions>
+    </Setter>
+  </Style>
+  <Style Selector="Button.AppDialogButton">
+    <Setter Property="MinWidth" Value="{StaticResource Kudo.Dialog.Button.MinWidth}" />
+    <Setter Property="Height" Value="{StaticResource Kudo.Dialog.Button.Height}" />
+    <Setter Property="MinHeight" Value="{StaticResource Kudo.Dialog.Button.Height}" />
+    <Setter Property="MaxHeight" Value="{StaticResource Kudo.Dialog.Button.Height}" />
+    <Setter Property="Padding" Value="{StaticResource Kudo.Dialog.Button.Padding}" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Dialog.Button.FontSize}" />
+    <Setter Property="FontWeight" Value="{StaticResource Kudo.Typography.Regular.FontWeight}" />
+    <Setter Property="CornerRadius" Value="6" />
+  </Style>
+  <Style Selector="Button.AppDialogButton /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="{StaticResource MotionDurationFast}" />
+        <BrushTransition Property="BorderBrush" Duration="{StaticResource MotionDurationFast}" />
+      </Transitions>
+    </Setter>
+  </Style>
+  <Style Selector="Grid.BusinessDialogFooter">
+    <Setter Property="Margin" Value="{StaticResource Kudo.Dialog.Footer.Margin}" />
+    <Setter Property="ColumnSpacing" Value="{StaticResource Kudo.Dialog.Footer.ButtonSpacing}" />
+    <Setter Property="VerticalAlignment" Value="Stretch" />
+  </Style>
+  <Style Selector="Grid.BusinessDialogFooter Button">
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="Grid.AppDialogFooter">
+    <Setter Property="Margin" Value="{StaticResource Kudo.Dialog.Footer.Margin}" />
+    <Setter Property="ColumnSpacing" Value="{StaticResource Kudo.Dialog.Footer.ButtonSpacing}" />
+    <Setter Property="VerticalAlignment" Value="Stretch" />
+  </Style>
+  <Style Selector="Grid.AppDialogFooter Button">
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="StackPanel.AppDialogButtonPanel">
+    <Setter Property="Orientation" Value="Horizontal" />
+    <Setter Property="HorizontalAlignment" Value="Right" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="Spacing" Value="{StaticResource Kudo.Dialog.Footer.ButtonSpacing}" />
+  </Style>
+  <Style Selector="codewf|CodeWFWindow.BusinessTransferDialog TextBlock.BusinessSummaryText">
+    <Setter Property="IsVisible" Value="False" />
+  </Style>
+  <Style Selector="codewf|CodeWFWindow.BusinessTransferDialog codewf|Transfer">
+    <Setter Property="Margin" Value="0,0,0,8" />
+  </Style>
+  <Style Selector="codewf|CodeWFWindow.BusinessTransferDialog codewf|Transfer TextBlock">
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Header.FontSize}" />
+  </Style>
+  <Style Selector="codewf|CodeWFWindow.BusinessTransferDialog codewf|SearchListBox /template/ TextBox#PART_SearchBox">
+    <Setter Property="Height" Value="40" />
+    <Setter Property="CornerRadius" Value="5" />
+  </Style>
+  <Style Selector="codewf|CodeWFWindow.BusinessTransferDialog codewf|SearchListBox /template/ TextBlock">
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Caption.FontSize}" />
+  </Style>
+  <Style Selector="codewf|CodeWFWindow.BusinessTransferDialog codewf|SearchListBox /template/ ListBoxItem">
+    <Setter Property="MinHeight" Value="34" />
+    <Setter Property="Padding" Value="14,3" />
+  </Style>
+</Styles>

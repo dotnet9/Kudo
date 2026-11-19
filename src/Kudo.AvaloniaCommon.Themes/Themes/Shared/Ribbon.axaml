@@ -1,0 +1,252 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:semi="https://irihi.tech/semi">
+  <x:Double x:Key="RibbonIconSlotSize">28</x:Double>
+  <x:Double x:Key="RibbonIconSize">24</x:Double>
+  <x:Double x:Key="RibbonDropDownGlyphSize">9</x:Double>
+  <x:Double x:Key="RibbonMenuIconSize">16</x:Double>
+  <x:Double x:Key="RibbonMenuItemIconSize">24</x:Double>
+  <x:Double x:Key="RibbonMenuTabStripHeight">32</x:Double>
+  <x:Double x:Key="RibbonMenuContentHeight">74</x:Double>
+
+  <CornerRadius x:Key="RibbonMenuTabsCornerRadius">8,8,0,0</CornerRadius>
+  <CornerRadius x:Key="RibbonMenuTabHeaderCornerRadius">10,10,0,0</CornerRadius>
+  <Thickness x:Key="RibbonMenuTabHeaderPadding">20,5,20,3</Thickness>
+  <x:Double x:Key="RibbonMenuTabHeaderFontSize">14</x:Double>
+  <x:Double x:Key="RibbonMenuTabHeaderMinWidth">128</x:Double>
+  <Thickness x:Key="RibbonMenuTabHeaderBorderThickness">0</Thickness>
+  <Thickness x:Key="RibbonMenuContentMargin">5,0,0,0</Thickness>
+
+  <LinearGradientBrush x:Key="RibbonMenuTabStripBackground" StartPoint="0%,0%" EndPoint="0%,100%">
+    <GradientStop Color="#58D9ECFF" Offset="0" />
+    <GradientStop Color="#80B4CDF3" Offset="0.55" />
+    <GradientStop Color="#80FFFFFF" Offset="1" />
+  </LinearGradientBrush>
+
+  <Thickness x:Key="RibbonGroupMargin">0,2</Thickness>
+  <x:Double x:Key="RibbonGroupHeight">70</x:Double>
+
+  <x:Double x:Key="RibbonCommandHeight">58</x:Double>
+  <x:Double x:Key="RibbonCommandMinWidth">60</x:Double>
+  <x:Double x:Key="RibbonCommandDropDownMinWidth">66</x:Double>
+  <x:Double x:Key="RibbonCommandFontSize">12</x:Double>
+  <Thickness x:Key="RibbonCommandMargin">3,5,3,1</Thickness>
+  <Thickness x:Key="RibbonCommandPadding">5,4</Thickness>
+  <CornerRadius x:Key="RibbonCommandCornerRadius">4</CornerRadius>
+  <x:Double x:Key="RibbonCommandDisabledOpacity">0.46</x:Double>
+  <x:Double x:Key="RibbonSmallCommandHeight">29</x:Double>
+  <x:Double x:Key="RibbonSmallCommandMinWidth">52</x:Double>
+  <Thickness x:Key="RibbonSmallCommandPadding">5,2</Thickness>
+  <CornerRadius x:Key="RibbonSmallCommandCornerRadius">3</CornerRadius>
+  <x:Double x:Key="RibbonSmallCommandIconSlotSize">18</x:Double>
+  <x:Double x:Key="RibbonCompactCommandWidth">30</x:Double>
+  <x:Double x:Key="RibbonCompactCommandHeight">29</x:Double>
+  <Thickness x:Key="RibbonCompactCommandPadding">0</Thickness>
+  <CornerRadius x:Key="RibbonCompactCommandCornerRadius">3</CornerRadius>
+
+  <Thickness x:Key="RibbonDropDownGlyphMargin">-4,0,3,0</Thickness>
+  <x:Double x:Key="RibbonDropDownGlyphOpacity">0.78</x:Double>
+
+  <x:Double x:Key="RibbonFlyoutMinWidth">136</x:Double>
+  <Thickness x:Key="RibbonFlyoutPadding">4</Thickness>
+  <Thickness x:Key="RibbonFlyoutBorderThickness">1</Thickness>
+  <CornerRadius x:Key="RibbonFlyoutCornerRadius">6</CornerRadius>
+  <x:Double x:Key="RibbonFlyoutItemMinHeight">32</x:Double>
+  <Thickness x:Key="RibbonFlyoutItemPadding">10,6,12,6</Thickness>
+  <CornerRadius x:Key="RibbonFlyoutItemCornerRadius">5</CornerRadius>
+  <Thickness x:Key="RibbonDividerMargin">5,12,5,12</Thickness>
+  <x:Double x:Key="RibbonDividerOpacity">0.45</x:Double>
+  <Thickness x:Key="RibbonGroupDividerMargin">0,12</Thickness>
+
+  <Thickness x:Key="RibbonFieldColumnsMargin">6,2,6,0</Thickness>
+  <x:Double x:Key="RibbonFieldColumnsRowSpacing">4</x:Double>
+  <x:Double x:Key="RibbonFieldInputWidth">96</x:Double>
+  <x:Double x:Key="RibbonFieldInputHeight">24</x:Double>
+  <Thickness x:Key="RibbonFieldInputPadding">8,2</Thickness>
+  <Thickness x:Key="RibbonFieldNumericPadding">4,2</Thickness>
+  <CornerRadius x:Key="RibbonFieldInputCornerRadius">4</CornerRadius>
+  <x:Double x:Key="RibbonFieldNumericFontSize">11</x:Double>
+  <x:Double x:Key="RibbonFieldCheckBoxHeight">29</x:Double>
+  <x:Double x:Key="RibbonFieldCheckBoxMinWidth">78</x:Double>
+  <Thickness x:Key="RibbonFieldCheckBoxPadding">2,0</Thickness>
+  <x:Double x:Key="RibbonFieldCheckBoxFontSize">11</x:Double>
+  <Thickness x:Key="RibbonFieldCheckBoxMargin">2,0</Thickness>
+
+  <ResourceDictionary.ThemeDictionaries>
+    <ResourceDictionary x:Key="Default">
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderForeground" Color="#F2F8FF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderPointeroverForeground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderPointeroverBackground" Color="#18FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderSelectedForeground" Color="#0787E8" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderStartSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderEndSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFieldLabelForeground" Color="#262626" />
+      <SolidColorBrush x:Key="RibbonFieldInputBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFieldInputBorderBrush" Color="#C5D8EA" />
+      <SolidColorBrush x:Key="RibbonFieldInputFocusBorderBrush" Color="#1688E8" />
+      <SolidColorBrush x:Key="RibbonFieldInputForeground" Color="#1F2E3D" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledBackground" Color="#F5F5F5" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledBorderBrush" Color="#D9D9D9" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledForeground" Color="#AEB8C5" />
+      <SolidColorBrush x:Key="RibbonCommandForeground" Color="#22364D" />
+      <SolidColorBrush x:Key="RibbonCommandPointeroverBackground" Color="#EEF7FF" />
+      <SolidColorBrush x:Key="RibbonCommandPointeroverForeground" Color="#067BEA" />
+      <SolidColorBrush x:Key="RibbonCommandPressedBackground" Color="#DDEFFF" />
+      <SolidColorBrush x:Key="RibbonCommandPressedForeground" Color="#006EDB" />
+      <SolidColorBrush x:Key="RibbonFlyoutBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFlyoutBorderBrush" Color="#CFE0F1" />
+      <SolidColorBrush x:Key="RibbonMenuIconForeground" Color="#2378D5" />
+    </ResourceDictionary>
+    <ResourceDictionary x:Key="Light">
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderForeground" Color="#F2F8FF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderPointeroverForeground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderPointeroverBackground" Color="#18FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderSelectedForeground" Color="#0787E8" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderStartSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderEndSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFieldLabelForeground" Color="#262626" />
+      <SolidColorBrush x:Key="RibbonFieldInputBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFieldInputBorderBrush" Color="#C5D8EA" />
+      <SolidColorBrush x:Key="RibbonFieldInputFocusBorderBrush" Color="#1688E8" />
+      <SolidColorBrush x:Key="RibbonFieldInputForeground" Color="#1F2E3D" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledBackground" Color="#F5F5F5" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledBorderBrush" Color="#D9D9D9" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledForeground" Color="#AEB8C5" />
+      <SolidColorBrush x:Key="RibbonCommandForeground" Color="#22364D" />
+      <SolidColorBrush x:Key="RibbonCommandPointeroverBackground" Color="#EEF7FF" />
+      <SolidColorBrush x:Key="RibbonCommandPointeroverForeground" Color="#067BEA" />
+      <SolidColorBrush x:Key="RibbonCommandPressedBackground" Color="#DDEFFF" />
+      <SolidColorBrush x:Key="RibbonCommandPressedForeground" Color="#006EDB" />
+      <SolidColorBrush x:Key="RibbonFlyoutBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFlyoutBorderBrush" Color="#CFE0F1" />
+      <SolidColorBrush x:Key="RibbonMenuIconForeground" Color="#2378D5" />
+    </ResourceDictionary>
+    <ResourceDictionary x:Key="Dark">
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderForeground" Color="#DCE7F5" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderPointeroverForeground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderPointeroverBackground" Color="#24FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderSelectedForeground" Color="#93BAFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderSelectedBackground" Color="#172231" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderStartSelectedBackground" Color="#172231" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderEndSelectedBackground" Color="#172231" />
+      <SolidColorBrush x:Key="RibbonFieldLabelForeground" Color="#B7C5D8" />
+      <SolidColorBrush x:Key="RibbonFieldInputBackground" Color="#172231" />
+      <SolidColorBrush x:Key="RibbonFieldInputBorderBrush" Color="#2C3B4E" />
+      <SolidColorBrush x:Key="RibbonFieldInputFocusBorderBrush" Color="#76A9FF" />
+      <SolidColorBrush x:Key="RibbonFieldInputForeground" Color="#DCE7F5" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledBackground" Color="#202A37" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledBorderBrush" Color="#38465A" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledForeground" Color="#617184" />
+      <SolidColorBrush x:Key="RibbonCommandForeground" Color="#DCE7F5" />
+      <SolidColorBrush x:Key="RibbonCommandPointeroverBackground" Color="#1F3858" />
+      <SolidColorBrush x:Key="RibbonCommandPointeroverForeground" Color="#93BAFF" />
+      <SolidColorBrush x:Key="RibbonCommandPressedBackground" Color="#263F63" />
+      <SolidColorBrush x:Key="RibbonCommandPressedForeground" Color="#B7D0FF" />
+      <SolidColorBrush x:Key="RibbonFlyoutBackground" Color="#172231" />
+      <SolidColorBrush x:Key="RibbonFlyoutBorderBrush" Color="#2C3B4E" />
+      <SolidColorBrush x:Key="RibbonMenuIconForeground" Color="#76A9FF" />
+    </ResourceDictionary>
+    <ResourceDictionary x:Key="{x:Static semi:SemiTheme.Aquatic}">
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderForeground" Color="#F2FEFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderPointeroverForeground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderPointeroverBackground" Color="#18FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderSelectedForeground" Color="#07879A" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderStartSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderEndSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFieldLabelForeground" Color="#385B64" />
+      <SolidColorBrush x:Key="RibbonFieldInputBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFieldInputBorderBrush" Color="#B9DEE8" />
+      <SolidColorBrush x:Key="RibbonFieldInputFocusBorderBrush" Color="#0EA5B7" />
+      <SolidColorBrush x:Key="RibbonFieldInputForeground" Color="#173840" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledBackground" Color="#F5F5F5" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledBorderBrush" Color="#D9D9D9" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledForeground" Color="#AEB8C5" />
+      <SolidColorBrush x:Key="RibbonCommandForeground" Color="#173840" />
+      <SolidColorBrush x:Key="RibbonCommandPointeroverBackground" Color="#DFF7FA" />
+      <SolidColorBrush x:Key="RibbonCommandPointeroverForeground" Color="#07879A" />
+      <SolidColorBrush x:Key="RibbonCommandPressedBackground" Color="#C3EEF7" />
+      <SolidColorBrush x:Key="RibbonCommandPressedForeground" Color="#056B7A" />
+      <SolidColorBrush x:Key="RibbonFlyoutBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFlyoutBorderBrush" Color="#CDE9EF" />
+      <SolidColorBrush x:Key="RibbonMenuIconForeground" Color="#0EA5B7" />
+    </ResourceDictionary>
+    <ResourceDictionary x:Key="{x:Static semi:SemiTheme.Desert}">
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderForeground" Color="#FFF8EC" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderPointeroverForeground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderPointeroverBackground" Color="#18FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderSelectedForeground" Color="#A9631C" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderStartSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderEndSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFieldLabelForeground" Color="#6B5945" />
+      <SolidColorBrush x:Key="RibbonFieldInputBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFieldInputBorderBrush" Color="#E0CDAF" />
+      <SolidColorBrush x:Key="RibbonFieldInputFocusBorderBrush" Color="#C77B2A" />
+      <SolidColorBrush x:Key="RibbonFieldInputForeground" Color="#33261B" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledBackground" Color="#F5F5F5" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledBorderBrush" Color="#D9D9D9" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledForeground" Color="#AEB8C5" />
+      <SolidColorBrush x:Key="RibbonCommandForeground" Color="#33261B" />
+      <SolidColorBrush x:Key="RibbonCommandPointeroverBackground" Color="#FFF0D9" />
+      <SolidColorBrush x:Key="RibbonCommandPointeroverForeground" Color="#A9631C" />
+      <SolidColorBrush x:Key="RibbonCommandPressedBackground" Color="#F5DDB8" />
+      <SolidColorBrush x:Key="RibbonCommandPressedForeground" Color="#8B4F16" />
+      <SolidColorBrush x:Key="RibbonFlyoutBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFlyoutBorderBrush" Color="#E8D9C2" />
+      <SolidColorBrush x:Key="RibbonMenuIconForeground" Color="#C77B2A" />
+    </ResourceDictionary>
+    <ResourceDictionary x:Key="{x:Static semi:SemiTheme.Dusk}">
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderForeground" Color="#FCF8FF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderPointeroverForeground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderPointeroverBackground" Color="#18FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderSelectedForeground" Color="#744CBC" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderStartSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderEndSelectedBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFieldLabelForeground" Color="#64546F" />
+      <SolidColorBrush x:Key="RibbonFieldInputBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFieldInputBorderBrush" Color="#D6CCE6" />
+      <SolidColorBrush x:Key="RibbonFieldInputFocusBorderBrush" Color="#8A63D2" />
+      <SolidColorBrush x:Key="RibbonFieldInputForeground" Color="#2C2237" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledBackground" Color="#F5F5F5" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledBorderBrush" Color="#D9D9D9" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledForeground" Color="#AEB8C5" />
+      <SolidColorBrush x:Key="RibbonCommandForeground" Color="#2C2237" />
+      <SolidColorBrush x:Key="RibbonCommandPointeroverBackground" Color="#F0E9FF" />
+      <SolidColorBrush x:Key="RibbonCommandPointeroverForeground" Color="#744CBC" />
+      <SolidColorBrush x:Key="RibbonCommandPressedBackground" Color="#E5D8FF" />
+      <SolidColorBrush x:Key="RibbonCommandPressedForeground" Color="#5E3DA0" />
+      <SolidColorBrush x:Key="RibbonFlyoutBackground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonFlyoutBorderBrush" Color="#DDD7EA" />
+      <SolidColorBrush x:Key="RibbonMenuIconForeground" Color="#8A63D2" />
+    </ResourceDictionary>
+    <ResourceDictionary x:Key="{x:Static semi:SemiTheme.NightSky}">
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderForeground" Color="#EBF2FF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderPointeroverForeground" Color="#FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderPointeroverBackground" Color="#24FFFFFF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderSelectedForeground" Color="#9BB9FF" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderSelectedBackground" Color="#172033" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderStartSelectedBackground" Color="#172033" />
+      <SolidColorBrush x:Key="RibbonMenuTabHeaderEndSelectedBackground" Color="#172033" />
+      <SolidColorBrush x:Key="RibbonFieldLabelForeground" Color="#CCD7E8" />
+      <SolidColorBrush x:Key="RibbonFieldInputBackground" Color="#172033" />
+      <SolidColorBrush x:Key="RibbonFieldInputBorderBrush" Color="#2D3A52" />
+      <SolidColorBrush x:Key="RibbonFieldInputFocusBorderBrush" Color="#7AA2FF" />
+      <SolidColorBrush x:Key="RibbonFieldInputForeground" Color="#EBF2FF" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledBackground" Color="#202A37" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledBorderBrush" Color="#38465A" />
+      <SolidColorBrush x:Key="RibbonFieldInputDisabledForeground" Color="#617184" />
+      <SolidColorBrush x:Key="RibbonCommandForeground" Color="#EBF2FF" />
+      <SolidColorBrush x:Key="RibbonCommandPointeroverBackground" Color="#1E335A" />
+      <SolidColorBrush x:Key="RibbonCommandPointeroverForeground" Color="#9BB9FF" />
+      <SolidColorBrush x:Key="RibbonCommandPressedBackground" Color="#29416B" />
+      <SolidColorBrush x:Key="RibbonCommandPressedForeground" Color="#C4D5FF" />
+      <SolidColorBrush x:Key="RibbonFlyoutBackground" Color="#172033" />
+      <SolidColorBrush x:Key="RibbonFlyoutBorderBrush" Color="#2D3A52" />
+      <SolidColorBrush x:Key="RibbonMenuIconForeground" Color="#7AA2FF" />
+    </ResourceDictionary>
+  </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

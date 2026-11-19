@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Symbol Id="Pump" NodeType="Industrial.Pump" TemplateKey="Industrial.Pump" IconText="P" Icon="Assets/BasicSymbols.Pump.svg" Resource="Assets/BasicSymbols.Pump.svg" Format="Kudo.Symbol/1" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.Pump" DescriptionKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.PumpDescription">
+  <DefaultSize Width="96" Height="72" />
+  <BackgroundImageMappings>
+    <Mapping Property="OperatingState" Value="running" Resource="Assets/BasicSymbols.Pump.Running.svg" />
+    <Mapping Property="OperatingState" Value="stopped" Resource="Assets/BasicSymbols.Pump.Stopped.svg" />
+  </BackgroundImageMappings>
+  <ThreeD Type="Object">
+    <Property Name="Enabled" Type="Boolean">true</Property>
+    <Property Name="Shape" Type="String">Cube</Property>
+    <Property Name="Color" Type="String">#2378D5</Property>
+    <Property Name="Size" Type="Object">
+      <Property Name="Width" Type="Number">1.35</Property>
+      <Property Name="Height" Type="Number">0.78</Property>
+      <Property Name="Depth" Type="Number">0.62</Property>
+    </Property>
+  </ThreeD>
+  <Ports>
+    <Port Id="Inlet" X="0.02" Y="0.75" DataType="Fluid" Kind="Input" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.Pump.Inlet" />
+    <Port Id="Outlet" X="0.98" Y="0.38" DataType="Fluid" Kind="Output" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.Pump.Outlet" />
+  </Ports>
+  <PropertyDefinitions>
+    <Property Name="OperatingState" ValueKind="Choice" Editor="RadioButton" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.OperatingState" GroupKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.OperatingParameters">
+      <DefaultValue Type="String">running</DefaultValue>
+      <Options>
+        <Option Value="running" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPropertyOption.OperatingState.Running" />
+        <Option Value="stopped" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPropertyOption.OperatingState.Stopped" />
+      </Options>
+    </Property>
+    <Property Name="RatedFlow" ValueKind="Number" Unit="kg/s" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.RatedFlow" GroupKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.BasicParameters">
+      <DefaultValue Type="Integer">0</DefaultValue>
+    </Property>
+    <Property Name="RatedHead" ValueKind="Number" Unit="m" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.RatedHead" GroupKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.BasicParameters">
+      <DefaultValue Type="Integer">0</DefaultValue>
+    </Property>
+    <Property Name="Speed" ValueKind="Integer" Unit="rpm" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.Speed" GroupKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.BasicParameters">
+      <DefaultValue Type="Integer">0</DefaultValue>
+    </Property>
+  </PropertyDefinitions>
+  <Properties>
+    <Property Name="IndustrialCategory" Type="String">BasicSymbols</Property>
+    <Property Name="IndustrialEquipmentKind" Type="String">Pump</Property>
+  </Properties>
+</Symbol>

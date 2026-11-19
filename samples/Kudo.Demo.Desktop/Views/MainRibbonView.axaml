@@ -1,0 +1,996 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:automation="using:Avalonia.Automation"
+             xmlns:i18n="using:CodeWF.Avalonia.Lang.MarkupExtensions"
+             xmlns:helpers="using:Kudo.AvaloniaCommon.Helpers"
+             xmlns:lang="using:Localization.Kudo_Demo_Desktop.Views"
+             xmlns:models="using:Kudo"
+             xmlns:export="using:Kudo.Avalonia.Export"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:services="using:Kudo.Demo.Desktop.Services"
+             xmlns:views="using:Kudo.Demo.Desktop.Views"
+             xmlns:vm="using:Kudo.Demo.Desktop.ViewModels"
+             xmlns:u="https://irihi.tech/ursa"
+             x:Class="Kudo.Demo.Desktop.Views.MainRibbonView"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             x:DataType="vm:MainRibbonViewModel">
+    <Grid RowDefinitions="32,Auto"
+          Background="Transparent"
+          ClipToBounds="True">
+        <Border x:Name="RibbonHeaderBackground"
+                Grid.Row="0"
+                Background="{DynamicResource RibbonMenuTabStripBackground}">
+            <Grid ColumnDefinitions="Auto,*">
+                <Border Grid.Column="0"
+                        Classes="QuickToolBarRoot RibbonHeader">
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <u:IconButton x:Name="QuickCreateGraphButton"
+                                      Classes="QuickToolButton"
+                                      Icon="{StaticResource SemiIconPlusStroked}"
+                                      helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.NewCanvas}}"
+                                      Command="{Binding CreateGraph}" />
+                        <u:IconButton x:Name="QuickOpenGraphButton"
+                                      Classes="QuickToolButton"
+                                      Icon="{StaticResource SemiIconFolderOpenStroked}"
+                                      helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.OpenFile}}"
+                                      Command="{Binding OpenGraphCommand}" />
+                        <u:IconButton x:Name="QuickSaveGraphButton"
+                                      Classes="QuickToolButton"
+                                      Icon="{StaticResource SemiIconSaveStroked}"
+                                      helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.SaveCurrentCanvas}}"
+                                      Command="{Binding SaveGraphCommand}" />
+                    </StackPanel>
+                </Border>
+                <TabStrip x:Name="RibbonTabs"
+                          Classes="RibbonMenuTabs Left"
+                          Grid.Column="1"
+                          SelectedIndex="0"
+                          VerticalAlignment="Top">
+                    <TabStripItem Classes="RibbonMenuTab Start" Content="{i18n:I18n {x:Static lang:MainWindow.FileTab}}">
+                        <TabStripItem.Tag>
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                          VerticalScrollBarVisibility="Disabled">
+                                <WrapPanel Classes="RibbonMenuContent Left">
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="CopyButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Edit.Copy"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Copy}}"
+                                                        Icon="{StaticResource SemiIconCopyStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanCopy}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.CopyShortcut}}"
+                                                        Command="{Binding ClipboardCommand}"
+                                                        CommandParameter="{x:Static services:MainWindowClipboardAction.Copy}" />
+                                                <u:IconButton x:Name="CutButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Edit.Cut"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Cut}}"
+                                                        Icon="{StaticResource SemiIconScissorsStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanCut}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.CutShortcut}}"
+                                                        Command="{Binding ClipboardCommand}"
+                                                        CommandParameter="{x:Static services:MainWindowClipboardAction.Cut}" />
+                                                <u:IconButton x:Name="PasteButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Edit.PasteAsync"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Paste}}"
+                                                        Icon="{StaticResource SemiIconDownloadStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanPaste}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.PasteShortcut}}"
+                                                        Command="{Binding ClipboardCommand}"
+                                                        CommandParameter="{x:Static services:MainWindowClipboardAction.Paste}" />
+                                                <u:IconButton x:Name="DuplicateButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Edit.Duplicate"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Duplicate}}"
+                                                        Icon="{StaticResource SemiIconCopyAdd}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanDuplicate}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.DuplicateShortcut}}"
+                                                        Command="{Binding ExecuteDocumentEditAction}"
+                                                        CommandParameter="{x:Static services:MainWindowDocumentEditAction.DuplicateSelection}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                    <u:Divider Classes="RibbonGroupDivider" Orientation="Vertical" Height="NaN" />
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="UndoButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Edit.Undo"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Undo}}"
+                                                        Icon="{StaticResource SemiIconUndo}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanUndo}"
+                                                        helpers:ToolTipHelper.Text="{Binding Workspace.UndoTip}"
+                                                        Command="{Binding ExecuteDocumentEditAction}"
+                                                        CommandParameter="{x:Static services:MainWindowDocumentEditAction.Undo}" />
+                                                <u:IconButton x:Name="RedoButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Edit.Redo"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Redo}}"
+                                                        Icon="{StaticResource SemiIconRedoStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanRedo}"
+                                                        helpers:ToolTipHelper.Text="{Binding Workspace.RedoTip}"
+                                                        Command="{Binding ExecuteDocumentEditAction}"
+                                                        CommandParameter="{x:Static services:MainWindowDocumentEditAction.Redo}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                    <u:Divider Classes="RibbonGroupDivider" Orientation="Vertical" Height="NaN" />
+                                    <views:DocumentCommandsView />
+                                    <u:Divider Classes="RibbonGroupDivider" Orientation="Vertical" Height="NaN" />
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="CloseGraphButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.CloseCanvas}}"
+                                                        Icon="{StaticResource SemiIconClose}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding CloseActiveDocumentCommand}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                </WrapPanel>
+                            </ScrollViewer>
+                        </TabStripItem.Tag>
+                    </TabStripItem>
+                    <TabStripItem Classes="RibbonMenuTab" Content="{i18n:I18n {x:Static lang:MainWindow.ModelingTab}}">
+                        <TabStripItem.Tag>
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                          VerticalScrollBarVisibility="Disabled">
+                                <WrapPanel Classes="RibbonMenuContent Left">
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="AddValveNodeButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ValveNode}}"
+                                                        Icon="{StaticResource SemiIconFlowChartStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAddContent}"
+                                                        Command="{Binding ExecuteModelingAction}"
+                                                        CommandParameter="{x:Static services:MainWindowModelingAction.AddValveNode}" />
+                                                <u:IconButton x:Name="AddPumpNodeButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.PumpNode}}"
+                                                        Icon="{StaticResource SemiIconPulse}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAddContent}"
+                                                        Command="{Binding ExecuteModelingAction}"
+                                                        CommandParameter="{x:Static services:MainWindowModelingAction.AddPumpNode}" />
+                                                <u:IconButton x:Name="AddInstrumentNodeButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.InstrumentNode}}"
+                                                        Icon="{StaticResource SemiIconActivity}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAddContent}"
+                                                        Command="{Binding ExecuteModelingAction}"
+                                                        CommandParameter="{x:Static services:MainWindowModelingAction.AddInstrumentNode}" />
+                                                <u:IconButton x:Name="AddAnnotationButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Annotation}}"
+                                                        Icon="{StaticResource SemiIconCommentStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAddContent}"
+                                                        Command="{Binding ExecuteModelingAction}"
+                                                        CommandParameter="{x:Static services:MainWindowModelingAction.AddAnnotation}" />
+                                                <u:IconButton x:Name="DeleteSelectionButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Edit.Delete"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.DeleteSelection}}"
+                                                        Icon="{StaticResource SemiIconDeleteStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanDeleteSelection}"
+                                                        Command="{Binding ExecuteDocumentEditAction}"
+                                                        CommandParameter="{x:Static services:MainWindowDocumentEditAction.DeleteSelection}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                    <u:Divider Classes="RibbonGroupDivider" Orientation="Vertical" Height="NaN" />
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="SelectAllButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.SelectAllNodes"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.SelectAll}}"
+                                                        Icon="{StaticResource SemiIconCheckboxTick}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanSelectDocumentNodes}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.SelectAllShortcut}}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.SelectAll}" />
+                                                <u:IconButton x:Name="ClearSelectionButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.Clear"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ClearSelection}}"
+                                                        Icon="{StaticResource SemiIconClose}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanClearSelection}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.ClearSelectionShortcut}}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.Clear}" />
+                                                <u:IconButton x:Name="InvertSelectionButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.InvertNodes"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.InvertSelection}}"
+                                                        Icon="{StaticResource SemiIconRefresh}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanSelectDocumentNodes}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.InvertSelectionTip}}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.Invert}" />
+                                                <u:IconButton x:Name="SelectSameTypeButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.SelectNodesOfSameType"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.SelectSameType}}"
+                                                        Icon="{StaticResource SemiIconLayers}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanSelectSameType}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.SelectSameTypeTip}}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.SameType}" />
+                                                <u:IconButton x:Name="SelectAdjacentButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.SelectAdjacent"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.SelectAdjacent}}"
+                                                        Icon="{StaticResource SemiIconLink}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanTraverseSelection}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.SelectAdjacentTip}}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.Adjacent}" />
+                                                <u:IconButton x:Name="SelectUpstreamButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.SelectReachable.Upstream"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.SelectUpstream}}"
+                                                        Icon="{StaticResource SemiIconRoute}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanTraverseSelection}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.Upstream}" />
+                                                <u:IconButton x:Name="SelectDownstreamButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.SelectReachable.Downstream"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.SelectDownstream}}"
+                                                        Icon="{StaticResource SemiIconForwardStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanTraverseSelection}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.Downstream}" />
+                                                <u:IconButton x:Name="SelectConnectedButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.SelectReachable.Connected"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.SelectBranch}}"
+                                                        Icon="{StaticResource SemiIconBranch}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanTraverseSelection}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.Connected}" />
+                                                <u:IconButton x:Name="SelectPathButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.SelectShortestPath"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.SelectPath}}"
+                                                        Icon="{StaticResource SemiIconLink}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanSelectPath}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.SelectPathTip}}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.ShortestPath}" />
+                                                <u:IconButton x:Name="SelectCycleButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.SelectFirstCycle"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.LocateCycles}}"
+                                                        Icon="{StaticResource SemiIconRefresh}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAnalyzeDocument}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.FirstCycle}" />
+                                                <u:IconButton x:Name="SelectSourceNodesButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.SelectNodesByRole.Source"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.SourceNodes}}"
+                                                        Icon="{StaticResource SemiIconPlusCircleStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAnalyzeDocument}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.Sources}" />
+                                                <u:IconButton x:Name="SelectSinkNodesButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.SelectNodesByRole.Sink"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.SinkNodes}}"
+                                                        Icon="{StaticResource SemiIconFlagStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAnalyzeDocument}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.Sinks}" />
+                                                <u:IconButton x:Name="SelectIsolatedNodesButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.SelectNodesByRole.Isolated"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.IsolatedNodes}}"
+                                                        Icon="{StaticResource SemiIconIssueStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAnalyzeDocument}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.Isolated}" />
+                                                <u:IconButton x:Name="SelectCriticalPathButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.SelectCriticalPath"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.CriticalPath}}"
+                                                        Icon="{StaticResource SemiIconMapPinStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAnalyzeDocument}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.CriticalPath}" />
+                                                <u:IconButton x:Name="SelectViewportButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Selection.SelectNodesInViewport"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.SelectViewport}}"
+                                                        Icon="{StaticResource SemiIconGridStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAnalyzeDocument}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.SelectViewportTip}}"
+                                                        Command="{Binding ExecuteSelectionAction}"
+                                                        CommandParameter="{x:Static services:MainWindowSelectionAction.Viewport}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                    <u:Divider Classes="RibbonGroupDivider" Orientation="Vertical" Height="NaN" />
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="GroupNodesButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Edit.Group"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.CreateGroup}}"
+                                                        Icon="{StaticResource SemiIconLayers}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanGroup}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.CreateGroupShortcut}}"
+                                                        Command="{Binding ExecuteDocumentEditAction}"
+                                                        CommandParameter="{x:Static services:MainWindowDocumentEditAction.GroupSelection}" />
+                                                <u:IconButton x:Name="UngroupNodesButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Edit.Ungroup"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Ungroup}}"
+                                                        Icon="{StaticResource SemiIconClose}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanUngroup}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.UngroupShortcut}}"
+                                                        Command="{Binding ExecuteDocumentEditAction}"
+                                                        CommandParameter="{x:Static services:MainWindowDocumentEditAction.UngroupSelection}" />
+                                                <u:IconButton x:Name="ToggleGroupCollapsedButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Edit.ToggleGroup"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.CollapseOrExpandGroup}}"
+                                                        Icon="{StaticResource SemiIconExpand}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanToggleGroup}"
+                                                        Command="{Binding ExecuteDocumentEditAction}"
+                                                        CommandParameter="{x:Static services:MainWindowDocumentEditAction.ToggleSelectedGroup}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                    <u:Divider Classes="RibbonGroupDivider" Orientation="Vertical" Height="NaN" />
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="DirectRoutingButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Connections.SetRoutingStyle.Direct"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Direct}}"
+                                                        Icon="{StaticResource SemiIconRoute}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanChangeRouting}"
+                                                        Command="{Binding SetRoutingStyle}"
+                                                        CommandParameter="{x:Static models:EdgeRoutingStyle.Direct}" />
+                                                <u:IconButton x:Name="BezierRoutingButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Connections.SetRoutingStyle.Bezier"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Bezier}}"
+                                                        Icon="{StaticResource SemiIconBranch}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanChangeRouting}"
+                                                        Command="{Binding SetRoutingStyle}"
+                                                        CommandParameter="{x:Static models:EdgeRoutingStyle.Bezier}" />
+                                                <u:IconButton x:Name="OrthogonalRoutingButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Connections.SetRoutingStyle.Orthogonal"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Orthogonal}}"
+                                                        Icon="{StaticResource SemiIconLink}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanChangeRouting}"
+                                                        Command="{Binding SetRoutingStyle}"
+                                                        CommandParameter="{x:Static models:EdgeRoutingStyle.Orthogonal}" />
+                                                <u:IconButton x:Name="SmartOrthogonalRoutingButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Connections.SetRoutingStyle.SmartOrthogonal"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.SmartOrthogonal}}"
+                                                        Icon="{StaticResource SemiIconRoute}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanChangeRouting}"
+                                                        Command="{Binding SetRoutingStyle}"
+                                                        CommandParameter="{x:Static models:EdgeRoutingStyle.SmartOrthogonal}" />
+                                                <u:IconButton x:Name="ManualRoutingButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Manual}}"
+                                                        Icon="{StaticResource SemiIconRoute}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanChangeRouting}"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Connections.SetRoutingStyle.Manual"
+                                                        Command="{Binding SetRoutingStyle}"
+                                                        CommandParameter="{x:Static models:EdgeRoutingStyle.Manual}" />
+                                                <u:IconButton x:Name="ClearWaypointsButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ClearWaypoints}}"
+                                                        Icon="{StaticResource SemiIconClose}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanChangeRouting}"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Connections.ClearWaypoints"
+                                                        Command="{Binding ClearEdgeWaypoints}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                </WrapPanel>
+                            </ScrollViewer>
+                        </TabStripItem.Tag>
+                    </TabStripItem>
+                    <TabStripItem Classes="RibbonMenuTab" Content="{i18n:I18n {x:Static lang:MainWindow.LayoutTab}}">
+                        <TabStripItem.Tag>
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                          VerticalScrollBarVisibility="Disabled">
+                                <WrapPanel Classes="RibbonMenuContent Left">
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="ApplyLayeredLayoutButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Arrangement.ApplyLayered"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.LayeredLayout}}"
+                                                        Icon="{StaticResource SemiIconLayers}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanZoom}"
+                                                        Command="{Binding ExecuteCanvasViewAction}"
+                                                        CommandParameter="{x:Static services:MainWindowCanvasViewAction.ApplyLayeredLayout}" />
+                                                <u:IconButton x:Name="FitCanvasButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Viewport.FitDocument"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.FitCanvas}}"
+                                                        Icon="{StaticResource SemiIconExpand}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanZoom}"
+                                                        Command="{Binding ExecuteCanvasViewAction}"
+                                                        CommandParameter="{x:Static services:MainWindowCanvasViewAction.FitDocument}" />
+                                                <u:IconButton x:Name="FitSelectionButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Viewport.FitSelection"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.FitSelection}}"
+                                                        Icon="{StaticResource SemiIconExpand}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanFitSelection}"
+                                                        Command="{Binding ExecuteCanvasViewAction}"
+                                                        CommandParameter="{x:Static services:MainWindowCanvasViewAction.FitSelection}" />
+                                                <u:IconButton x:Name="ZoomOutButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Viewport.ZoomBy.Out"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ZoomOut}}"
+                                                        Icon="{StaticResource SemiIconMinusStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanZoom}"
+                                                        Command="{Binding ZoomOut}" />
+                                                <u:IconButton x:Name="ZoomActualSizeButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Viewport.SetZoom.Actual"
+                                                        Classes="RibbonCommand"
+                                                        Content="100%"
+                                                        Icon="{StaticResource SemiIconRefresh}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanZoom}"
+                                                        Command="{Binding ExecuteCanvasViewAction}"
+                                                        CommandParameter="{x:Static services:MainWindowCanvasViewAction.ActualSize}" />
+                                                <u:IconButton x:Name="ZoomInButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Viewport.ZoomBy.In"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ZoomIn}}"
+                                                        Icon="{StaticResource SemiIconPlusStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanZoom}"
+                                                        Command="{Binding ZoomIn}" />
+                                                <u:IconButton x:Name="ResetViewportButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Viewport.Reset"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ResetView}}"
+                                                        Icon="{StaticResource SemiIconRefresh}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanZoom}"
+                                                        Command="{Binding ExecuteCanvasViewAction}"
+                                                        CommandParameter="{x:Static services:MainWindowCanvasViewAction.Reset}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                    <u:Divider Classes="RibbonGroupDivider" Orientation="Vertical" Height="NaN" />
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="AlignLeftButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Arrangement.Align.Left"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.AlignLeft}}"
+                                                        Icon="{StaticResource SemiIconAlignHLeftStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAlignSelection}"
+                                                        Command="{Binding ExecuteArrangementAction}"
+                                                        CommandParameter="{x:Static services:MainWindowArrangementAction.AlignLeft}" />
+                                                <u:IconButton x:Name="AlignHorizontalCenterButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Arrangement.Align.HorizontalCenter"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.AlignHorizontalCenter}}"
+                                                        Icon="{StaticResource SemiIconAlignHCenterStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAlignSelection}"
+                                                        Command="{Binding ExecuteArrangementAction}"
+                                                        CommandParameter="{x:Static services:MainWindowArrangementAction.AlignHorizontalCenter}" />
+                                                <u:IconButton x:Name="AlignRightButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Arrangement.Align.Right"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.AlignRight}}"
+                                                        Icon="{StaticResource SemiIconAlignHRightStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAlignSelection}"
+                                                        Command="{Binding ExecuteArrangementAction}"
+                                                        CommandParameter="{x:Static services:MainWindowArrangementAction.AlignRight}" />
+                                                <u:IconButton x:Name="AlignTopButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Arrangement.Align.Top"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.AlignTop}}"
+                                                        Icon="{StaticResource SemiIconAlignVTopStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAlignSelection}"
+                                                        Command="{Binding ExecuteArrangementAction}"
+                                                        CommandParameter="{x:Static services:MainWindowArrangementAction.AlignTop}" />
+                                                <u:IconButton x:Name="AlignVerticalCenterButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Arrangement.Align.VerticalCenter"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.AlignVerticalCenter}}"
+                                                        Icon="{StaticResource SemiIconAlignVCenterStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAlignSelection}"
+                                                        Command="{Binding ExecuteArrangementAction}"
+                                                        CommandParameter="{x:Static services:MainWindowArrangementAction.AlignVerticalCenter}" />
+                                                <u:IconButton x:Name="AlignBottomButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Arrangement.Align.Bottom"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.AlignBottom}}"
+                                                        Icon="{StaticResource SemiIconAlignVBottomStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAlignSelection}"
+                                                        Command="{Binding ExecuteArrangementAction}"
+                                                        CommandParameter="{x:Static services:MainWindowArrangementAction.AlignBottom}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                    <u:Divider Classes="RibbonGroupDivider" Orientation="Vertical" Height="NaN" />
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="DistributeHorizontalButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Arrangement.Distribute.Horizontal"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.DistributeHorizontally}}"
+                                                        Icon="{StaticResource SemiIconAlignJustify}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanDistributeSelection}"
+                                                        Command="{Binding ExecuteArrangementAction}"
+                                                        CommandParameter="{x:Static services:MainWindowArrangementAction.DistributeHorizontally}" />
+                                                <u:IconButton x:Name="DistributeVerticalButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Arrangement.Distribute.Vertical"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.DistributeVertically}}"
+                                                        Icon="{StaticResource SemiIconMenu}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanDistributeSelection}"
+                                                        Command="{Binding ExecuteArrangementAction}"
+                                                        CommandParameter="{x:Static services:MainWindowArrangementAction.DistributeVertically}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                </WrapPanel>
+                            </ScrollViewer>
+                        </TabStripItem.Tag>
+                    </TabStripItem>
+                    <TabStripItem Classes="RibbonMenuTab" Content="{i18n:I18n {x:Static lang:MainWindow.RunTab}}">
+                        <TabStripItem.Tag>
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                          VerticalScrollBarVisibility="Disabled">
+                                <WrapPanel Classes="RibbonMenuContent Left">
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="StartRuntimeButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Runtime.ExecuteAsync.Start"
+                                                        Classes="RibbonCommand"
+                                                        Content="{Binding Workspace.StartRuntimeText}"
+                                                        Icon="{StaticResource SemiIconPlay}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanStartRuntime}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.RunTip}}"
+                                                        Command="{Binding StartRuntimeCommand}" />
+                                                <u:IconButton x:Name="PauseRuntimeButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Runtime.ExecuteAsync.Pause"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Pause}}"
+                                                        Icon="{StaticResource SemiIconPause}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanPauseRuntime}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.PauseTip}}"
+                                                        Command="{Binding PauseRuntimeCommand}" />
+                                                <u:IconButton x:Name="StepRuntimeButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Runtime.ExecuteAsync.Step"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Step}}"
+                                                        Icon="{StaticResource SemiIconForwardStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanStepRuntime}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.StepTip}}"
+                                                        Command="{Binding StepRuntimeCommand}" />
+                                                <u:IconButton x:Name="StopRuntimeButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Runtime.ExecuteAsync.Stop"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Stop}}"
+                                                        Icon="{StaticResource SemiIconStop}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanStopRuntime}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.StopTip}}"
+                                                        Command="{Binding StopRuntimeCommand}" />
+                                                <u:IconButton x:Name="ResetRuntimeButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Runtime.ExecuteAsync.Reset"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Reset}}"
+                                                        Icon="{StaticResource SemiIconRefresh}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanResetRuntime}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.ResetTip}}"
+                                                        Command="{Binding ResetRuntimeCommand}" />
+                                                <u:IconButton x:Name="ToggleBreakpointButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Runtime.ToggleBreakpoint"
+                                                        Classes="RibbonCommand"
+                                                        Content="{Binding Workspace.ToggleBreakpointText}"
+                                                        Icon="{StaticResource SemiIconMapPinStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanToggleBreakpoint}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.BreakpointTip}}"
+                                                        Command="{Binding ToggleBreakpointCommand}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                    <u:Divider Classes="RibbonGroupDivider" Orientation="Vertical" Height="NaN" />
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="RuntimeVariablesButton"
+                                                        automation:AutomationProperties.AutomationId="Demo.RuntimeTools.Variables"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.RuntimeVariables}}"
+                                                        Icon="{StaticResource SemiIconActivity}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding OpenRuntimeVariables}" />
+                                                <u:IconButton x:Name="RuntimeBreakpointsButton"
+                                                        automation:AutomationProperties.AutomationId="Demo.RuntimeTools.Breakpoints"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.RuntimeBreakpoints}}"
+                                                        Icon="{StaticResource SemiIconMapPinStroked}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding OpenRuntimeBreakpoints}" />
+                                                <u:IconButton x:Name="RuntimeCallStackButton"
+                                                        automation:AutomationProperties.AutomationId="Demo.RuntimeTools.CallStack"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.RuntimeCallStack}}"
+                                                        Icon="{StaticResource SemiIconLayers}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding OpenRuntimeCallStack}" />
+                                                <u:IconButton x:Name="RuntimeTraceButton"
+                                                        automation:AutomationProperties.AutomationId="Demo.RuntimeTools.Trace"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.RuntimeTrace}}"
+                                                        Icon="{StaticResource SemiIconTerminal}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding OpenRuntimeTrace}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                    <u:Divider Classes="RibbonGroupDivider" Orientation="Vertical" Height="NaN" />
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="RefreshRuntimeButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Runtime.RefreshAsync"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.RefreshRuntime}}"
+                                                        Icon="{StaticResource SemiIconRefresh}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanRefreshRuntime}"
+                                                        Command="{Binding RefreshRuntimeCommand}" />
+                                                <u:IconButton x:Name="ClearRuntimeBreakpointsButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Runtime.ClearBreakpoints"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ClearRuntimeBreakpoints}}"
+                                                        Icon="{StaticResource SemiIconDeleteStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanClearRuntimeBreakpoints}"
+                                                        Command="{Binding ClearRuntimeBreakpoints}" />
+                                                <u:IconButton x:Name="ClearRuntimeWatchesButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Runtime.ClearWatches"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ClearRuntimeWatches}}"
+                                                        Icon="{StaticResource SemiIconDeleteStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanClearRuntimeWatches}"
+                                                        Command="{Binding ClearRuntimeWatches}" />
+                                                <u:IconButton x:Name="ClearRuntimeDiagnosticsButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Runtime.ClearDiagnostics"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ClearRuntimeDiagnostics}}"
+                                                        Icon="{StaticResource SemiIconDeleteStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanClearRuntimeDiagnostics}"
+                                                        Command="{Binding ClearRuntimeDiagnostics}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                </WrapPanel>
+                            </ScrollViewer>
+                        </TabStripItem.Tag>
+                    </TabStripItem>
+                    <TabStripItem Classes="RibbonMenuTab" Content="{i18n:I18n {x:Static lang:MainWindow.ViewTab}}">
+                        <TabStripItem.Tag>
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                          VerticalScrollBarVisibility="Disabled">
+                                <WrapPanel Classes="RibbonMenuContent Left">
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="ToolboxToggleButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ModelLibrary}}"
+                                                        Icon="{StaticResource SemiIconApps}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding ToggleToolbox}" />
+                                                <u:IconButton Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.TaskManager}}"
+                                                        Icon="{StaticResource SemiIconListView}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding ToggleDocumentExplorer}" />
+                                                <u:IconButton Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Properties}}"
+                                                        Icon="{StaticResource SemiIconSettingStroked}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding ToggleProperties}" />
+                                                <u:IconButton Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Output}}"
+                                                        Icon="{StaticResource SemiIconTerminal}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding ToggleDiagnostics}" />
+                                                <u:IconButton x:Name="ValidationPanelButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ValidationPanel}}"
+                                                        Icon="{StaticResource SemiIconIssueStroked}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding ToggleValidation}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                    <u:Divider Classes="RibbonGroupDivider" Orientation="Vertical" Height="NaN" />
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="CanvasDisplaySettingsButton"
+                                                        automation:AutomationProperties.AutomationId="Demo.CanvasDisplaySettings"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.CanvasDisplaySettings}}"
+                                                        Icon="{StaticResource SemiIconSettingStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanZoom}"
+                                                        Command="{Binding OpenCanvasDisplaySettings}" />
+                                                <u:IconButton x:Name="GridVisibilityButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Viewport.SetGridVisible"
+                                                        Classes="RibbonCommand"
+                                                        Content="{Binding Workspace.GridVisibilityText}"
+                                                        Icon="{StaticResource SemiIconGridStroked}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding ToggleGrid}" />
+                                                <u:IconButton x:Name="GridSnapButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Viewport.SetSnapEnabled"
+                                                        Classes="RibbonCommand"
+                                                        Content="{Binding Workspace.GridSnapText}"
+                                                        Icon="{StaticResource SemiIconMapPinStroked}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding ToggleGridSnap}" />
+                                                <u:IconButton x:Name="AlignmentGuidesButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Viewport.SetGuidesEnabled"
+                                                        Classes="RibbonCommand"
+                                                        Content="{Binding Workspace.AlignmentGuidesText}"
+                                                        Icon="{StaticResource SemiIconAlignCenter}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding ToggleAlignmentGuides}" />
+                                                <u:IconButton x:Name="ReadOnlyModeButton"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Document.IsReadOnly"
+                                                        Classes="RibbonCommand"
+                                                        Content="{Binding Workspace.ReadOnlyModeText}"
+                                                        Icon="{StaticResource SemiIconLockStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanZoom}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.ReadOnlyModeTip}}"
+                                                        Command="{Binding ToggleReadOnlyMode}" />
+                                                <u:IconButton x:Name="MinimapVisibilityButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{Binding Workspace.MinimapVisibilityText}"
+                                                        Icon="{StaticResource SemiIconExpand}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanZoom}"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Viewport.SetMinimapVisible"
+                                                        Command="{Binding ToggleMinimap}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                    <u:Divider Classes="RibbonGroupDivider" Orientation="Vertical" Height="NaN" />
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="GridSpacing10Button"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Viewport.SetGrid.10"
+                                                        Classes="RibbonCommand"
+                                                        Content="10"
+                                                        Icon="{StaticResource SemiIconGridStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanSetGridSpacing10}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.GridSpacing10}}"
+                                                        Command="{Binding SetGridSpacing}"
+                                                        CommandParameter="10" />
+                                                <u:IconButton x:Name="GridSpacing20Button"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Viewport.SetGrid.20"
+                                                        Classes="RibbonCommand"
+                                                        Content="20"
+                                                        Icon="{StaticResource SemiIconGridStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanSetGridSpacing20}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.GridSpacing20}}"
+                                                        Command="{Binding SetGridSpacing}"
+                                                        CommandParameter="20" />
+                                                <u:IconButton x:Name="GridSpacing40Button"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Viewport.SetGrid.40"
+                                                        Classes="RibbonCommand"
+                                                        Content="40"
+                                                        Icon="{StaticResource SemiIconGridStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanSetGridSpacing40}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.GridSpacing40}}"
+                                                        Command="{Binding SetGridSpacing}"
+                                                        CommandParameter="40" />
+                                                <u:IconButton x:Name="GridSpacing80Button"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Viewport.SetGrid.80"
+                                                        Classes="RibbonCommand"
+                                                        Content="80"
+                                                        Icon="{StaticResource SemiIconGridStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanSetGridSpacing80}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.GridSpacing80}}"
+                                                        Command="{Binding SetGridSpacing}"
+                                                        CommandParameter="80" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                </WrapPanel>
+                            </ScrollViewer>
+                        </TabStripItem.Tag>
+                    </TabStripItem>
+                    <TabStripItem Classes="RibbonMenuTab End" Content="{i18n:I18n {x:Static lang:MainWindow.OutputTab}}">
+                        <TabStripItem.Tag>
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                          VerticalScrollBarVisibility="Disabled">
+                                <WrapPanel Classes="RibbonMenuContent Left">
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="ExportPngButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ExportPng}}"
+                                                        Icon="{StaticResource SemiIconDownloadStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding IsWorkspaceAvailable}"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Output.ExportAsync.Png"
+                                                        Command="{Binding ExportGraphCommand}"
+                                                        CommandParameter="{x:Static export:GraphExportFormat.Png}" />
+                                                <u:IconButton x:Name="ExportSvgButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ExportSvg}}"
+                                                        Icon="{StaticResource SemiIconDownloadStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding IsWorkspaceAvailable}"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Output.ExportAsync.Svg"
+                                                        Command="{Binding ExportGraphCommand}"
+                                                        CommandParameter="{x:Static export:GraphExportFormat.Svg}" />
+                                                <u:IconButton x:Name="ExportPdfButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ExportPdf}}"
+                                                        Icon="{StaticResource SemiIconDownloadStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding IsWorkspaceAvailable}"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Output.ExportAsync.Pdf"
+                                                        Command="{Binding ExportGraphCommand}"
+                                                        CommandParameter="{x:Static export:GraphExportFormat.Pdf}" />
+                                                <u:IconButton x:Name="PrintGraphButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.PrintPdf}}"
+                                                        Icon="{StaticResource SemiIconSaveStroked}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding IsWorkspaceAvailable}"
+                                                        helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.PrintPdfTip}}"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Output.PrintAsync"
+                                                        Command="{Binding PrintGraphCommand}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                    <u:Divider Classes="RibbonGroupDivider" Orientation="Vertical" Height="NaN" />
+                                    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <u:IconButton x:Name="ValidateGraphButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ValidateDocument}}"
+                                                        Icon="{StaticResource SemiIconCheckboxTick}"
+                                                        IconPlacement="Top"
+                                                        IsEnabled="{Binding Workspace.CanAnalyzeDocument}"
+                                                        automation:AutomationProperties.AutomationId="GraphEditorContext.Output.Validate"
+                                                        Command="{Binding ValidateGraph}" />
+                                                <u:IconButton x:Name="OpenValidationPanelButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.ValidationPanel}}"
+                                                        Icon="{StaticResource SemiIconIssueStroked}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding ToggleValidation}" />
+                                                <u:IconButton x:Name="OpenDiagnosticsPanelButton"
+                                                        Classes="RibbonCommand"
+                                                        Content="{i18n:I18n {x:Static lang:MainWindow.Output}}"
+                                                        Icon="{StaticResource SemiIconTerminal}"
+                                                        IconPlacement="Top"
+                                                        Command="{Binding ToggleDiagnostics}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                </WrapPanel>
+                            </ScrollViewer>
+                        </TabStripItem.Tag>
+                    </TabStripItem>
+                </TabStrip>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1"
+                Margin="0"
+                Background="#FFFFFF"
+                BorderThickness="0"
+                CornerRadius="0"
+                ClipToBounds="True">
+            <ContentControl x:Name="RibbonContent"
+                            Height="{StaticResource RibbonMenuContentHeight}"
+                            Opacity="1"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Top">
+                <ContentControl.Transitions>
+                    <Transitions>
+                        <DoubleTransition Property="Height" Duration="0:0:0.14" />
+                        <DoubleTransition Property="Opacity" Duration="0:0:0.08" />
+                    </Transitions>
+                </ContentControl.Transitions>
+            </ContentControl>
+        </Border>
+    </Grid>
+</UserControl>

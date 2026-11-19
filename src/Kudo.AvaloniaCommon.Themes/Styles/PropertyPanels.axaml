@@ -1,0 +1,43 @@
+<Styles xmlns="https://github.com/avaloniaui">
+  <Style Selector="Border.PropertyGroupHeader">
+    <Setter Property="Background" Value="{DynamicResource Kudo.PropertyPanel.GroupHeader.Background}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Kudo.PropertyPanel.GroupHeader.CornerRadius}" />
+    <Setter Property="ClipToBounds" Value="True" />
+  </Style>
+
+  <Style Selector="Border.PropertyGroupHeader TextBlock">
+    <Setter Property="FontSize" Value="{DynamicResource Kudo.Typography.Caption.FontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Strong.FontWeight}" />
+  </Style>
+
+  <Style Selector="Button.PropertyGroupHeader">
+    <Setter Property="TextElement.FontSize" Value="{DynamicResource Kudo.Typography.Caption.FontSize}" />
+    <Setter Property="TextElement.FontWeight" Value="{DynamicResource Kudo.Typography.Strong.FontWeight}" />
+  </Style>
+
+  <Style Selector="Button.PropertyGroupHeader">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Kudo.PropertyPanel.GroupHeader.CornerRadius}" />
+  </Style>
+  <Style Selector="Button.PropertyGroupHeader.selected">
+    <Setter Property="Background" Value="{DynamicResource Kudo.PropertyPanel.GroupHeader.Background}" />
+  </Style>
+  <Style Selector="Button.PropertyGroupHeader:pointerover">
+    <Setter Property="Background" Value="{DynamicResource Kudo.PropertyPanel.GroupHeader.PointerOverBackground}" />
+  </Style>
+  <Style Selector="Button.PropertyGroupHeader:pressed">
+    <Setter Property="Background" Value="{DynamicResource Kudo.PropertyPanel.GroupHeader.PressedBackground}" />
+  </Style>
+
+  <Style Selector="Border.PropertyGroupHintPanel">
+    <Setter Property="Background" Value="{DynamicResource Kudo.PropertyPanel.GroupHint.Background}" />
+  </Style>
+
+  <Style Selector="Border.PropertyGroupHintPanel TextBlock">
+    <Setter Property="FontSize" Value="{DynamicResource Kudo.Typography.Caption.FontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Regular.FontWeight}" />
+  </Style>
+</Styles>

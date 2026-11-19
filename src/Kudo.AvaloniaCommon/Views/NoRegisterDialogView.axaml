@@ -1,0 +1,69 @@
+<codewf:CodeWFWindow xmlns="https://github.com/avaloniaui"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:codewf="https://codewf.com"
+                     xmlns:prism="http://prismlibrary.com/"
+                     xmlns:views="clr-namespace:Kudo.AvaloniaCommon.Views"
+                     xmlns:vm="using:Kudo.AvaloniaCommon.ViewModels"
+                     prism:ViewModelLocator.AutoWireViewModel="True" x:CompileBindings="True"
+                     Classes="AppDialogWindow NoRegisterDialogWindow"
+                     TitleBarHeight="0"
+                     IsMinimizeButtonVisible="False" IsRestoreButtonVisible="False" IsFullScreenButtonVisible="False"
+                     ContentExtendsIntoTitleBar="True" Title=""
+                     mc:Ignorable="d" d:DesignWidth="520" d:DesignHeight="320" Width="520" Height="320"
+                     x:DataType="vm:NoRegisterDialogViewModel" WindowStartupLocation="CenterScreen"
+                     x:Class="Kudo.AvaloniaCommon.Views.NoRegisterDialogView">
+  <codewf:CodeWFWindow.Resources>
+    <!--窗体控制按钮前景色-->
+    <!--窗体背景色，因为Dock控件是全局修改应用了，其他的窗体都要修改-->
+    <StaticResource x:Key="WindowDefaultBackground" ResourceKey="SemiColorBackground0" />
+  </codewf:CodeWFWindow.Resources>
+
+  <Border Classes="AppDialogRoot"
+          Background="#FFFFFF"
+          CornerRadius="8"
+          BoxShadow="0 4 40 0 #40000000">
+    <Grid RowDefinitions="*,Auto">
+      <Grid ClipToBounds="True">
+        <Image Source="avares://Kudo.AvaloniaCommon/Assets/no-register-background.png"
+               Stretch="Fill"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Top" />
+        <TextBlock Text="{Binding Message}"
+                   Foreground="#FF4D4F"
+                   FontFamily="{DynamicResource NotoSansSC}"
+                   FontSize="16"
+                   FontWeight="{DynamicResource Kudo.Typography.Strong.FontWeight}"
+                   LineHeight="16"
+                   TextAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   Margin="0 0 0 35"/>
+        <TextBlock Foreground="#595959"
+                   FontFamily="{DynamicResource NotoSansSC}"
+                   FontSize="12"
+                   FontWeight="{DynamicResource Kudo.Typography.Regular.FontWeight}"
+                   LineHeight="16"
+                   TextAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   Margin="0 0 0 5">
+          <Run Text="code: " />
+          <Run Text="{Binding ErrorCode}" />
+        </TextBlock>
+      </Grid>
+      <Grid Grid.Row="1" Classes="AppDialogFooter" ColumnDefinitions="*,Auto">
+        <Button Grid.Column="1" Width="68" Height="32"
+                Theme="{DynamicResource OutlineButton}"
+                Classes="Tertiary AppDialogButton"
+                Margin="0 0 2 10"
+                Content="确定"
+                Command="{Binding RaiseOkHandlerAsync}"
+                IsDefault="True"
+                IsCancel="True"
+                CommandParameter="{Binding $parent[views:NoRegisterDialogView]}" />
+      </Grid>
+    </Grid>
+  </Border>
+</codewf:CodeWFWindow>

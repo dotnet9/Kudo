@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelLibrary Format="Kudo.ModelLibrary/1">
+  <Groups>
+    <Group Id="BasicSymbols" IconText="B" Icon="Assets/Category.BasicSymbols.svg" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.BasicSymbols">
+      <Symbols>
+        <Symbol Path="Symbols/BasicSymbols.Valve.xml" />
+        <Symbol Path="Symbols/BasicSymbols.CheckValve.xml" />
+        <Symbol Path="Symbols/BasicSymbols.SafetyValve.xml" />
+        <Symbol Path="Symbols/BasicSymbols.Pump.xml" />
+        <Symbol Path="Symbols/BasicSymbols.Start.xml" />
+        <Symbol Path="Symbols/BasicSymbols.ReferenceTable.xml" />
+      </Symbols>
+    </Group>
+    <Group Id="Piping" IconText="P" Icon="Assets/Category.Piping.svg" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.Piping">
+      <Symbols>
+        <Symbol Path="Symbols/Piping.Elbow.xml" />
+        <Symbol Path="Symbols/Piping.Tee.xml" />
+        <Symbol Path="Symbols/Piping.Junction.xml" />
+        <Symbol Path="Symbols/Piping.Loop.xml" />
+      </Symbols>
+    </Group>
+    <Group Id="Instrumentation" IconText="I" Icon="Assets/Category.Instrumentation.svg" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.Instrumentation">
+      <Symbols>
+        <Symbol Path="Symbols/Instrumentation.Instrument.xml" />
+        <Symbol Path="Symbols/Instrumentation.FlowArrow.xml" />
+        <Symbol Path="Symbols/Instrumentation.TextLabel.xml" />
+        <Symbol Path="Symbols/Instrumentation.Annotation.xml" />
+      </Symbols>
+    </Group>
+  </Groups>
+</ModelLibrary>

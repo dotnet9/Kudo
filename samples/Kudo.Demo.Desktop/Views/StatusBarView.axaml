@@ -1,0 +1,90 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:u="https://irihi.tech/ursa"
+             xmlns:i18n="using:CodeWF.Avalonia.Lang.MarkupExtensions"
+             xmlns:helpers="using:Kudo.AvaloniaCommon.Helpers"
+             xmlns:lang="using:Localization.Kudo_Demo_Desktop.Views"
+             xmlns:vm="using:Kudo.Demo.Desktop.ViewModels"
+             x:Class="Kudo.Demo.Desktop.Views.StatusBarView"
+             x:DataType="vm:MainWindowViewModel">
+    <Border Classes="status-bar">
+        <Grid ColumnDefinitions="Auto,12,*,Auto">
+            <StackPanel Grid.Column="0"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        Spacing="6">
+                <Ellipse Width="7"
+                         Height="7"
+                         Fill="#22C55E" />
+                <TextBlock x:Name="StatusText"
+                           MaxWidth="220"
+                           VerticalAlignment="Center"
+                           FontWeight="SemiBold"
+                           Foreground="#1F2A37"
+                           TextTrimming="CharacterEllipsis"
+                           Text="{Binding StatusText}" />
+            </StackPanel>
+            <Border Grid.Column="1"
+                    Width="1"
+                    Height="14"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="#DCE6F2" />
+            <TextBlock x:Name="DocumentStatusText"
+                       Grid.Column="2"
+                       Classes="status-secondary"
+                       Margin="0,0,12,0"
+                       TextTrimming="CharacterEllipsis"
+                       Text="{Binding DocumentStatusText}" />
+            <StackPanel Grid.Column="3"
+                        Classes="status-zoom-panel"
+                        Orientation="Horizontal"
+                        Spacing="6">
+                <TextBlock x:Name="SelectedComponentsText"
+                           Classes="status-secondary"
+                           Text="{Binding SelectedComponentsText}" />
+                <DropDownButton x:Name="ZoomPresetDropDown"
+                                Classes="status-zoom-dropdown"
+                                Content="{Binding ZoomDisplayText}"
+                                Theme="{DynamicResource BorderlessDropDownButton}"
+                                helpers:ToolTipHelper.Text="{Binding ZoomRangeText}"
+                                IsEnabled="{Binding IsWorkspaceAvailable}">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout ItemsSource="{Binding ZoomPresets}"
+                                    Placement="TopEdgeAlignedRight">
+                            <MenuFlyout.ItemContainerTheme>
+                                <ControlTheme x:DataType="vm:ZoomPresetOption"
+                                              BasedOn="{StaticResource {x:Type MenuItem}}"
+                                              TargetType="MenuItem">
+                                    <Setter Property="Header" Value="{Binding Text}" />
+                                    <Setter Property="Command" Value="{Binding Command}" />
+                                </ControlTheme>
+                            </MenuFlyout.ItemContainerTheme>
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+                <u:IconButton x:Name="StatusZoomOutButton"
+                              Classes="status-zoom-button"
+                              Icon="{StaticResource SemiIconMinusStroked}"
+                              helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.ZoomOut}}"
+                              Command="{Binding ZoomOut}"
+                              IsEnabled="{Binding IsWorkspaceAvailable}" />
+                <Slider x:Name="ZoomSlider"
+                        Classes="status-zoom-slider"
+                        Minimum="0"
+                        Maximum="1"
+                        TickFrequency="0.1"
+                        IsSnapToTickEnabled="False"
+                        helpers:ToolTipHelper.Text="{Binding ZoomRangeText}"
+                        Value="{Binding ZoomSliderPosition, Mode=TwoWay}"
+                        IsEnabled="{Binding IsWorkspaceAvailable}" />
+                <u:IconButton x:Name="StatusZoomInButton"
+                              Classes="status-zoom-button"
+                              Icon="{StaticResource SemiIconPlusStroked}"
+                              helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.ZoomIn}}"
+                              Command="{Binding ZoomIn}"
+                              IsEnabled="{Binding IsWorkspaceAvailable}" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

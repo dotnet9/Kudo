@@ -1,0 +1,6 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:TimeSpan x:Key="MotionDurationFast">00:00:00.12</x:TimeSpan>
+  <x:TimeSpan x:Key="MotionDurationStandard">00:00:00.18</x:TimeSpan>
+  <x:TimeSpan x:Key="MotionDurationEmphasis">00:00:00.22</x:TimeSpan>
+</ResourceDictionary>

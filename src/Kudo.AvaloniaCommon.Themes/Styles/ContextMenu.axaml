@@ -1,0 +1,46 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Styles.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+          <SolidColorBrush x:Key="ContextMenuTextBrush" Color="#262626" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Light">
+          <SolidColorBrush x:Key="ContextMenuTextBrush" Color="#262626" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+          <SolidColorBrush x:Key="ContextMenuTextBrush" Color="#F2F3F5" />
+        </ResourceDictionary>
+      </ResourceDictionary.ThemeDictionaries>
+    </ResourceDictionary>
+  </Styles.Resources>
+
+  <Style Selector="ContextMenu MenuItem, MenuFlyoutPresenter MenuItem">
+    <Setter Property="FontFamily" Value="{StaticResource NotoSansSC}" />
+    <Setter Property="FontSize" Value="{DynamicResource Kudo.Typography.Body.FontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Regular.FontWeight}" />
+    <Setter Property="Foreground" Value="{DynamicResource ContextMenuTextBrush}" />
+  </Style>
+
+  <Style Selector="ContextMenu MenuItem /template/ ContentPresenter#PART_HeaderPresenter,
+                   MenuFlyoutPresenter MenuItem /template/ ContentPresenter#PART_HeaderPresenter">
+    <Setter Property="FontFamily" Value="{StaticResource NotoSansSC}" />
+    <Setter Property="FontSize" Value="{DynamicResource Kudo.Typography.Body.FontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Regular.FontWeight}" />
+    <Setter Property="LineHeight" Value="{DynamicResource Kudo.Typography.Body.LineHeight}" />
+    <Setter Property="TextAlignment" Value="Left" />
+    <Setter Property="Foreground" Value="{DynamicResource ContextMenuTextBrush}" />
+  </Style>
+
+  <Style Selector="ContextMenu MenuItem:disabled /template/ ContentPresenter#PART_HeaderPresenter,
+                   MenuFlyoutPresenter MenuItem:disabled /template/ ContentPresenter#PART_HeaderPresenter">
+    <Setter Property="Foreground" Value="{DynamicResource MenuItemDisabledForeground}" />
+  </Style>
+
+  <Style Selector="ContextMenu MenuItem /template/ Viewbox#PART_IconPresenter,
+                   MenuFlyoutPresenter MenuItem /template/ Viewbox#PART_IconPresenter">
+    <Setter Property="Width" Value="16" />
+    <Setter Property="Height" Value="16" />
+  </Style>
+</Styles>

@@ -1,0 +1,70 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:semi="https://irihi.tech/semi">
+  <Color x:Key="Colors.TitleBar.Foreground">#FFFFFF</Color>
+  <Color x:Key="Colors.Title">#2C2237</Color>
+  <Color x:Key="Colors.Primary.Text">#64546F</Color>
+  <Color x:Key="Colors.Secondary.Text">#82728F</Color>
+  <Color x:Key="Colors.Background">#F6F5FB</Color>
+  <Color x:Key="Colors.Border.BorderBrush">#DDD7EA</Color>
+  <Color x:Key="Colors.DataGrid.BorderBrushe">#DDD7EA</Color>
+  <Color x:Key="CaptionButtonForeground">#FFFFFF</Color>
+  <LinearGradientBrush x:Key="ButtonSolidPrimaryBackground" StartPoint="0%, 50%" EndPoint="100%, 50%">
+    <GradientStop Color="#8A63D2" Offset="0" />
+    <GradientStop Color="#D85A80" Offset="1" />
+  </LinearGradientBrush>
+  <LinearGradientBrush x:Key="ButtonSolidPrimaryPointeroverBackground" StartPoint="0%, 50%" EndPoint="100%, 50%">
+    <GradientStop Color="#7250B1" Offset="0" />
+    <GradientStop Color="#B8496B" Offset="1" />
+  </LinearGradientBrush>
+  <LinearGradientBrush x:Key="ButtonSolidPrimaryPressedBackground" StartPoint="0%, 50%" EndPoint="100%, 50%">
+    <GradientStop Color="#5C408F" Offset="0" />
+    <GradientStop Color="#953B57" Offset="1" />
+  </LinearGradientBrush>
+  <StaticResource x:Key="ButtonSolidPrimaryBorderBrush" ResourceKey="ButtonSolidPrimaryBackground" />
+  <StaticResource x:Key="ButtonSolidPrimaryPointeroverBorderBrush" ResourceKey="ButtonSolidPrimaryPointeroverBackground" />
+  <StaticResource x:Key="ButtonSolidPrimaryPressedBorderBrush" ResourceKey="ButtonSolidPrimaryPressedBackground" />
+  <SolidColorBrush x:Key="ButtonDefaultTertiaryForeground" Color="#2C2237" />
+  <SolidColorBrush x:Key="TreeViewItemDefaultForeground" Color="#2C2237" />
+  <SolidColorBrush x:Key="TreeViewItemIconDefaultForeground" Color="#72637F" />
+  <SolidColorBrush x:Key="TreeViewItemIconHoverForeground" Color="#2C2237" />
+  <SolidColorBrush x:Key="TreeViewItemDisabledForeground" Color="#A898B8" />
+  <SolidColorBrush x:Key="TreeViewItemDefaultBackground" Color="Transparent" />
+  <SolidColorBrush x:Key="TreeViewItemPointeroverForeground" Color="#744CBC" />
+  <SolidColorBrush x:Key="TreeViewItemPointeroverBackground" Color="#F0E9FF" />
+  <SolidColorBrush x:Key="TreeViewItemPressedBackground" Color="#E5D8FF" />
+  <StaticResource x:Key="TreeViewItemSelectedForeground" ResourceKey="SemiColorText0" />
+  <StaticResource x:Key="TreeViewItemSelectedBackground" ResourceKey="SemiColorPrimaryLight" />
+  <SolidColorBrush x:Key="TreeViewItemDisabledBackground" Color="Transparent" />
+  <StaticResource x:Key="TreeViewItemSelectedDisabledBackground" ResourceKey="SemiColorDisabledFill" />
+
+  <!-- KUDO semantic aliases keep business styles independent from palette values. -->
+  <StaticResource x:Key="Kudo.Text.Primary" ResourceKey="SemiColorText0" />
+  <StaticResource x:Key="Kudo.Text.Secondary" ResourceKey="SemiColorText2" />
+  <StaticResource x:Key="Kudo.Text.Disabled" ResourceKey="SemiColorDisabledText" />
+  <StaticResource x:Key="Kudo.Surface.Canvas" ResourceKey="SemiColorBackground0" />
+  <StaticResource x:Key="Kudo.Surface.Subtle" ResourceKey="SemiColorBackground1" />
+  <StaticResource x:Key="Kudo.Surface.Raised" ResourceKey="SemiColorBackground2" />
+  <StaticResource x:Key="Kudo.Surface.Overlay" ResourceKey="SemiColorBackground3" />
+  <StaticResource x:Key="Kudo.Border.Default" ResourceKey="SemiColorBorder" />
+  <StaticResource x:Key="Kudo.Border.Focus" ResourceKey="SemiColorFocusBorder" />
+  <StaticResource x:Key="Kudo.Action.Primary" ResourceKey="SemiColorPrimary" />
+  <StaticResource x:Key="Kudo.Action.PrimaryHover" ResourceKey="SemiColorPrimaryPointerover" />
+  <StaticResource x:Key="Kudo.Action.PrimaryPressed" ResourceKey="SemiColorPrimaryActive" />
+  <StaticResource x:Key="Kudo.Action.PrimarySubtle" ResourceKey="SemiColorPrimaryLight" />
+  <StaticResource x:Key="Kudo.Action.Close" ResourceKey="SemiColorText2" />
+  <StaticResource x:Key="Kudo.State.Info" ResourceKey="SemiColorInformation" />
+  <StaticResource x:Key="Kudo.State.Success" ResourceKey="SemiColorSuccess" />
+  <StaticResource x:Key="Kudo.State.Warning" ResourceKey="SemiColorWarning" />
+  <StaticResource x:Key="Kudo.State.Danger" ResourceKey="SemiColorDanger" />
+  <SolidColorBrush x:Key="Kudo.Surface.Warning" Color="#FFF7E6" />
+  <SolidColorBrush x:Key="Kudo.Surface.WarningSubtle" Color="#FFFDFC" />
+  <SolidColorBrush x:Key="Kudo.Surface.WarningPale" Color="#FFFDF7" />
+  <SolidColorBrush x:Key="Kudo.Surface.Danger" Color="#FFF1F0" />
+  <SolidColorBrush x:Key="Kudo.Surface.Success" Color="#F6FFED" />
+  <SolidColorBrush x:Key="Kudo.Surface.Info" Color="#F0F5FF" />
+  <SolidColorBrush x:Key="Kudo.Surface.Purple" Color="#F9F0FF" />
+  <SolidColorBrush x:Key="Kudo.Border.Warning" Color="#FFE58F" />
+  <SolidColorBrush x:Key="Kudo.Border.Danger" Color="#FFCCC7" />
+  <SolidColorBrush x:Key="Kudo.Border.Success" Color="#B7EB8F" />
+  <SolidColorBrush x:Key="Kudo.Border.Purple" Color="#EFDBFF" />
+  <SolidColorBrush x:Key="Kudo.State.Purple" Color="#722ED1" />
+</ResourceDictionary>

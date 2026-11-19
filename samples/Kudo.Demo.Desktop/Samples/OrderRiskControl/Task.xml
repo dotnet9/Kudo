@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Task Format="Kudo.Task/1" SchemaVersion="1.0" Id="sample-order-risk-control-zh" Title="订单风控">
+  <CanvasSettings IsMinimapVisible="true" IsLevelOfDetailEnabled="true" LodPortsZoomThreshold="0.4" LodLabelsZoomThreshold="0.3" LodSimplifiedZoomThreshold="0.4" PortLabelVisibility="Auto" SymbolNameVisibility="Never" SymbolDescriptionVisibility="Never">
+    <Grid IsVisible="true" IsSnapEnabled="false" IsGuidesEnabled="true" Spacing="20" MajorLineInterval="4" SnapTolerance="8" GuideTolerance="8" />
+  </CanvasSettings>
+  <Nodes>
+    <Node Id="input-a" Type="Input" Title="实时订单" Rotation="0">
+      <Position X="60" Y="70" />
+      <Size Width="150" Height="80" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="out" Name="Out" Kind="Output" DataType="Number" State="Normal">
+          <Capacity MaxIncoming="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="input-b" Type="Input" Title="客户画像" Rotation="0">
+      <Position X="60" Y="250" />
+      <Size Width="150" Height="80" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="out" Name="Out" Kind="Output" DataType="Number" State="Normal">
+          <Capacity MaxIncoming="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="merge" Type="Transform" Title="数据汇聚" Rotation="0">
+      <Position X="340" Y="150" />
+      <Size Width="170" Height="96" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="in" Name="In" Kind="Input" DataType="Number" State="Normal">
+          <Capacity MaxOutgoing="1" />
+          <Properties />
+        </Port>
+        <Port Id="out" Name="Out" Kind="Output" DataType="Number" State="Normal">
+          <Capacity MaxIncoming="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="risk-check" Type="Transform" Title="规则校验" Rotation="0">
+      <Position X="570" Y="150" />
+      <Size Width="170" Height="96" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="in" Name="In" Kind="Input" DataType="Number" State="Normal">
+          <Capacity MaxIncoming="1" MaxOutgoing="1" />
+          <Properties />
+        </Port>
+        <Port Id="out" Name="Out" Kind="Output" DataType="Number" State="Normal">
+          <Capacity MaxIncoming="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="output" Type="Output" Title="审批决策" Rotation="0">
+      <Position X="820" Y="160" />
+      <Size Width="150" Height="80" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="in" Name="In" Kind="Input" DataType="Number" State="Normal">
+          <Capacity MaxOutgoing="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+  </Nodes>
+  <Groups>
+    <Group Id="group-inputs" Title="业务输入" Padding="28" IsCollapsed="false">
+      <NodeIds>
+        <NodeId>input-a</NodeId>
+        <NodeId>input-b</NodeId>
+      </NodeIds>
+      <Properties />
+    </Group>
+  </Groups>
+  <Edges>
+    <Edge Id="edge-input-a" RelationKind="Connection" RoutingStyle="Bezier" StylePreset="Default" SourceMarker="None" TargetMarker="Arrow" Label="订单数据" State="Normal">
+      <Source NodeId="input-a" PortId="out" />
+      <Target NodeId="merge" PortId="in" />
+      <Appearance DashStyle="Solid" Opacity="1" Animation="None" AnimationSpeed="1" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints />
+      <Properties />
+    </Edge>
+    <Edge Id="edge-input-b" RelationKind="Connection" RoutingStyle="Orthogonal" StylePreset="Default" SourceMarker="Diamond" TargetMarker="Arrow" Label="画像特征" State="Normal">
+      <Source NodeId="input-b" PortId="out" />
+      <Target NodeId="merge" PortId="in" />
+      <Appearance DashStyle="Solid" Opacity="1" Animation="None" AnimationSpeed="1" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints />
+      <Properties />
+    </Edge>
+    <Edge Id="edge-risk-check" RelationKind="Connection" RoutingStyle="Bezier" StylePreset="Default" SourceMarker="None" TargetMarker="Arrow" Label="风险特征" State="Normal">
+      <Source NodeId="merge" PortId="out" />
+      <Target NodeId="risk-check" PortId="in" />
+      <Appearance DashStyle="Solid" Opacity="1" Animation="None" AnimationSpeed="1" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints />
+      <Properties />
+    </Edge>
+    <Edge Id="edge-risk-result" RelationKind="Connection" RoutingStyle="Direct" StylePreset="Default" SourceMarker="None" TargetMarker="Arrow" Label="风控结论" State="Normal">
+      <Source NodeId="risk-check" PortId="out" />
+      <Target NodeId="output" PortId="in" />
+      <Appearance DashStyle="Solid" Opacity="1" Animation="None" AnimationSpeed="1" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints />
+      <Properties />
+    </Edge>
+    <Edge Id="edge-output" RelationKind="Connection" RoutingStyle="SmartOrthogonal" StylePreset="Default" SourceMarker="None" TargetMarker="Arrow" Label="订单上下文" State="Normal">
+      <Source NodeId="merge" PortId="out" />
+      <Target NodeId="output" PortId="in" />
+      <Appearance DashStyle="Solid" Opacity="1" Animation="None" AnimationSpeed="1" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints />
+      <Properties />
+    </Edge>
+  </Edges>
+  <Annotations>
+    <Annotation Id="risk-review-note" Text="复核说明：高风险订单必须通过规则校验后才能进入审批。">
+      <Position X="545" Y="20" />
+      <Size Width="290" Height="90" />
+      <Properties>
+        <Property Name="Purpose" Type="String">review</Property>
+      </Properties>
+    </Annotation>
+  </Annotations>
+  <Properties>
+    <Property Name="KudoDemoSampleTaskId" Type="String">order-risk-control</Property>
+    <Property Name="KudoDemoSampleOrder" Type="Long">20</Property>
+  </Properties>
+</Task>

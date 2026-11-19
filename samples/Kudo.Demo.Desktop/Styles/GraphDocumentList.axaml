@@ -1,0 +1,39 @@
+<Styles xmlns="https://github.com/avaloniaui">
+    <Style Selector="Border.graph-document-list-root">
+        <Setter Property="Background" Value="#FFFFFF" />
+    </Style>
+    <Style Selector="Button.graph-document-item">
+        <Setter Property="Height" Value="34" />
+        <Setter Property="MinHeight" Value="34" />
+        <Setter Property="Padding" Value="6,2" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    </Style>
+    <Style Selector="Button.graph-document-item:pointerover">
+        <Setter Property="Background" Value="#E8F3FF" />
+    </Style>
+    <Style Selector="Button.graph-document-item.active">
+        <Setter Property="Background" Value="#E8F3FF" />
+    </Style>
+    <Style Selector="Button.graph-document-item.active TextBlock.graph-document-title">
+        <Setter Property="Foreground" Value="#006EDB" />
+    </Style>
+    <Style Selector="Border.graph-document-icon">
+        <Setter Property="Background" Value="#EDF6FF" />
+        <Setter Property="BorderBrush" Value="#8FC8FF" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="3" />
+    </Style>
+    <Style Selector="Border.graph-document-icon TextBlock">
+        <Setter Property="Foreground" Value="#006EDB" />
+    </Style>
+    <Style Selector="TextBlock.graph-document-title">
+        <Setter Property="Foreground" Value="#1F2329" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+    <Style Selector="Border.graph-document-dirty-dot">
+        <Setter Property="Background" Value="#F5222D" />
+    </Style>
+</Styles>

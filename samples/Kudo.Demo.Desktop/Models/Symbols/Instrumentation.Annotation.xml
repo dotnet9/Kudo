@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Symbol Format="Kudo.Symbol/1" Id="Annotation" NodeType="Annotation" TemplateKey="Annotation" IconText="N" Kind="Annotation" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.Annotation" DescriptionKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.AnnotationDescription">
+  <DefaultSize Width="220" Height="120" />
+  <Properties>
+    <Property Name="AnnotationKind" Type="String">Note</Property>
+  </Properties>
+</Symbol>

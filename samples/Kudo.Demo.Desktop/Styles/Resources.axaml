@@ -1,0 +1,37 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Styles.Resources>
+        <ResourceDictionary>
+            <LinearGradientBrush x:Key="DemoHeaderBrush" StartPoint="0%,50%" EndPoint="100%,50%">
+                <GradientStop Color="#1769E0" Offset="0" />
+                <GradientStop Color="#3C8DF6" Offset="0.56" />
+                <GradientStop Color="#75BFF5" Offset="1" />
+            </LinearGradientBrush>
+            <ImageBrush x:Key="DemoHeaderImageBrush"
+                        Source="avares://Kudo.Demo.Desktop/Assets/header-background.png"
+                        Stretch="Fill" />
+            <ImageBrush x:Key="RibbonMenuTabHeaderSelectedBackground"
+                        Source="avares://Kudo.Demo.Desktop/Assets/tab-current.png"
+                        Stretch="Fill" />
+            <ImageBrush x:Key="RibbonMenuTabHeaderStartSelectedBackground"
+                        Source="avares://Kudo.Demo.Desktop/Assets/tab-current-start.png"
+                        Stretch="Fill" />
+            <ImageBrush x:Key="RibbonMenuTabHeaderEndSelectedBackground"
+                        Source="avares://Kudo.Demo.Desktop/Assets/tab-current-end.png"
+                        Stretch="Fill" />
+            <LinearGradientBrush x:Key="DemoHeaderOverlayBrush" StartPoint="0%,0%" EndPoint="0%,100%">
+                <GradientStop Color="#08006EDB" Offset="0" />
+                <GradientStop Color="#18004FA8" Offset="0.62" />
+                <GradientStop Color="#34001D4A" Offset="1" />
+            </LinearGradientBrush>
+            <SolidColorBrush x:Key="DemoAccentBrush" Color="#1677FF" />
+            <SolidColorBrush x:Key="DemoAccentLightBrush" Color="#E8F3FF" />
+            <SolidColorBrush x:Key="DemoSurfaceBrush" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="DemoWorkspaceBrush" Color="#F3F5F7" />
+            <SolidColorBrush x:Key="DemoBorderBrush" Color="#E5E8EC" />
+            <SolidColorBrush x:Key="DemoTextBrush" Color="#1F2A37" />
+            <SolidColorBrush x:Key="DemoSecondaryTextBrush" Color="#708196" />
+            <Color x:Key="CaptionButtonForeground">#FFFFFF</Color>
+        </ResourceDictionary>
+    </Styles.Resources>
+</Styles>

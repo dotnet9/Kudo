@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Task Format="Kudo.Task/1" SchemaVersion="1.0" Id="sample-reference-port" Title="引用端口">
+  <CanvasSettings IsMinimapVisible="true" IsLevelOfDetailEnabled="true" LodPortsZoomThreshold="0.4" LodLabelsZoomThreshold="0.3" LodSimplifiedZoomThreshold="0.4" PortLabelVisibility="Auto" SymbolNameVisibility="Never" SymbolDescriptionVisibility="Never">
+    <Grid IsVisible="true" IsSnapEnabled="false" IsGuidesEnabled="true" Spacing="20" MajorLineInterval="4" SnapTolerance="8" GuideTolerance="8" />
+  </CanvasSettings>
+  <Nodes>
+    <Node Id="start" Type="Demo.Start" Title="开始" Rotation="0">
+      <Position X="100" Y="150" />
+      <Size Width="132" Height="72" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="Reference" Name="引用" Kind="Reference" X="1" Y="0.5" DataType="Table" State="Normal">
+          <Capacity MaxIncoming="1" MaxOutgoing="1" />
+          <OutgoingDirection X="1" Y="0" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="table" Type="Demo.ReferenceTable" Title="引用表格" Rotation="0">
+      <Position X="430" Y="140" />
+      <Size Width="168" Height="92" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="Reference" Name="被引用" Kind="Reference" X="0" Y="0.5" DataType="Table" State="Normal">
+          <Capacity MaxIncoming="1" MaxOutgoing="1" />
+          <IncomingDirection X="-1" Y="0" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties>
+        <Property Name="TableName" Type="String">示例数据表</Property>
+      </Properties>
+    </Node>
+  </Nodes>
+  <Groups />
+  <Edges>
+    <Edge Id="reference-start-table" RelationKind="Reference" RoutingStyle="Bezier" StylePreset="Default" SourceMarker="None" TargetMarker="None" Label="引用" State="Normal">
+      <Source NodeId="start" PortId="Reference" />
+      <Target NodeId="table" PortId="Reference" />
+      <Appearance DashStyle="Solid" Opacity="1" Animation="None" AnimationSpeed="1" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints />
+      <Properties />
+    </Edge>
+  </Edges>
+  <Annotations />
+  <Properties>
+    <Property Name="KudoDemoSampleTaskId" Type="String">reference-port</Property>
+    <Property Name="KudoDemoSampleOrder" Type="Integer">30</Property>
+  </Properties>
+</Task>

@@ -1,0 +1,66 @@
+<Styles xmlns="https://github.com/avaloniaui">
+  <!-- Common dialog content conventions shared by product clients. -->
+  <Style Selector="Border.CommonDialogAlertPanel">
+    <Setter Property="MinHeight" Value="42" />
+    <Setter Property="Padding" Value="10,8" />
+    <Setter Property="Background" Value="{DynamicResource Kudo.Surface.Warning}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Kudo.Shape.Control.CornerRadius}" />
+  </Style>
+  <Style Selector="Image.CommonDialogAlertIcon">
+    <Setter Property="Width" Value="22" />
+    <Setter Property="Height" Value="22" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="TextBlock.CommonDialogAlertText">
+    <Setter Property="Foreground" Value="{DynamicResource Kudo.Text.Primary}" />
+    <Setter Property="FontFamily" Value="{StaticResource NotoSansSC}" />
+    <Setter Property="FontSize" Value="{DynamicResource Kudo.Typography.Body.FontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Regular.FontWeight}" />
+    <Setter Property="LineHeight" Value="{DynamicResource Kudo.Typography.Body.LineHeight}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="TextBlock.CommonDialogLead">
+    <Setter Property="Foreground" Value="{DynamicResource Kudo.Text.Primary}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="TextBlock.CommonDialogLabel">
+    <Setter Property="Foreground" Value="{DynamicResource Kudo.Text.Secondary}" />
+    <Setter Property="FontFamily" Value="{StaticResource NotoSansSC}" />
+    <Setter Property="FontSize" Value="{DynamicResource Kudo.Typography.Body.FontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Regular.FontWeight}" />
+    <Setter Property="LineHeight" Value="{DynamicResource Kudo.Typography.Body.LineHeight}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="TextBlock.CommonDialogValue">
+    <Setter Property="Foreground" Value="{DynamicResource Kudo.Text.Primary}" />
+    <Setter Property="FontFamily" Value="{StaticResource NotoSansSC}" />
+    <Setter Property="FontSize" Value="{DynamicResource Kudo.Typography.Body.FontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Strong.FontWeight}" />
+    <Setter Property="LineHeight" Value="{DynamicResource Kudo.Typography.Body.LineHeight}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="TextBlock.CommonDialogSecondaryText, TextBlock.CommonDialogOptionText">
+    <Setter Property="Foreground" Value="{DynamicResource Kudo.Text.Secondary}" />
+  </Style>
+  <Style Selector="TextBlock.CommonDialogDangerText">
+    <Setter Property="Foreground" Value="{DynamicResource Kudo.State.Danger}" />
+  </Style>
+  <Style Selector="TextBlock.CommonDialogMessage, SelectableTextBlock.CommonDialogMessage">
+    <Setter Property="Foreground" Value="{DynamicResource Kudo.Text.Primary}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="Border.CommonDialogOption">
+    <Setter Property="MinHeight" Value="74" />
+    <Setter Property="Padding" Value="{StaticResource Kudo.Layout.Spacing.Control.Large}" />
+    <Setter Property="Background" Value="{DynamicResource Kudo.Surface.Canvas}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Kudo.Border.Default}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Kudo.Shape.Control.CornerRadius}" />
+  </Style>
+  <Style Selector="TextBlock.CommonDialogOptionTitle">
+    <Setter Property="Foreground" Value="{DynamicResource Kudo.Text.Primary}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Emphasis.FontWeight}" />
+  </Style>
+</Styles>

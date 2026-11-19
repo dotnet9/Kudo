@@ -1,0 +1,15 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="KudoInputPortBrush" Color="#00C853" />
+    <SolidColorBrush x:Key="KudoOutputPortBrush" Color="#FFB300" />
+    <SolidColorBrush x:Key="KudoBidirectionalPortBrush" Color="#D946EF" />
+    <StaticResource x:Key="KudoReferencePortBrush" ResourceKey="SemiColorSecondary" />
+    <StaticResource x:Key="KudoInvalidPortFillBrush" ResourceKey="SemiColorDangerLight" />
+    <StaticResource x:Key="KudoInvalidPortStrokeBrush" ResourceKey="SemiColorDanger" />
+    <StaticResource x:Key="KudoDescriptionBrush" ResourceKey="SemiColorText2" />
+    <SolidColorBrush x:Key="KudoGroupFillBrush" Color="{DynamicResource SemiBlue5Color}" Opacity="0.14" />
+    <SolidColorBrush x:Key="KudoGroupHeaderFillBrush" Color="{DynamicResource SemiBlue5Color}" Opacity="0.22" />
+    <SolidColorBrush x:Key="KudoSelectionFillBrush" Color="{DynamicResource SemiBlue5Color}" Opacity="0.18" />
+    <StaticResource x:Key="KudoMinimapGroupBrush" ResourceKey="SemiColorSecondaryLightActive" />
+    <StaticResource x:Key="KudoMinimapSelectedGroupBrush" ResourceKey="SemiColorPrimary" />
+</ResourceDictionary>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Symbol Id="Instrument" NodeType="Industrial.Instrument" TemplateKey="Industrial.Instrument" IconText="I" Icon="Assets/Instrumentation.Instrument.svg" Resource="Assets/Instrumentation.Instrument.svg" Format="Kudo.Symbol/1" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.Instrument" DescriptionKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.InstrumentDescription">
+  <DefaultSize Width="82" Height="54" />
+  <Ports>
+    <Port Id="Signal" X="0.86" Y="0.45" DataType="Signal" Kind="Output" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.Instrument.Signal">
+      <Capacity MaxOutgoing="Unlimited" />
+    </Port>
+  </Ports>
+  <PropertyDefinitions>
+    <Property Name="Tag" ValueKind="String" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.Tag" GroupKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.BasicParameters">
+      <DefaultValue Type="String"></DefaultValue>
+    </Property>
+  </PropertyDefinitions>
+  <Properties>
+    <Property Name="IndustrialCategory" Type="String">Instrumentation</Property>
+    <Property Name="IndustrialEquipmentKind" Type="String">Instrument</Property>
+  </Properties>
+</Symbol>

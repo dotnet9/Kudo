@@ -1,0 +1,72 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:u="https://irihi.tech/ursa"
+             xmlns:i18n="using:CodeWF.Avalonia.Lang.MarkupExtensions"
+             xmlns:helpers="using:Kudo.AvaloniaCommon.Helpers"
+             xmlns:lang="using:Localization.Kudo_Demo_Desktop.Views"
+             xmlns:vm="using:Kudo.Demo.Desktop.ViewModels"
+             x:Class="Kudo.Demo.Desktop.Views.DocumentCommandsView"
+             x:DataType="vm:MainRibbonViewModel">
+    <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <u:IconButton x:Name="NewGraphButton"
+                              Classes="RibbonCommand"
+                              Content="{i18n:I18n {x:Static lang:MainWindow.NewCanvas}}"
+                              Icon="{StaticResource SemiIconPlusStroked}"
+                              IconPlacement="Top"
+                              Command="{Binding CreateGraph}" />
+                <u:IconButton Classes="RibbonCommand"
+                              Content="{i18n:I18n {x:Static lang:MainWindow.OpenFile}}"
+                              Icon="{StaticResource SemiIconFolderOpenStroked}"
+                              IconPlacement="Top"
+                              Command="{Binding OpenGraphCommand}" />
+                <u:IconButton Classes="RibbonCommand"
+                              Content="{i18n:I18n {x:Static lang:MainWindow.Save}}"
+                              Icon="{StaticResource SemiIconSaveStroked}"
+                              IconPlacement="Top"
+                              Command="{Binding SaveGraphCommand}" />
+                <u:IconButton Classes="RibbonCommand"
+                              Content="{i18n:I18n {x:Static lang:MainWindow.SaveAs}}"
+                              Icon="{StaticResource SemiIconDownloadStroked}"
+                              IconPlacement="Top"
+                              Command="{Binding SaveGraphAsCommand}" />
+                <u:IconDropDownButton x:Name="SampleTaskButton"
+                                      Classes="RibbonCommand"
+                                      Content="{i18n:I18n {x:Static lang:MainWindow.SampleTasks}}"
+                                      Icon="{StaticResource SemiIconLayers}"
+                                      IconPlacement="Top"
+                                      helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.SampleTasksTip}}">
+                    <u:IconDropDownButton.Styles>
+                        <Style x:DataType="vm:DemoSampleTaskMenuItem" Selector="MenuItem">
+                            <Setter Property="Header" Value="{Binding Title}" />
+                            <Setter Property="Command" Value="{Binding Command}" />
+                            <Setter Property="CommandParameter" Value="{Binding}" />
+                            <Setter Property="MinHeight" Value="30" />
+                            <Setter Property="Padding" Value="10,4" />
+                            <Setter Property="CornerRadius" Value="4" />
+                        </Style>
+                    </u:IconDropDownButton.Styles>
+                    <u:IconDropDownButton.Flyout>
+                        <MenuFlyout ItemsSource="{Binding SampleTasks}" />
+                    </u:IconDropDownButton.Flyout>
+                </u:IconDropDownButton>
+                <u:IconDropDownButton x:Name="LargeGraphButton"
+                                      Classes="RibbonCommand"
+                                      Content="{i18n:I18n {x:Static lang:MainWindow.PerformanceSample}}"
+                                      Icon="{StaticResource SemiIconApps}"
+                                      IconPlacement="Top"
+                                      helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.PerformanceSampleTip}}">
+                    <u:IconDropDownButton.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Classes="RibbonFlyoutItem" Header="{i18n:I18n {x:Static lang:MainWindow.NodeCount100}}" Command="{Binding CreateLargeGraphCommand}" CommandParameter="100" />
+                            <MenuItem Classes="RibbonFlyoutItem" Header="{i18n:I18n {x:Static lang:MainWindow.NodeCount500}}" Command="{Binding CreateLargeGraphCommand}" CommandParameter="500" />
+                            <MenuItem Classes="RibbonFlyoutItem" Header="{i18n:I18n {x:Static lang:MainWindow.NodeCount1000}}" Command="{Binding CreateLargeGraphCommand}" CommandParameter="1000" />
+                            <MenuItem Classes="RibbonFlyoutItem" Header="{i18n:I18n {x:Static lang:MainWindow.NodeCount5000}}" Command="{Binding CreateLargeGraphCommand}" CommandParameter="5000" />
+                        </MenuFlyout>
+                    </u:IconDropDownButton.Flyout>
+                </u:IconDropDownButton>
+            </StackPanel>
+        </StackPanel>
+    </WrapPanel>
+</UserControl>

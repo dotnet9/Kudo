@@ -1,0 +1,11 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:k="https://codewf.com"
+             xmlns:vm="using:Kudo.Demo.Desktop.ViewModels"
+             x:Class="Kudo.Demo.Desktop.Views.EmbeddedThreeDNodeView"
+             x:DataType="vm:EmbeddedThreeDNodeViewModel">
+    <k:GraphThreeDView Scene="{Binding Scene}"
+                            PreferredRenderMode="{Binding PreferredRenderMode}"
+                            AllowSoftwareFallback="{Binding AllowSoftwareFallback}"
+                            IsAnimationEnabled="{Binding IsAnimationEnabled}" />
+</UserControl>

@@ -1,0 +1,29 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <!-- Add Controls for Previewer Here -->
+    </Border>
+  </Design.PreviewWith>
+
+  <!-- Add Styles Here -->
+  <Style Selector="Image.MenuItem">
+    <Setter Property="Width" Value="{StaticResource Kudo.Layout.Size.32}" />
+    <Setter Property="Margin" Value="0 0 0 -6" />
+  </Style>
+  <Style Selector="Image.SmallMenuItem">
+    <Setter Property="Width" Value="{StaticResource Kudo.Layout.Size.16}" />
+  </Style>
+  <Style Selector="Image.Title">
+    <Setter Property="Width" Value="{StaticResource Kudo.Layout.Size.24}" />
+    <Setter Property="Height" Value="{StaticResource Kudo.Layout.Size.24}" />
+    <Setter Property="Margin" Value="{StaticResource Kudo.Layout.Spacing.Control.Medium}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+  </Style>
+  <Style Selector="Image.TitleBackground">
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="Stretch" Value="Fill" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+  </Style>
+</Styles>

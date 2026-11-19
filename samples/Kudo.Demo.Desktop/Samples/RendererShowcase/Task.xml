@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Task Format="Kudo.Task/1" SchemaVersion="1.0" Id="sample-renderer-showcase-zh" Title="视觉质检 · Renderer 扩展示例">
+  <CanvasSettings IsMinimapVisible="true" IsLevelOfDetailEnabled="true" LodPortsZoomThreshold="0.4" LodLabelsZoomThreshold="0.3" LodSimplifiedZoomThreshold="0.4" PortLabelVisibility="Auto" SymbolNameVisibility="Never" SymbolDescriptionVisibility="Never">
+    <Grid IsVisible="true" IsSnapEnabled="false" IsGuidesEnabled="true" Spacing="20" MajorLineInterval="4" SnapTolerance="8" GuideTolerance="8" />
+  </CanvasSettings>
+  <Nodes>
+    <Node Id="camera" Type="Input" Title="工业相机" Rotation="0">
+      <Position X="70" Y="170" />
+      <Size Width="150" Height="80" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="out" Name="Frame" Kind="Output" DataType="Image" State="Normal">
+          <Capacity MaxIncoming="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="denoise" Type="Transform" Title="图像降噪" Rotation="0">
+      <Position X="330" Y="90" />
+      <Size Width="170" Height="96" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="in" Name="In" Kind="Input" DataType="Image" State="Normal">
+          <Capacity MaxIncoming="1" MaxOutgoing="1" />
+          <Properties />
+        </Port>
+        <Port Id="out" Name="Out" Kind="Output" DataType="Image" State="Normal">
+          <Capacity MaxIncoming="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="inspect" Type="Transform" Title="缺陷检测" Rotation="0">
+      <Position X="580" Y="90" />
+      <Size Width="170" Height="96" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="in" Name="In" Kind="Input" DataType="Image" State="Normal">
+          <Capacity MaxIncoming="1" MaxOutgoing="1" />
+          <Properties />
+        </Port>
+        <Port Id="out" Name="Out" Kind="Output" DataType="Result" State="Normal">
+          <Capacity MaxIncoming="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="archive" Type="Output" Title="结果归档" Rotation="0">
+      <Position X="830" Y="40" />
+      <Size Width="150" Height="80" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="in" Name="In" Kind="Input" DataType="Result" State="Normal">
+          <Capacity MaxIncoming="1" MaxOutgoing="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="alarm" Type="Output" Title="告警联动" Rotation="0">
+      <Position X="830" Y="230" />
+      <Size Width="150" Height="80" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="in" Name="In" Kind="Input" DataType="Result" State="Normal">
+          <Capacity MaxIncoming="1" MaxOutgoing="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+  </Nodes>
+  <Groups>
+    <Group Id="preprocess" Title="预处理与推理" Padding="30" IsCollapsed="false">
+      <NodeIds>
+        <NodeId>denoise</NodeId>
+        <NodeId>inspect</NodeId>
+      </NodeIds>
+      <Properties />
+    </Group>
+  </Groups>
+  <Edges>
+    <Edge Id="camera-denoise" RelationKind="Connection" RoutingStyle="Bezier" StylePreset="Default" SourceMarker="None" TargetMarker="Arrow" Label="原始帧" State="Normal">
+      <Source NodeId="camera" PortId="out" />
+      <Target NodeId="denoise" PortId="in" />
+      <Appearance DashStyle="Solid" Opacity="1" Animation="None" AnimationSpeed="1" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints />
+      <Properties />
+    </Edge>
+    <Edge Id="denoise-inspect" RelationKind="Connection" RoutingStyle="Direct" StylePreset="Default" SourceMarker="None" TargetMarker="Arrow" Label="增强图像" State="Normal">
+      <Source NodeId="denoise" PortId="out" />
+      <Target NodeId="inspect" PortId="in" />
+      <Appearance DashStyle="Solid" Opacity="1" Animation="None" AnimationSpeed="1" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints />
+      <Properties />
+    </Edge>
+    <Edge Id="inspect-archive" RelationKind="Connection" RoutingStyle="SmartOrthogonal" StylePreset="Default" SourceMarker="None" TargetMarker="Arrow" Label="检测结果" State="Normal">
+      <Source NodeId="inspect" PortId="out" />
+      <Target NodeId="archive" PortId="in" />
+      <Appearance DashStyle="Solid" Opacity="1" Animation="None" AnimationSpeed="1" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints />
+      <Properties />
+    </Edge>
+    <Edge Id="inspect-alarm" RelationKind="Connection" RoutingStyle="SmartOrthogonal" StylePreset="Default" SourceMarker="None" TargetMarker="Diamond" Label="缺陷事件" State="Normal">
+      <Source NodeId="inspect" PortId="out" />
+      <Target NodeId="alarm" PortId="in" />
+      <Appearance DashStyle="Solid" Opacity="1" Animation="None" AnimationSpeed="1" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints />
+      <Properties />
+    </Edge>
+  </Edges>
+  <Annotations />
+  <Properties>
+    <Property Name="KudoDemoRendererShowcase" Type="Boolean">true</Property>
+    <Property Name="KudoDemoSampleTaskId" Type="String">renderer-showcase</Property>
+    <Property Name="KudoDemoSampleOrder" Type="Long">40</Property>
+  </Properties>
+</Task>

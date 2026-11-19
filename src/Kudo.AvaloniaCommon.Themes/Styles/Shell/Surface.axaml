@@ -1,0 +1,32 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codewf="https://codewf.com" xmlns:u="https://irihi.tech/ursa">
+  <Style Selector="Border.ShellHeaderBackground">
+    <Setter Property="Background" Value="{DynamicResource ShellHeaderFallbackBackgroundBrush}" />
+    <Setter Property="CornerRadius" Value="0" />
+  </Style>
+  <Style Selector="Border.ShellHeaderImage">
+    <Setter Property="Height" Value="{StaticResource ShellHeaderBackgroundHeight}" />
+    <Setter Property="VerticalAlignment" Value="Top" />
+    <Setter Property="Background" Value="{DynamicResource ShellHeaderImageBrush}" />
+    <Setter Property="Opacity" Value="{StaticResource ShellHeaderImageOpacity}" />
+  </Style>
+  <Style Selector="Border.ShellHeaderOverlay">
+    <Setter Property="Height" Value="{StaticResource ShellHeaderBackgroundHeight}" />
+    <Setter Property="VerticalAlignment" Value="Top" />
+    <Setter Property="Background" Value="{DynamicResource ShellHeaderOverlayBrush}" />
+  </Style>
+  <Style Selector="Border.ShellMenuHost">
+    <Setter Property="Margin" Value="{StaticResource ShellMenuHostMargin}" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="{StaticResource ShellTopCornerRadius}" />
+    <Setter Property="ClipToBounds" Value="True" />
+  </Style>
+  <Style Selector="Border.ShellMainContent">
+    <Setter Property="Margin" Value="{StaticResource ShellMainContentMargin}" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="{StaticResource ShellMainContentCornerRadius}" />
+    <Setter Property="ClipToBounds" Value="True" />
+  </Style>
+</Styles>

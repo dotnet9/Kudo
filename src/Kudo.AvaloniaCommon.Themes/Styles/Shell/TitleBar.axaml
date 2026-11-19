@@ -1,0 +1,104 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codewf="https://codewf.com" xmlns:u="https://irihi.tech/ursa">
+  <Style Selector="StackPanel.ShellTitleBarRightContent">
+    <Setter Property="Height" Value="{StaticResource ShellTitleBarControlHeight}" />
+    <Setter Property="Margin" Value="{StaticResource ShellTitleBarRightContentMargin}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="TextBlock.ShellTitleBarRightText">
+    <Setter Property="Foreground" Value="{DynamicResource ShellTitleBarForeground}" />
+    <Setter Property="Opacity" Value="0.86" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="Button.ShellTitleBarOptionButton">
+    <Setter Property="Width" Value="{StaticResource ShellTitleBarOptionButtonWidth}" />
+    <Setter Property="Height" Value="{StaticResource ShellTitleBarControlHeight}" />
+    <Setter Property="MinHeight" Value="{StaticResource ShellTitleBarControlHeight}" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="Foreground" Value="{DynamicResource ShellTitleBarForeground}" />
+    <Setter Property="CornerRadius" Value="{StaticResource ShellTitleBarControlCornerRadius}" />
+  </Style>
+  <Style Selector="Button.ShellTitleBarLanguageButton">
+    <Setter Property="Height" Value="{StaticResource ShellTitleBarControlHeight}" />
+    <Setter Property="MinHeight" Value="{StaticResource ShellTitleBarControlHeight}" />
+    <Setter Property="MinWidth" Value="{StaticResource ShellTitleBarLanguageControlMinWidth}" />
+    <Setter Property="Padding" Value="{StaticResource ShellTitleBarLanguageControlPadding}" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource ShellTitleBarControlBorderBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource ShellTitleBarForeground}" />
+    <Setter Property="CornerRadius" Value="{StaticResource ShellTitleBarControlCornerRadius}" />
+  </Style>
+  <Style Selector="Button.ShellTitleBarOptionButton:pointerover /template/ ContentPresenter, Button.ShellTitleBarLanguageButton:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource CaptionButtonPointeroverBackground}" />
+  </Style>
+  <Style Selector="Button.ShellTitleBarOptionButton:pressed /template/ ContentPresenter, Button.ShellTitleBarLanguageButton:pressed /template/ ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource CaptionButtonPressedBackground}" />
+  </Style>
+  <Style Selector="Button.ShellTitleBarOptionButton PathIcon">
+    <Setter Property="Foreground" Value="{DynamicResource ShellTitleBarForeground}" />
+  </Style>
+  <Style Selector="ComboBox.ShellTitleBarComboBox">
+    <Setter Property="Height" Value="{StaticResource ShellTitleBarControlHeight}" />
+    <Setter Property="MinHeight" Value="{StaticResource ShellTitleBarControlHeight}" />
+    <Setter Property="MinWidth" Value="{StaticResource ShellTitleBarLanguageControlMinWidth}" />
+    <Setter Property="Padding" Value="{StaticResource ShellTitleBarLanguageControlPadding}" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource ShellTitleBarControlBorderBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Foreground" Value="{DynamicResource ShellTitleBarForeground}" />
+    <Setter Property="PlaceholderForeground" Value="{DynamicResource ShellTitleBarForeground}" />
+    <Setter Property="CornerRadius" Value="{StaticResource ShellTitleBarControlCornerRadius}" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+  </Style>
+  <Style Selector="ComboBox.ShellTitleBarComboBox:pointerover, ComboBox.ShellTitleBarComboBox:focus">
+    <Setter Property="Background" Value="{DynamicResource CaptionButtonPointeroverBackground}" />
+  </Style>
+  <Style Selector="ComboBox.ShellTitleBarComboBox:pressed, ComboBox.ShellTitleBarComboBox:dropdownopen">
+    <Setter Property="Background" Value="{DynamicResource CaptionButtonPressedBackground}" />
+  </Style>
+  <Style Selector="ComboBox.ShellTitleBarComboBox /template/ ContentPresenter#ContentPresenter">
+    <Setter Property="TextElement.Foreground" Value="{DynamicResource ShellTitleBarForeground}" />
+  </Style>
+  <Style Selector="ComboBox.ShellTitleBarComboBox /template/ ContentPresenter#ContentPresenter TextBlock">
+    <Setter Property="Foreground" Value="{DynamicResource ShellTitleBarForeground}" />
+  </Style>
+  <Style Selector="ComboBox.ShellTitleBarComboBox /template/ PathIcon#DropDownGlyph">
+    <Setter Property="Foreground" Value="{DynamicResource ShellTitleBarForeground}" />
+  </Style>
+  <Style Selector="StackPanel.ShellTitleBarLeftContent">
+    <Setter Property="Height" Value="{StaticResource ShellTitleBarHeight}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="Image.ShellTitleBarLogo">
+    <Setter Property="Width" Value="{StaticResource ShellTitleBarLogoSize}" />
+    <Setter Property="Height" Value="{StaticResource ShellTitleBarLogoSize}" />
+    <Setter Property="Margin" Value="{StaticResource ShellTitleBarLogoMargin}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+  </Style>
+  <Style Selector="TextBlock.ShellTitleText">
+    <Setter Property="Foreground" Value="{DynamicResource ShellTitleBarForeground}" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Header.FontSize}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+  </Style>
+  <Style Selector="Border.ShellTitleBarPathHost">
+    <Setter Property="Height" Value="{StaticResource ShellTitleBarPathHeight}" />
+    <Setter Property="MinWidth" Value="{StaticResource ShellTitleBarPathMinWidth}" />
+    <Setter Property="MaxWidth" Value="{StaticResource ShellTitleBarPathMaxWidth}" />
+    <Setter Property="Margin" Value="{StaticResource ShellTitleBarPathHostMargin}" />
+    <Setter Property="Background" Value="{DynamicResource Kudo.Brand.Shell.TitleBarPathBackground}" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+  </Style>
+  <Style Selector="TextBlock.ShellPathText">
+    <Setter Property="Foreground" Value="{DynamicResource ShellTitleBarForeground}" />
+    <Setter Property="FontSize" Value="{StaticResource ShellTitleBarPathFontSize}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+    <Setter Property="Margin" Value="{StaticResource ShellTitleBarPathTextMargin}" />
+    <Setter Property="MaxWidth" Value="{StaticResource ShellTitleBarPathTextMaxWidth}" />
+  </Style>
+</Styles>

@@ -1,0 +1,124 @@
+<codewf:CodeWFWindow xmlns="https://github.com/avaloniaui"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:codewf="https://codewf.com"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:i18n="using:CodeWF.Avalonia.Lang.MarkupExtensions"
+                     xmlns:helpers="using:Kudo.AvaloniaCommon.Helpers"
+                     xmlns:common="using:Localization.Kudo_Demo_Desktop.Application"
+                     xmlns:k="https://codewf.com"
+                     xmlns:lang="using:Localization.Kudo_Demo_Desktop.Views"
+                     xmlns:models="using:Kudo"
+                     xmlns:prism="http://prismlibrary.com/"
+                     xmlns:services="using:Kudo.Demo.Desktop.Services"
+                     xmlns:views="using:Kudo.Demo.Desktop.Views"
+                     xmlns:vm="using:Kudo.Demo.Desktop.ViewModels"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:u="https://irihi.tech/ursa"
+                     mc:Ignorable="d"
+                     d:DesignWidth="1280"
+                     d:DesignHeight="800"
+                     x:Class="Kudo.Demo.Desktop.Views.MainWindow"
+                     prism:ViewModelLocator.AutoWireViewModel="True"
+                     x:DataType="vm:MainWindowViewModel"
+                     Title="{i18n:I18n {x:Static lang:MainWindow.WindowTitle}}"
+                     Icon="/Assets/logo.ico"
+                     Width="1280"
+                     Height="800"
+                     MinWidth="960"
+                     MinHeight="640"
+                     ContentExtendsIntoTitleBar="True"
+                     TitleBarHeight="34"
+                     TitleBarBorderThickness="0"
+                     Background="#F3F5F7"
+                     WindowStartupLocation="CenterScreen">
+    <codewf:CodeWFWindow.LeftContent>
+        <StackPanel Classes="ShellTitleBarLeftContent"
+                    Margin="8,0,0,0"
+                    IsHitTestVisible="False"
+                    Orientation="Horizontal"
+                    Spacing="8">
+            <Image Classes="ShellTitleBarLogo"
+                   Source="/Assets/logo.png"
+                   Stretch="Uniform" />
+            <TextBlock x:Name="TitleBarApplicationTitle"
+                       Classes="ShellTitleText"
+                       Text="Kudo.Avalonia" />
+        </StackPanel>
+    </codewf:CodeWFWindow.LeftContent>
+
+    <codewf:CodeWFWindow.RightContent>
+        <StackPanel x:Name="TitleBarRightContent"
+                    Classes="ShellTitleBarRightContent"
+                    Orientation="Horizontal"
+                    Spacing="8">
+            <Border x:Name="TitleBarDocumentHost"
+                    Height="26"
+                    VerticalAlignment="Center">
+                <TextBlock x:Name="TitleBarDocumentText"
+                           Classes="ShellTitleBarRightText"
+                           Text="{Binding ActiveDocumentTitle}" />
+            </Border>
+            <Border x:Name="TitleBarModeBadge"
+                    Height="26"
+                    Padding="8,0"
+                    VerticalAlignment="Center"
+                    Background="#24FFFFFF"
+                    BorderBrush="#42FFFFFF"
+                    BorderThickness="1"
+                    CornerRadius="10">
+                <TextBlock VerticalAlignment="Center"
+                           FontSize="11"
+                           Foreground="#FFFFFF"
+                           Text="{i18n:I18n {x:Static lang:MainWindow.ComponentDemo}}" />
+            </Border>
+            <ComboBox x:Name="LanguageComboBox"
+                      Classes="ShellTitleBarComboBox"
+                      Width="132"
+                      DisplayMemberBinding="{Binding DisplayName}"
+                      ItemsSource="{Binding Languages}"
+                      SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
+                      helpers:ToolTipHelper.Text="{i18n:I18n {x:Static common:Common.Language}}" />
+        </StackPanel>
+    </codewf:CodeWFWindow.RightContent>
+
+    <Grid RowDefinitions="*,28">
+        <Grid Grid.Row="0"
+              RowDefinitions="34,Auto,*"
+              Background="#F3F5F7"
+              ClipToBounds="True">
+        <Border Grid.Row="0"
+                Grid.RowSpan="3"
+                Height="166"
+                VerticalAlignment="Top"
+                IsHitTestVisible="False"
+                Background="{StaticResource DemoHeaderBrush}">
+            <Grid ClipToBounds="True">
+                <Border Background="{StaticResource DemoHeaderImageBrush}" />
+                <Border Background="{StaticResource DemoHeaderOverlayBrush}" />
+            </Grid>
+        </Border>
+        <Border Grid.Row="1"
+                Classes="ShellMenuHost">
+            <views:MainRibbonView x:Name="MainRibbon" />
+        </Border>
+        <Border Grid.Row="2"
+                Margin="8,0,8,4"
+                Background="Transparent"
+                BorderThickness="0"
+                CornerRadius="0"
+                ClipToBounds="True">
+            <Grid>
+                <DockControl x:Name="WorkspaceDock"
+                             InitializeFactory="False"
+                             InitializeLayout="False"
+                             IsVisible="False" />
+                <k:GraphWorkspaceSkeleton x:Name="WorkspaceSkeleton"
+                                          Margin="0" />
+            </Grid>
+        </Border>
+        </Grid>
+        <views:StatusBarView Grid.Row="1" />
+        <u:OverlayDialogHost Grid.RowSpan="2"
+                             HostId="KudoMainWindow" />
+    </Grid>
+</codewf:CodeWFWindow>

@@ -1,0 +1,14 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <StyleInclude Source="DataGrid.axaml" />
+  <StyleInclude Source="IconButton.axaml" />
+  <StyleInclude Source="Image.axaml" />
+  <StyleInclude Source="PropertyPanels.axaml" />
+  <StyleInclude Source="Ribbon.axaml" />
+  <StyleInclude Source="ScrollViewer.axaml" />
+  <StyleInclude Source="Shell.axaml" />
+  <StyleInclude Source="Shared.axaml" />
+  <StyleInclude Source="ContextMenu.axaml" />
+  <StyleInclude Source="Dialogs.axaml" />
+  <StyleInclude Source="TextBox.axaml" />
+</Styles>

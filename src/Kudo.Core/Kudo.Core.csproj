@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>$(KudoTargetFrameworks)</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Description>Kudo 文档、节点、端口、连线、分组、算法、序列化、运行时和任务文档管理的 UI 无关核心能力。</Description>
+  </PropertyGroup>
+
+</Project>

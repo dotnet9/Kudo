@@ -1,0 +1,77 @@
+<codewf:CodeWFWindow xmlns="https://github.com/avaloniaui"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:codewf="https://codewf.com"
+                     xmlns:view="clr-namespace:Kudo.AvaloniaCommon.Views;assembly=Kudo.AvaloniaCommon"
+                     xmlns:vm="clr-namespace:Kudo.AvaloniaCommon.ViewModels;assembly=Kudo.AvaloniaCommon"
+                     Classes="AppDialogWindow"
+                     IsMinimizeButtonVisible="False" IsRestoreButtonVisible="False" IsFullScreenButtonVisible="False"
+                     ContentExtendsIntoTitleBar="True"
+                     Width="360" Height="232" WindowStartupLocation="CenterOwner"
+                     x:DataType="vm:ExitOptionViewModel" x:CompileBindings="True"
+                     mc:Ignorable="d" d:DesignWidth="360" d:DesignHeight="232"
+                     x:Class="Kudo.AvaloniaCommon.Views.ExitOptionView"
+                     Title="关闭提示">
+  <codewf:CodeWFWindow.Resources>
+    <!--窗体控制按钮前景色-->
+    <!--窗体背景色，因为Dock控件是全局修改应用了，其他的窗体都要修改-->
+    <StaticResource x:Key="WindowDefaultBackground" ResourceKey="SemiColorBackground0" />
+  </codewf:CodeWFWindow.Resources>
+  <codewf:CodeWFWindow.LeftContent>
+    <TextBlock Classes="AppDialogTitle" Text="关闭提示" />
+  </codewf:CodeWFWindow.LeftContent>
+  <Border Classes="AppDialogRoot">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="{StaticResource UnifiedDialogTitleBarGridLength}" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="{StaticResource DialogFooterGridLength}" />
+      </Grid.RowDefinitions>
+      <Border Classes="AppDialogHeader" />
+      <Grid Grid.Row="1"
+            ColumnDefinitions="Auto,*"
+            RowDefinitions="Auto,Auto,Auto"
+            Margin="{StaticResource Kudo.Dialog.Client.ContentMargin}">
+        <Image Source="avares://Kudo.AvaloniaCommon/Assets/info-64x64.png"
+               Width="{StaticResource Kudo.Layout.Size.32}"
+               Height="{StaticResource Kudo.Layout.Size.32}"
+               Margin="{StaticResource Kudo.Layout.Spacing.Control.HugeRight}"
+               VerticalAlignment="Center" />
+        <TextBlock Grid.Column="1"
+                   Text="请选择关闭窗体操作："
+                   FontSize="{StaticResource Kudo.Dialog.Title.FontSize}"
+                   Foreground="{StaticResource Colors.Title}"
+                   FontWeight="{StaticResource Kudo.Dialog.Title.FontWeight}"
+                   VerticalAlignment="Center" />
+
+        <RadioButton Grid.Row="1" Grid.Column="1" Content="隐藏到托盘图标" IsChecked="{Binding HideTrayIconOnClose}"
+                     Margin="0 18 0 14" />
+        <RadioButton Grid.Row="2" Grid.Column="1" Content="直接关闭应用" IsChecked="{Binding !HideTrayIconOnClose}" />
+      </Grid>
+
+      <Grid Grid.Row="2"
+            Classes="AppDialogFooter"
+            ColumnDefinitions="Auto,*,Auto,Auto">
+        <CheckBox IsChecked="{Binding !NeedExitDialogOnClose}"
+                  Content="不再提示"
+                  VerticalAlignment="Center" />
+        <!-- 使用 object 参数接收当前窗口，使关闭命令可以生成 AOT 友好的编译绑定。 -->
+        <Button Grid.Column="2"
+                Content="取消"
+                Theme="{DynamicResource OutlineButton}"
+                Classes="Tertiary AppDialogButton"
+                IsCancel="True"
+                Command="{Binding RaiseCancelHandlerAsync}"
+                CommandParameter="{Binding $parent[view:ExitOptionView]}" />
+        <Button Grid.Column="3"
+                Content="确定"
+                Theme="{DynamicResource SolidButton}"
+                Classes="Primary AppDialogButton"
+                Command="{Binding RaiseSaveHandlerAsync}"
+                IsDefault="True"
+                CommandParameter="{Binding $parent[view:ExitOptionView]}" />
+      </Grid>
+    </Grid>
+  </Border>
+</codewf:CodeWFWindow>

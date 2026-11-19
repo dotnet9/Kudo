@@ -1,0 +1,6 @@
+<Styles xmlns="https://github.com/avaloniaui">
+    <Style Selector="TextBlock.status-secondary">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="#708196" />
+    </Style>
+</Styles>

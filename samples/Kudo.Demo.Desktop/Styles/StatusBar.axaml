@@ -1,0 +1,25 @@
+<Styles xmlns="https://github.com/avaloniaui">
+    <Style Selector="Border.status-bar">
+        <Setter Property="Background" Value="#F8FAFD" />
+        <Setter Property="BorderBrush" Value="#DDE4EC" />
+        <Setter Property="BorderThickness" Value="0,1,0,0" />
+        <Setter Property="Padding" Value="12,0" />
+    </Style>
+    <Style Selector="StackPanel.status-zoom-panel">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+    <Style Selector="DropDownButton.status-zoom-dropdown">
+        <Setter Property="Width" Value="82" />
+        <Setter Property="Height" Value="22" />
+        <Setter Property="MinHeight" Value="22" />
+        <Setter Property="Padding" Value="7,0" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+    <Style Selector="Slider.status-zoom-slider">
+        <Setter Property="Width" Value="112" />
+        <Setter Property="Height" Value="22" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+</Styles>

@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:log="https://codewf.com"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Kudo.AvaloniaCommon.Views.CustomLogView">
+  <Border Background="{StaticResource Colors.TitleBar.Foreground}"
+          CornerRadius="{StaticResource Kudo.Shape.Control.LargeCornerRadius}"
+          Margin="{StaticResource Kudo.Layout.Spacing.Control.MediumHorizontal}">
+    <Grid RowDefinitions="Auto, *">
+      <TextBlock Text="日志"
+                 FontFamily="{StaticResource NotoSansSC}"
+                 FontWeight="{DynamicResource Kudo.Typography.Strong.FontWeight}" Margin="24, 20, 0, 17" VerticalAlignment="Center"
+                 FontSize="{StaticResource Kudo.Typography.Subtitle.FontSize}"
+                 Foreground="{StaticResource Colors.Title}" />
+      <Border CornerRadius="{StaticResource Kudo.Shape.Control.DefaultCornerRadius}" BorderBrush="#F0F0F0"
+              BorderThickness="1" Grid.Row="1" Margin="24 0 24 24">
+        <Grid ColumnDefinitions="*, *">
+          <Rectangle Height="200" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="50%, 0%" EndPoint="50%, 100%">
+                <LinearGradientBrush.GradientStops>
+                  <GradientStop Color="#FFF2E8" Offset="0" />
+                  <GradientStop Color="#FFFFFF" Offset="1" />
+                </LinearGradientBrush.GradientStops>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+          <Rectangle Height="200" Grid.Column="1" VerticalAlignment="Top">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="100%, 50%" EndPoint="0%, 50%">
+                <LinearGradientBrush.GradientStops>
+                  <GradientStop Color="#FFFFFF" Offset="0" />
+                  <GradientStop Color="#00FFFFFF" Offset="1" />
+                </LinearGradientBrush.GradientStops>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+          <log:LogView Grid.Column="0" Grid.ColumnSpan="2" Padding="20"
+                       TextElement.FontFamily="{StaticResource NotoSansSC}"
+                       FontSize="{DynamicResource Kudo.Typography.Log.FontSize}" />
+        </Grid>
+      </Border>
+    </Grid>
+  </Border>
+</UserControl>

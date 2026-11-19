@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Symbol Id="ReferenceTable" NodeType="Demo.ReferenceTable" TemplateKey="Demo.ReferenceTable" IconText="T" Format="Kudo.Symbol/1" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.ReferenceTable" DescriptionKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.ReferenceTableDescription">
+  <DefaultSize Width="168" Height="92" />
+  <Appearance VisualMode="Card" NameVisibility="Always" DescriptionVisibility="Never" />
+  <Ports>
+    <Port Id="Reference" X="0" Y="0.5" DataType="Table" Kind="Reference" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.ReferenceTable.Reference">
+      <Capacity MaxIncoming="Unlimited" MaxOutgoing="0" />
+      <IncomingDirection X="-1" Y="0" />
+    </Port>
+  </Ports>
+  <PropertyDefinitions>
+    <Property Name="TableName" ValueKind="String" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.TableName" GroupKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.BasicParameters">
+      <DefaultValue Type="String">示例数据表</DefaultValue>
+    </Property>
+  </PropertyDefinitions>
+  <Properties>
+    <Property Name="DemoCategory" Type="String">Reference</Property>
+  </Properties>
+</Symbol>

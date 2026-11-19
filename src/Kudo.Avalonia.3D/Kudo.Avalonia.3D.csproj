@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Kudo.Core\Kudo.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="Silk.NET.OpenGL" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFrameworks>$(KudoTargetFrameworks)</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>Kudo.Avalonia.3D</PackageId>
+    <RootNamespace>Kudo.Avalonia.ThreeD</RootNamespace>
+    <Description>Kudo.Avalonia 的可选 OpenGL 3D 预览控件和软件渲染回退。</Description>
+    <PackageTags>kudo;graph;diagram;node-editor;avalonia;3d;opengl;software-rendering</PackageTags>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+</Project>

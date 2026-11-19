@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i18n="using:CodeWF.Avalonia.Lang.MarkupExtensions"
+             xmlns:lang="using:Localization.Kudo_Demo_Desktop.Views"
+             xmlns:k="https://codewf.com"
+             xmlns:vm="using:Kudo.Demo.Desktop.ViewModels"
+             mc:Ignorable="d"
+             d:DesignWidth="1180"
+             d:DesignHeight="700"
+             x:Class="Kudo.Demo.Desktop.Views.ThreeDDemoDocumentView"
+             x:DataType="vm:ThreeDDemoDocumentViewModel"
+             Background="#F3F5F7">
+    <Grid ColumnDefinitions="*,380">
+        <ContentControl Grid.Column="0"
+                        Content="{Binding DocumentView}" />
+        <Grid Grid.Column="1"
+              Margin="6"
+              RowDefinitions="Auto,Auto,*,Auto">
+            <TextBlock Margin="12,10,12,2"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       Text="{i18n:I18n {x:Static lang:MainWindow.ThreeDPreviewTitle}}" />
+            <TextBlock Grid.Row="1"
+                       Margin="12,0,12,8"
+                       FontSize="11"
+                       Foreground="#64748B"
+                       TextWrapping="Wrap"
+                       Text="{i18n:I18n {x:Static lang:MainWindow.ThreeDPreviewHint}}" />
+            <Border Grid.Row="2"
+                    Margin="10,0"
+                    Background="White"
+                    BorderBrush="#D8E1EC"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    ClipToBounds="True">
+                <k:GraphThreeDView x:Name="Preview"
+                                        Margin="0,10,10,10"
+                                        MinWidth="300"
+                                        Scene="{Binding Scene}"
+                                        PreferredRenderMode="{Binding PreferredRenderMode}"
+                                        AllowSoftwareFallback="{Binding AllowSoftwareFallback}"
+                                        IsAnimationEnabled="{Binding IsAnimationEnabled}" />
+            </Border>
+            <TextBlock Grid.Row="3"
+                       Margin="12,7,12,10"
+                       FontSize="11"
+                       Foreground="#475569"
+                       Text="{Binding #Preview.ActiveRenderer, StringFormat='Renderer: {0}'}" />
+        </Grid>
+    </Grid>
+</UserControl>

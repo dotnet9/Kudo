@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:log="https://codewf.com"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
+             x:Class="Kudo.AvaloniaCommon.Views.CustomLogViewSmall">
+  <Border Background="{StaticResource Colors.TitleBar.Foreground}"
+          CornerRadius="{StaticResource Kudo.Shape.Control.LargeCornerRadius}"
+          Margin="{StaticResource Kudo.Layout.Spacing.Control.MediumHorizontal}"
+          Padding="24 8">
+    <Grid RowDefinitions="Auto, *">
+      <TextBlock Text="日志" FontWeight="{DynamicResource Kudo.Typography.Strong.FontWeight}" VerticalAlignment="Center"
+                 FontFamily="{StaticResource NotoSansSC}"
+                 FontSize="{StaticResource Kudo.Typography.Subtitle.FontSize}"
+                 Foreground="{StaticResource Colors.Title}" Margin="0 0 0 10" />
+      <log:LogView Grid.Row="1"
+                   TextElement.FontFamily="{StaticResource NotoSansSC}"
+                   FontSize="{DynamicResource Kudo.Typography.LogSmall.FontSize}"
+                   FontWeight="{DynamicResource Kudo.Typography.Regular.FontWeight}" />
+    </Grid>
+  </Border>
+</UserControl>

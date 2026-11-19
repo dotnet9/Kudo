@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Symbol Id="PipeLoop" NodeType="Industrial.PipeLoop" TemplateKey="Industrial.PipeLoop" IconText="LP" Icon="Assets/Piping.Loop.svg" Resource="Assets/Piping.Loop.svg" Format="Kudo.Symbol/1" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.PipeLoop" DescriptionKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.PipeLoopDescription">
+  <DefaultSize Width="156" Height="108" />
+  <Ports>
+    <Port Id="Inlet" X="0.16" Y="1" DataType="Fluid" Kind="Input" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.PipeLoop.Inlet">
+      <IncomingDirection X="0" Y="1" />
+    </Port>
+    <Port Id="Outlet" X="0.84" Y="1" DataType="Fluid" Kind="Output" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.PipeLoop.Outlet">
+      <OutgoingDirection X="0" Y="1" />
+    </Port>
+  </Ports>
+  <PropertyDefinitions>
+    <Property Name="NominalDiameter" ValueKind="Integer" Unit="mm" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.NominalDiameter" GroupKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.BasicParameters">
+      <DefaultValue Type="Integer">50</DefaultValue>
+    </Property>
+  </PropertyDefinitions>
+  <Properties>
+    <Property Name="IndustrialCategory" Type="String">Piping</Property>
+    <Property Name="IndustrialEquipmentKind" Type="String">PipeLoop</Property>
+  </Properties>
+</Symbol>

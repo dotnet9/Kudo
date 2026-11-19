@@ -1,0 +1,86 @@
+<Styles xmlns="https://github.com/avaloniaui">
+    <Style Selector="Border.graph-properties-root">
+        <Setter Property="Background" Value="{DynamicResource SemiColorBackground1}" />
+    </Style>
+    <Style Selector="Expander.graph-property-section">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontSize" Value="{DynamicResource KudoPropertiesFontSize}" />
+        <Setter Property="FontWeight" Value="Regular" />
+    </Style>
+    <Style Selector="Expander.graph-property-section /template/ LayoutTransformControl#ExpanderHeaderLayoutContainer">
+        <Setter Property="Margin" Value="0" />
+    </Style>
+    <Style Selector="Expander.graph-property-section /template/ ToggleButton#ExpanderHeader">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor" Value="Hand" />
+    </Style>
+    <Style Selector="Expander.graph-property-section /template/ ToggleButton#ExpanderHeader:pointerover">
+        <Setter Property="Background" Value="{DynamicResource SemiColorFill0}" />
+    </Style>
+    <Style Selector="Expander.graph-property-section /template/ PathIcon#PART_PathIcon">
+        <Setter Property="Width" Value="10" />
+        <Setter Property="Height" Value="10" />
+        <Setter Property="Margin" Value="0,0,8,0" />
+        <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />
+    </Style>
+    <Style Selector="Expander.graph-property-section /template/ Border#ExpanderContent">
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style Selector="Border.graph-property-section-title">
+        <Setter Property="MinHeight" Value="28" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style Selector="Border.graph-property-section-title TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
+        <Setter Property="FontSize" Value="{DynamicResource KudoPropertiesFontSize}" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    <Style Selector="Border.graph-property-key">
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="Background" Value="{DynamicResource SemiColorBackground1}" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style Selector="Border.graph-property-key TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />
+        <Setter Property="FontSize" Value="{DynamicResource KudoPropertiesFontSize}" />
+        <Setter Property="FontWeight" Value="Regular" />
+    </Style>
+    <Style Selector="Border.graph-property-value">
+        <Setter Property="Padding" Value="8,3" />
+        <Setter Property="Background" Value="{DynamicResource SemiColorBackground1}" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style Selector="Border.graph-property-value TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
+        <Setter Property="FontSize" Value="{DynamicResource KudoPropertiesFontSize}" />
+        <Setter Property="FontWeight" Value="Regular" />
+    </Style>
+    <Style Selector="Control.graph-property-editor">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="MinHeight" Value="26" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style Selector="TextBox.graph-property-editor, ComboBox.graph-property-editor, NumericUpDown.graph-property-editor">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
+    </Style>
+    <Style Selector="TextBox.graph-property-editor:pointerover, ComboBox.graph-property-editor:pointerover, NumericUpDown.graph-property-editor:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource SemiColorBorder}" />
+    </Style>
+    <Style Selector="TextBox.graph-property-editor:focus, ComboBox.graph-property-editor:focus, ComboBox.graph-property-editor:dropdownopen, NumericUpDown.graph-property-editor:focus-within">
+        <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SemiColorPrimary}" />
+    </Style>
+    <Style Selector="Grid.graph-property-row:pointerover Border.graph-property-key, Grid.graph-property-row:pointerover Border.graph-property-value">
+        <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
+    </Style>
+    <Style Selector="Grid.graph-property-row:focus-within Border.graph-property-key, Grid.graph-property-row:focus-within Border.graph-property-value">
+        <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
+    </Style>
+</Styles>

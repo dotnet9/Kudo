@@ -1,0 +1,16 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:semi="https://irihi.tech/semi" xmlns:kudo="using:Kudo.AvaloniaCommon.Themes">
+  <FontFamily x:Key="NotoSansSC">{x:Static kudo:KudoThemeFonts.DefaultFontFamily}</FontFamily>
+  <x:Double x:Key="Kudo.Typography.Title.FontSize">16</x:Double>
+  <x:Double x:Key="Kudo.Typography.Header.FontSize">14</x:Double>
+  <x:Double x:Key="Kudo.Typography.Subtitle.FontSize">14</x:Double>
+  <x:Double x:Key="Kudo.Typography.Body.FontSize">14</x:Double>
+  <x:Double x:Key="Kudo.Typography.Form.FontSize">14</x:Double>
+  <x:Double x:Key="Kudo.Typography.Caption.FontSize">12</x:Double>
+  <FontWeight x:Key="Kudo.Typography.Regular.FontWeight">400</FontWeight>
+  <FontWeight x:Key="Kudo.Typography.Medium.FontWeight">500</FontWeight>
+  <FontWeight x:Key="Kudo.Typography.Emphasis.FontWeight">600</FontWeight>
+  <FontWeight x:Key="Kudo.Typography.Strong.FontWeight">700</FontWeight>
+  <x:Double x:Key="Kudo.Typography.Body.LineHeight">14</x:Double>
+  <x:Double x:Key="Kudo.Typography.Caption.LineHeight">12</x:Double>
+  <x:Double x:Key="Kudo.Typography.Title.LineHeight">16</x:Double>
+</ResourceDictionary>

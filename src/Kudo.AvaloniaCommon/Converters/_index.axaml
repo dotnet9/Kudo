@@ -1,0 +1,15 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="https://codewf.com"
+                    xmlns:kudo="https://codewf.com">
+  <Design.PreviewWith>
+    <c:StatusLabel LeftText="服务" RightText="正常" Kind="{x:Static c:StatusLabelKind.Normal}" />
+  </Design.PreviewWith>
+  <!-- Add Resources Here -->
+  <kudo:AllTrueConverter x:Key="AllTrueConverter" />
+  <kudo:AnyTrueConverter x:Key="AnyTrueConverter" />
+  <kudo:BoolToNumberConverter x:Key="BoolToNumberConverter" />
+  <kudo:DateTimeFormatConverter x:Key="DateTimeFormatConverter" />
+  <kudo:DateTimeStrFormatConverter x:Key="DateTimeStrFormatConverter" />
+  <kudo:EnumDescriptionConverter x:Key="EnumDescriptionConverter" />
+</ResourceDictionary>

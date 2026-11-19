@@ -1,0 +1,77 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- 调度首页式工作台：浅灰间隙承载白色面板，Header 不再使用整条灰底。 -->
+  <SolidColorBrush x:Key="CodeWFDockWorkbenchBrush" Color="#F3F5F7" />
+  <StaticResource x:Key="CodeWFDockPanelBackgroundBrush" ResourceKey="SemiColorBackground0" />
+  <StaticResource x:Key="CodeWFDockHeaderBackgroundBrush" ResourceKey="SemiColorBackground0" />
+  <StaticResource x:Key="CodeWFDockHeaderPointerOverBackgroundBrush" ResourceKey="SemiColorFill0" />
+  <SolidColorBrush x:Key="CodeWFDockPanelBorderBrush" Color="#E5E8EC" />
+  <StaticResource x:Key="CodeWFDockHeaderDividerBrush" ResourceKey="CodeWFDockPanelBorderBrush" />
+  <StaticResource x:Key="CodeWFDockActiveIndicatorBrush" ResourceKey="SemiColorPrimary" />
+  <StaticResource x:Key="CodeWFDockHeaderForegroundBrush" ResourceKey="SemiColorText0" />
+  <StaticResource x:Key="CodeWFDockHeaderSecondaryForegroundBrush" ResourceKey="SemiColorText2" />
+  <StaticResource x:Key="CodeWFDockInactiveBorderBrush" ResourceKey="CodeWFDockPanelBorderBrush" />
+  <StaticResource x:Key="CodeWFDockActiveBorderBrush" ResourceKey="CodeWFDockPanelBorderBrush" />
+  <StaticResource x:Key="CodeWFDockSplitterBrush" ResourceKey="CodeWFDockWorkbenchBrush" />
+  <StaticResource x:Key="CodeWFDockSplitterPointerOverBrush" ResourceKey="SemiColorFill2" />
+  <StaticResource x:Key="CodeWFDockPanelCornerRadius" ResourceKey="Kudo.Shape.DockPanel.CornerRadius" />
+  <StaticResource x:Key="CodeWFDockPanelHeaderCornerRadius" ResourceKey="Kudo.Shape.DockPanel.InnerTopCornerRadius" />
+  <StaticResource x:Key="CodeWFDockPanelContentCornerRadius" ResourceKey="Kudo.Shape.DockPanel.InnerBottomCornerRadius" />
+  <StaticResource x:Key="CodeWFDockPanelBorderThickness" ResourceKey="Kudo.Shape.Panel.BorderThickness" />
+  <Thickness x:Key="CodeWFDockDocumentPanelBorderThickness">0</Thickness>
+  <Thickness x:Key="CodeWFDockHeaderDividerThickness">0 0 0 1</Thickness>
+  <x:Double x:Key="CodeWFDockHeaderHeight">28</x:Double>
+  <!-- 分隔线绘制在 TabStrip 内部；Document 与 Tool 必须直接共享同一个布局高度。 -->
+  <StaticResource x:Key="CodeWFDockDocumentTabStripHeight" ResourceKey="CodeWFDockHeaderHeight" />
+  <x:Double x:Key="CodeWFDockDocumentTabItemMinWidth">132</x:Double>
+  <CornerRadius x:Key="CodeWFDockDocumentTabItemCornerRadius">6 6 0 0</CornerRadius>
+  <Thickness x:Key="CodeWFDockDocumentTabItemMargin">2 0 0 0</Thickness>
+  <StaticResource x:Key="CodeWFDockDocumentTabSelectedBackgroundBrush" ResourceKey="CodeWFDockPanelBackgroundBrush" />
+  <StaticResource x:Key="CodeWFDocumentEmptyContentFontFamily" ResourceKey="NotoSansSC" />
+
+  <!-- 品牌级 Tool 扩展点：仅覆盖配色，不复制控件库模板。 -->
+  <StaticResource x:Key="CodeWFToolPanelBackgroundBrush" ResourceKey="CodeWFDockPanelBackgroundBrush" />
+  <StaticResource x:Key="CodeWFToolTitleBarBackgroundBrush" ResourceKey="CodeWFDockHeaderBackgroundBrush" />
+  <StaticResource x:Key="CodeWFToolTitleBarActiveBackgroundBrush" ResourceKey="CodeWFDockHeaderBackgroundBrush" />
+  <StaticResource x:Key="CodeWFToolTitleBarDividerBrush" ResourceKey="CodeWFDockHeaderDividerBrush" />
+  <StaticResource x:Key="CodeWFToolTitleBarForegroundBrush" ResourceKey="CodeWFDockHeaderForegroundBrush" />
+  <StaticResource x:Key="CodeWFToolTitleBarActiveForegroundBrush" ResourceKey="CodeWFDockHeaderForegroundBrush" />
+  <SolidColorBrush x:Key="CodeWFToolTitleBarActiveIndicatorBrush" Color="Transparent" />
+  <StaticResource x:Key="CodeWFToolTitleBarButtonForegroundBrush" ResourceKey="CodeWFDockHeaderSecondaryForegroundBrush" />
+  <StaticResource x:Key="CodeWFToolTitleBarButtonPointerOverBackgroundBrush" ResourceKey="CodeWFDockHeaderPointerOverBackgroundBrush" />
+  <StaticResource x:Key="CodeWFToolTitleBarButtonPressedBackgroundBrush" ResourceKey="SemiColorFill2" />
+  <StaticResource x:Key="CodeWFToolTitleBarHeight" ResourceKey="CodeWFDockHeaderHeight" />
+  <Thickness x:Key="CodeWFToolTitleBarContentMargin">10 0 10 0</Thickness>
+  <x:Double x:Key="CodeWFToolTitleBarIconSize">16</x:Double>
+  <StaticResource x:Key="CodeWFToolTabStripBackgroundBrush" ResourceKey="CodeWFDockHeaderPointerOverBackgroundBrush" />
+  <StaticResource x:Key="CodeWFToolTabPointerOverBackgroundBrush" ResourceKey="SemiColorFill1" />
+  <StaticResource x:Key="CodeWFToolTabSelectedBackgroundBrush" ResourceKey="CodeWFDockPanelBackgroundBrush" />
+  <StaticResource x:Key="CodeWFToolTabSelectedForegroundBrush" ResourceKey="CodeWFDockHeaderForegroundBrush" />
+  <StaticResource x:Key="CodeWFToolTabBorderBrush" ResourceKey="CodeWFDockPanelBorderBrush" />
+  <x:Double x:Key="CodeWFDockToolTitleFontSize">13</x:Double>
+  <x:Double x:Key="CodeWFDockToolTitleIconSize">14</x:Double>
+  <x:Double x:Key="CodeWFDockTitleToolButtonHeight">22</x:Double>
+  <x:Double x:Key="CodeWFDockTitleToolButtonIconSize">13</x:Double>
+  <Thickness x:Key="CodeWFDockTitleToolButtonPadding">6 1</Thickness>
+  <Thickness x:Key="CodeWFDockTitleToolButtonMargin">2 0</Thickness>
+
+  <!-- 上游 Dock 回退资源遵循 Tool 底部切换栏语义，Document 使用独立资源。 -->
+  <StaticResource x:Key="DockTabBackgroundBrush" ResourceKey="CodeWFToolTabStripBackgroundBrush" />
+  <StaticResource x:Key="DockTabHoverBackgroundBrush" ResourceKey="CodeWFToolTabPointerOverBackgroundBrush" />
+  <StaticResource x:Key="DockTabActiveBackgroundBrush" ResourceKey="CodeWFToolTabSelectedBackgroundBrush" />
+  <StaticResource x:Key="DockTabActiveIndicatorBrush" ResourceKey="CodeWFDockActiveIndicatorBrush" />
+  <StaticResource x:Key="DockTabForegroundBrush" ResourceKey="CodeWFDockHeaderSecondaryForegroundBrush" />
+  <StaticResource x:Key="DockTabSelectedForegroundBrush" ResourceKey="CodeWFDockHeaderForegroundBrush" />
+  <StaticResource x:Key="DockTabActiveForegroundBrush" ResourceKey="CodeWFDockHeaderForegroundBrush" />
+  <StaticResource x:Key="DockTabCloseHoverBackgroundBrush" ResourceKey="CodeWFDockHeaderPointerOverBackgroundBrush" />
+  <StaticResource x:Key="DockDocumentTabStripBackgroundBrush" ResourceKey="CodeWFDockWorkbenchBrush" />
+  <StaticResource x:Key="DockDocumentTabSelectedForegroundBrush" ResourceKey="CodeWFDockHeaderForegroundBrush" />
+  <StaticResource x:Key="DockDocumentTabPointerOverForegroundBrush" ResourceKey="CodeWFDockHeaderForegroundBrush" />
+  <StaticResource x:Key="DockDocumentTabCloseSelectedForegroundBrush" ResourceKey="CodeWFDockHeaderSecondaryForegroundBrush" />
+  <StaticResource x:Key="DockDocumentTabClosePointerOverForegroundBrush" ResourceKey="CodeWFDockHeaderForegroundBrush" />
+  <x:Double x:Key="DockFontSizeNormal">13</x:Double>
+  <StaticResource x:Key="DockDocumentTabStripMinHeight" ResourceKey="CodeWFDockDocumentTabStripHeight" />
+  <StaticResource x:Key="DockDocumentTabItemMinHeight" ResourceKey="CodeWFDockDocumentTabStripHeight" />
+  <x:Double x:Key="DockDocumentTabStripSeparatorSize">1</x:Double>
+  <StaticResource x:Key="DockDocumentTabItemPadding" ResourceKey="CodeWFDockHeaderPadding" />
+</ResourceDictionary>

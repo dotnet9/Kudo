@@ -1,0 +1,9 @@
+<Styles xmlns="https://github.com/avaloniaui">
+    <StyleInclude Source="Resources.axaml" />
+    <StyleInclude Source="Button.axaml" />
+    <StyleInclude Source="TextBlock.axaml" />
+    <StyleInclude Source="StatusBar.axaml" />
+    <StyleInclude Source="DockControl.axaml" />
+    <StyleInclude Source="HostWindow.axaml" />
+    <StyleInclude Source="GraphDocumentList.axaml" />
+</Styles>

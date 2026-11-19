@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Symbol Id="PipeTee" NodeType="Industrial.PipeTee" TemplateKey="Industrial.PipeTee" IconText="T" Icon="Assets/Piping.Tee.svg" Resource="Assets/Piping.Tee.svg" Format="Kudo.Symbol/1" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.PipeTee" DescriptionKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.PipeTeeDescription">
+  <DefaultSize Width="82" Height="72" />
+  <Ports>
+    <Port Id="Inlet" X="0" Y="0.5" DataType="Fluid" Kind="Input" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.PipeTee.Inlet">
+      <IncomingDirection X="-1" Y="0" />
+    </Port>
+    <Port Id="Outlet" X="1" Y="0.5" DataType="Fluid" Kind="Output" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.PipeTee.Outlet">
+      <OutgoingDirection X="1" Y="0" />
+    </Port>
+    <Port Id="Branch" X="0.5" Y="0" DataType="Fluid" Kind="Output" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.PipeTee.Branch">
+      <Capacity MaxOutgoing="Unlimited" />
+      <OutgoingDirection X="0" Y="-1" />
+    </Port>
+  </Ports>
+  <PropertyDefinitions>
+    <Property Name="NominalDiameter" ValueKind="Integer" Unit="mm" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.NominalDiameter" GroupKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.BasicParameters">
+      <DefaultValue Type="Integer">50</DefaultValue>
+    </Property>
+  </PropertyDefinitions>
+  <Properties>
+    <Property Name="IndustrialCategory" Type="String">Piping</Property>
+    <Property Name="IndustrialEquipmentKind" Type="String">PipeTee</Property>
+  </Properties>
+</Symbol>

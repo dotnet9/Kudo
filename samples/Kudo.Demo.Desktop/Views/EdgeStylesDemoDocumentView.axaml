@@ -1,0 +1,64 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i18n="using:CodeWF.Avalonia.Lang.MarkupExtensions"
+             xmlns:lang="using:Localization.Kudo_Demo_Desktop.Views"
+             xmlns:vm="using:Kudo.Demo.Desktop.ViewModels"
+             mc:Ignorable="d"
+             d:DesignWidth="1180"
+             d:DesignHeight="700"
+             x:Class="Kudo.Demo.Desktop.Views.EdgeStylesDemoDocumentView"
+             x:DataType="vm:EdgeStylesDemoDocumentViewModel">
+    <Grid RowDefinitions="Auto,*">
+        <Border Margin="4,4,4,0"
+                Padding="12,9"
+                Background="#F8FAFC"
+                BorderBrush="#D8E1EC"
+                BorderThickness="1"
+                CornerRadius="6">
+            <Grid ColumnDefinitions="Auto,18,Auto,10,180,18,Auto,10,150,18,Auto,*">
+                <StackPanel Grid.Column="0"
+                            VerticalAlignment="Center">
+                    <TextBlock FontSize="14"
+                               FontWeight="SemiBold"
+                               Text="{i18n:I18n {x:Static lang:MainWindow.EdgeStylesToolbarTitle}}" />
+                    <TextBlock Margin="0,2,0,0"
+                               FontSize="11"
+                               Foreground="#64748B"
+                               Text="{i18n:I18n {x:Static lang:MainWindow.EdgeStylesToolbarHint}}" />
+                </StackPanel>
+                <Border Grid.Column="1"
+                        Width="1"
+                        Background="#D8E1EC" />
+                <TextBlock Grid.Column="2"
+                           VerticalAlignment="Center"
+                           Text="{i18n:I18n {x:Static lang:MainWindow.EdgeStylePreset}}" />
+                <ComboBox x:Name="EdgePresetCombo"
+                          Grid.Column="4"
+                          ItemsSource="{Binding StylePresets}"
+                          SelectedItem="{Binding SelectedStylePreset, Mode=TwoWay}"
+                          IsEnabled="{Binding HasSelectedEdge}" />
+                <TextBlock Grid.Column="6"
+                           VerticalAlignment="Center"
+                           Text="{i18n:I18n {x:Static lang:MainWindow.CanvasTheme}}" />
+                <ComboBox x:Name="CanvasThemeCombo"
+                          Grid.Column="8"
+                          ItemsSource="{Binding CanvasThemes}"
+                          SelectedItem="{Binding SelectedTheme, Mode=TwoWay}" />
+                <TextBlock Grid.Column="10"
+                           VerticalAlignment="Center"
+                           Foreground="#64748B"
+                           Text="{i18n:I18n {x:Static lang:MainWindow.SelectedEdgeLabel}}" />
+                <TextBlock x:Name="SelectedEdgeText"
+                           Grid.Column="11"
+                           Margin="6,0,0,0"
+                           VerticalAlignment="Center"
+                           FontWeight="SemiBold"
+                           Text="{Binding SelectedEdgeId, TargetNullValue='-'}" />
+            </Grid>
+        </Border>
+        <ContentControl Grid.Row="1"
+                        Content="{Binding DocumentView}" />
+    </Grid>
+</UserControl>

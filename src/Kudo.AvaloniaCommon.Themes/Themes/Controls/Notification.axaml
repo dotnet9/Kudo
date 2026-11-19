@@ -1,0 +1,79 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:u="https://irihi.tech/ursa">
+  <!-- 覆盖 Ursa/Semi 的横向通知卡片，统一为产品通知原型的纵向布局。 -->
+  <ControlTheme x:Key="{x:Type u:NotificationCard}" TargetType="u:NotificationCard">
+    <Setter Property="UseLayoutRounding" Value="True" />
+    <Setter Property="MinWidth" Value="240" />
+    <Setter Property="MinHeight" Value="110" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Background" Value="#BF000000" />
+    <Setter Property="CornerRadius" Value="8" />
+    <Setter Property="Template">
+      <ControlTemplate TargetType="u:NotificationCard">
+        <LayoutTransformControl x:Name="PART_LayoutTransformControl"
+                                UseRenderTransform="True">
+          <Border Background="{TemplateBinding Background}"
+                  CornerRadius="{TemplateBinding CornerRadius}">
+            <Border x:Name="PART_RootBorder"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+              <StackPanel MinWidth="240"
+                          HorizontalAlignment="Center">
+                <Image x:Name="NotificationIcon"
+                       Width="32"
+                       Height="32"
+                       Margin="0,24,0,16"
+                       IsVisible="{TemplateBinding ShowIcon}"
+                       IsHitTestVisible="False"
+                       Stretch="Uniform"
+                       Source="avares://Kudo.AvaloniaCommon.Themes/Assets/dlg-info.png" />
+                <ContentControl x:Name="PART_Content"
+                                Margin="0,0,0,24"
+                                HorizontalContentAlignment="Center"
+                                Content="{TemplateBinding Content}">
+                  <ContentControl.DataTemplates>
+                    <DataTemplate DataType="u:INotification">
+                      <SelectableTextBlock Foreground="#FFFFFF"
+                                           FontFamily="{StaticResource NotoSansSC}"
+                                           FontSize="{DynamicResource Kudo.Typography.Body.FontSize}"
+                                           FontWeight="{DynamicResource Kudo.Typography.Regular.FontWeight}"
+                                           LineHeight="{DynamicResource Kudo.Typography.Body.LineHeight}"
+                                           Text="{Binding Content}"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"
+                                           IsVisible="{Binding Content, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                    </DataTemplate>
+                    <DataTemplate DataType="x:String">
+                      <SelectableTextBlock Foreground="#FFFFFF"
+                                           FontFamily="{StaticResource NotoSansSC}"
+                                           FontSize="{DynamicResource Kudo.Typography.Body.FontSize}"
+                                           FontWeight="{DynamicResource Kudo.Typography.Regular.FontWeight}"
+                                           LineHeight="{DynamicResource Kudo.Typography.Body.LineHeight}"
+                                           Text="{Binding}"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap" />
+                    </DataTemplate>
+                  </ContentControl.DataTemplates>
+                </ContentControl>
+              </StackPanel>
+            </Border>
+          </Border>
+        </LayoutTransformControl>
+      </ControlTemplate>
+    </Setter>
+
+    <!-- 保留 Ursa 的关闭状态契约，确保超时通知仍会从管理器移除。 -->
+    <Style Selector="^[IsClosing=true]">
+      <Setter Property="IsClosed" Value="True" />
+    </Style>
+
+    <Style Selector="^:warning /template/ Image#NotificationIcon">
+      <Setter Property="Source" Value="avares://Kudo.AvaloniaCommon.Themes/Assets/notifaction-warning-outline.png" />
+    </Style>
+    <Style Selector="^:success /template/ Image#NotificationIcon">
+      <Setter Property="Source" Value="avares://Kudo.AvaloniaCommon.Themes/Assets/notification-success.png" />
+    </Style>
+  </ControlTheme>
+</ResourceDictionary>

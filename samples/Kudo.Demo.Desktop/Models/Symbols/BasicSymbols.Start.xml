@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Symbol Id="Start" NodeType="Demo.Start" TemplateKey="Demo.Start" IconText="S" Format="Kudo.Symbol/1" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.Start" DescriptionKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.StartDescription">
+  <DefaultSize Width="132" Height="72" />
+  <Appearance VisualMode="Card" NameVisibility="Always" DescriptionVisibility="Never" />
+  <Ports>
+    <Port Id="Reference" X="1" Y="0.5" DataType="Table" Kind="Reference" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.Start.Reference">
+      <Capacity MaxIncoming="0" MaxOutgoing="Unlimited" />
+      <OutgoingDirection X="1" Y="0" />
+    </Port>
+  </Ports>
+  <Properties>
+    <Property Name="DemoCategory" Type="String">Reference</Property>
+  </Properties>
+</Symbol>

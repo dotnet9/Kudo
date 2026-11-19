@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Symbol Id="PipeElbow" NodeType="Industrial.PipeElbow" TemplateKey="Industrial.PipeElbow" IconText="L" Icon="Assets/Piping.Elbow.svg" Resource="Assets/Piping.Elbow.svg" Format="Kudo.Symbol/1" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.PipeElbow" DescriptionKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.PipeElbowDescription">
+  <DefaultSize Width="72" Height="72" />
+  <Ports>
+    <Port Id="Inlet" X="0.18" Y="0" DataType="Fluid" Kind="Input" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.PipeElbow.Inlet">
+      <IncomingDirection X="0" Y="-1" />
+    </Port>
+    <Port Id="Outlet" X="1" Y="0.82" DataType="Fluid" Kind="Output" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.PipeElbow.Outlet">
+      <OutgoingDirection X="1" Y="0" />
+    </Port>
+  </Ports>
+  <PropertyDefinitions>
+    <Property Name="NominalDiameter" ValueKind="Integer" Unit="mm" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.NominalDiameter" GroupKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.BasicParameters">
+      <DefaultValue Type="Integer">50</DefaultValue>
+    </Property>
+  </PropertyDefinitions>
+  <Properties>
+    <Property Name="IndustrialCategory" Type="String">Piping</Property>
+    <Property Name="IndustrialEquipmentKind" Type="String">PipeElbow</Property>
+  </Properties>
+</Symbol>

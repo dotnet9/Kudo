@@ -1,0 +1,15 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- 产品级形状 Token：业务主题只引用语义资源，不再散落独立圆角数值。 -->
+  <CornerRadius x:Key="Kudo.Shape.Window.CornerRadius">10</CornerRadius>
+  <CornerRadius x:Key="Kudo.Shape.Window.TopCornerRadius">10,10,0,0</CornerRadius>
+  <CornerRadius x:Key="Kudo.Shape.DockPanel.CornerRadius">8</CornerRadius>
+  <CornerRadius x:Key="Kudo.Shape.DockPanel.InnerTopCornerRadius">7,7,0,0</CornerRadius>
+  <!-- Dock 面板 1px 边框内侧的下圆角，用于贴合面板底部的业务内容。 -->
+  <CornerRadius x:Key="Kudo.Shape.DockPanel.InnerBottomCornerRadius">0,0,7,7</CornerRadius>
+  <CornerRadius x:Key="Kudo.Shape.Card.CornerRadius">6</CornerRadius>
+  <CornerRadius x:Key="Kudo.Shape.Control.CornerRadius">4</CornerRadius>
+  <CornerRadius x:Key="Kudo.Shape.Pill.CornerRadius">999</CornerRadius>
+
+  <Thickness x:Key="Kudo.Shape.Panel.BorderThickness">1</Thickness>
+</ResourceDictionary>

@@ -1,0 +1,63 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codewf="https://codewf.com" xmlns:u="https://irihi.tech/ursa">
+  <Style Selector="Border.QuickToolBarRoot">
+    <Setter Property="Height" Value="{StaticResource QuickToolBarHeight}" />
+    <Setter Property="Margin" Value="{StaticResource QuickToolBarMargin}" />
+    <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SemiColorBorder}" />
+    <Setter Property="BorderThickness" Value="{StaticResource QuickToolBarBorderThickness}" />
+    <Setter Property="CornerRadius" Value="{StaticResource QuickToolBarCornerRadius}" />
+  </Style>
+  <Style Selector="u|IconButton.QuickToolButton">
+    <Setter Property="Width" Value="{StaticResource QuickToolButtonWidth}" />
+    <Setter Property="Height" Value="{StaticResource QuickToolButtonHeight}" />
+    <Setter Property="MinWidth" Value="{StaticResource QuickToolButtonWidth}" />
+    <Setter Property="MinHeight" Value="{StaticResource QuickToolButtonHeight}" />
+    <Setter Property="Padding" Value="{StaticResource QuickToolButtonPadding}" />
+    <Setter Property="Margin" Value="{StaticResource QuickToolButtonMargin}" />
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimary}" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="CornerRadius" Value="{StaticResource QuickToolButtonCornerRadius}" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+  </Style>
+  <Style Selector="u|IconButton.QuickToolButton:pointerover">
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimaryPointerover}" />
+    <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
+  </Style>
+  <Style Selector="Border.QuickToolBarRoot.RibbonHeader">
+    <Setter Property="Height" Value="32" />
+    <Setter Property="Margin" Value="8,0,0,0" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="0" />
+  </Style>
+  <Style Selector="Border.QuickToolBarRoot.RibbonHeader u|IconButton.QuickToolButton">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderForeground}" />
+  </Style>
+  <Style Selector="Border.QuickToolBarRoot.RibbonHeader u|IconButton.QuickToolButton:pointerover">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderPointeroverForeground}" />
+  </Style>
+  <Style Selector="Border.QuickToolBarRoot.RibbonHeader u|IconDropDownButton.QuickToolButton">
+    <Setter Property="Theme" Value="{DynamicResource BorderlessIconDropDownButton}" />
+    <Setter Property="Margin" Value="{StaticResource QuickToolButtonMargin}" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="CornerRadius" Value="{StaticResource QuickToolButtonCornerRadius}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderForeground}" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+  </Style>
+  <Style Selector="Border.QuickToolBarRoot.RibbonHeader u|IconDropDownButton.QuickToolButton:pointerover">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderPointeroverForeground}" />
+    <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
+  </Style>
+  <Style Selector="Border.QuickToolBarRoot.RibbonHeader u|IconDropDownButton.QuickToolButton:pointerover /template/ Border#PART_Background">
+    <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
+  </Style>
+  <Style Selector="TextBlock.QuickToolBarTitle">
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Caption.FontSize}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="Margin" Value="{StaticResource QuickToolBarTitleMargin}" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+  </Style>
+</Styles>

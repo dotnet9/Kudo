@@ -1,0 +1,36 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="publish_all.bat" />
+    <File Path="publish_linux-arm64.bat" />
+    <File Path="publish_linux-x64.bat" />
+    <File Path="publish_win-x64.bat" />
+    <File Path="README.md" />
+    <File Path="更新日志.md" />
+    <File Path="docs/使用与开发手册.md" />
+    <File Path="docs/包选择与依赖评估.md" />
+    <File Path="docs/架构与设计.md" />
+    <File Path="docs/性能优化.md" />
+  </Folder>
+  <Folder Name="/Benchmarks/">
+    <Project Path="benchmarks/Kudo.Benchmarks/Kudo.Benchmarks.csproj" />
+  </Folder>
+  <Folder Name="/Src/">
+    <Project Path="src/Kudo.Avalonia/Kudo.Avalonia.csproj" />
+    <Project Path="src/Kudo.AvaloniaCommon/Kudo.AvaloniaCommon.csproj" />
+    <Project Path="src/Kudo.AvaloniaCommon.Themes/Kudo.AvaloniaCommon.Themes.csproj" />
+    <Project Path="src/Kudo.Core/Kudo.Core.csproj" />
+    <Project Path="src/Kudo.Dock.Themes/Kudo.Dock.Themes.csproj" />
+    <Project Path="src/Kudo.Themes.Semi/Kudo.Themes.Semi.csproj" />
+    <Project Path="src/Kudo.Avalonia.3D/Kudo.Avalonia.3D.csproj" />
+  </Folder>
+  <Folder Name="/Samples/">
+    <Project Path="samples/Kudo.Demo.Desktop/Kudo.Demo.Desktop.csproj" />
+    <Project Path="samples/Kudo.Demo/Kudo.Demo.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="tests/Kudo.Avalonia.Tests/Kudo.Avalonia.Tests.csproj" />
+    <Project Path="tests/Kudo.Core.Tests/Kudo.Core.Tests.csproj" />
+  </Folder>
+</Solution>

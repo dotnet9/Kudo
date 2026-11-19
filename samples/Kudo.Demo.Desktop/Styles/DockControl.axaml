@@ -1,0 +1,7 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:dock="using:Dock.Avalonia.Controls">
+    <Style Selector="dock|DockControl">
+        <Setter Property="(ControlRecyclingDataTemplate.ControlRecycling)"
+                Value="{StaticResource ControlRecyclingKey}" />
+    </Style>
+</Styles>

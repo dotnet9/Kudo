@@ -1,0 +1,399 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:u="https://irihi.tech/ursa">
+  <Styles.Resources>
+    <DataTemplate x:Key="RibbonIconTemplate" DataType="Geometry">
+      <Border Width="{StaticResource RibbonIconSlotSize}"
+              Height="{StaticResource RibbonIconSlotSize}"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center">
+        <PathIcon Theme="{StaticResource InnerPathIcon}"
+                  Data="{Binding}"
+                  Width="{StaticResource RibbonIconSize}"
+                  Height="{StaticResource RibbonIconSize}"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  UseLayoutRounding="True" />
+      </Border>
+    </DataTemplate>
+  </Styles.Resources>
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <!-- Add Controls for Previewer Here -->
+    </Border>
+  </Design.PreviewWith>
+
+  <!-- Add Styles Here -->
+  <Style Selector="TabStrip.RibbonMenuTabs">
+    <Setter Property="Theme" Value="{StaticResource TrapezoidShapedTabStrip}" />
+    <Setter Property="Height" Value="{StaticResource RibbonMenuTabStripHeight}" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="{StaticResource RibbonMenuTabsCornerRadius}" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="ClipToBounds" Value="True" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Top" />
+  </Style>
+  <Style Selector="TabStrip.RibbonMenuTabs.Left">
+    <Setter Property="HorizontalAlignment" Value="Left" />
+  </Style>
+  <Style Selector="TabStrip.RibbonMenuTabs.Center">
+    <Setter Property="HorizontalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="TabStrip.RibbonMenuTabs.Right">
+    <Setter Property="HorizontalAlignment" Value="Right" />
+  </Style>
+  <Style Selector="TabStrip.RibbonMenuTabs /template/ Border#PART_BorderSeparator">
+    <Setter Property="Height" Value="0" />
+    <Setter Property="MinHeight" Value="0" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="IsVisible" Value="False" />
+  </Style>
+  <Style Selector="TabStripItem.RibbonMenuTab">
+    <Setter Property="CornerRadius" Value="{StaticResource RibbonMenuTabHeaderCornerRadius}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderForeground}" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Header.FontSize}" />
+    <Setter Property="Padding" Value="{StaticResource RibbonMenuTabHeaderPadding}" />
+    <Setter Property="Height" Value="{StaticResource RibbonMenuTabStripHeight}" />
+    <Setter Property="MinHeight" Value="{StaticResource RibbonMenuTabStripHeight}" />
+    <Setter Property="MinWidth" Value="{StaticResource RibbonMenuTabHeaderMinWidth}" />
+    <Setter Property="BorderThickness" Value="{StaticResource RibbonMenuTabHeaderBorderThickness}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+  <Style Selector="TabStripItem.RibbonMenuTab:pointerover">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderPointeroverForeground}" />
+    <Setter Property="Background" Value="{DynamicResource RibbonMenuTabHeaderPointeroverBackground}" />
+  </Style>
+  <Style Selector="TabStripItem.RibbonMenuTab TextBlock">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderForeground}" />
+    <!-- C 端普通 TextBlock 使用 12px，页签模板内的文字需要恢复 Ribbon 的语义字号。 -->
+    <Setter Property="FontSize" Value="{StaticResource RibbonMenuTabHeaderFontSize}" />
+  </Style>
+  <Style Selector="TabStripItem.RibbonMenuTab:pointerover TextBlock">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderPointeroverForeground}" />
+  </Style>
+  <Style Selector="TabStripItem.RibbonMenuTab:selected">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderSelectedForeground}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Emphasis.FontWeight}" />
+    <Setter Property="Background" Value="{DynamicResource Kudo.Brand.Ribbon.Tab.SelectedBackground}" />
+  </Style>
+  <Style Selector="TabStripItem.RibbonMenuTab:selected TextBlock">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderSelectedForeground}" />
+  </Style>
+  <Style Selector="TabStripItem.RibbonMenuTab.Start:selected">
+    <Setter Property="Background" Value="{DynamicResource Kudo.Brand.Ribbon.Tab.StartSelectedBackground}" />
+  </Style>
+  <Style Selector="TabStripItem.RibbonMenuTab.End:selected">
+    <Setter Property="Background" Value="{DynamicResource Kudo.Brand.Ribbon.Tab.EndSelectedBackground}" />
+  </Style>
+  <Style Selector="WrapPanel.RibbonMenuContent">
+    <Setter Property="Height" Value="{StaticResource RibbonMenuContentHeight}" />
+    <Setter Property="Margin" Value="{StaticResource RibbonMenuContentMargin}" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="WrapPanel.RibbonMenuContent.Left">
+    <Setter Property="HorizontalAlignment" Value="Left" />
+  </Style>
+  <Style Selector="WrapPanel.RibbonMenuContent.Center">
+    <Setter Property="HorizontalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="WrapPanel.RibbonMenuContent.Right">
+    <Setter Property="HorizontalAlignment" Value="Right" />
+  </Style>
+  <Style Selector="ScrollViewer.RibbonMenuContentScroll">
+    <Setter Property="Height" Value="{StaticResource RibbonMenuContentHeight}" />
+    <Setter Property="VerticalAlignment" Value="Top" />
+    <Setter Property="ScrollViewer.AllowAutoHide" Value="True" />
+  </Style>
+  <Style Selector="ScrollViewer.RibbonMenuContentScroll ContentPresenter">
+    <Setter Property="MinHeight" Value="{StaticResource RibbonMenuContentHeight}" />
+  </Style>
+  <Style Selector="Border.RibbonMenuContentHost">
+    <Setter Property="MinHeight" Value="{StaticResource RibbonMenuContentHeight}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+  </Style>
+  <Style Selector="ContentPresenter.RibbonMenuContentPresenter">
+    <Setter Property="MinHeight" Value="{StaticResource RibbonMenuContentHeight}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="VerticalContentAlignment" Value="Top" />
+  </Style>
+  <Style Selector="WrapPanel.RibbonGroup">
+    <Setter Property="Height" Value="{StaticResource RibbonGroupHeight}" />
+    <Setter Property="MinHeight" Value="{StaticResource RibbonGroupHeight}" />
+    <Setter Property="Margin" Value="{StaticResource RibbonGroupMargin}" />
+  </Style>
+  <Style Selector="u|IconButton.RibbonCommand, u|IconDropDownButton.RibbonCommand">
+    <Setter Property="Height" Value="{StaticResource RibbonCommandHeight}" />
+    <Setter Property="MinHeight" Value="{StaticResource RibbonCommandHeight}" />
+    <Setter Property="Margin" Value="{StaticResource RibbonCommandMargin}" />
+    <Setter Property="Padding" Value="{StaticResource RibbonCommandPadding}" />
+    <Setter Property="MinWidth" Value="{StaticResource RibbonCommandMinWidth}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandForeground}" />
+    <Setter Property="FontSize" Value="{StaticResource RibbonCommandFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Regular.FontWeight}" />
+    <Setter Property="CornerRadius" Value="{StaticResource RibbonCommandCornerRadius}" />
+    <Setter Property="VerticalAlignment" Value="Top" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Theme" Value="{StaticResource BorderlessIconButton}" />
+  </Style>
+  <Style Selector="u|IconButton.RibbonCommand:pointerover, u|IconDropDownButton.RibbonCommand:pointerover">
+    <Setter Property="Background" Value="{DynamicResource RibbonCommandPointeroverBackground}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandPointeroverForeground}" />
+  </Style>
+  <Style Selector="u|IconButton.RibbonCommand:pressed, u|IconDropDownButton.RibbonCommand:pressed">
+    <Setter Property="Background" Value="{DynamicResource RibbonCommandPressedBackground}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandPressedForeground}" />
+  </Style>
+  <Style Selector="u|IconButton.RibbonCommand:disabled, u|IconDropDownButton.RibbonCommand:disabled">
+    <Setter Property="Opacity" Value="{StaticResource RibbonCommandDisabledOpacity}" />
+  </Style>
+  <Style Selector="u|IconButton.RibbonSmallCommand, u|IconDropDownButton.RibbonSmallCommand">
+    <Setter Property="Height" Value="{StaticResource RibbonSmallCommandHeight}" />
+    <Setter Property="MinHeight" Value="{StaticResource RibbonSmallCommandHeight}" />
+    <Setter Property="MinWidth" Value="{StaticResource RibbonSmallCommandMinWidth}" />
+    <Setter Property="Padding" Value="{StaticResource RibbonSmallCommandPadding}" />
+    <Setter Property="CornerRadius" Value="{StaticResource RibbonSmallCommandCornerRadius}" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+  </Style>
+  <Style
+    Selector="u|IconButton.RibbonSmallCommand /template/ Panel#PART_IconRoot, u|IconDropDownButton.RibbonSmallCommand /template/ Panel#PART_IconRoot">
+    <Setter Property="Width" Value="{StaticResource RibbonSmallCommandIconSlotSize}" />
+    <Setter Property="Height" Value="{StaticResource RibbonSmallCommandIconSlotSize}" />
+  </Style>
+  <Style Selector="u|IconDropDownButton.RibbonCommand">
+    <Setter Property="Theme" Value="{StaticResource BorderlessIconDropDownButton}" />
+    <Setter Property="MinWidth" Value="{StaticResource RibbonCommandDropDownMinWidth}" />
+  </Style>
+  <Style Selector="u|IconDropDownButton.RibbonSmallCommand">
+    <Setter Property="MinWidth" Value="{StaticResource RibbonSmallCommandMinWidth}" />
+  </Style>
+  <Style Selector="u|IconButton.RibbonCommand">
+    <Setter Property="IconTemplate" Value="{StaticResource RibbonIconTemplate}" />
+  </Style>
+  <Style Selector="u|IconDropDownButton.RibbonCommand">
+    <Setter Property="IconTemplate" Value="{StaticResource RibbonIconTemplate}" />
+  </Style>
+  <Style
+    Selector="u|IconButton.RibbonCommand /template/ Panel#PART_IconRoot, u|IconDropDownButton.RibbonCommand /template/ Panel#PART_IconRoot">
+    <Setter Property="Width" Value="{StaticResource RibbonIconSlotSize}" />
+    <Setter Property="Height" Value="{StaticResource RibbonIconSlotSize}" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style
+    Selector="u|IconButton.RibbonSmallCommand /template/ Panel#PART_IconRoot, u|IconDropDownButton.RibbonSmallCommand /template/ Panel#PART_IconRoot">
+    <Setter Property="Width" Value="{StaticResource RibbonSmallCommandIconSlotSize}" />
+    <Setter Property="Height" Value="{StaticResource RibbonSmallCommandIconSlotSize}" />
+  </Style>
+  <Style
+    Selector="u|IconButton.RibbonCommand /template/ PathIcon, u|IconDropDownButton.RibbonCommand /template/ PathIcon">
+    <Setter Property="Width" Value="{StaticResource RibbonIconSize}" />
+    <Setter Property="Height" Value="{StaticResource RibbonIconSize}" />
+  </Style>
+  <Style Selector="u|IconDropDownButton.RibbonCommand /template/ PathIcon#DropDownGlyph">
+    <Setter Property="Width" Value="{StaticResource RibbonDropDownGlyphSize}" />
+    <Setter Property="Height" Value="{StaticResource RibbonDropDownGlyphSize}" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="Margin" Value="{StaticResource RibbonDropDownGlyphMargin}" />
+    <Setter Property="Opacity" Value="{StaticResource RibbonDropDownGlyphOpacity}" />
+  </Style>
+  <Style Selector="MenuFlyoutPresenter">
+    <Setter Property="MinWidth" Value="{StaticResource RibbonFlyoutMinWidth}" />
+    <Setter Property="Padding" Value="{StaticResource RibbonFlyoutPadding}" />
+    <Setter Property="Background" Value="{DynamicResource RibbonFlyoutBackground}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFlyoutBorderBrush}" />
+    <Setter Property="BorderThickness" Value="{StaticResource RibbonFlyoutBorderThickness}" />
+    <Setter Property="CornerRadius" Value="{StaticResource RibbonFlyoutCornerRadius}" />
+  </Style>
+  <Style Selector="MenuItem.RibbonFlyoutItem">
+    <Setter Property="MinHeight" Value="{StaticResource RibbonFlyoutItemMinHeight}" />
+    <Setter Property="Padding" Value="{StaticResource RibbonFlyoutItemPadding}" />
+    <Setter Property="CornerRadius" Value="{StaticResource RibbonFlyoutItemCornerRadius}" />
+    <Setter Property="FontSize" Value="{StaticResource RibbonCommandFontSize}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandForeground}" />
+  </Style>
+  <Style Selector="MenuItem.RibbonFlyoutItem /template/ ContentPresenter#PART_HeaderPresenter">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandForeground}" />
+  </Style>
+  <Style Selector="MenuItem.RibbonFlyoutItem:selected /template/ Border#PART_LayoutRoot">
+    <Setter Property="Background" Value="{DynamicResource RibbonCommandPointeroverBackground}" />
+  </Style>
+  <Style Selector="MenuItem.RibbonFlyoutItem:selected /template/ ContentPresenter#PART_HeaderPresenter">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandPointeroverForeground}" />
+  </Style>
+  <Style Selector="MenuItem.RibbonFlyoutItem:pressed /template/ Border#PART_LayoutRoot:pointerover">
+    <Setter Property="Background" Value="{DynamicResource RibbonCommandPressedBackground}" />
+  </Style>
+  <Style Selector="MenuItem.RibbonFlyoutItem:pressed /template/ ContentPresenter#PART_HeaderPresenter">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandPressedForeground}" />
+  </Style>
+  <Style Selector="MenuItem.RibbonFlyoutItem:disabled /template/ ContentPresenter#PART_HeaderPresenter">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputDisabledForeground}" />
+  </Style>
+  <Style Selector="PathIcon.RibbonMenuIcon">
+    <Setter Property="Theme" Value="{StaticResource InnerPathIcon}" />
+    <Setter Property="Width" Value="{StaticResource RibbonMenuIconSize}" />
+    <Setter Property="Height" Value="{StaticResource RibbonMenuIconSize}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonMenuIconForeground}" />
+  </Style>
+  <Style Selector="PathIcon.MenuItem">
+    <Setter Property="Width" Value="{StaticResource RibbonMenuItemIconSize}" />
+    <Setter Property="Height" Value="{StaticResource RibbonMenuItemIconSize}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandForeground}" />
+  </Style>
+  <Style Selector="u|Divider">
+    <Setter Property="Margin" Value="{StaticResource RibbonDividerMargin}" />
+    <Setter Property="Opacity" Value="{StaticResource RibbonDividerOpacity}" />
+  </Style>
+  <Style Selector="u|Divider.RibbonGroupDivider">
+    <Setter Property="Margin" Value="{StaticResource RibbonGroupDividerMargin}" />
+  </Style>
+  <Style Selector="Grid.RibbonFieldColumns">
+    <Setter Property="Margin" Value="{StaticResource RibbonFieldColumnsMargin}" />
+    <Setter Property="RowSpacing" Value="{StaticResource RibbonFieldColumnsRowSpacing}" />
+  </Style>
+  <Style Selector="TextBlock.RibbonFieldLabel">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonFieldLabelForeground}" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Caption.FontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Regular.FontWeight}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="TextBox.RibbonFieldInput">
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="Width" Value="{StaticResource RibbonFieldInputWidth}" />
+    <Setter Property="Height" Value="{StaticResource RibbonFieldInputHeight}" />
+    <Setter Property="Padding" Value="{StaticResource RibbonFieldInputPadding}" />
+    <Setter Property="Background" Value="{DynamicResource RibbonFieldInputBackground}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputBorderBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="{StaticResource RibbonFieldInputCornerRadius}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputForeground}" />
+    <Setter Property="Margin" Value="0" />
+  </Style>
+  <Style Selector="TextBox.RibbonFieldInput:focus">
+    <Setter Property="Background" Value="{DynamicResource RibbonFieldInputBackground}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputFocusBorderBrush}" />
+  </Style>
+  <Style Selector="TextBox.RibbonFieldInput:disabled">
+    <Setter Property="Background" Value="{DynamicResource RibbonFieldInputDisabledBackground}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputDisabledBorderBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputDisabledForeground}" />
+  </Style>
+  <Style Selector="NumericUpDown.RibbonFieldNumeric">
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="Width" Value="{StaticResource RibbonFieldInputWidth}" />
+    <Setter Property="Height" Value="{StaticResource RibbonFieldInputHeight}" />
+    <Setter Property="Padding" Value="{StaticResource RibbonFieldNumericPadding}" />
+    <Setter Property="Background" Value="{DynamicResource RibbonFieldInputBackground}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputBorderBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="{StaticResource RibbonFieldInputCornerRadius}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputForeground}" />
+    <Setter Property="FontSize" Value="{StaticResource RibbonFieldNumericFontSize}" />
+    <Setter Property="Margin" Value="0" />
+    <Setter Property="ClipValueToMinMax" Value="True" />
+  </Style>
+  <Style Selector="NumericUpDown.RibbonFieldNumeric:focus">
+    <Setter Property="Background" Value="{DynamicResource RibbonFieldInputBackground}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputFocusBorderBrush}" />
+  </Style>
+  <Style Selector=":is(u|NumericUpDown).RibbonFieldNumeric:disabled">
+    <Setter Property="Background" Value="{DynamicResource RibbonFieldInputDisabledBackground}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputDisabledBorderBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputDisabledForeground}" />
+  </Style>
+  <Style Selector=":is(u|NumericUpDown).RibbonFieldNumeric:disabled /template/ ButtonSpinner#PART_Spinner">
+    <Setter Property="Background" Value="{DynamicResource RibbonFieldInputDisabledBackground}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputDisabledBorderBrush}" />
+  </Style>
+  <Style Selector=":is(u|NumericUpDown).RibbonFieldNumeric:disabled /template/ TextBox#PART_TextBox">
+    <Setter Property="Background" Value="{DynamicResource RibbonFieldInputDisabledBackground}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputDisabledBorderBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputDisabledForeground}" />
+  </Style>
+  <Style Selector="ComboBox.RibbonFieldComboBox">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputForeground}" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Caption.FontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Regular.FontWeight}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="Width" Value="{StaticResource RibbonFieldInputWidth}" />
+    <Setter Property="Height" Value="{StaticResource RibbonFieldInputHeight}" />
+    <Setter Property="Padding" Value="{StaticResource RibbonFieldInputPadding}" />
+    <Setter Property="Background" Value="{DynamicResource RibbonFieldInputBackground}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputBorderBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="{StaticResource RibbonFieldInputCornerRadius}" />
+    <Setter Property="Margin" Value="0" />
+  </Style>
+  <Style Selector="ComboBox.RibbonFieldComboBox:focus">
+    <Setter Property="Background" Value="{DynamicResource RibbonFieldInputBackground}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputFocusBorderBrush}" />
+  </Style>
+  <Style Selector="ComboBox.RibbonFieldComboBox:disabled">
+    <Setter Property="Background" Value="{DynamicResource RibbonFieldInputDisabledBackground}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputDisabledBorderBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputDisabledForeground}" />
+  </Style>
+  <Style Selector="ComboBox.RibbonFieldComboBox:disabled /template/ Border#Background">
+    <Setter Property="Background" Value="{DynamicResource RibbonFieldInputDisabledBackground}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputDisabledBorderBrush}" />
+  </Style>
+  <Style Selector="ComboBox.RibbonFieldComboBox:disabled /template/ TextBlock#PlaceholderTextBlock">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputDisabledForeground}" />
+  </Style>
+  <Style Selector="ComboBox.RibbonFieldComboBox:disabled /template/ PathIcon#DropDownGlyph">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputDisabledForeground}" />
+  </Style>
+  <Style Selector="CheckBox.RibbonFieldCheckBox">
+    <Setter Property="Height" Value="{StaticResource RibbonFieldCheckBoxHeight}" />
+    <Setter Property="MinWidth" Value="{StaticResource RibbonFieldCheckBoxMinWidth}" />
+    <Setter Property="Padding" Value="{StaticResource RibbonFieldCheckBoxPadding}" />
+    <Setter Property="FontSize" Value="{StaticResource RibbonFieldCheckBoxFontSize}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandForeground}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Margin" Value="{StaticResource RibbonFieldCheckBoxMargin}" />
+  </Style>
+  <Style Selector="CheckBox.RibbonFieldCheckBox /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandForeground}" />
+  </Style>
+  <Style Selector="CheckBox.RibbonFieldCheckBox TextBlock">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandForeground}" />
+    <Setter Property="FontSize" Value="{StaticResource RibbonFieldCheckBoxFontSize}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="CheckBox.RibbonFieldCheckBox:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputDisabledForeground}" />
+  </Style>
+  <Style Selector="CheckBox.RibbonFieldCheckBox:disabled TextBlock">
+    <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputDisabledForeground}" />
+  </Style>
+  <Style Selector="Button.RibbonCompactCommand">
+    <Setter Property="Width" Value="{StaticResource RibbonCompactCommandWidth}" />
+    <Setter Property="Height" Value="{StaticResource RibbonCompactCommandHeight}" />
+    <Setter Property="MinWidth" Value="{StaticResource RibbonCompactCommandWidth}" />
+    <Setter Property="MinHeight" Value="{StaticResource RibbonCompactCommandHeight}" />
+    <Setter Property="Padding" Value="{StaticResource RibbonCompactCommandPadding}" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="{StaticResource RibbonCompactCommandCornerRadius}" />
+    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandForeground}" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Theme" Value="{DynamicResource BorderlessButton}" />
+  </Style>
+  <Style Selector="Button.RibbonCompactCommand TextBlock">
+    <Setter Property="Foreground" Value="{Binding $parent[Button].Foreground}" />
+  </Style>
+</Styles>

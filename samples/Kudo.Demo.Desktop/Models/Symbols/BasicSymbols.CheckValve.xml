@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Symbol Id="CheckValve" NodeType="Industrial.CheckValve" TemplateKey="Industrial.CheckValve" IconText="CV" Icon="Assets/BasicSymbols.CheckValve.svg" Resource="Assets/BasicSymbols.CheckValve.svg" Format="Kudo.Symbol/1" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.CheckValve" DescriptionKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.CheckValveDescription">
+  <DefaultSize Width="96" Height="54" />
+  <Ports>
+    <Port Id="Inlet" X="0.04" Y="0.5" DataType="Fluid" Kind="Input" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.CheckValve.Inlet" />
+    <Port Id="Outlet" X="0.96" Y="0.5" DataType="Fluid" Kind="Output" NameKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.CheckValve.Outlet" />
+  </Ports>
+  <PropertyDefinitions>
+    <Property Name="CrackingPressure" ValueKind="Number" Unit="MPa" DisplayKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.CrackingPressure" GroupKey="Localization.Kudo_Demo_Desktop.Models.ModelCatalog.BasicParameters">
+      <DefaultValue Type="Integer">0</DefaultValue>
+    </Property>
+  </PropertyDefinitions>
+  <Properties>
+    <Property Name="IndustrialCategory" Type="String">BasicSymbols</Property>
+    <Property Name="IndustrialEquipmentKind" Type="String">CheckValve</Property>
+  </Properties>
+</Symbol>

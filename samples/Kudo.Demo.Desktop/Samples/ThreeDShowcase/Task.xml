@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Task Format="Kudo.Task/1" SchemaVersion="1.0" Id="sample-three-d-showcase-zh" Title="2D 与 3D 联动预览">
+  <CanvasSettings IsMinimapVisible="true" IsLevelOfDetailEnabled="true" LodPortsZoomThreshold="0.4" LodLabelsZoomThreshold="0.3" LodSimplifiedZoomThreshold="0.4" PortLabelVisibility="Auto" SymbolNameVisibility="Never" SymbolDescriptionVisibility="Never">
+    <Grid IsVisible="true" IsSnapEnabled="false" IsGuidesEnabled="true" Spacing="20" MajorLineInterval="4" SnapTolerance="8" GuideTolerance="8" />
+  </CanvasSettings>
+  <Nodes>
+    <Node Id="input" Type="Input" Title="输入" Rotation="0">
+      <Position X="80" Y="120" />
+      <Size Width="150" Height="80" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="out" Name="Out" Kind="Output" DataType="Number" State="Normal">
+          <Capacity MaxIncoming="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="transform" Type="Transform" Title="转换" Rotation="0">
+      <Position X="335" Y="70" />
+      <Size Width="250" Height="190" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="in" Name="In" Kind="Input" DataType="Number" State="Normal">
+          <Capacity MaxIncoming="1" MaxOutgoing="1" />
+          <Properties />
+        </Port>
+        <Port Id="out" Name="Out" Kind="Output" DataType="Number" State="Normal">
+          <Capacity MaxIncoming="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="output" Type="Output" Title="输出" Rotation="0">
+      <Position X="680" Y="120" />
+      <Size Width="150" Height="80" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="in" Name="In" Kind="Input" DataType="Number" State="Normal">
+          <Capacity MaxIncoming="1" MaxOutgoing="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+  </Nodes>
+  <Groups />
+  <Edges>
+    <Edge Id="edge-input-transform" RelationKind="Connection" RoutingStyle="Bezier" StylePreset="Default" SourceMarker="Circle" TargetMarker="Arrow" Label="原始数据" State="Normal">
+      <Source NodeId="input" PortId="out" />
+      <Target NodeId="transform" PortId="in" />
+      <Appearance DashStyle="Solid" Opacity="1" Animation="None" AnimationSpeed="1" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints />
+      <Properties />
+    </Edge>
+    <Edge Id="edge-transform-output" RelationKind="Connection" RoutingStyle="Manual" StylePreset="Default" SourceMarker="None" TargetMarker="Arrow" Label="处理结果" State="Normal">
+      <Source NodeId="transform" PortId="out" />
+      <Target NodeId="output" PortId="in" />
+      <Appearance DashStyle="Solid" Opacity="1" Animation="None" AnimationSpeed="1" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints>
+        <Point X="620" Y="210" />
+      </Waypoints>
+      <Properties />
+    </Edge>
+  </Edges>
+  <Annotations />
+  <Properties>
+    <Property Name="KudoDemoThreeDShowcase" Type="Boolean">true</Property>
+    <Property Name="KudoDemoSampleTaskId" Type="String">three-d-showcase</Property>
+    <Property Name="KudoDemoSampleOrder" Type="Long">60</Property>
+  </Properties>
+</Task>

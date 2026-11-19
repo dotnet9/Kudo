@@ -1,0 +1,22 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <CornerRadius x:Key="Kudo.PropertyPanel.GroupHeader.CornerRadius">3</CornerRadius>
+
+  <LinearGradientBrush x:Key="Kudo.PropertyPanel.GroupHeader.Background"
+                       StartPoint="0%, 50%"
+                       EndPoint="100%, 50%">
+    <GradientStop Color="#D6E4FF" Offset="0" />
+    <GradientStop Color="#22F0F5FF" Offset="1" />
+  </LinearGradientBrush>
+  <StaticResource x:Key="Kudo.PropertyPanel.GroupHeader.PointerOverBackground"
+                  ResourceKey="Kudo.PropertyPanel.GroupHeader.Background" />
+  <StaticResource x:Key="Kudo.PropertyPanel.GroupHeader.PressedBackground"
+                  ResourceKey="Kudo.PropertyPanel.GroupHeader.Background" />
+
+  <LinearGradientBrush x:Key="Kudo.PropertyPanel.GroupHint.Background"
+                       StartPoint="37.7%, 1.5%"
+                       EndPoint="62.3%, 98.5%">
+    <GradientStop Color="#77FFD8BF" Offset="0" />
+    <GradientStop Color="#00FFFFFF" Offset="1" />
+  </LinearGradientBrush>
+</ResourceDictionary>

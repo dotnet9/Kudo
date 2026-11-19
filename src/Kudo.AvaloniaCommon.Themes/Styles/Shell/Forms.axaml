@@ -1,0 +1,103 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codewf="https://codewf.com" xmlns:u="https://irihi.tech/ursa">
+  <Style Selector="TextBlock.FormLabel">
+    <Setter Property="HorizontalAlignment" Value="Left" />
+    <Setter Property="TextAlignment" Value="Left" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="FontFamily" Value="{StaticResource NotoSansSC}" />
+    <Setter Property="Foreground" Value="{DynamicResource FormLabelForeground}" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Caption.FontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Regular.FontWeight}" />
+    <Setter Property="LineHeight" Value="{StaticResource Kudo.Typography.Caption.LineHeight}" />
+  </Style>
+  <Style Selector="Grid.FormTypography TextBlock">
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
+  </Style>
+  <Style Selector="Grid.FormTypography TextBox">
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
+  </Style>
+  <Style Selector="Grid.FormTypography ComboBox">
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
+  </Style>
+  <Style Selector="Grid.FormTypography CheckBox">
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
+  </Style>
+  <Style Selector="Grid.FormTypography RadioButton">
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
+  </Style>
+  <Style Selector="Grid.FormTypography TextBlock.AuxiliaryText">
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Caption.FontSize}" />
+  </Style>
+  <Style Selector="Grid.FormTypography TextBlock.ValidationMessage">
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Caption.FontSize}" />
+  </Style>
+  <Style Selector="TextBox.FormInput">
+    <Setter Property="Height" Value="{StaticResource Kudo.Form.ControlHeight}" />
+    <Setter Property="MinHeight" Value="{StaticResource Kudo.Form.ControlHeight}" />
+    <Setter Property="Padding" Value="{StaticResource Kudo.Form.Input.Padding}" />
+    <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SemiColorBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+  </Style>
+  <Style Selector="ComboBox.FormCombo">
+    <Setter Property="Height" Value="{StaticResource Kudo.Form.ControlHeight}" />
+    <Setter Property="MinHeight" Value="{StaticResource Kudo.Form.ControlHeight}" />
+    <Setter Property="Padding" Value="{StaticResource Kudo.Form.Combo.Padding}" />
+    <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SemiColorBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
+  </Style>
+  <Style Selector="ComboBox.FormCombo ComboBoxItem">
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
+  </Style>
+  <Style Selector="u|AutoCompleteBox.FormAutoComplete">
+    <Setter Property="Height" Value="{StaticResource Kudo.Form.ControlHeight}" />
+    <Setter Property="MinHeight" Value="{StaticResource Kudo.Form.ControlHeight}" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
+  </Style>
+  <Style Selector="u|AutoCompleteBox.FormAutoComplete /template/ TextBox#PART_TextBox">
+    <Setter Property="Padding" Value="{StaticResource Kudo.Form.Input.Padding}" />
+    <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SemiColorBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+  </Style>
+  <Style Selector="u|AutoCompleteBox.FormAutoComplete ListBoxItem">
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
+  </Style>
+  <Style Selector=":is(u|NumericUpDown).FormNumber">
+    <Setter Property="Height" Value="{StaticResource Kudo.Form.ControlHeight}" />
+    <Setter Property="MinHeight" Value="{StaticResource Kudo.Form.ControlHeight}" />
+    <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SemiColorBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+  </Style>
+  <Style Selector=":is(u|NumericUpDown).FormNumber /template/ TextBox#PART_TextBox">
+    <Setter Property="Padding" Value="{StaticResource Kudo.Form.Input.Padding}" />
+    <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SemiColorBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+  </Style>
+  <Style Selector="Button.SmallFormButton">
+    <Setter Property="Height" Value="{StaticResource Kudo.Form.ControlHeight}" />
+    <Setter Property="MinHeight" Value="{StaticResource Kudo.Form.ControlHeight}" />
+    <Setter Property="Padding" Value="{StaticResource Kudo.Form.Button.SmallPadding}" />
+    <Setter Property="FontSize" Value="{StaticResource Kudo.Typography.Form.FontSize}" />
+  </Style>
+  <Style Selector="u|IconButton.RowToolButton">
+    <Setter Property="Width" Value="{StaticResource RowToolButtonWidth}" />
+    <Setter Property="Height" Value="{StaticResource RowToolButtonHeight}" />
+    <Setter Property="MinWidth" Value="{StaticResource RowToolButtonWidth}" />
+    <Setter Property="MinHeight" Value="{StaticResource RowToolButtonHeight}" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="Theme" Value="{DynamicResource BorderlessIconButton}" />
+  </Style>
+  <Style Selector="u|IconButton.RowToolButton /template/ PathIcon">
+    <Setter Property="Width" Value="{StaticResource RowToolButtonIconSize}" />
+    <Setter Property="Height" Value="{StaticResource RowToolButtonIconSize}" />
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
+  </Style>
+</Styles>

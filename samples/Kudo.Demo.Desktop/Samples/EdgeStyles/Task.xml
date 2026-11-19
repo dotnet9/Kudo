@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Task Format="Kudo.Task/1" SchemaVersion="1.0" Id="sample-edge-styles-zh" Title="连线样式与动画画廊">
+  <CanvasSettings IsMinimapVisible="true" IsLevelOfDetailEnabled="true" LodPortsZoomThreshold="0.4" LodLabelsZoomThreshold="0.3" LodSimplifiedZoomThreshold="0.4" PortLabelVisibility="Auto" SymbolNameVisibility="Never" SymbolDescriptionVisibility="Never">
+    <Grid IsVisible="true" IsSnapEnabled="false" IsGuidesEnabled="true" Spacing="20" MajorLineInterval="4" SnapTolerance="8" GuideTolerance="8" />
+  </CanvasSettings>
+  <Nodes>
+    <Node Id="success-source" Type="StyleSource" Title="成功 - 直连" Rotation="0">
+      <Position X="70" Y="70" />
+      <Size Width="132" Height="58" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="out" Name="Out" Kind="Output" DataType="Signal" State="Normal">
+          <Capacity MaxIncoming="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="success-target" Type="StyleTarget" Title="目标" Rotation="0">
+      <Position X="370" Y="70" />
+      <Size Width="132" Height="58" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="in" Name="In" Kind="Input" DataType="Signal" State="Normal">
+          <Capacity MaxOutgoing="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="flow-source" Type="StyleSource" Title="活动流" Rotation="0">
+      <Position X="70" Y="190" />
+      <Size Width="132" Height="58" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="out" Name="Out" Kind="Output" DataType="Signal" State="Normal">
+          <Capacity MaxIncoming="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="flow-target" Type="StyleTarget" Title="目标" Rotation="0">
+      <Position X="370" Y="190" />
+      <Size Width="132" Height="58" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="in" Name="In" Kind="Input" DataType="Signal" State="Normal">
+          <Capacity MaxOutgoing="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="rainbow-source" Type="StyleSource" Title="彩虹" Rotation="0">
+      <Position X="70" Y="310" />
+      <Size Width="132" Height="58" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="out" Name="Out" Kind="Output" DataType="Signal" State="Normal">
+          <Capacity MaxIncoming="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+    <Node Id="rainbow-target" Type="StyleTarget" Title="目标" Rotation="0">
+      <Position X="370" Y="310" />
+      <Size Width="132" Height="58" />
+      <Appearance VisualMode="Auto" Stretch="UniformToFill" Opacity="1">
+        <Text FontSize="14" FontWeight="Normal" />
+      </Appearance>
+      <Ports>
+        <Port Id="in" Name="In" Kind="Input" DataType="Signal" State="Normal">
+          <Capacity MaxOutgoing="1" />
+          <Properties />
+        </Port>
+      </Ports>
+      <Properties />
+    </Node>
+  </Nodes>
+  <Groups>
+    <Group Id="state-presets" Title="状态预设" Padding="28" IsCollapsed="false">
+      <NodeIds>
+        <NodeId>success-source</NodeId>
+        <NodeId>success-target</NodeId>
+      </NodeIds>
+      <Properties />
+    </Group>
+    <Group Id="animation-presets" Title="动画预设" Padding="28" IsCollapsed="false">
+      <NodeIds>
+        <NodeId>flow-source</NodeId>
+        <NodeId>flow-target</NodeId>
+        <NodeId>rainbow-source</NodeId>
+        <NodeId>rainbow-target</NodeId>
+      </NodeIds>
+      <Properties />
+    </Group>
+  </Groups>
+  <Edges>
+    <Edge Id="success" RelationKind="Connection" RoutingStyle="Direct" StylePreset="Success" SourceMarker="None" TargetMarker="Arrow" Label="成功 - 直连" State="Normal">
+      <Source NodeId="success-source" PortId="out" />
+      <Target NodeId="success-target" PortId="in" />
+      <Appearance StrokeColor="#4CAF50" DashStyle="Solid" Opacity="1" Animation="None" AnimationSpeed="1" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints />
+      <Properties />
+    </Edge>
+    <Edge Id="active-flow" RelationKind="Connection" RoutingStyle="Bezier" StylePreset="ActiveFlow" SourceMarker="None" TargetMarker="Arrow" Label="活动流 - 正向" State="Normal">
+      <Source NodeId="flow-source" PortId="out" />
+      <Target NodeId="flow-target" PortId="in" />
+      <Appearance StrokeColor="#2196F3" DashStyle="Dash" Opacity="1" Animation="Flow" AnimationSpeed="1.5" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints />
+      <Properties />
+    </Edge>
+    <Edge Id="rainbow" RelationKind="Connection" RoutingStyle="SmartOrthogonal" StylePreset="Rainbow" SourceMarker="None" TargetMarker="Diamond" Label="彩虹 - 智能路由" State="Normal">
+      <Source NodeId="rainbow-source" PortId="out" />
+      <Target NodeId="rainbow-target" PortId="in" />
+      <Appearance StrokeWidth="2.5" DashStyle="Dash" Opacity="1" Animation="Rainbow" AnimationSpeed="0.5" AnimationDirection="Forward" GlowIntensity="0">
+        <CustomDashPattern />
+      </Appearance>
+      <Waypoints />
+      <Properties />
+    </Edge>
+  </Edges>
+  <Annotations />
+  <Properties>
+    <Property Name="KudoDemoEdgeStyles" Type="Boolean">true</Property>
+    <Property Name="KudoDemoSampleTaskId" Type="String">edge-styles</Property>
+    <Property Name="KudoDemoSampleOrder" Type="Long">50</Property>
+  </Properties>
+</Task>
