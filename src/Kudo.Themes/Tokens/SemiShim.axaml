@@ -1,0 +1,30 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!--
+    Semi 亮色令牌自持副本（取自 Semi.Avalonia 12.1.0.1 Tokens/Palette/Light.axaml）。
+    作用：Kudo.Themes 的画布与桌面样式不再依赖 Semi 主题先行加载；阶段 D 摘除 Semi 后颜色保持不变。
+  -->
+  <SolidColorBrush x:Key="SemiColorText0" Color="#1C1F23" />
+  <SolidColorBrush x:Key="SemiColorText1" Opacity="0.8" Color="#1C1F23" />
+  <SolidColorBrush x:Key="SemiColorText2" Opacity="0.62" Color="#1C1F23" />
+  <SolidColorBrush x:Key="SemiColorText3" Opacity="0.35" Color="#1C1F23" />
+  <SolidColorBrush x:Key="SemiColorBackground0" Color="White" />
+  <SolidColorBrush x:Key="SemiColorBackground1" Color="White" />
+  <SolidColorBrush x:Key="SemiColorBorder" Opacity="0.08" Color="#1C1F23" />
+  <SolidColorBrush x:Key="SemiColorFill0" Opacity="0.05" Color="#2E3238" />
+  <Color x:Key="SemiBlue5Color">#0064FA</Color>
+  <SolidColorBrush x:Key="SemiColorPrimary" Color="#0064FA" />
+  <SolidColorBrush x:Key="SemiColorPrimaryLight" Color="#EAF5FF" />
+  <SolidColorBrush x:Key="SemiColorPrimaryLightPointerover" Color="#CBE7FE" />
+  <SolidColorBrush x:Key="SemiColorPrimaryLightActive" Color="#98CDFD" />
+  <SolidColorBrush x:Key="SemiColorPrimaryPointerover" Color="#0062D6" />
+  <SolidColorBrush x:Key="SemiColorPrimaryActive" Color="#004FB3" />
+  <SolidColorBrush x:Key="SemiColorSuccess" Color="#3BB346" />
+  <SolidColorBrush x:Key="SemiColorSuccessLight" Color="#ECF7EC" />
+  <SolidColorBrush x:Key="SemiColorSuccessLightPointerover" Color="#D0F0D1" />
+  <SolidColorBrush x:Key="SemiColorDanger" Color="#F93920" />
+  <SolidColorBrush x:Key="SemiColorDangerLight" Color="#FEF2ED" />
+  <SolidColorBrush x:Key="SemiColorWarning" Color="#FC8800" />
+  <SolidColorBrush x:Key="SemiColorWarningLight" Color="#FFF8EA" />
+  <SolidColorBrush x:Key="SemiColorWarningLightActive" Color="#FED998" />
+</ResourceDictionary>
