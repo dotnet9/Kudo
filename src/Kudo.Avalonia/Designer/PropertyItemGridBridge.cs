@@ -2,7 +2,7 @@ using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
-using CodeWF.Avalonia.TreeDataGrid.PropertyGrid;
+using Kudo.Controls.PropertyModel;
 using TKCode.Arc;
 using ArcPropertyGrid = TKCode.Arc.PropertyGrid;
 

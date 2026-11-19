@@ -6,10 +6,12 @@ using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.Media;
 using VAlignment = Avalonia.Layout.VerticalAlignment;
+using AvaloniaButton = Avalonia.Controls.Button;
 using Kudo.Avalonia;
+using Kudo.Controls.PropertyModel;
 using Kudo.Core.Documents;
 using Kudo.Core.Runtime;
-using CodeWF.Avalonia.TreeDataGrid.PropertyGrid;
+using TKCode.Arc;
 using static Kudo.Avalonia.Designer.GraphPropertyValueConverter;
 using PropertiesLanguage = global::Localization.Kudo_Avalonia.Designer.GraphPropertiesView;
 
@@ -1152,7 +1154,7 @@ internal sealed class GraphPropertyPanelItems
                 ToolTip.SetTip(pathText, imagePath);
             }
 
-            var selectButton = new Button
+            var selectButton = new AvaloniaButton
             {
                 Content = L(PropertiesLanguage.SelectBackgroundImage),
                 IsEnabled = !_editorContext.IsReadOnly && node is not null,
@@ -1165,7 +1167,7 @@ internal sealed class GraphPropertyPanelItems
                     _notifyBackgroundImageRequested(new GraphNodeBackgroundImageRequest(_editorContext, target.Id));
                 }
             };
-            var clearButton = new Button
+            var clearButton = new AvaloniaButton
             {
                 Content = L(PropertiesLanguage.ClearBackgroundImage),
                 IsEnabled = !_editorContext.IsReadOnly && !string.IsNullOrWhiteSpace(imagePath),

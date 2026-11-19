@@ -4,6 +4,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
 using Kudo.Avalonia;
+using Kudo.Controls.PropertyModel;
 using Kudo.Core.Documents;
 using CodeWF.Toolkit.Lang;
 using System.Windows.Input;
@@ -154,17 +155,14 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
 
     private string _contextTitle = GraphLocalization.Get(PropertiesLanguage.Properties);
     private readonly Border _root;
-    private readonly CodeWF.Avalonia.TreeDataGrid.PropertyGrid.PropertyGrid _propertyGrid = new();
+    private readonly TKCode.Arc.PropertyGrid _propertyGrid = new();
     private IDisposable? _customContentLifetime;
     private GraphPropertyPanelItems? _panelItems;
 
     public GraphPropertiesView()
     {
         PropertyEditorProviders.Changed += (_, _) => RefreshCore(EditorContext);
-        _propertyGrid.ValuePreviewing += HandlePropertyPreviewing;
-        _propertyGrid.ValueCommitted += HandlePropertyCommitted;
-        _propertyGrid.EditorFactory = GetCustomPropertyEditor;
-        _propertyGrid.BackgroundBrush = PanelBrush;
+        _propertyGrid.Background = PanelBrush;
         _root = new Border
         {
             Background = PanelBrush,
@@ -251,13 +249,13 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
             Context = GraphPropertyContext.Empty;
             SetContext(L(PropertiesLanguage.Properties));
             _panelItems = CreatePanelItems(editorContext);
-            _propertyGrid.Items = _panelItems.BuildForEmpty().ToArray();
+            PropertyItemGridBridge.Bind(_propertyGrid, _panelItems.BuildForEmpty().ToArray(), _panelItems);
             return;
         }
 
         Context = editorContext.PropertyContext;
         _panelItems = CreatePanelItems(editorContext);
-        var items = new List<CodeWF.Avalonia.TreeDataGrid.PropertyGrid.PropertyItem>();
+        var items = new List<PropertyItem>();
 
         if (Context.Kind == GraphPropertyTargetKind.GroupSelection)
         {
@@ -316,7 +314,7 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
             items.AddRange(_panelItems.BuildForDocument());
         }
 
-        _propertyGrid.Items = items;
+        PropertyItemGridBridge.Bind(_propertyGrid, items, _panelItems);
     }
 
     private GraphPropertyPanelItems CreatePanelItems(GraphPropertyEditorContext? editorContext)
@@ -329,22 +327,6 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
             NotifyEditCommitted,
             NotifyBackgroundImageRequested,
             () => RefreshCore(EditorContext));
-    }
-
-    private Control? GetCustomPropertyEditor(CodeWF.Avalonia.TreeDataGrid.PropertyGrid.PropertyItem item) =>
-        _panelItems?.GetCustomEditor(item);
-
-    private void HandlePropertyPreviewing(object? sender, CodeWF.Avalonia.TreeDataGrid.PropertyGrid.PropertyValuePreviewEventArgs e)
-    {
-        if (_panelItems is not null && _panelItems.HandlePreview(e.Item, e.NewValue))
-        {
-            e.Cancel = true;
-        }
-    }
-
-    private void HandlePropertyCommitted(object? sender, CodeWF.Avalonia.TreeDataGrid.PropertyGrid.PropertyValueChangedEventArgs e)
-    {
-        _panelItems?.HandleCommit(e.Item, e.OldValue, e.NewValue);
     }
 
     private static string FormatEdgeState(EdgeState state) => state switch
@@ -363,7 +345,7 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
             _root.Background = PanelBrush;
         }
 
-        _propertyGrid.BackgroundBrush = PanelBrush;
+        _propertyGrid.Background = PanelBrush;
         RefreshCore(EditorContext);
     }
 
@@ -397,7 +379,7 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
 
     private void ClearContent()
     {
-        _propertyGrid.Items = null;
+        _propertyGrid.SelectedObject = null;
         Interlocked.Exchange(ref _customContentLifetime, null)?.Dispose();
     }
 
