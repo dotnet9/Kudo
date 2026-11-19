@@ -4,11 +4,4 @@
   <StyleInclude Source="/Themes/_index.axaml" />
   <StyleInclude Source="/Styles/_index.axaml" />
   <StyleInclude Source="avares://Kudo.Controls/Styles/_index.axaml" />
-  <Styles.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        <ResourceInclude Source="avares://Kudo.AvaloniaCommon/Converters/_index.axaml" />
-      </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-  </Styles.Resources>
 </Styles>

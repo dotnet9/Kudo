@@ -3,7 +3,7 @@
                      xmlns:codewf="https://codewf.com"
                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                      xmlns:i18n="using:CodeWF.Avalonia.Lang.MarkupExtensions"
-                     xmlns:helpers="using:Kudo.AvaloniaCommon.Helpers"
+                     xmlns:helpers="using:Kudo.Avalonia.Helpers"
                      xmlns:common="using:Localization.Kudo_Demo_Desktop.Application"
                      xmlns:k="https://codewf.com"
                      xmlns:lang="using:Localization.Kudo_Demo_Desktop.Views"

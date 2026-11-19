@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:automation="using:Avalonia.Automation"
              xmlns:i18n="using:CodeWF.Avalonia.Lang.MarkupExtensions"
-             xmlns:helpers="using:Kudo.AvaloniaCommon.Helpers"
+             xmlns:helpers="using:Kudo.Avalonia.Helpers"
              xmlns:lang="using:Localization.Kudo_Demo_Desktop.Views"
              xmlns:models="using:Kudo"
              xmlns:export="using:Kudo.Avalonia.Export"

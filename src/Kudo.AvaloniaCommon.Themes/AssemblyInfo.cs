@@ -1,4 +1,3 @@
-using Kudo.AvaloniaCommon;
 
-[assembly: XmlnsPrefix(KudoXmlNamespace.Uri, "kudoThemes")]
-[assembly: XmlnsDefinition(KudoXmlNamespace.Uri, "Kudo.AvaloniaCommon.Themes")]
+[assembly: XmlnsPrefix("https://codewf.com", "kudoThemes")]
+[assembly: XmlnsDefinition("https://codewf.com", "Kudo.AvaloniaCommon.Themes")]

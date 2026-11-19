@@ -19,7 +19,6 @@
   <Folder Name="/Src/">
     <Project Path="src/Kudo.Avalonia/Kudo.Avalonia.csproj" />
     <Project Path="src/Kudo.Controls/Kudo.Controls.csproj" />
-    <Project Path="src/Kudo.AvaloniaCommon/Kudo.AvaloniaCommon.csproj" />
     <Project Path="src/Kudo.AvaloniaCommon.Themes/Kudo.AvaloniaCommon.Themes.csproj" />
     <Project Path="src/Kudo.Core/Kudo.Core.csproj" />
     <Project Path="src/Kudo.Dock.Themes/Kudo.Dock.Themes.csproj" />

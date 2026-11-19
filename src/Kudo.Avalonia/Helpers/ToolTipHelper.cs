@@ -1,7 +1,8 @@
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Media;
 
-namespace Kudo.AvaloniaCommon.Helpers;
+namespace Kudo.Avalonia.Helpers;
 
 /// <summary>
 ///     普通文本 ToolTip 的统一封装。
