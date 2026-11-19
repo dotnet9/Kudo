@@ -114,4 +114,59 @@ public sealed class ModelCatalogIntegrityTests
 
         return paths;
     }
+
+    [Fact]
+    public void Symbol_files_resolve_icon_paths_and_localization_keys()
+    {
+        var catalog = XDocument.Load(Path.Combine(ModelsRoot, "Model.xml"));
+        var language = LanguageSource;
+        var missing = new List<string>();
+
+        foreach (var group in catalog.Descendants("Group"))
+        {
+            foreach (var symbolRef in group.Descendants("Symbol"))
+            {
+                var path = (string?)symbolRef.Attribute("Path");
+                if (string.IsNullOrEmpty(path))
+                {
+                    continue;
+                }
+
+                var fullPath = Path.Combine(ModelsRoot, path);
+                if (!File.Exists(fullPath))
+                {
+                    continue; // 路径存在性由上一测试覆盖
+                }
+
+                var symbol = XDocument.Load(fullPath);
+                var symbolRoot = symbol.Root.ShouldNotBeNull();
+
+                foreach (var attribute in symbolRoot.Attributes())
+                {
+                    if (attribute.Name.LocalName is "Icon" or "Resource" &&
+                        !File.Exists(Path.Combine(ModelsRoot, attribute.Value)))
+                    {
+                        missing.Add($"{path} :: {attribute.Name}={attribute.Value}");
+                    }
+
+                    if (attribute.Value.StartsWith("Localization.", StringComparison.Ordinal) &&
+                        !language.Contains(attribute.Value, StringComparison.Ordinal))
+                    {
+                        missing.Add($"{path} :: {attribute.Name}={attribute.Value}");
+                    }
+                }
+
+                foreach (var attribute in symbol.Descendants().Attributes()
+                             .Where(a => a.Value.StartsWith("Localization.", StringComparison.Ordinal)))
+                {
+                    if (!language.Contains(attribute.Value, StringComparison.Ordinal))
+                    {
+                        missing.Add($"{path} :: {attribute.Name}={attribute.Value}");
+                    }
+                }
+            }
+        }
+
+        missing.ShouldBeEmpty($"符号文件存在悬空资源/语言键：{string.Join("; ", missing.Take(8))}");
+    }
 }
