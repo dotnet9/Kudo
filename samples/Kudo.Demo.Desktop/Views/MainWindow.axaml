@@ -12,7 +12,6 @@
                      xmlns:views="using:Kudo.Demo.Desktop.Views"
                      xmlns:vm="using:Kudo.Demo.Desktop.ViewModels"
                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                     xmlns:u="https://irihi.tech/ursa"
                      mc:Ignorable="d"
                      d:DesignWidth="1280"
                      d:DesignHeight="800"
@@ -116,7 +115,5 @@
         </Border>
         </Grid>
         <views:StatusBarView Grid.Row="1" />
-        <u:OverlayDialogHost Grid.RowSpan="2"
-                             HostId="KudoMainWindow" />
     </Grid>
 </codewf:CodeWFWindow>

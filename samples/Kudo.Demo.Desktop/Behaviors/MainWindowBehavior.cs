@@ -37,7 +37,6 @@ internal sealed class MainWindowBehavior : IDisposable
     private const string RuntimeBreakpointsToolId = "GraphRuntimeBreakpoints";
     private const string RuntimeCallStackToolId = "GraphRuntimeCallStack";
     private const string RuntimeTraceToolId = "GraphRuntimeTrace";
-    private const string DialogHostId = "KudoMainWindow";
 
     private readonly GraphDocumentManager _documents = new();
     private readonly IDemoGraphTextProvider _graphTextProvider = new LocalizedDemoGraphTextProvider();
@@ -280,7 +279,7 @@ internal sealed class MainWindowBehavior : IDisposable
             () => ActiveView,
             () => ActiveSession,
             session => _dockFactory.ActivateDocument(session));
-        var dialogService = new MainWindowDialogService(_window, DialogHostId);
+        var dialogService = new MainWindowDialogService(_window);
         _documentHost.Configure(
             () => _nodeCatalog,
             contextMenuFactory.Create,

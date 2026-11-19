@@ -25,4 +25,7 @@
     <PackageReference Include="xunit.v3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="TKCode.Arc.Icons.Lucide" />
+  </ItemGroup>
 </Project>

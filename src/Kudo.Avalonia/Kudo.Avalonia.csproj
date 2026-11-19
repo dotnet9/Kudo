@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kudo.Core\Kudo.Core.csproj" />
+    <ProjectReference Include="..\Kudo.AvaloniaCommon\Kudo.AvaloniaCommon.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,7 @@
     <PackageReference Include="HarfBuzzSharp.NativeAssets.WebAssembly" />
     <PackageReference Include="HarfBuzzSharp.NativeAssets.Win32" />
     <PackageReference Include="Irihi.Ursa" />
+		<PackageReference Include="TKCode.Arc.Icons.Lucide" />
     <PackageReference Include="SkiaSharp" />
     <PackageReference Include="SkiaSharp.NativeAssets.Linux" />
     <PackageReference Include="SkiaSharp.NativeAssets.macOS" />

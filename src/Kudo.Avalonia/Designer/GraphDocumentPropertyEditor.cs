@@ -7,7 +7,6 @@ using Kudo.Avalonia;
 using Kudo.Core.Runtime;
 using static Kudo.Avalonia.Designer.GraphPropertyEditorControls;
 using static Kudo.Avalonia.Designer.GraphPropertyValueConverter;
-using Ursa.Controls;
 using AvaloniaNumericUpDown = Avalonia.Controls.NumericUpDown;
 using PropertiesLanguage = global::Localization.Kudo_Avalonia.Designer.GraphPropertiesView;
 
@@ -51,12 +50,11 @@ internal static class GraphDocumentPropertyEditor
             "DocumentCreatedByEditor",
             L(PropertiesLanguage.CreatedBy),
             document.CreatedBy);
-        var createdAtEditor = new DateTimePicker
+        var createdAtEditor = new global::Avalonia.Controls.DatePicker
         {
             Name = "DocumentCreatedAtEditor",
             SelectedDate = document.CreatedAt,
-            DisplayFormat = "yyyy/MM/dd HH:mm",
-            IsReadOnly = editorContext.IsReadOnly,
+            IsEnabled = !editorContext.IsReadOnly,
             HorizontalAlignment = global::Avalonia.Layout.HorizontalAlignment.Stretch
         };
         var descriptionEditor = CreateTextEditor(
@@ -93,7 +91,7 @@ internal static class GraphDocumentPropertyEditor
             notifyEditCommitted));
         createdAtEditor.PropertyChanged += (_, change) =>
         {
-            if (change.Property == DateTimePicker.SelectedDateProperty)
+            if (change.Property == global::Avalonia.Controls.DatePicker.SelectedDateProperty)
             {
                 Apply(
                     editorContext,
@@ -238,7 +236,7 @@ internal static class GraphDocumentPropertyEditor
         GraphPropertyEditorContext editorContext,
         TextBox titleEditor,
         TextBox createdByEditor,
-        DateTimePicker createdAtEditor,
+        global::Avalonia.Controls.DatePicker createdAtEditor,
         TextBox descriptionEditor,
         Action<string> notifyEditCommitted)
     {
@@ -253,7 +251,7 @@ internal static class GraphDocumentPropertyEditor
             document,
             NormalizeOptionalText(titleEditor.Text) ?? string.Empty,
             NormalizeOptionalText(createdByEditor.Text) ?? string.Empty,
-            createdAt,
+            createdAt.DateTime,
             NormalizeOptionalText(descriptionEditor.Text) ?? string.Empty);
         if (command is null || !editorContext.Execute(command))
         {

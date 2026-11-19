@@ -1,22 +1,6 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:u="https://irihi.tech/ursa">
-  <Styles.Resources>
-    <DataTemplate x:Key="RibbonIconTemplate" DataType="Geometry">
-      <Border Width="{StaticResource RibbonIconSlotSize}"
-              Height="{StaticResource RibbonIconSlotSize}"
-              HorizontalAlignment="Center"
-              VerticalAlignment="Center">
-        <PathIcon Theme="{StaticResource InnerPathIcon}"
-                  Data="{Binding}"
-                  Width="{StaticResource RibbonIconSize}"
-                  Height="{StaticResource RibbonIconSize}"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Center"
-                  UseLayoutRounding="True" />
-      </Border>
-    </DataTemplate>
-  </Styles.Resources>
+        xmlns:k="https://codewf.com">
   <Design.PreviewWith>
     <Border Padding="20">
       <!-- Add Controls for Previewer Here -->
@@ -128,7 +112,7 @@
     <Setter Property="MinHeight" Value="{StaticResource RibbonGroupHeight}" />
     <Setter Property="Margin" Value="{StaticResource RibbonGroupMargin}" />
   </Style>
-  <Style Selector="u|IconButton.RibbonCommand, u|IconDropDownButton.RibbonCommand">
+  <Style Selector="k|IconButton.RibbonCommand">
     <Setter Property="Height" Value="{StaticResource RibbonCommandHeight}" />
     <Setter Property="MinHeight" Value="{StaticResource RibbonCommandHeight}" />
     <Setter Property="Margin" Value="{StaticResource RibbonCommandMargin}" />
@@ -141,20 +125,19 @@
     <Setter Property="VerticalAlignment" Value="Top" />
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
-    <Setter Property="Theme" Value="{StaticResource BorderlessIconButton}" />
   </Style>
-  <Style Selector="u|IconButton.RibbonCommand:pointerover, u|IconDropDownButton.RibbonCommand:pointerover">
+  <Style Selector="k|IconButton.RibbonCommand:pointerover">
     <Setter Property="Background" Value="{DynamicResource RibbonCommandPointeroverBackground}" />
     <Setter Property="Foreground" Value="{DynamicResource RibbonCommandPointeroverForeground}" />
   </Style>
-  <Style Selector="u|IconButton.RibbonCommand:pressed, u|IconDropDownButton.RibbonCommand:pressed">
+  <Style Selector="k|IconButton.RibbonCommand:pressed">
     <Setter Property="Background" Value="{DynamicResource RibbonCommandPressedBackground}" />
     <Setter Property="Foreground" Value="{DynamicResource RibbonCommandPressedForeground}" />
   </Style>
-  <Style Selector="u|IconButton.RibbonCommand:disabled, u|IconDropDownButton.RibbonCommand:disabled">
+  <Style Selector="k|IconButton.RibbonCommand:disabled">
     <Setter Property="Opacity" Value="{StaticResource RibbonCommandDisabledOpacity}" />
   </Style>
-  <Style Selector="u|IconButton.RibbonSmallCommand, u|IconDropDownButton.RibbonSmallCommand">
+  <Style Selector="k|IconButton.RibbonSmallCommand">
     <Setter Property="Height" Value="{StaticResource RibbonSmallCommandHeight}" />
     <Setter Property="MinHeight" Value="{StaticResource RibbonSmallCommandHeight}" />
     <Setter Property="MinWidth" Value="{StaticResource RibbonSmallCommandMinWidth}" />
@@ -164,41 +147,38 @@
     <Setter Property="VerticalContentAlignment" Value="Center" />
   </Style>
   <Style
-    Selector="u|IconButton.RibbonSmallCommand /template/ Panel#PART_IconRoot, u|IconDropDownButton.RibbonSmallCommand /template/ Panel#PART_IconRoot">
+    Selector="k|IconButton.RibbonSmallCommand /template/ Panel#PART_IconRoot">
     <Setter Property="Width" Value="{StaticResource RibbonSmallCommandIconSlotSize}" />
     <Setter Property="Height" Value="{StaticResource RibbonSmallCommandIconSlotSize}" />
   </Style>
-  <Style Selector="u|IconDropDownButton.RibbonCommand">
-    <Setter Property="Theme" Value="{StaticResource BorderlessIconDropDownButton}" />
+  <Style Selector="k|IconButton.RibbonCommand">
     <Setter Property="MinWidth" Value="{StaticResource RibbonCommandDropDownMinWidth}" />
   </Style>
-  <Style Selector="u|IconDropDownButton.RibbonSmallCommand">
+  <Style Selector="k|IconButton.RibbonSmallCommand">
     <Setter Property="MinWidth" Value="{StaticResource RibbonSmallCommandMinWidth}" />
   </Style>
-  <Style Selector="u|IconButton.RibbonCommand">
-    <Setter Property="IconTemplate" Value="{StaticResource RibbonIconTemplate}" />
+  <Style Selector="k|IconButton.RibbonCommand">
   </Style>
-  <Style Selector="u|IconDropDownButton.RibbonCommand">
-    <Setter Property="IconTemplate" Value="{StaticResource RibbonIconTemplate}" />
+  <Style Selector="k|IconButton.RibbonCommand">
   </Style>
   <Style
-    Selector="u|IconButton.RibbonCommand /template/ Panel#PART_IconRoot, u|IconDropDownButton.RibbonCommand /template/ Panel#PART_IconRoot">
+    Selector="k|IconButton.RibbonCommand /template/ Panel#PART_IconRoot">
     <Setter Property="Width" Value="{StaticResource RibbonIconSlotSize}" />
     <Setter Property="Height" Value="{StaticResource RibbonIconSlotSize}" />
     <Setter Property="HorizontalAlignment" Value="Center" />
     <Setter Property="VerticalAlignment" Value="Center" />
   </Style>
   <Style
-    Selector="u|IconButton.RibbonSmallCommand /template/ Panel#PART_IconRoot, u|IconDropDownButton.RibbonSmallCommand /template/ Panel#PART_IconRoot">
+    Selector="k|IconButton.RibbonSmallCommand /template/ Panel#PART_IconRoot">
     <Setter Property="Width" Value="{StaticResource RibbonSmallCommandIconSlotSize}" />
     <Setter Property="Height" Value="{StaticResource RibbonSmallCommandIconSlotSize}" />
   </Style>
   <Style
-    Selector="u|IconButton.RibbonCommand /template/ PathIcon, u|IconDropDownButton.RibbonCommand /template/ PathIcon">
+    Selector="k|IconButton.RibbonCommand /template/ Path#PART_Icon">
     <Setter Property="Width" Value="{StaticResource RibbonIconSize}" />
     <Setter Property="Height" Value="{StaticResource RibbonIconSize}" />
   </Style>
-  <Style Selector="u|IconDropDownButton.RibbonCommand /template/ PathIcon#DropDownGlyph">
+  <Style Selector="k|IconButton.RibbonCommand /template/ Path#PART_DropDownGlyph">
     <Setter Property="Width" Value="{StaticResource RibbonDropDownGlyphSize}" />
     <Setter Property="Height" Value="{StaticResource RibbonDropDownGlyphSize}" />
     <Setter Property="HorizontalAlignment" Value="Center" />
@@ -250,11 +230,11 @@
     <Setter Property="Height" Value="{StaticResource RibbonMenuItemIconSize}" />
     <Setter Property="Foreground" Value="{DynamicResource RibbonCommandForeground}" />
   </Style>
-  <Style Selector="u|Divider">
+  <Style Selector="Separator">
     <Setter Property="Margin" Value="{StaticResource RibbonDividerMargin}" />
     <Setter Property="Opacity" Value="{StaticResource RibbonDividerOpacity}" />
   </Style>
-  <Style Selector="u|Divider.RibbonGroupDivider">
+  <Style Selector="Separator.RibbonGroupDivider">
     <Setter Property="Margin" Value="{StaticResource RibbonGroupDividerMargin}" />
   </Style>
   <Style Selector="Grid.RibbonFieldColumns">
@@ -306,16 +286,16 @@
     <Setter Property="Background" Value="{DynamicResource RibbonFieldInputBackground}" />
     <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputFocusBorderBrush}" />
   </Style>
-  <Style Selector=":is(u|NumericUpDown).RibbonFieldNumeric:disabled">
+  <Style Selector=":is(NumericUpDown).RibbonFieldNumeric:disabled">
     <Setter Property="Background" Value="{DynamicResource RibbonFieldInputDisabledBackground}" />
     <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputDisabledBorderBrush}" />
     <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputDisabledForeground}" />
   </Style>
-  <Style Selector=":is(u|NumericUpDown).RibbonFieldNumeric:disabled /template/ ButtonSpinner#PART_Spinner">
+  <Style Selector=":is(NumericUpDown).RibbonFieldNumeric:disabled /template/ ButtonSpinner#PART_Spinner">
     <Setter Property="Background" Value="{DynamicResource RibbonFieldInputDisabledBackground}" />
     <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputDisabledBorderBrush}" />
   </Style>
-  <Style Selector=":is(u|NumericUpDown).RibbonFieldNumeric:disabled /template/ TextBox#PART_TextBox">
+  <Style Selector=":is(NumericUpDown).RibbonFieldNumeric:disabled /template/ TextBox#PART_TextBox">
     <Setter Property="Background" Value="{DynamicResource RibbonFieldInputDisabledBackground}" />
     <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputDisabledBorderBrush}" />
     <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputDisabledForeground}" />

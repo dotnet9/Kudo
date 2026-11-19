@@ -1,4 +1,4 @@
-<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codewf="https://codewf.com" xmlns:u="https://irihi.tech/ursa">
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codewf="https://codewf.com" xmlns:k="https://codewf.com">
   <Style Selector="Border.QuickToolBarRoot">
     <Setter Property="Height" Value="{StaticResource QuickToolBarHeight}" />
     <Setter Property="Margin" Value="{StaticResource QuickToolBarMargin}" />
@@ -7,7 +7,7 @@
     <Setter Property="BorderThickness" Value="{StaticResource QuickToolBarBorderThickness}" />
     <Setter Property="CornerRadius" Value="{StaticResource QuickToolBarCornerRadius}" />
   </Style>
-  <Style Selector="u|IconButton.QuickToolButton">
+  <Style Selector="k|IconButton.QuickToolButton">
     <Setter Property="Width" Value="{StaticResource QuickToolButtonWidth}" />
     <Setter Property="Height" Value="{StaticResource QuickToolButtonHeight}" />
     <Setter Property="MinWidth" Value="{StaticResource QuickToolButtonWidth}" />
@@ -20,7 +20,7 @@
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
   </Style>
-  <Style Selector="u|IconButton.QuickToolButton:pointerover">
+  <Style Selector="k|IconButton.QuickToolButton:pointerover">
     <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimaryPointerover}" />
     <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
   </Style>
@@ -31,13 +31,13 @@
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="CornerRadius" Value="0" />
   </Style>
-  <Style Selector="Border.QuickToolBarRoot.RibbonHeader u|IconButton.QuickToolButton">
+  <Style Selector="Border.QuickToolBarRoot.RibbonHeader k|IconButton.QuickToolButton">
     <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderForeground}" />
   </Style>
-  <Style Selector="Border.QuickToolBarRoot.RibbonHeader u|IconButton.QuickToolButton:pointerover">
+  <Style Selector="Border.QuickToolBarRoot.RibbonHeader k|IconButton.QuickToolButton:pointerover">
     <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderPointeroverForeground}" />
   </Style>
-  <Style Selector="Border.QuickToolBarRoot.RibbonHeader u|IconDropDownButton.QuickToolButton">
+  <Style Selector="Border.QuickToolBarRoot.RibbonHeader k|IconButton.QuickToolButton">
     <Setter Property="Theme" Value="{DynamicResource BorderlessIconDropDownButton}" />
     <Setter Property="Margin" Value="{StaticResource QuickToolButtonMargin}" />
     <Setter Property="Background" Value="Transparent" />
@@ -46,11 +46,11 @@
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
   </Style>
-  <Style Selector="Border.QuickToolBarRoot.RibbonHeader u|IconDropDownButton.QuickToolButton:pointerover">
+  <Style Selector="Border.QuickToolBarRoot.RibbonHeader k|IconButton.QuickToolButton:pointerover">
     <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderPointeroverForeground}" />
     <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
   </Style>
-  <Style Selector="Border.QuickToolBarRoot.RibbonHeader u|IconDropDownButton.QuickToolButton:pointerover /template/ Border#PART_Background">
+  <Style Selector="Border.QuickToolBarRoot.RibbonHeader k|IconButton.QuickToolButton:pointerover /template/ Border#PART_Border">
     <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
   </Style>
   <Style Selector="TextBlock.QuickToolBarTitle">

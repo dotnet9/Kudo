@@ -1,14 +1,21 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:u="https://irihi.tech/ursa">
+        xmlns:k="https://codewf.com"
+        xmlns:lucide="https://github.com/AIDotNet/TKCode.Arc/lucide">
   <Design.PreviewWith>
     <Border Padding="20">
-      <!-- Add Controls for Previewer Here -->
+      <StackPanel Spacing="8">
+        <k:IconButton Icon="{lucide:LucideGeometry Plus}"
+                      Content="图标按钮" />
+        <k:IconButton Icon="{lucide:LucideGeometry Save}"
+                      IconPlacement="Top"
+                      Content="竖排按钮" />
+      </StackPanel>
     </Border>
   </Design.PreviewWith>
 
-  <!-- Add Styles Here -->
-  <Style Selector="u|IconButton">
+  <!-- KudoIconButton 基础样式与模板：幽灵按钮（透明背景），视觉由 Classes 定制 -->
+  <Style Selector="k|IconButton">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="FontFamily" Value="{StaticResource NotoSansSC}" />
     <Setter Property="Foreground" Value="{DynamicResource Colors.Primary.Text}" />
@@ -16,5 +23,61 @@
     <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Regular.FontWeight}" />
     <Setter Property="Margin" Value="4 6" />
     <Setter Property="Padding" Value="4 6" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Name="PART_Border"
+                Background="{TemplateBinding Background}"
+                CornerRadius="{TemplateBinding CornerRadius}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Padding="{TemplateBinding Padding}">
+          <StackPanel Name="PART_Layout"
+                      Orientation="Vertical"
+                      Spacing="4"
+                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+            <Panel Name="PART_IconRoot"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center">
+              <Path Name="PART_Icon"
+                    Data="{TemplateBinding Icon}"
+                    Stroke="{TemplateBinding Foreground}"
+                    StrokeThickness="2.5"
+                    StrokeJoin="Round"
+                    Fill="Transparent"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Stretch="Uniform" />
+            </Panel>
+            <ContentPresenter Name="PART_ContentPresenter"
+                              Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                              Foreground="{TemplateBinding Foreground}"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              IsVisible="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}" />
+            <Path Name="PART_DropDownGlyph"
+                  Data="M 0 0 L 4 4 L 8 0"
+                  Fill="{TemplateBinding Foreground}"
+                  StrokeThickness="0"
+                  Width="8"
+                  Height="4"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  IsVisible="{Binding Flyout, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}" />
+          </StackPanel>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <!-- 图标在左侧：改为水平排布 -->
+  <Style Selector="k|IconButton[IconPlacement=Left]">
+    <Style Selector="^ /template/ StackPanel#PART_Layout">
+      <Setter Property="Orientation" Value="Horizontal" />
+      <Setter Property="Spacing" Value="6" />
+    </Style>
   </Style>
 </Styles>

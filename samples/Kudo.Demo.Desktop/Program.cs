@@ -2,6 +2,8 @@
 using System;
 using Avalonia.Media;
 using Kudo.AvaloniaCommon.Themes;
+using TKCode.Arc;
+using TKCode.Arc.Motion;
 
 using ReactiveUI.Avalonia;
 
@@ -21,6 +23,11 @@ class Program
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .With(new FontManagerOptions { DefaultFamilyName = KudoThemeFonts.DefaultFamilyName })
+            .UseArc(arc => arc
+                .UseArcControls()
+                .WithTheme(theme => theme
+                    .Appearance(ArcAppearance.Light)
+                    .MotionLevel(ArcMotionLevel.Reduced)))
             .UseReactiveUI(_ => { })
             .LogToTrace();
 }

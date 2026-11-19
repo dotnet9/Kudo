@@ -1,6 +1,7 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:u="https://irihi.tech/ursa"
+             xmlns:k="https://codewf.com"
+             xmlns:lucide="https://github.com/AIDotNet/TKCode.Arc/lucide"
              xmlns:i18n="using:CodeWF.Avalonia.Lang.MarkupExtensions"
              xmlns:helpers="using:Kudo.AvaloniaCommon.Helpers"
              xmlns:lang="using:Localization.Kudo_Demo_Desktop.Views"
@@ -10,34 +11,34 @@
     <WrapPanel Classes="RibbonGroup" Orientation="Horizontal">
         <StackPanel>
             <StackPanel Orientation="Horizontal">
-                <u:IconButton x:Name="NewGraphButton"
+                <k:IconButton x:Name="NewGraphButton"
                               Classes="RibbonCommand"
                               Content="{i18n:I18n {x:Static lang:MainWindow.NewCanvas}}"
-                              Icon="{StaticResource SemiIconPlusStroked}"
+                              Icon="{lucide:LucideGeometry Plus}"
                               IconPlacement="Top"
                               Command="{Binding CreateGraph}" />
-                <u:IconButton Classes="RibbonCommand"
+                <k:IconButton Classes="RibbonCommand"
                               Content="{i18n:I18n {x:Static lang:MainWindow.OpenFile}}"
-                              Icon="{StaticResource SemiIconFolderOpenStroked}"
+                              Icon="{lucide:LucideGeometry FolderOpen}"
                               IconPlacement="Top"
                               Command="{Binding OpenGraphCommand}" />
-                <u:IconButton Classes="RibbonCommand"
+                <k:IconButton Classes="RibbonCommand"
                               Content="{i18n:I18n {x:Static lang:MainWindow.Save}}"
-                              Icon="{StaticResource SemiIconSaveStroked}"
+                              Icon="{lucide:LucideGeometry Save}"
                               IconPlacement="Top"
                               Command="{Binding SaveGraphCommand}" />
-                <u:IconButton Classes="RibbonCommand"
+                <k:IconButton Classes="RibbonCommand"
                               Content="{i18n:I18n {x:Static lang:MainWindow.SaveAs}}"
-                              Icon="{StaticResource SemiIconDownloadStroked}"
+                              Icon="{lucide:LucideGeometry Download}"
                               IconPlacement="Top"
                               Command="{Binding SaveGraphAsCommand}" />
-                <u:IconDropDownButton x:Name="SampleTaskButton"
+                <k:IconButton x:Name="SampleTaskButton"
                                       Classes="RibbonCommand"
                                       Content="{i18n:I18n {x:Static lang:MainWindow.SampleTasks}}"
-                                      Icon="{StaticResource SemiIconLayers}"
+                                      Icon="{lucide:LucideGeometry Layers}"
                                       IconPlacement="Top"
                                       helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.SampleTasksTip}}">
-                    <u:IconDropDownButton.Styles>
+                    <k:IconButton.Styles>
                         <Style x:DataType="vm:DemoSampleTaskMenuItem" Selector="MenuItem">
                             <Setter Property="Header" Value="{Binding Title}" />
                             <Setter Property="Command" Value="{Binding Command}" />
@@ -46,26 +47,26 @@
                             <Setter Property="Padding" Value="10,4" />
                             <Setter Property="CornerRadius" Value="4" />
                         </Style>
-                    </u:IconDropDownButton.Styles>
-                    <u:IconDropDownButton.Flyout>
+                    </k:IconButton.Styles>
+                    <k:IconButton.Flyout>
                         <MenuFlyout ItemsSource="{Binding SampleTasks}" />
-                    </u:IconDropDownButton.Flyout>
-                </u:IconDropDownButton>
-                <u:IconDropDownButton x:Name="LargeGraphButton"
+                    </k:IconButton.Flyout>
+                </k:IconButton>
+                <k:IconButton x:Name="LargeGraphButton"
                                       Classes="RibbonCommand"
                                       Content="{i18n:I18n {x:Static lang:MainWindow.PerformanceSample}}"
-                                      Icon="{StaticResource SemiIconApps}"
+                                      Icon="{lucide:LucideGeometry LayoutGrid}"
                                       IconPlacement="Top"
                                       helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.PerformanceSampleTip}}">
-                    <u:IconDropDownButton.Flyout>
+                    <k:IconButton.Flyout>
                         <MenuFlyout>
                             <MenuItem Classes="RibbonFlyoutItem" Header="{i18n:I18n {x:Static lang:MainWindow.NodeCount100}}" Command="{Binding CreateLargeGraphCommand}" CommandParameter="100" />
                             <MenuItem Classes="RibbonFlyoutItem" Header="{i18n:I18n {x:Static lang:MainWindow.NodeCount500}}" Command="{Binding CreateLargeGraphCommand}" CommandParameter="500" />
                             <MenuItem Classes="RibbonFlyoutItem" Header="{i18n:I18n {x:Static lang:MainWindow.NodeCount1000}}" Command="{Binding CreateLargeGraphCommand}" CommandParameter="1000" />
                             <MenuItem Classes="RibbonFlyoutItem" Header="{i18n:I18n {x:Static lang:MainWindow.NodeCount5000}}" Command="{Binding CreateLargeGraphCommand}" CommandParameter="5000" />
                         </MenuFlyout>
-                    </u:IconDropDownButton.Flyout>
-                </u:IconDropDownButton>
+                    </k:IconButton.Flyout>
+                </k:IconButton>
             </StackPanel>
         </StackPanel>
     </WrapPanel>

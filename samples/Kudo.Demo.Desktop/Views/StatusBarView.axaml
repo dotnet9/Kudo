@@ -1,6 +1,7 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:u="https://irihi.tech/ursa"
+             xmlns:k="https://codewf.com"
+             xmlns:lucide="https://github.com/AIDotNet/TKCode.Arc/lucide"
              xmlns:i18n="using:CodeWF.Avalonia.Lang.MarkupExtensions"
              xmlns:helpers="using:Kudo.AvaloniaCommon.Helpers"
              xmlns:lang="using:Localization.Kudo_Demo_Desktop.Views"
@@ -63,9 +64,9 @@
                         </MenuFlyout>
                     </DropDownButton.Flyout>
                 </DropDownButton>
-                <u:IconButton x:Name="StatusZoomOutButton"
+                <k:IconButton x:Name="StatusZoomOutButton"
                               Classes="status-zoom-button"
-                              Icon="{StaticResource SemiIconMinusStroked}"
+                              Icon="{lucide:LucideGeometry Minus}"
                               helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.ZoomOut}}"
                               Command="{Binding ZoomOut}"
                               IsEnabled="{Binding IsWorkspaceAvailable}" />
@@ -78,9 +79,9 @@
                         helpers:ToolTipHelper.Text="{Binding ZoomRangeText}"
                         Value="{Binding ZoomSliderPosition, Mode=TwoWay}"
                         IsEnabled="{Binding IsWorkspaceAvailable}" />
-                <u:IconButton x:Name="StatusZoomInButton"
+                <k:IconButton x:Name="StatusZoomInButton"
                               Classes="status-zoom-button"
-                              Icon="{StaticResource SemiIconPlusStroked}"
+                              Icon="{lucide:LucideGeometry Plus}"
                               helpers:ToolTipHelper.Text="{i18n:I18n {x:Static lang:MainWindow.ZoomIn}}"
                               Command="{Binding ZoomIn}"
                               IsEnabled="{Binding IsWorkspaceAvailable}" />

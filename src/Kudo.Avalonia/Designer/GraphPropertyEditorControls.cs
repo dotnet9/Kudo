@@ -9,7 +9,8 @@ using Avalonia.Markup.Xaml.MarkupExtensions;
 using Avalonia.Media;
 using Avalonia.Threading;
 using Kudo.Avalonia.Designer;
-using UrsaIconButton = Ursa.Controls.IconButton;
+using Kudo.AvaloniaCommon.Controls;
+using TKCode.Arc.Icons.Lucide;
 
 namespace Kudo.Avalonia.Designer;
 
@@ -205,9 +206,9 @@ internal static class GraphPropertyEditorControls
         Margin = new Thickness(8, 8)
     };
 
-    public static UrsaIconButton CreateIconActionButton(string name, string tooltip, string iconResourceKey)
+    public static IconButton CreateIconActionButton(string name, string tooltip, LucideIconKind kind)
     {
-        var button = new UrsaIconButton
+        var button = new IconButton
         {
             Name = name,
             Width = 26,
@@ -218,12 +219,11 @@ internal static class GraphPropertyEditorControls
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalContentAlignment = HorizontalAlignment.Center,
-            VerticalContentAlignment = VerticalAlignment.Center
+            VerticalContentAlignment = VerticalAlignment.Center,
+            Icon = Lucide.Geometry(kind)
         };
         button.Classes.Add("graph-property-icon-button");
         GraphToolTipHelper.SetText(button, tooltip);
-        button[!UrsaIconButton.IconProperty] = new DynamicResourceExtension(iconResourceKey);
-        button[!StyledElement.ThemeProperty] = new DynamicResourceExtension("BorderlessIconButton");
         return button;
     }
 }
@@ -248,7 +248,7 @@ internal sealed class GraphColorEditor : Grid
         ClearButton = GraphPropertyEditorControls.CreateIconActionButton(
             $"{name}ClearButton",
             clearTooltip,
-            "SemiIconClose");
+            LucideIconKind.X);
         ClearButton.IsVisible = _hasExplicitColor;
         ClearButton.Click += (_, _) =>
         {
@@ -279,7 +279,7 @@ internal sealed class GraphColorEditor : Grid
 
     public ColorPicker Picker { get; }
 
-    public UrsaIconButton ClearButton { get; }
+    public IconButton ClearButton { get; }
 
     public string? Value => _hasExplicitColor ? FormatColor(Picker.Color) : null;
 

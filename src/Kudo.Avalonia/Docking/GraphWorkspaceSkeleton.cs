@@ -1,7 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Media;
 using Avalonia.Layout;
-using Ursa.Controls;
 
 namespace Kudo.Avalonia.Docking;
 
@@ -35,14 +35,14 @@ public sealed class GraphWorkspaceSkeleton : Grid
         Children.Add(diagnostics);
     }
 
-    private static Skeleton CreatePane() =>
-        new()
+    private static Control CreatePane() =>
+        new Border
         {
             HorizontalAlignment = HorizontalAlignment.Stretch,
             VerticalAlignment = VerticalAlignment.Stretch,
             CornerRadius = new CornerRadius(4),
-            IsActive = true,
-            IsLoading = true
+            Background = new SolidColorBrush(Color.FromArgb(0x1E, 0x64, 0x74, 0x8B)),
+            Opacity = 0.5
         };
 
     private static void Add(

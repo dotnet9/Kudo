@@ -357,6 +357,9 @@ namespace Localization.Kudo_Demo_Desktop.Views
         public const string DisableSnap = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DisableSnap";
         public const string DiscardMultipleCanvases = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DiscardMultipleCanvases";
         public const string DiscardSingleCanvas = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DiscardSingleCanvas";
+        public const string DialogConfirm = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DialogConfirm";
+        public const string DialogCancel = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DialogCancel";
+        public const string DialogDiscard = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DialogDiscard";
         public const string Distribute = "Localization.Kudo_Demo_Desktop.Views.MainWindow.Distribute";
         public const string DistributeHorizontalCommand = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DistributeHorizontalCommand";
         public const string DistributeHorizontalCompleted = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DistributeHorizontalCompleted";

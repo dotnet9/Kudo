@@ -1,13 +1,12 @@
 using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
 using Kudo.Avalonia;
 using Kudo.Core.Documents;
-using Ursa.Controls;
+using TKCode.Arc;
 using MainWindowLanguage = global::Localization.Kudo_Demo_Desktop.Views.MainWindow;
 
 namespace Kudo.Demo.Desktop.Services;
 
-internal sealed class MainWindowDialogService(TopLevel topLevel, string hostId)
+internal sealed class MainWindowDialogService(TopLevel topLevel)
 {
     public async Task<DocumentTitleDialogResult> RequestDocumentTitleAsync(string? currentTitle)
     {
@@ -17,20 +16,20 @@ internal sealed class MainWindowDialogService(TopLevel topLevel, string hostId)
             PlaceholderText = L(MainWindowLanguage.TaskNamePlaceholder),
             MinWidth = 320
         };
-        var result = await OverlayDialog.ShowStandardAsync(
+        var result = await Dialog.ShowAsync(
+            topLevel,
+            L(MainWindowLanguage.RenameTask),
             editor,
-            null,
-            hostId,
-            new OverlayDialogOptions
-            {
-                Title = L(MainWindowLanguage.RenameTask),
-                Buttons = DialogButton.OKCancel,
-                TopLevelHashCode = topLevel.GetHashCode(),
-                HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled,
-                VerticalScrollBarVisibility = ScrollBarVisibility.Disabled
-            });
-        var title = string.IsNullOrWhiteSpace(editor.Text) ? null : editor.Text.Trim();
-        return new DocumentTitleDialogResult(result == DialogResult.OK, title);
+            actions:
+            [
+                new DialogAction(L(MainWindowLanguage.DialogCancel), false),
+                new DialogAction(L(MainWindowLanguage.DialogConfirm), true, ButtonVariant.Primary)
+            ]);
+        var accepted = result is true;
+        var title = accepted && !string.IsNullOrWhiteSpace(editor.Text)
+            ? editor.Text.Trim()
+            : null;
+        return new DocumentTitleDialogResult(accepted, title);
     }
 
     public async Task<bool> ConfirmDiscardChangesAsync(
@@ -54,14 +53,13 @@ internal sealed class MainWindowDialogService(TopLevel topLevel, string hostId)
         var message = dirtySessions.Count == 1
             ? F(MainWindowLanguage.DiscardSingleCanvas, list)
             : F(MainWindowLanguage.DiscardMultipleCanvases, list);
-        var result = await OverlayMessageBox.ShowAsync(
-            message,
+        return await Dialog.ConfirmAsync(
+            topLevel,
             title,
-            hostId,
-            MessageBoxIcon.Warning,
-            MessageBoxButton.YesNo,
-            topLevel.GetHashCode());
-        return result == MessageBoxResult.Yes;
+            message,
+            confirmText: L(MainWindowLanguage.DialogDiscard),
+            cancelText: L(MainWindowLanguage.DialogCancel),
+            isDanger: true);
     }
 
     private static string L(string key) => GraphLocalization.Get(key);

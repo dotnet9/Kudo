@@ -3,6 +3,7 @@ using System.Globalization;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Kudo.Avalonia;
+using TKCode.Arc.Icons.Lucide;
 using Kudo.Avalonia.Designer;
 using static Kudo.Avalonia.Designer.GraphPropertyEditorControls;
 using static Kudo.Avalonia.Designer.GraphPropertyValueConverter;
@@ -315,7 +316,7 @@ internal static class GraphNodePropertyEditor
         var selectImage = CreateIconActionButton(
             "SelectNodeBackgroundImageButton",
             L(PropertiesLanguage.SelectBackgroundImage),
-            "SemiIconImageStroked");
+            LucideIconKind.Image);
         selectImage.IsEnabled = !editorContext.IsReadOnly;
         selectImage.Click += (_, _) => requestBackgroundImage(
             new GraphNodeBackgroundImageRequest(editorContext, node.Id));
@@ -323,7 +324,7 @@ internal static class GraphNodePropertyEditor
         var clearImage = CreateIconActionButton(
             "ClearNodeBackgroundImageButton",
             L(PropertiesLanguage.ClearBackgroundImage),
-            "SemiIconClear");
+            LucideIconKind.Eraser);
         clearImage.IsEnabled = !editorContext.IsReadOnly && imagePath is not null;
         clearImage.Click += (_, _) => ClearBackgroundImage(
             editorContext,

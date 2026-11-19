@@ -4,7 +4,7 @@ using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.Media;
 using Kudo.Avalonia.Designer;
-using Ursa.Controls;
+using Avalonia.Animation;
 
 namespace Kudo.Avalonia.Controls;
 
@@ -29,19 +29,14 @@ public sealed class GraphLoadingView : GraphDesignerPanel
         AvaloniaProperty.Register<GraphLoadingView, ICommand?>(nameof(RetryCommand));
 
     private readonly Border _root;
-    private readonly LoadingIcon _indicator;
+    private readonly Border _indicator;
     private readonly TextBlock _title;
     private readonly TextBlock _message;
     private readonly Button _retryButton;
 
     public GraphLoadingView()
     {
-        _indicator = new LoadingIcon
-        {
-            Width = 28,
-            Height = 28,
-            HorizontalAlignment = HorizontalAlignment.Center
-        };
+        _indicator = CreateSpinner();
         _title = new TextBlock
         {
             FontSize = 14,
@@ -158,6 +153,47 @@ public sealed class GraphLoadingView : GraphDesignerPanel
             RetryCommand is not null &&
             !string.IsNullOrWhiteSpace(RetryText);
         OnPaletteChanged();
+    }
+
+    /// <summary>自研旋转指示器：环形弧线绕中心旋转，不依赖第三方控件库。</summary>
+    private Border CreateSpinner()
+    {
+        var arc = new global::Avalonia.Controls.Shapes.Path
+        {
+            Width = 28,
+            Height = 28,
+            Stretch = Stretch.Uniform,
+            Data = Geometry.Parse("M 14 3 A 11 11 0 1 1 3 14"),
+            Stroke = AccentBrush,
+            StrokeThickness = 2.5,
+            RenderTransform = new RotateTransform(0)
+        };
+        var animation = new Animation
+        {
+            Duration = TimeSpan.FromSeconds(0.9),
+            IterationCount = IterationCount.Infinite,
+            Children =
+            {
+                new KeyFrame
+                {
+                    Cue = new Cue(0.0),
+                    Setters = { new global::Avalonia.Styling.Setter(RotateTransform.AngleProperty, 0d) }
+                },
+                new KeyFrame
+                {
+                    Cue = new Cue(1.0),
+                    Setters = { new global::Avalonia.Styling.Setter(RotateTransform.AngleProperty, 360d) }
+                }
+            }
+        };
+        _ = animation.RunAsync(arc);
+        return new Border
+        {
+            Width = 28,
+            Height = 28,
+            HorizontalAlignment = HorizontalAlignment.Center,
+            Child = arc
+        };
     }
 }
 

@@ -1,7 +1,6 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:u="https://irihi.tech/ursa">
-    <Style Selector="u|IconButton.status-zoom-button">
-        <Setter Property="Theme" Value="{StaticResource BorderlessIconButton}" />
+        xmlns:k="https://codewf.com">
+    <Style Selector="k|IconButton.status-zoom-button">
         <Setter Property="Width" Value="20" />
         <Setter Property="Height" Value="20" />
         <Setter Property="MinWidth" Value="20" />
@@ -10,7 +9,7 @@
         <Setter Property="Foreground" Value="#5F6B7A" />
         <Setter Property="CornerRadius" Value="10" />
     </Style>
-    <Style Selector="u|IconButton.status-zoom-button:pointerover">
+    <Style Selector="k|IconButton.status-zoom-button:pointerover">
         <Setter Property="Foreground" Value="#006EDB" />
         <Setter Property="Background" Value="#E8F3FF" />
     </Style>
