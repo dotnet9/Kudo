@@ -9,7 +9,7 @@ using Avalonia.Markup.Xaml.MarkupExtensions;
 using Avalonia.Media;
 using Avalonia.Threading;
 using Kudo.Avalonia.Designer;
-using Kudo.AvaloniaCommon.Controls;
+using Kudo.Controls;
 using TKCode.Arc.Icons.Lucide;
 
 namespace Kudo.Avalonia.Designer;

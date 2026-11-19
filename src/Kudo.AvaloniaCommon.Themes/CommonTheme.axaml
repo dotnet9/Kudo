@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <StyleInclude Source="/Themes/_index.axaml" />
   <StyleInclude Source="/Styles/_index.axaml" />
+  <StyleInclude Source="avares://Kudo.Controls/Styles/_index.axaml" />
   <Styles.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>

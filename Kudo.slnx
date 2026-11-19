@@ -18,6 +18,7 @@
   </Folder>
   <Folder Name="/Src/">
     <Project Path="src/Kudo.Avalonia/Kudo.Avalonia.csproj" />
+    <Project Path="src/Kudo.Controls/Kudo.Controls.csproj" />
     <Project Path="src/Kudo.AvaloniaCommon/Kudo.AvaloniaCommon.csproj" />
     <Project Path="src/Kudo.AvaloniaCommon.Themes/Kudo.AvaloniaCommon.Themes.csproj" />
     <Project Path="src/Kudo.Core/Kudo.Core.csproj" />
@@ -31,6 +32,7 @@
   </Folder>
   <Folder Name="/Tests/">
     <Project Path="tests/Kudo.Avalonia.Tests/Kudo.Avalonia.Tests.csproj" />
+    <Project Path="tests/Kudo.Controls.Tests/Kudo.Controls.Tests.csproj" />
     <Project Path="tests/Kudo.Core.Tests/Kudo.Core.Tests.csproj" />
   </Folder>
 </Solution>

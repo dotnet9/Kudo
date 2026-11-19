@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 
-namespace Kudo.AvaloniaCommon.Controls;
+namespace Kudo.Controls;
 
 /// <summary>图标在图标槽中的排布方向。</summary>
 public enum IconPlacement

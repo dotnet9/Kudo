@@ -25,5 +25,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Kudo.AvaloniaCommon\Kudo.AvaloniaCommon.csproj" />
+		<ProjectReference Include="..\Kudo.Controls\Kudo.Controls.csproj" />
 	</ItemGroup>
 </Project>

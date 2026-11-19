@@ -85,6 +85,7 @@ var canvas = new GraphCanvas { Document = document };
 
 - `Kudo.Core`：不依赖界面的图模型、算法、序列化、文档会话、运行时、校验和命令契约。
 - `Kudo.Avalonia`：Avalonia 画布、Designer、Dock 工作区、属性编辑器及 PNG/SVG/PDF 导出打印。
+- `Kudo.Controls`：按 Arc 范式沉淀的自研控件（图标按钮等），样式随控件内聚。
 - `Kudo.AvaloniaCommon`：桌面应用公共控件、转换器与帮助类（窗口外壳辅助、输入行为等）。
 - `Kudo.AvaloniaCommon.Themes`：公共控件的 Semi 风格主题资源（Ribbon、TitleBar、Shell 样式等）。
 - `Kudo.Dock.Themes`：Dock 停靠组件的 Semi 风格主题。

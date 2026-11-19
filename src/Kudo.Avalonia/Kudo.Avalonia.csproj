@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Kudo.Core\Kudo.Core.csproj" />
     <ProjectReference Include="..\Kudo.AvaloniaCommon\Kudo.AvaloniaCommon.csproj" />
+    <ProjectReference Include="..\Kudo.Controls\Kudo.Controls.csproj" />
   </ItemGroup>
 
   <ItemGroup>
