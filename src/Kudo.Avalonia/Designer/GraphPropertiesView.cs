@@ -163,6 +163,7 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
     {
         PropertyEditorProviders.Changed += (_, _) => RefreshCore(EditorContext);
         _propertyGrid.Background = PanelBrush;
+        _propertyGrid.SearchPlaceholder = GraphLocalization.Get(PropertiesLanguage.SearchPlaceholder);
         _root = new Border
         {
             Background = PanelBrush,
@@ -346,6 +347,7 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
         }
 
         _propertyGrid.Background = PanelBrush;
+        _propertyGrid.SearchPlaceholder = GraphLocalization.Get(PropertiesLanguage.SearchPlaceholder);
         RefreshCore(EditorContext);
     }
 
@@ -363,7 +365,11 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
 
     private void SetContext(string title) => _contextTitle = title;
 
-    private void HandleCultureChanged(object? sender, EventArgs e) => RefreshCore(EditorContext);
+    private void HandleCultureChanged(object? sender, EventArgs e)
+    {
+        _propertyGrid.SearchPlaceholder = GraphLocalization.Get(PropertiesLanguage.SearchPlaceholder);
+        RefreshCore(EditorContext);
+    }
 
     private void HandleAttachedToVisualTree(object? sender, VisualTreeAttachmentEventArgs e)
     {

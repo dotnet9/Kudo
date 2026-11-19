@@ -191,7 +191,8 @@
           "EdgeHighlighted": "高亮",
           "EdgeInvalid": "无效",
           "EdgeDisabled": "已禁用",
-          "EdgeNormal": "正常"
+          "EdgeNormal": "正常",
+          "SearchPlaceholder": "搜索属性"
         },
         "GraphNodePalette": {
           "CatalogTitle": "图元",

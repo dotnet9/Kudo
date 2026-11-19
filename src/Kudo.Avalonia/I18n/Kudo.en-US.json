@@ -191,7 +191,8 @@
           "EdgeHighlighted": "Highlighted",
           "EdgeInvalid": "Invalid",
           "EdgeDisabled": "Disabled",
-          "EdgeNormal": "Normal"
+          "EdgeNormal": "Normal",
+          "SearchPlaceholder": "Search properties"
         },
         "GraphNodePalette": {
           "CatalogTitle": "Elements",

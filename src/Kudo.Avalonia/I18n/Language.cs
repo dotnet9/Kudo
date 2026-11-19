@@ -251,6 +251,7 @@ namespace Localization.Kudo_Avalonia.Designer
         public const string PortVisibilityThreshold = "Localization.Kudo_Avalonia.Designer.GraphPropertiesView.PortVisibilityThreshold";
         public const string Ports = "Localization.Kudo_Avalonia.Designer.GraphPropertiesView.Ports";
         public const string Properties = "Localization.Kudo_Avalonia.Designer.GraphPropertiesView.Properties";
+        public const string SearchPlaceholder = "Localization.Kudo_Avalonia.Designer.GraphPropertiesView.SearchPlaceholder";
         public const string Routing = "Localization.Kudo_Avalonia.Designer.GraphPropertiesView.Routing";
         public const string RoutingBezier = "Localization.Kudo_Avalonia.Designer.GraphPropertiesView.RoutingBezier";
         public const string RoutingDirect = "Localization.Kudo_Avalonia.Designer.GraphPropertiesView.RoutingDirect";
