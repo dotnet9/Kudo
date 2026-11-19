@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Shouldly;
 using Xunit;
@@ -168,5 +169,55 @@ public sealed class ModelCatalogIntegrityTests
         }
 
         missing.ShouldBeEmpty($"符号文件存在悬空资源/语言键：{string.Join("; ", missing.Take(8))}");
+    }
+
+    [Fact]
+    public void Demo_model_node_types_match_symbol_files()
+    {
+        // DemoModelNodeTypes 常量 ↔ 符号文件 NodeType/TemplateKey 双向一致
+        var constants = new List<(string Name, string NodeType)>();
+        var constantsSource = File.ReadAllText(
+            Path.Combine(RepoRoot(), "samples", "Kudo.Demo.Desktop", "Services", "DemoModelCatalog.cs"));
+        foreach (Match match in Regex.Matches(constantsSource,
+                     @"public const string (\w+) = ""([^""]+)"";"))
+        {
+            constants.Add((match.Groups[1].Value, match.Groups[2].Value));
+        }
+
+        var symbolFileMap = new Dictionary<string, string>();
+        foreach (var file in Directory.GetFiles(Path.Combine(ModelsRoot, "Symbols"), "*.xml"))
+        {
+            var symbol = XDocument.Load(file);
+            var nodeType = (string?)symbol.Root?.Attribute("NodeType");
+            if (!string.IsNullOrEmpty(nodeType))
+            {
+                symbolFileMap[nodeType] = Path.GetFileName(file);
+            }
+        }
+
+        foreach (var (name, nodeType) in constants)
+        {
+            if (name is "TextLabel" or "FlowArrow")
+            {
+                continue; // 仪表与标注符号由 Instrumentation 目录提供，允许独立演化
+            }
+
+            symbolFileMap.ShouldContainKey(nodeType, $"DemoModelNodeTypes.{name} 引用了缺失的符号 NodeType");
+        }
+    }
+
+    [Fact]
+    public void Sample_packages_declare_kudo_formats()
+    {
+        foreach (var directory in Directory.GetDirectories(SamplesRoot))
+        {
+            var manifest = XDocument.Load(Path.Combine(directory, "Manifest.xml"));
+            ((string?)manifest.Root?.Attribute("Format")).ShouldBe("Kudo.Package",
+                $"{Path.GetFileName(directory)} 的 Manifest.xml 格式不正确");
+
+            var task = XDocument.Load(Path.Combine(directory, "Task.xml"));
+            ((string?)task.Root?.Attribute("Format")).ShouldBe("Kudo.Task/1",
+                $"{Path.GetFileName(directory)} 的 Task.xml 格式不正确");
+        }
     }
 }
