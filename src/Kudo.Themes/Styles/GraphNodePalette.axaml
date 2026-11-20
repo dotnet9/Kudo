@@ -1,4 +1,6 @@
-<Styles xmlns="https://github.com/avaloniaui"        xmlns:arc="https://github.com/AIDotNet/TKCode.Arc">
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:arc="https://github.com/AIDotNet/TKCode.Arc">
     <Style Selector="Border.graph-node-palette-root">
         <Setter Property="Background" Value="{DynamicResource SemiColorBackground1}" />
     </Style>
@@ -8,15 +10,57 @@
         <Setter Property="FontSize" Value="12" />
         <Setter Property="FontWeight" Value="SemiBold" />
     </Style>
+    <Styles.Resources>
+        <ResourceDictionary>
+            <!-- Arc 全局 TextBox 主题是自绘 Field 管线，普通 TextBox 在缺资源的宿主里会渲染成隐形；
+                 此处为模型库搜索框提供自包含模板，保证任何主题环境下都可见。 -->
+            <ControlTheme x:Key="GraphPaletteSearchTheme" TargetType="TextBox" x:DataType="TextBox">
+                <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SemiColorText3}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="Padding" Value="8,0,28,0" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="CaretBrush" Value="{DynamicResource SemiColorText0}" />
+                <Setter Property="SelectionBrush" Value="{DynamicResource SemiColorPrimaryLightActive}" />
+                <Setter Property="Template">
+                    <ControlTemplate>
+                        <Border Name="PART_BorderElement"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                            <Panel Margin="{TemplateBinding Padding}">
+                                <TextPresenter Name="PART_TextPresenter"
+                                               Text="{TemplateBinding Text}"
+                                               TextAlignment="{TemplateBinding TextAlignment}"
+                                               CaretBrush="{TemplateBinding CaretBrush}"
+                                               VerticalAlignment="Center" />
+                                <TextBlock IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"
+                                           Text="{TemplateBinding Watermark}"
+                                           FontSize="12"
+                                           Foreground="#747C78"
+                                           VerticalAlignment="Center" />
+                                <PathIcon Width="14"
+                                          Height="14"
+                                          Margin="0,0,8,0"
+                                          HorizontalAlignment="Right"
+                                          VerticalAlignment="Center"
+                                          IsHitTestVisible="False"
+                                          Foreground="{DynamicResource SemiColorText2}"
+                                          Data="{DynamicResource SemiIconSearchStroked}" />
+                            </Panel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter>
+            </ControlTheme>
+        </ResourceDictionary>
+    </Styles.Resources>
     <Style Selector="TextBox.graph-node-palette-search">
         <Setter Property="Height" Value="32" />
         <Setter Property="MinHeight" Value="32" />
         <Setter Property="Margin" Value="0,0,0,6" />
-        <Setter Property="Padding" Value="8,0,28,0" />
-        <Setter Property="FontSize" Value="12" />
-        <Setter Property="Background" Value="{DynamicResource SemiColorBackground1}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource SemiColorBorder}" />
-        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="Theme" Value="{StaticResource GraphPaletteSearchTheme}" />
     </Style>
     <Style Selector="PathIcon.graph-node-palette-search-icon">
         <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />

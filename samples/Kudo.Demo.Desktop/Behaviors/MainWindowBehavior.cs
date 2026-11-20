@@ -111,6 +111,28 @@ internal sealed class MainWindowBehavior : IDisposable
             ReloadText = L(MainWindowLanguage.Retry),
             Margin = new Thickness(10, 0)
         };
+        // 临时探针：KUDO_PROBE_PALETTE=1 时延时收集搜索框可视树实况（验证后移除）。
+        if (Environment.GetEnvironmentVariable("KUDO_PROBE_PALETTE") == "1")
+        {
+            var paletteProbe = _toolbox;
+            var probeTimer = new global::Avalonia.Threading.DispatcherTimer(
+                TimeSpan.FromSeconds(6),
+                global::Avalonia.Threading.DispatcherPriority.Background,
+                (_, _) =>
+                {
+                    var boxes = paletteProbe.GetVisualDescendants()
+                        .OfType<global::Avalonia.Controls.TextBox>()
+                        .Select(box => $"{box.GetType().Name} visible={box.IsVisible} bounds={box.Bounds}")
+                        .ToList();
+                    var roots = paletteProbe.GetVisualChildren()
+                        .Select(child => $"{child.GetType().Name} visible={child.IsVisible} bounds={child.Bounds}")
+                        .ToList();
+                    var line = "TEXTBOXES: " + (boxes.Count == 0 ? "NONE" : string.Join(" | ", boxes)) +
+                               Environment.NewLine + "CHILDREN: " + string.Join(" | ", roots);
+                    File.WriteAllText(Path.Combine(Path.GetTempPath(), "kudo_palette_probe.txt"), line);
+                });
+            probeTimer.Start();
+        }
         _documentExplorer.Manager = _documents;
         var workspaceSettings = _settingsStore.LoadWorkspace(out var settingsWarning);
         var ribbonView = _window.FindControl<MainRibbonView>(MainWindowControlNames.Ribbon) ??
