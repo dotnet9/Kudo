@@ -1,9 +1,9 @@
 {
   "source_repository": "https://github.com/dotnet9/CodeWF.Avalonia",
   "source_directory": "scripts/installer/macos",
-  "visual_reference": "https://github.com/dotnet9/Vex/blob/main/design/Vex-Installer-macOS.html",
+  "visual_reference": "https://github.com/dotnet9/Kudo/blob/main/scripts/installer/macos/render-backgrounds.cjs",
   "style": {
-    "brand": "#24766B",
+    "brand": "#0E9F8A",
     "finder_window": [
       740,
       436
@@ -23,9 +23,9 @@
         220
       ]
     },
-    "product": "Vex",
-    "chinese_name": "维刻",
-    "slogan": "维刻 Vex · 写下想法，看见脉络。",
+    "product": "Kudo",
+    "chinese_name": "Kudo",
+    "slogan": "Kudo · 图建模工作台。",
     "website": "codewf.com",
     "website_interaction": "static background text only"
   },
@@ -36,27 +36,27 @@
     },
     {
       "path": "background-bilingual.png",
-      "sha256": "bbe6c28ec01c49e25d7e5b34abc80f12ab7706cfcad2807bf833ca91b5a5e8f9"
+      "sha256": "d2fd0c1d2a46e9c69dd16e1546f71968e046c6db06bbcdf327378db090f3c3c5"
     },
     {
       "path": "background-bilingual.svg",
-      "sha256": "0ed3b1604add9198860d34790e5ead973f1ce907b90e515eae20764f782a03bc"
+      "sha256": "6f9499ac5123f88d50b9f49db3f15b4abde8c75ec3eee556d0224cb1d4cfddfb"
     },
     {
       "path": "background-en.png",
-      "sha256": "8bb98cce78feb8f43b1ad09a182a9ad77a426f8fd8939c0816dc7783dbe87cd9"
+      "sha256": "c53af49941e1e957609a3dcfcc5f49b60f23ef7c8293aa9b675c716c0bdd5184"
     },
     {
       "path": "background-en.svg",
-      "sha256": "402d8f85016c9e16d6c8b052bb2f7c953aed82e70415d99c59554cd2fa947439"
+      "sha256": "b77eb25f5bd7a4edc36675bce670d955b1b85cfbe315f0b2493297771c786fcb"
     },
     {
       "path": "background-zh.png",
-      "sha256": "ac85d3bf23763648fc8aa9896e7e8a6b4edcdcf5b2286e066150692936d65b7f"
+      "sha256": "7b8740fbe3103918c2947e6991b04ba5f4a28c6596e899464f27f1145e654533"
     },
     {
       "path": "background-zh.svg",
-      "sha256": "83f47211c1d6778c17a5e800d03d6f801a85fd47b237c89a23774ccf9175c961"
+      "sha256": "c3739085c759019af2fc6ef78a18f8f9235b588e60d9fba9409d681264018fed"
     },
     {
       "path": "configure-finder.applescript",
@@ -64,20 +64,20 @@
     },
     {
       "path": "create-branded-dmg.sh",
-      "sha256": "82705ff1d56058fb830b14aa8b80591b205adf2c3c297c48631076c306b26e64"
+      "sha256": "6ec3ed4ef8145a8aaa735757988d305d594d283e978a39b04361b766a299709e"
     },
     {
       "path": "README.md",
-      "sha256": "d8597335e5b8f9ca781b3e3c77f045e180ad060c3c8d87344f907e1aeea144ef"
+      "sha256": "3f90b6cc61fb0cfc77129926389dc7aacde3426ed3f499fe90116e8bd413b2cd"
     },
     {
       "path": "render-backgrounds.cjs",
-      "sha256": "d77dc922a704b87a8bfa66bb569b5418fb5dce1dc9995381116f0b18f4a29ccd"
+      "sha256": "a49056b603c3626eb846816c640b88e3b604bd6accd960f958ceef27831cf916"
     },
     {
       "path": "tests/branded-dmg-test.sh",
-      "sha256": "7b2a49e115b0d6416e411b8b88ae6f01cfb7f812c796246efd970bad3f51d9b1"
+      "sha256": "2ec43acab6c3e4b6196ce32027f208ba7671d22805202aeba06a23e08d24e4ac"
     }
   ],
-  "local_design": "Vex design/Vex-Installer-macOS.html overrides the shared visual assets; shared packaging engine retained; README.md is a local navigation document consolidated into docs"
+  "local_design": "Kudo 品牌覆盖共享视觉资产；共享打包引擎保留；README.md 为本地导航文档"
 }
