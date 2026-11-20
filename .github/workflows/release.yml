@@ -107,6 +107,8 @@ jobs:
           rid='${{ matrix.rid }}'
           version='${{ steps.version.outputs.version }}'
           mkdir -p artifacts/release
+          cp "artifacts/macos/Kudo-v$version-$rid.dmg" artifacts/release/
+          cp "artifacts/macos/Kudo-v$version-$rid.dmg.sha256" artifacts/release/
           zip -r "artifacts/release/Kudo-v$version-$rid.zip" "artifacts/macos/work/$rid/Kudo.app"
           (cd artifacts/release && shasum -a 256 "Kudo-v$version-$rid.zip" > "Kudo-v$version-$rid.zip.sha256")
 
