@@ -199,10 +199,7 @@ public sealed class MainWindowDockWorkspace : IDisposable
         "GraphProperties",
         "GraphDiagnostics",
         "GraphValidation",
-        "GraphRuntimeVariables",
-        "GraphRuntimeBreakpoints",
-        "GraphRuntimeCallStack",
-        "GraphRuntimeTrace"
+        "GraphDebug"
     ];
 
 

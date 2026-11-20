@@ -349,6 +349,7 @@ namespace Localization.Kudo_Demo_Desktop.Views
         public const string CutSelectionAction = "Localization.Kudo_Demo_Desktop.Views.MainWindow.CutSelectionAction";
         public const string CutShortcut = "Localization.Kudo_Demo_Desktop.Views.MainWindow.CutShortcut";
         public const string CutStatus = "Localization.Kudo_Demo_Desktop.Views.MainWindow.CutStatus";
+        public const string DebugPanel = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DebugPanel";
         public const string DeleteSelection = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DeleteSelection";
         public const string DeleteSelectionAction = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DeleteSelectionAction";
         public const string DialogCancel = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DialogCancel";

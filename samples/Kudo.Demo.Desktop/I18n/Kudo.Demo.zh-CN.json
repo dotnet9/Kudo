@@ -744,7 +744,8 @@
           "SettingsAppearance": "外观",
           "SettingsAbout": "关于",
           "SettingsVersion": "版本",
-          "SettingsRepository": "代码仓库"
+          "SettingsRepository": "代码仓库",
+          "DebugPanel": "调试"
         }
       }
     }

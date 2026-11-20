@@ -34,10 +34,7 @@ internal sealed class MainWindowBehavior : IDisposable
     private const string PropertiesToolId = "GraphProperties";
     private const string DiagnosticsToolId = "GraphDiagnostics";
     private const string ValidationToolId = "GraphValidation";
-    private const string RuntimeVariablesToolId = "GraphRuntimeVariables";
-    private const string RuntimeBreakpointsToolId = "GraphRuntimeBreakpoints";
-    private const string RuntimeCallStackToolId = "GraphRuntimeCallStack";
-    private const string RuntimeTraceToolId = "GraphRuntimeTrace";
+    private const string DebugPaneId = "GraphDebug";
 
     private readonly GraphDocumentManager _documents = new();
     private readonly IDemoGraphTextProvider _graphTextProvider = new LocalizedDemoGraphTextProvider();
@@ -266,10 +263,10 @@ internal sealed class MainWindowBehavior : IDisposable
             () => _workspaceService.ToggleTool(PropertiesToolId, L(MainWindowLanguage.Properties)),
             () => _workspaceService.ToggleTool(DiagnosticsToolId, L(MainWindowLanguage.Output)),
             () => _workspaceService.ToggleTool(ValidationToolId, L(MainWindowLanguage.ValidationPanel)),
-            () => OpenRuntimeTool(RuntimeVariablesToolId),
-            () => OpenRuntimeTool(RuntimeBreakpointsToolId),
-            () => OpenRuntimeTool(RuntimeCallStackToolId),
-            () => OpenRuntimeTool(RuntimeTraceToolId),
+            () => OpenRuntimeTool(0),
+            () => OpenRuntimeTool(1),
+            () => OpenRuntimeTool(2),
+            () => OpenRuntimeTrace(),
             OpenCanvasDisplaySettings);
         _viewModel.Attach(actions);
         _ribbonViewModel.Attach(actions);
@@ -440,10 +437,24 @@ internal sealed class MainWindowBehavior : IDisposable
 
     private void HandleActiveGraphDocumentChanged(object? sender, EventArgs e) => UpdateWorkspace();
 
-    private void OpenRuntimeTool(string toolId)
+    private void OpenRuntimeTool(int debugTabIndex)
     {
         _runtimeTools.Refresh();
-        _dockWorkspace.SetToolVisible(toolId, true);
+        _dockWorkspace.SetToolVisible(DebugPaneId, true);
+        if (_window.FindControl<TabControl>("DebugToolsTabs") is { } tabs)
+        {
+            tabs.SelectedIndex = debugTabIndex;
+        }
+    }
+
+    private void OpenRuntimeTrace()
+    {
+        _runtimeTools.Refresh();
+        _dockWorkspace.SetToolVisible(DiagnosticsToolId, true);
+        if (_window.FindControl<TabControl>("DiagnosticsTabs") is { } tabs)
+        {
+            tabs.SelectedIndex = 1;
+        }
     }
 
     private void OpenCanvasDisplaySettings()
@@ -503,10 +514,6 @@ internal sealed class MainWindowBehavior : IDisposable
         UpdatePropertiesToolTitle(_properties.Context.Node);
         SetToolTitle(DiagnosticsToolId, L(MainWindowLanguage.Output));
         SetToolTitle(ValidationToolId, L(MainWindowLanguage.ValidationPanel));
-        SetToolTitle(RuntimeVariablesToolId, L(MainWindowLanguage.RuntimeVariables));
-        SetToolTitle(RuntimeBreakpointsToolId, L(MainWindowLanguage.RuntimeBreakpoints));
-        SetToolTitle(RuntimeCallStackToolId, L(MainWindowLanguage.RuntimeCallStack));
-        SetToolTitle(RuntimeTraceToolId, L(MainWindowLanguage.RuntimeTrace));
     }
 
     private void SetToolTitle(string toolId, string title)

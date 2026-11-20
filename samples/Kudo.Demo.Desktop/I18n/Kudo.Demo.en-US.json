@@ -744,7 +744,8 @@
           "SettingsAppearance": "Appearance",
           "SettingsAbout": "About",
           "SettingsVersion": "Version",
-          "SettingsRepository": "Repository"
+          "SettingsRepository": "Repository",
+          "DebugPanel": "Debug"
         }
       }
     }

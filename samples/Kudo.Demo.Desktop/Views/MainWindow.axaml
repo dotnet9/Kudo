@@ -133,7 +133,14 @@
                                                   CanClose="False"
                                                   CanFloat="True"
                                                   CanAutoHide="True">
-                                        <ContentControl x:Name="DiagnosticsHost" />
+                                        <TabControl x:Name="DiagnosticsTabs" Background="Transparent">
+                                            <TabItem Header="{i18n:I18n {x:Static lang:MainWindow.Output}}">
+                                                <ContentControl x:Name="DiagnosticsHost" />
+                                            </TabItem>
+                                            <TabItem Header="{i18n:I18n {x:Static lang:MainWindow.RuntimeTrace}}">
+                                                <ContentControl x:Name="RuntimeTraceHost" />
+                                            </TabItem>
+                                        </TabControl>
                                     </arc:DockPane>
                                     <arc:DockPane Id="GraphValidation"
                                                   Title="{i18n:I18n {x:Static lang:MainWindow.ValidationPanel}}"
@@ -142,33 +149,22 @@
                                                   CanAutoHide="True">
                                         <ContentControl x:Name="ValidationHost" />
                                     </arc:DockPane>
-                                    <arc:DockPane Id="GraphRuntimeVariables"
-                                                  Title="{i18n:I18n {x:Static lang:MainWindow.RuntimeVariables}}"
+                                    <arc:DockPane Id="GraphDebug"
+                                                  Title="{i18n:I18n {x:Static lang:MainWindow.DebugPanel}}"
                                                   CanClose="False"
                                                   CanFloat="True"
                                                   CanAutoHide="True">
-                                        <ContentControl x:Name="RuntimeVariablesHost" />
-                                    </arc:DockPane>
-                                    <arc:DockPane Id="GraphRuntimeBreakpoints"
-                                                  Title="{i18n:I18n {x:Static lang:MainWindow.RuntimeBreakpoints}}"
-                                                  CanClose="False"
-                                                  CanFloat="True"
-                                                  CanAutoHide="True">
-                                        <ContentControl x:Name="RuntimeBreakpointsHost" />
-                                    </arc:DockPane>
-                                    <arc:DockPane Id="GraphRuntimeCallStack"
-                                                  Title="{i18n:I18n {x:Static lang:MainWindow.RuntimeCallStack}}"
-                                                  CanClose="False"
-                                                  CanFloat="True"
-                                                  CanAutoHide="True">
-                                        <ContentControl x:Name="RuntimeCallStackHost" />
-                                    </arc:DockPane>
-                                    <arc:DockPane Id="GraphRuntimeTrace"
-                                                  Title="{i18n:I18n {x:Static lang:MainWindow.RuntimeTrace}}"
-                                                  CanClose="False"
-                                                  CanFloat="True"
-                                                  CanAutoHide="True">
-                                        <ContentControl x:Name="RuntimeTraceHost" />
+                                        <TabControl x:Name="DebugToolsTabs" Background="Transparent">
+                                            <TabItem Header="{i18n:I18n {x:Static lang:MainWindow.RuntimeVariables}}">
+                                                <ContentControl x:Name="RuntimeVariablesHost" />
+                                            </TabItem>
+                                            <TabItem Header="{i18n:I18n {x:Static lang:MainWindow.RuntimeBreakpoints}}">
+                                                <ContentControl x:Name="RuntimeBreakpointsHost" />
+                                            </TabItem>
+                                            <TabItem Header="{i18n:I18n {x:Static lang:MainWindow.RuntimeCallStack}}">
+                                                <ContentControl x:Name="RuntimeCallStackHost" />
+                                            </TabItem>
+                                        </TabControl>
                                     </arc:DockPane>
                                 </arc:DockGroup>
                             </arc:DockSplit>
