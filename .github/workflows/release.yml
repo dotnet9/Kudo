@@ -120,6 +120,17 @@ jobs:
             /DSourceDir=${{ github.workspace }}\artifacts\publish\${{ matrix.rid }}\Kudo.Demo.Desktop
             /DOutputDir=${{ github.workspace }}\artifacts\release
 
+      - name: 打包 Windows 绿色版 zip
+        if: startsWith(matrix.rid, 'win-')
+        shell: pwsh
+        run: |
+          $version = '${{ steps.version.outputs.version }}'
+          $stage = "artifacts/release/Kudo-v$version-win-x64"
+          New-Item -ItemType Directory -Force -Path $stage | Out-Null
+          Copy-Item -Path 'artifacts/publish/win-x64/Kudo.Demo.Desktop/*' -Destination $stage -Recurse -Force
+          Compress-Archive -Path "$stage/*" -DestinationPath "artifacts/release/Kudo-v$version-win-x64.zip" -Force
+          Remove-Item -Recurse -Force $stage
+
       - name: 计算 Windows 安装包与绿色版 SHA-256
         if: startsWith(matrix.rid, 'win-')
         shell: pwsh
