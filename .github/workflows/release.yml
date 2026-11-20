@@ -104,13 +104,16 @@ jobs:
         run: |
           chmod +x scripts/package_macos.sh
           ./scripts/package_macos.sh '${{ matrix.rid }}'
-          rid='${{ matrix.rid }}'
-          version='${{ steps.version.outputs.version }}'
-          mkdir -p artifacts/release
-          cp "artifacts/macos/Kudo-v$version-$rid.dmg" artifacts/release/
-          cp "artifacts/macos/Kudo-v$version-$rid.dmg.sha256" artifacts/release/
-          zip -r "artifacts/release/Kudo-v$version-$rid.zip" "artifacts/macos/work/$rid/Kudo.app"
-          (cd artifacts/release && shasum -a 256 "Kudo-v$version-$rid.zip" > "Kudo-v$version-$rid.zip.sha256")
+
+      - name: 收集 macOS dmg 到发布目录
+        if: startsWith(matrix.rid, 'osx-')
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path artifacts/release -Force | Out-Null
+          Copy-Item -Path "artifacts/macos/*.dmg" -Destination artifacts/release/ -Force
+          Copy-Item -Path "artifacts/macos/*.zip" -Destination artifacts/release/ -Force
+          Copy-Item -Path "artifacts/macos/*.sha256" -Destination artifacts/release/ -Force
+          Get-ChildItem artifacts/release | ForEach-Object { Write-Host $_.Name }
 
       - name: 构建 Windows 安装包（Inno Setup）
         if: startsWith(matrix.rid, 'win-')
@@ -160,6 +163,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.source_ref || github.ref }}
+          fetch-depth: 0
 
       - name: 下载构建产物
         uses: actions/download-artifact@v4

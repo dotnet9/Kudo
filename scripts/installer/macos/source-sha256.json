@@ -1,0 +1,83 @@
+{
+  "source_repository": "https://github.com/dotnet9/CodeWF.Avalonia",
+  "source_directory": "scripts/installer/macos",
+  "visual_reference": "https://github.com/dotnet9/Vex/blob/main/design/Vex-Installer-macOS.html",
+  "style": {
+    "brand": "#24766B",
+    "finder_window": [
+      740,
+      436
+    ],
+    "background": [
+      740,
+      406
+    ],
+    "icon_size": 88,
+    "positions": {
+      "app": [
+        235,
+        220
+      ],
+      "Applications": [
+        505,
+        220
+      ]
+    },
+    "product": "Vex",
+    "chinese_name": "维刻",
+    "slogan": "维刻 Vex · 写下想法，看见脉络。",
+    "website": "codewf.com",
+    "website_interaction": "static background text only"
+  },
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "c089985639038cc07dc37c07a8d0d543df7ddf9b1873a948000494a6e230530d"
+    },
+    {
+      "path": "background-bilingual.png",
+      "sha256": "bbe6c28ec01c49e25d7e5b34abc80f12ab7706cfcad2807bf833ca91b5a5e8f9"
+    },
+    {
+      "path": "background-bilingual.svg",
+      "sha256": "0ed3b1604add9198860d34790e5ead973f1ce907b90e515eae20764f782a03bc"
+    },
+    {
+      "path": "background-en.png",
+      "sha256": "8bb98cce78feb8f43b1ad09a182a9ad77a426f8fd8939c0816dc7783dbe87cd9"
+    },
+    {
+      "path": "background-en.svg",
+      "sha256": "402d8f85016c9e16d6c8b052bb2f7c953aed82e70415d99c59554cd2fa947439"
+    },
+    {
+      "path": "background-zh.png",
+      "sha256": "ac85d3bf23763648fc8aa9896e7e8a6b4edcdcf5b2286e066150692936d65b7f"
+    },
+    {
+      "path": "background-zh.svg",
+      "sha256": "83f47211c1d6778c17a5e800d03d6f801a85fd47b237c89a23774ccf9175c961"
+    },
+    {
+      "path": "configure-finder.applescript",
+      "sha256": "d89cdbc0d518fb04f5491c1e26f6bed8db6105d73ef4f67281b38e4a4853da8a"
+    },
+    {
+      "path": "create-branded-dmg.sh",
+      "sha256": "82705ff1d56058fb830b14aa8b80591b205adf2c3c297c48631076c306b26e64"
+    },
+    {
+      "path": "README.md",
+      "sha256": "d8597335e5b8f9ca781b3e3c77f045e180ad060c3c8d87344f907e1aeea144ef"
+    },
+    {
+      "path": "render-backgrounds.cjs",
+      "sha256": "d77dc922a704b87a8bfa66bb569b5418fb5dce1dc9995381116f0b18f4a29ccd"
+    },
+    {
+      "path": "tests/branded-dmg-test.sh",
+      "sha256": "7b2a49e115b0d6416e411b8b88ae6f01cfb7f812c796246efd970bad3f51d9b1"
+    }
+  ],
+  "local_design": "Vex design/Vex-Installer-macOS.html overrides the shared visual assets; shared packaging engine retained; README.md is a local navigation document consolidated into docs"
+}
