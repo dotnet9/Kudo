@@ -43,7 +43,7 @@
                            Stretch="Uniform" />
                     <TextBlock x:Name="TitleBarApplicationTitle"
                                Classes="ShellTitleText"
-                               Text="Kudo.Avalonia" />
+                               Text="Kudo" />
                 </StackPanel>
             </arc:TitleBar.LeftContent>
             <arc:TitleBar.RightContent>
