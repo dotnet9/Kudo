@@ -1,0 +1,36 @@
+name: build
+
+# PR 与 main 推送时跑 Debug 构建与全部测试（防回归门禁）。
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: 构建与测试
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安装 .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            11.0.x
+            10.0.x
+
+      - name: 还原
+        run: dotnet restore Kudo.slnx
+
+      - name: 构建 (Debug)
+        run: dotnet build Kudo.slnx -c Debug --no-restore
+
+      - name: 测试
+        run: dotnet test Kudo.slnx --no-build -c Debug
+
+      - name: 格式校验
+        run: dotnet format Kudo.slnx --verify-no-changes --no-restore --include src samples tests
