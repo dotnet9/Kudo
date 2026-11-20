@@ -13,11 +13,12 @@ namespace Kudo.Controls.Tests;
 public sealed class KudoRibbonTests
 {
     [AvaloniaFact]
-    public void Defaults_match_expanded_ribbon()
+    public void Defaults_match_collapsed_ribbon()
     {
         var ribbon = new KudoRibbon();
 
-        ribbon.IsExpanded.ShouldBeTrue();
+        // 折叠是产品化默认态：命令区隐藏，选中页签或双击可展开。
+        ribbon.IsExpanded.ShouldBeFalse();
         ribbon.ContentHeight.ShouldBe(74);
         ribbon.QuickAccessContent.ShouldBeNull();
         ribbon.ShouldBeAssignableTo<TabStrip>();
