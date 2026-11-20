@@ -104,7 +104,20 @@ PLIST
 
   local dmg_path="$ARTIFACTS_ROOT/Kudo-v$version-$rid.dmg"
   rm -f "$dmg_path"
-  hdiutil create -volname "$APP_NAME $bundle_version" -srcfolder "$app_dir" -ov -format UDZO "$dmg_path"
+  # macOS runner 上 hdiutil 偶发 Resource busy（Spotlight 索引占用镜像），失败后等待重试。
+  local attempt
+  for attempt in 1 2 3; do
+    if hdiutil create -volname "$APP_NAME $bundle_version" -srcfolder "$app_dir" -ov -format UDZO "$dmg_path"; then
+      break
+    fi
+    if [ "$attempt" -eq 3 ]; then
+      echo "hdiutil create failed after 3 attempts: $dmg_path" >&2
+      return 1
+    fi
+    echo "hdiutil create busy, retry $((attempt + 1))/3 in 5s..." >&2
+    sleep 5
+    rm -f "$dmg_path"
+  done
 
   (cd "$ARTIFACTS_ROOT" && shasum -a 256 "$(basename "$dmg_path")" > "$(basename "$dmg_path").sha256")
   echo "DMG: $dmg_path"
