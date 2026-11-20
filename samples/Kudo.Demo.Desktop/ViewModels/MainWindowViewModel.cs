@@ -213,6 +213,9 @@ public sealed class MainWindowViewModel : ReactiveObject, IDisposable
 
     public void ZoomOut() => _actions?.ZoomBy(1 / 1.2);
 
+    /// <summary>切换活动画布的小地图可见性（状态栏开关入口）。</summary>
+    public void ToggleMinimap() => _actions?.ToggleMinimap();
+
     public void ZoomIn() => _actions?.ZoomBy(1.2);
 
     public void SelectZoomPreset(string? value)
