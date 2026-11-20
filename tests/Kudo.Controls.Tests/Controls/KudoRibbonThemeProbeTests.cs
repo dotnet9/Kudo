@@ -8,14 +8,12 @@ using Xunit;
 
 namespace Kudo.Controls.Tests;
 
-/// <summary>二分诊断：KudoRibbon 模板在无 Semi 环境下接管（PART_ContentHost 存在）。</summary>
+/// <summary>回归探针：Semi 移除后 KudoRibbon 模板独立生效（PART_ContentHost 存在）。</summary>
 [Collection("KudoControls-sequential")]
 public sealed class KudoRibbonThemeProbeTests
 {
-    [AvaloniaTheory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void Ribbon_template_wins_over_semi(bool withSemiTheme)
+    [AvaloniaFact]
+    public void Ribbon_template_wins_over_semi()
     {
         var ribbon = new KudoRibbon();
         ribbon.Styles.AddRange(new KudoRibbonStyles());
