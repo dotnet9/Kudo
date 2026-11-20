@@ -24,7 +24,7 @@
                      Height="800"
                      MinWidth="960"
                      MinHeight="640"
-                     Background="#F3F5F7"
+                     Background="#F2F7F5"
                      ExtendClientAreaToDecorationsHint="True"
                      WindowDecorations="Full"
                      TransparencyLevelHint="None"
@@ -84,12 +84,12 @@
 
     <Grid RowDefinitions="*,28">
         <Grid Grid.Row="0"
-              RowDefinitions="34,Auto,*"
-              Background="#F3F5F7"
+              RowDefinitions="Auto,*"
+              Background="#F2F7F5"
               ClipToBounds="True">
         <Border Grid.Row="0"
-                Grid.RowSpan="3"
-                Height="166"
+                Grid.RowSpan="2"
+                Height="132"
                 VerticalAlignment="Top"
                 IsHitTestVisible="False"
                 Background="{StaticResource DemoHeaderBrush}">
@@ -98,11 +98,11 @@
                 <Border Background="{StaticResource DemoHeaderOverlayBrush}" />
             </Grid>
         </Border>
-        <Border Grid.Row="1"
+        <Border Grid.Row="0"
                 Classes="ShellMenuHost">
             <views:MainRibbonView x:Name="MainRibbon" />
         </Border>
-        <Border Grid.Row="2"
+        <Border Grid.Row="1"
                 Margin="8,0,8,4"
                 Background="Transparent"
                 BorderThickness="0"
