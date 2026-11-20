@@ -18,17 +18,11 @@ public sealed record DemoBrandTheme(
     string EnglishName,
     Color AccentSeed,
     ArcAppearance Appearance,
-    string HeaderImage,
     string TabImage,
     string TabStartImage,
     string TabEndImage,
     string TitleBarPathImage,
-    Color HeaderFrom,
-    Color HeaderMid,
-    Color HeaderTo,
-    Color OverlayFrom,
-    Color OverlayMid,
-    Color OverlayTo)
+    Color HeaderSolid)
 {
     /// <summary>按当前界面语言显示的品牌名。</summary>
     public string DisplayName => CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "zh"
@@ -42,35 +36,29 @@ public static class DemoBrandThemes
     public static readonly DemoBrandTheme Emerald = new(
         "emerald", "翡翠", "Emerald",
         Color.Parse("#0E9F8A"), ArcAppearance.Light,
-        "avares://Kudo.Demo.Desktop/Assets/header-background.png",
         "avares://Kudo.Themes/Assets/Brand/tab-current.png",
         "avares://Kudo.Themes/Assets/Brand/tab-current-start.png",
         "avares://Kudo.Themes/Assets/Brand/tab-current-end.png",
         "avares://Kudo.Themes/Assets/Brand/bg-address.png",
-        Color.Parse("#0B6B58"), Color.Parse("#128F76"), Color.Parse("#56C2A8"),
-        Color.Parse("#08006B58"), Color.Parse("#18004A3C"), Color.Parse("#34002620"));
+        Color.Parse("#0D5C4B"));
 
     public static readonly DemoBrandTheme Amber = new(
         "amber", "琥珀", "Amber",
         Color.Parse("#E8890C"), ArcAppearance.Light,
-        "avares://Kudo.Demo.Desktop/Assets/header-background-amber.png",
         "avares://Kudo.Themes/Assets/Brand/tab-current-amber.png",
         "avares://Kudo.Themes/Assets/Brand/tab-current-start-amber.png",
         "avares://Kudo.Themes/Assets/Brand/tab-current-end-amber.png",
         "avares://Kudo.Themes/Assets/Brand/bg-address-amber.png",
-        Color.Parse("#A85408"), Color.Parse("#D97E1A"), Color.Parse("#F2B04A"),
-        Color.Parse("#086B4A00"), Color.Parse("#184A3300"), Color.Parse("#34261B00"));
+        Color.Parse("#96530A"));
 
     public static readonly DemoBrandTheme Graphite = new(
         "graphite", "石墨", "Graphite",
         Color.Parse("#A3E635"), ArcAppearance.Dark,
-        "avares://Kudo.Demo.Desktop/Assets/header-background-graphite.png",
         "avares://Kudo.Themes/Assets/Brand/tab-current-graphite.png",
         "avares://Kudo.Themes/Assets/Brand/tab-current-start-graphite.png",
         "avares://Kudo.Themes/Assets/Brand/tab-current-end-graphite.png",
         "avares://Kudo.Themes/Assets/Brand/bg-address-graphite.png",
-        Color.Parse("#23272E"), Color.Parse("#3A424E"), Color.Parse("#4A5563"),
-        Color.Parse("#08001418"), Color.Parse("#18000F14"), Color.Parse("#3400090C"));
+        Color.Parse("#1E242B"));
 
     public static IReadOnlyList<DemoBrandTheme> All { get; } = [Emerald, Amber, Graphite];
 
@@ -109,36 +97,13 @@ public sealed class DemoThemeService(DemoApplicationSettingsStore settingsStore)
             return;
         }
 
-        resources["DemoHeaderBrush"] = Gradient([
-            (theme.HeaderFrom, 0.0),
-            (theme.HeaderMid, 0.56),
-            (theme.HeaderTo, 1.0),
-        ], horizontal: true);
-        resources["DemoHeaderImageBrush"] = ImageBrush(theme.HeaderImage);
-        resources["DemoHeaderOverlayBrush"] = Gradient([
-            (theme.OverlayFrom, 0.0),
-            (theme.OverlayMid, 0.62),
-            (theme.OverlayTo, 1.0),
-        ], horizontal: false);
+        // 头部为单一深档实色：标题栏与页签条连成一条连续主题带（无渐变/艺术纹理分层）。
+        resources["DemoHeaderBrush"] = new SolidColorBrush(theme.HeaderSolid);
         resources["Kudo.Brand.Ribbon.Tab.SelectedBackground"] = ImageBrush(theme.TabImage);
         resources["Kudo.Brand.Ribbon.Tab.StartSelectedBackground"] = ImageBrush(theme.TabStartImage);
         resources["Kudo.Brand.Ribbon.Tab.EndSelectedBackground"] = ImageBrush(theme.TabEndImage);
         resources["Kudo.Brand.Shell.TitleBarPathBackground"] = ImageBrush(theme.TitleBarPathImage);
     }
-
-    private static LinearGradientBrush Gradient(List<(Color Color, double Offset)> stops, bool horizontal) => new()
-    {
-        StartPoint = horizontal ? new RelativePoint(0, 0.5, RelativeUnit.Relative)
-                                : new RelativePoint(0, 0, RelativeUnit.Relative),
-        EndPoint = horizontal ? new RelativePoint(1, 0.5, RelativeUnit.Relative)
-                              : new RelativePoint(0, 1, RelativeUnit.Relative),
-        GradientStops =
-        {
-            new GradientStop(stops[0].Color, stops[0].Offset),
-            new GradientStop(stops[1].Color, stops[1].Offset),
-            new GradientStop(stops[2].Color, stops[2].Offset),
-        },
-    };
 
     private static ImageBrush ImageBrush(string assetUri) => new()
     {

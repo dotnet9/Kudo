@@ -17,11 +17,7 @@
   <Thickness x:Key="RibbonMenuTabHeaderBorderThickness">0</Thickness>
   <Thickness x:Key="RibbonMenuContentMargin">5,0,0,0</Thickness>
 
-  <LinearGradientBrush x:Key="RibbonMenuTabStripBackground" StartPoint="0%,0%" EndPoint="0%,100%">
-    <GradientStop Color="#40FFFFFF" Offset="0" />
-    <GradientStop Color="#66FFFFFF" Offset="0.55" />
-    <GradientStop Color="#80FFFFFF" Offset="1" />
-  </LinearGradientBrush>
+  <SolidColorBrush x:Key="RibbonMenuTabStripBackground" Color="Transparent" />
 
   <Thickness x:Key="RibbonGroupMargin">0,2</Thickness>
   <x:Double x:Key="RibbonGroupHeight">70</x:Double>
