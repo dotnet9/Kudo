@@ -13,6 +13,7 @@
                      xmlns:vm="using:Kudo.Demo.Desktop.ViewModels"
                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                      xmlns:arc="https://github.com/AIDotNet/TKCode.Arc"
+                     xmlns:lucide="https://github.com/AIDotNet/TKCode.Arc/lucide"
                      mc:Ignorable="d"
                      d:DesignWidth="1280"
                      d:DesignHeight="800"
@@ -57,32 +58,27 @@
                            Classes="ShellTitleBarRightText"
                            Text="{Binding ActiveDocumentTitle}" />
             </Border>
-            <Border x:Name="TitleBarModeBadge"
-                    Height="26"
-                    Padding="8,0"
-                    VerticalAlignment="Center"
-                    Background="#24FFFFFF"
-                    BorderBrush="#42FFFFFF"
-                    BorderThickness="1"
-                    CornerRadius="10">
-                <TextBlock VerticalAlignment="Center"
-                           FontSize="11"
-                           Foreground="#FFFFFF"
-                           Text="{i18n:I18n {x:Static lang:MainWindow.ComponentDemo}}" />
-            </Border>
-            <arc:Select x:Name="ThemeComboBox"
-                      Classes="ShellTitleBarComboBox"
-                      Width="120"
-                      DisplayMemberBinding="{Binding DisplayName}"
-                      ItemsSource="{Binding Themes}"
-                      SelectedItem="{Binding SelectedTheme, Mode=TwoWay}" />
-            <arc:Select x:Name="LanguageComboBox"
-                      Classes="ShellTitleBarComboBox"
-                      Width="132"
-                      DisplayMemberBinding="{Binding DisplayName}"
-                      ItemsSource="{Binding Languages}"
-                      SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
-                      helpers:ToolTipHelper.Text="{i18n:I18n {x:Static common:Common.Language}}" />
+            <Button x:Name="TitleBarSettingsButton"
+                    Classes="ShellTitleBarOptionButton"
+                    helpers:ToolTipHelper.Text="设置">
+                <Button.Flyout>
+                    <Flyout Placement="BottomEdgeAlignedRight">
+                        <StackPanel Width="280" Spacing="10" Margin="4,2">
+                            <TextBlock Text="主题" FontSize="11" Opacity="0.72" />
+                            <arc:Select HorizontalAlignment="Stretch"
+                                      DisplayMemberBinding="{Binding DisplayName}"
+                                      ItemsSource="{Binding Themes}"
+                                      SelectedItem="{Binding SelectedTheme, Mode=TwoWay}" />
+                            <TextBlock Text="语言" FontSize="11" Opacity="0.72" Margin="0,6,0,0" />
+                            <arc:Select HorizontalAlignment="Stretch"
+                                      DisplayMemberBinding="{Binding DisplayName}"
+                                      ItemsSource="{Binding Languages}"
+                                      SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+                <PathIcon Data="{lucide:LucideGeometry Settings}" />
+            </Button>
                 </StackPanel>
             </arc:TitleBar.RightContent>
         </arc:TitleBar>
