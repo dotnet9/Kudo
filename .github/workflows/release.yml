@@ -81,13 +81,7 @@ jobs:
       - name: 验证 Windows 原生产物可启动
         if: runner.os == 'Windows'
         shell: pwsh
-        run: |
-          $exe = (Resolve-Path './artifacts/publish/win-x64/Kudo.Demo.Desktop/Kudo.Demo.Desktop.exe').Path
-          $process = [Diagnostics.Process]::Start([Diagnostics.ProcessStartInfo]::new($exe))
-          Start-Sleep -Seconds 8
-          if ($process.HasExited) { throw 'AOT 产物启动后立即退出，运行时验证失败。' }
-          $process.Kill()
-          Write-Host 'AOT 产物启动验证通过（存活 8 秒）。'
+        run: ./scripts/verify_win_runtime.ps1 -ExePath 'artifacts/publish/win-x64/Kudo.Demo.Desktop/Kudo.Demo.Desktop.exe'
 
       - name: 打包 Linux deb + sha256
         if: startsWith(matrix.rid, 'linux-')
