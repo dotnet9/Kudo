@@ -106,6 +106,22 @@ Demo 发布脚本：
 - `publish_linux-arm64.bat`：Linux arm64 普通自包含单文件发布。
 - `publish_all.bat`：依次发布以上三个平台。
 
+## CI/CD 与安装包
+
+推送 `v*` 标签（如 `v0.0.0.1`）触发 GitHub Actions `release` 工作流，产出五平台安装包与绿色版压缩包：
+
+| 平台 | 安装包 | 绿色版 |
+|---|---|---|
+| Windows x64 | Inno Setup 安装器 `.exe` | `.zip` |
+| Linux x64 / arm64 | `.deb` | `.tar.gz` |
+| macOS x64 / arm64 | `.dmg`（ad-hoc 签名） | `.zip` |
+
+所有产物附 `.sha256` 校验文件；工作流自动校验版本号与 `Directory.Build.props` 一致。
+
+本地发布入口：`pwsh scripts/publish.ps1 -RuntimeIdentifier win-x64 [-Version 0.0.0.1]`，各平台打包脚本为 `scripts/package_linux_deb.ps1` / `scripts/package_macos.sh`，Windows 安装器脚本为 `scripts/Kudo.iss`（Inno Setup 6 编译）。
+
+版本号统一维护在 `Directory.Build.props`，可用 `scripts/bump-version.ps1 -Version 0.0.0.2` 升级；发布标签必须与其一致。
+
 ## 桌面 Demo
 
 运行可编辑的桌面 Demo：
