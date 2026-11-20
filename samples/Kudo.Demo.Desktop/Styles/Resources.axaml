@@ -3,9 +3,9 @@
     <Styles.Resources>
         <ResourceDictionary>
             <LinearGradientBrush x:Key="DemoHeaderBrush" StartPoint="0%,50%" EndPoint="100%,50%">
-                <GradientStop Color="#1769E0" Offset="0" />
-                <GradientStop Color="#3C8DF6" Offset="0.56" />
-                <GradientStop Color="#75BFF5" Offset="1" />
+                <GradientStop Color="#0B6B58" Offset="0" />
+                <GradientStop Color="#128F76" Offset="0.56" />
+                <GradientStop Color="#56C2A8" Offset="1" />
             </LinearGradientBrush>
             <ImageBrush x:Key="DemoHeaderImageBrush"
                         Source="avares://Kudo.Demo.Desktop/Assets/header-background.png"
@@ -20,15 +20,15 @@
                         Source="avares://Kudo.Demo.Desktop/Assets/tab-current-end.png"
                         Stretch="Fill" />
             <LinearGradientBrush x:Key="DemoHeaderOverlayBrush" StartPoint="0%,0%" EndPoint="0%,100%">
-                <GradientStop Color="#08006EDB" Offset="0" />
-                <GradientStop Color="#18004FA8" Offset="0.62" />
-                <GradientStop Color="#34001D4A" Offset="1" />
+                <GradientStop Color="#08006B58" Offset="0" />
+                <GradientStop Color="#18004A3C" Offset="0.62" />
+                <GradientStop Color="#34002620" Offset="1" />
             </LinearGradientBrush>
-            <SolidColorBrush x:Key="DemoAccentBrush" Color="#1677FF" />
-            <SolidColorBrush x:Key="DemoAccentLightBrush" Color="#E8F3FF" />
+            <SolidColorBrush x:Key="DemoAccentBrush" Color="#0E9F8A" />
+            <SolidColorBrush x:Key="DemoAccentLightBrush" Color="#E4F5F1" />
             <SolidColorBrush x:Key="DemoSurfaceBrush" Color="#FFFFFF" />
-            <SolidColorBrush x:Key="DemoWorkspaceBrush" Color="#F3F5F7" />
-            <SolidColorBrush x:Key="DemoBorderBrush" Color="#E5E8EC" />
+            <SolidColorBrush x:Key="DemoWorkspaceBrush" Color="#F2F7F5" />
+            <SolidColorBrush x:Key="DemoBorderBrush" Color="#E3E9E6" />
             <SolidColorBrush x:Key="DemoTextBrush" Color="#1F2A37" />
             <SolidColorBrush x:Key="DemoSecondaryTextBrush" Color="#708196" />
             <Color x:Key="CaptionButtonForeground">#FFFFFF</Color>

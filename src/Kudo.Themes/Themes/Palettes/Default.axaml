@@ -1,36 +1,36 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <Color x:Key="Colors.TitleBar.Foreground">#FFFFFF</Color>
-  <Color x:Key="Colors.Title">#1F2A37</Color>
+  <Color x:Key="Colors.Title">#1F2A27</Color>
   <Color x:Key="Colors.Primary.Text">#4B5563</Color>
-  <Color x:Key="Colors.Secondary.Text">#8A97A8</Color>
-  <Color x:Key="Colors.Background">#F5F8FC</Color>
-  <Color x:Key="Colors.Border.BorderBrush">#DCE8F3</Color>
-  <Color x:Key="Colors.DataGrid.BorderBrushe">#DCE8F3</Color>
+  <Color x:Key="Colors.Secondary.Text">#8A9A93</Color>
+  <Color x:Key="Colors.Background">#F4F9F7</Color>
+  <Color x:Key="Colors.Border.BorderBrush">#DCE9E3</Color>
+  <Color x:Key="Colors.DataGrid.BorderBrushe">#DCE9E3</Color>
   <Color x:Key="CaptionButtonForeground">#FFFFFF</Color>
   <LinearGradientBrush x:Key="ButtonSolidPrimaryBackground" StartPoint="0%, 50%" EndPoint="100%, 50%">
-    <GradientStop Color="#1890FF" Offset="0" />
-    <GradientStop Color="#9254DE" Offset="1" />
+    <GradientStop Color="#17B596" Offset="0" />
+    <GradientStop Color="#0B7157" Offset="1" />
   </LinearGradientBrush>
   <LinearGradientBrush x:Key="ButtonSolidPrimaryPointeroverBackground" StartPoint="0%, 50%" EndPoint="100%, 50%">
-    <GradientStop Color="#1277D6" Offset="0" />
-    <GradientStop Color="#7D3BC9" Offset="1" />
+    <GradientStop Color="#128C77" Offset="0" />
+    <GradientStop Color="#095C47" Offset="1" />
   </LinearGradientBrush>
   <LinearGradientBrush x:Key="ButtonSolidPrimaryPressedBackground" StartPoint="0%, 50%" EndPoint="100%, 50%">
-    <GradientStop Color="#0862B0" Offset="0" />
-    <GradientStop Color="#6A30A8" Offset="1" />
+    <GradientStop Color="#0E7560" Offset="0" />
+    <GradientStop Color="#074A39" Offset="1" />
   </LinearGradientBrush>
   <StaticResource x:Key="ButtonSolidPrimaryBorderBrush" ResourceKey="ButtonSolidPrimaryBackground" />
   <StaticResource x:Key="ButtonSolidPrimaryPointeroverBorderBrush" ResourceKey="ButtonSolidPrimaryPointeroverBackground" />
   <StaticResource x:Key="ButtonSolidPrimaryPressedBorderBrush" ResourceKey="ButtonSolidPrimaryPressedBackground" />
   <SolidColorBrush x:Key="ButtonDefaultTertiaryForeground" Color="#262626" />
-  <SolidColorBrush x:Key="TreeViewItemDefaultForeground" Color="#25364A" />
-  <SolidColorBrush x:Key="TreeViewItemIconDefaultForeground" Color="#74859A" />
-  <SolidColorBrush x:Key="TreeViewItemIconHoverForeground" Color="#25364A" />
-  <SolidColorBrush x:Key="TreeViewItemDisabledForeground" Color="#AEB8C5" />
+  <SolidColorBrush x:Key="TreeViewItemDefaultForeground" Color="#243531" />
+  <SolidColorBrush x:Key="TreeViewItemIconDefaultForeground" Color="#738580" />
+  <SolidColorBrush x:Key="TreeViewItemIconHoverForeground" Color="#243531" />
+  <SolidColorBrush x:Key="TreeViewItemDisabledForeground" Color="#ADB8B3" />
   <SolidColorBrush x:Key="TreeViewItemDefaultBackground" Color="Transparent" />
-  <SolidColorBrush x:Key="TreeViewItemPointeroverForeground" Color="#006EDB" />
-  <SolidColorBrush x:Key="TreeViewItemPointeroverBackground" Color="#E8F3FF" />
-  <SolidColorBrush x:Key="TreeViewItemPressedBackground" Color="#DDEFFF" />
+  <SolidColorBrush x:Key="TreeViewItemPointeroverForeground" Color="#0B7A6B" />
+  <SolidColorBrush x:Key="TreeViewItemPointeroverBackground" Color="#E4F5F1" />
+  <SolidColorBrush x:Key="TreeViewItemPressedBackground" Color="#D8F0E9" />
   <StaticResource x:Key="TreeViewItemSelectedForeground" ResourceKey="SemiColorText0" />
   <StaticResource x:Key="TreeViewItemSelectedBackground" ResourceKey="SemiColorPrimaryLight" />
   <SolidColorBrush x:Key="TreeViewItemDisabledBackground" Color="Transparent" />
@@ -60,7 +60,7 @@
   <SolidColorBrush x:Key="Kudo.Surface.WarningPale" Color="#FFFDF7" />
   <SolidColorBrush x:Key="Kudo.Surface.Danger" Color="#FFF1F0" />
   <SolidColorBrush x:Key="Kudo.Surface.Success" Color="#F6FFED" />
-  <SolidColorBrush x:Key="Kudo.Surface.Info" Color="#F0F5FF" />
+  <SolidColorBrush x:Key="Kudo.Surface.Info" Color="#EDF6F3" />
   <SolidColorBrush x:Key="Kudo.Surface.Purple" Color="#F9F0FF" />
   <SolidColorBrush x:Key="Kudo.Border.Warning" Color="#FFE58F" />
   <SolidColorBrush x:Key="Kudo.Border.Danger" Color="#FFCCC7" />

@@ -18,16 +18,16 @@
         <Setter Property="Background" Value="#E8F3FF" />
     </Style>
     <Style Selector="Button.graph-document-item.active TextBlock.graph-document-title">
-        <Setter Property="Foreground" Value="#006EDB" />
+        <Setter Property="Foreground" Value="#0B7A6B" />
     </Style>
     <Style Selector="Border.graph-document-icon">
         <Setter Property="Background" Value="#EDF6FF" />
-        <Setter Property="BorderBrush" Value="#8FC8FF" />
+        <Setter Property="BorderBrush" Value="#9ADFD4" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="3" />
     </Style>
     <Style Selector="Border.graph-document-icon TextBlock">
-        <Setter Property="Foreground" Value="#006EDB" />
+        <Setter Property="Foreground" Value="#0B7A6B" />
     </Style>
     <Style Selector="TextBlock.graph-document-title">
         <Setter Property="Foreground" Value="#1F2329" />

@@ -20,5 +20,5 @@
     <x:Double x:Key="KudoInputOutputPortGlyphScale">0.72</x:Double>
     <x:Double x:Key="KudoPortChevronHalfWidthFactor">0.55</x:Double>
     <x:Double x:Key="KudoPortHitRadius">10</x:Double>
-    <SolidColorBrush x:Key="KudoMinimapViewportFillBrush" Color="#304682B4" />
+    <SolidColorBrush x:Key="KudoMinimapViewportFillBrush" Color="#302AA58F" />
 </ResourceDictionary>

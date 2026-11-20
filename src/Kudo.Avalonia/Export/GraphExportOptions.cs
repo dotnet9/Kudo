@@ -53,7 +53,7 @@ public sealed record GraphExportTheme
 
     public string OutputPortColor { get; init; } = "#F59E0B";
 
-    public string InputOutputPortColor { get; init; } = "#2563EB";
+    public string InputOutputPortColor { get; init; } = "#0E9F8A";
 
     public string ReferencePortColor { get; init; } = "#64748B";
 

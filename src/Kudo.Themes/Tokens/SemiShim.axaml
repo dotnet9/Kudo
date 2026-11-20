@@ -12,13 +12,13 @@
   <SolidColorBrush x:Key="SemiColorBackground1" Color="White" />
   <SolidColorBrush x:Key="SemiColorBorder" Opacity="0.08" Color="#1C1F23" />
   <SolidColorBrush x:Key="SemiColorFill0" Opacity="0.05" Color="#2E3238" />
-  <Color x:Key="SemiBlue5Color">#0064FA</Color>
-  <SolidColorBrush x:Key="SemiColorPrimary" Color="#0064FA" />
-  <SolidColorBrush x:Key="SemiColorPrimaryLight" Color="#EAF5FF" />
-  <SolidColorBrush x:Key="SemiColorPrimaryLightPointerover" Color="#CBE7FE" />
-  <SolidColorBrush x:Key="SemiColorPrimaryLightActive" Color="#98CDFD" />
-  <SolidColorBrush x:Key="SemiColorPrimaryPointerover" Color="#0062D6" />
-  <SolidColorBrush x:Key="SemiColorPrimaryActive" Color="#004FB3" />
+  <Color x:Key="SemiBlue5Color">#0E9F8A</Color>
+  <SolidColorBrush x:Key="SemiColorPrimary" Color="#0E9F8A" />
+  <SolidColorBrush x:Key="SemiColorPrimaryLight" Color="#E4F5F1" />
+  <SolidColorBrush x:Key="SemiColorPrimaryLightPointerover" Color="#C8EDE5" />
+  <SolidColorBrush x:Key="SemiColorPrimaryLightActive" Color="#9ADFD4" />
+  <SolidColorBrush x:Key="SemiColorPrimaryPointerover" Color="#0B7A6B" />
+  <SolidColorBrush x:Key="SemiColorPrimaryActive" Color="#085F53" />
   <SolidColorBrush x:Key="SemiColorSuccess" Color="#3BB346" />
   <SolidColorBrush x:Key="SemiColorSuccessLight" Color="#ECF7EC" />
   <SolidColorBrush x:Key="SemiColorSuccessLightPointerover" Color="#D0F0D1" />
@@ -27,6 +27,6 @@
   <SolidColorBrush x:Key="SemiColorWarning" Color="#FC8800" />
   <SolidColorBrush x:Key="SemiColorWarningLight" Color="#FFF8EA" />
   <SolidColorBrush x:Key="SemiColorWarningLightActive" Color="#FED998" />
-  <SolidColorBrush x:Key="SemiColorSecondary" Color="#0095EE" />
-  <SolidColorBrush x:Key="SemiColorSecondaryLightActive" Color="#95D8F8" />
+  <SolidColorBrush x:Key="SemiColorSecondary" Color="#109CB0" />
+  <SolidColorBrush x:Key="SemiColorSecondaryLightActive" Color="#9ADBE3" />
 </ResourceDictionary>

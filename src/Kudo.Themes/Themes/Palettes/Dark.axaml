@@ -1,36 +1,36 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <Color x:Key="Colors.TitleBar.Foreground">#F8FAFC</Color>
-  <Color x:Key="Colors.Title">#E8EEF7</Color>
-  <Color x:Key="Colors.Primary.Text">#C9D3E1</Color>
-  <Color x:Key="Colors.Secondary.Text">#97A5B8</Color>
-  <Color x:Key="Colors.Background">#121923</Color>
-  <Color x:Key="Colors.Border.BorderBrush">#2B3746</Color>
-  <Color x:Key="Colors.DataGrid.BorderBrushe">#2B3746</Color>
-  <Color x:Key="CaptionButtonForeground">#F8FAFC</Color>
+  <Color x:Key="Colors.TitleBar.Foreground">#F8FAF9</Color>
+  <Color x:Key="Colors.Title">#E8F0EC</Color>
+  <Color x:Key="Colors.Primary.Text">#C9D6D0</Color>
+  <Color x:Key="Colors.Secondary.Text">#97A8A1</Color>
+  <Color x:Key="Colors.Background">#121A17</Color>
+  <Color x:Key="Colors.Border.BorderBrush">#2A3833</Color>
+  <Color x:Key="Colors.DataGrid.BorderBrushe">#2A3833</Color>
+  <Color x:Key="CaptionButtonForeground">#F8FAF9</Color>
   <LinearGradientBrush x:Key="ButtonSolidPrimaryBackground" StartPoint="0%, 50%" EndPoint="100%, 50%">
-    <GradientStop Color="#2B7FFF" Offset="0" />
-    <GradientStop Color="#805AD5" Offset="1" />
+    <GradientStop Color="#2FB39A" Offset="0" />
+    <GradientStop Color="#147A5E" Offset="1" />
   </LinearGradientBrush>
   <LinearGradientBrush x:Key="ButtonSolidPrimaryPointeroverBackground" StartPoint="0%, 50%" EndPoint="100%, 50%">
-    <GradientStop Color="#2469D6" Offset="0" />
-    <GradientStop Color="#6D48BA" Offset="1" />
+    <GradientStop Color="#27967F" Offset="0" />
+    <GradientStop Color="#116650" Offset="1" />
   </LinearGradientBrush>
   <LinearGradientBrush x:Key="ButtonSolidPrimaryPressedBackground" StartPoint="0%, 50%" EndPoint="100%, 50%">
-    <GradientStop Color="#1D56B3" Offset="0" />
-    <GradientStop Color="#5A3B9E" Offset="1" />
+    <GradientStop Color="#1F7C68" Offset="0" />
+    <GradientStop Color="#0D5342" Offset="1" />
   </LinearGradientBrush>
   <StaticResource x:Key="ButtonSolidPrimaryBorderBrush" ResourceKey="ButtonSolidPrimaryBackground" />
   <StaticResource x:Key="ButtonSolidPrimaryPointeroverBorderBrush" ResourceKey="ButtonSolidPrimaryPointeroverBackground" />
   <StaticResource x:Key="ButtonSolidPrimaryPressedBorderBrush" ResourceKey="ButtonSolidPrimaryPressedBackground" />
-  <SolidColorBrush x:Key="ButtonDefaultTertiaryForeground" Color="#E8EEF7" />
-  <SolidColorBrush x:Key="TreeViewItemDefaultForeground" Color="#DCE7F5" />
-  <SolidColorBrush x:Key="TreeViewItemIconDefaultForeground" Color="#96A5B8" />
-  <SolidColorBrush x:Key="TreeViewItemIconHoverForeground" Color="#E8EEF7" />
-  <SolidColorBrush x:Key="TreeViewItemDisabledForeground" Color="#617184" />
+  <SolidColorBrush x:Key="ButtonDefaultTertiaryForeground" Color="#E8F0EC" />
+  <SolidColorBrush x:Key="TreeViewItemDefaultForeground" Color="#DCE9E4" />
+  <SolidColorBrush x:Key="TreeViewItemIconDefaultForeground" Color="#96A8A1" />
+  <SolidColorBrush x:Key="TreeViewItemIconHoverForeground" Color="#E8F0EC" />
+  <SolidColorBrush x:Key="TreeViewItemDisabledForeground" Color="#5F736B" />
   <SolidColorBrush x:Key="TreeViewItemDefaultBackground" Color="Transparent" />
-  <SolidColorBrush x:Key="TreeViewItemPointeroverForeground" Color="#93BAFF" />
-  <SolidColorBrush x:Key="TreeViewItemPointeroverBackground" Color="#1F3858" />
-  <SolidColorBrush x:Key="TreeViewItemPressedBackground" Color="#263F63" />
+  <SolidColorBrush x:Key="TreeViewItemPointeroverForeground" Color="#6FD9C3" />
+  <SolidColorBrush x:Key="TreeViewItemPointeroverBackground" Color="#1C3830" />
+  <SolidColorBrush x:Key="TreeViewItemPressedBackground" Color="#224439" />
   <StaticResource x:Key="TreeViewItemSelectedForeground" ResourceKey="SemiColorText0" />
   <StaticResource x:Key="TreeViewItemSelectedBackground" ResourceKey="SemiColorPrimaryLight" />
   <SolidColorBrush x:Key="TreeViewItemDisabledBackground" Color="Transparent" />

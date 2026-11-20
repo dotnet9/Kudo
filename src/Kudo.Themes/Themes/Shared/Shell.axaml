@@ -97,7 +97,7 @@
       <SolidColorBrush x:Key="ShellHeaderFallbackBackgroundBrush" Color="#EAF4FF" />
       <SolidColorBrush x:Key="ShellLoadingOverlayBackground" Color="#99FFFFFF" />
       <SolidColorBrush x:Key="ShellLoadingTitleForeground" Color="#172033" />
-      <SolidColorBrush x:Key="ShellLoadingMessageForeground" Color="#344155" />
+      <SolidColorBrush x:Key="ShellLoadingMessageForeground" Color="#344137" />
       <SolidColorBrush x:Key="DialogTitleBarForeground" Color="#262626" />
       <SolidColorBrush x:Key="FormLabelForeground" Color="#262626" />
       <Color x:Key="DialogCaptionButtonForeground">#595959</Color>
@@ -110,7 +110,7 @@
       <SolidColorBrush x:Key="ShellHeaderFallbackBackgroundBrush" Color="#EAF4FF" />
       <SolidColorBrush x:Key="ShellLoadingOverlayBackground" Color="#99FFFFFF" />
       <SolidColorBrush x:Key="ShellLoadingTitleForeground" Color="#172033" />
-      <SolidColorBrush x:Key="ShellLoadingMessageForeground" Color="#344155" />
+      <SolidColorBrush x:Key="ShellLoadingMessageForeground" Color="#344137" />
       <SolidColorBrush x:Key="DialogTitleBarForeground" Color="#262626" />
       <SolidColorBrush x:Key="FormLabelForeground" Color="#262626" />
       <Color x:Key="DialogCaptionButtonForeground">#595959</Color>
@@ -127,7 +127,7 @@
       <SolidColorBrush x:Key="DialogTitleBarForeground" Color="#EBF2FF" />
       <SolidColorBrush x:Key="FormLabelForeground" Color="#DCE7F5" />
       <Color x:Key="DialogCaptionButtonForeground">#CCD7E8</Color>
-      <SolidColorBrush x:Key="LoginWindowBorderBrush" Color="#33465E" />
+      <SolidColorBrush x:Key="LoginWindowBorderBrush" Color="#33463F" />
       <SolidColorBrush x:Key="LoginContentOverlayBackgroundBrush" Color="#DD111827" />
     </ResourceDictionary>
   </ResourceDictionary.ThemeDictionaries>
