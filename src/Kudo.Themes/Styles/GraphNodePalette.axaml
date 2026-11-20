@@ -1,19 +1,10 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:arc="https://github.com/AIDotNet/TKCode.Arc">
-    <Style Selector="Border.graph-node-palette-root">
-        <Setter Property="Background" Value="{DynamicResource SemiColorBackground1}" />
-    </Style>
-    <Style Selector="TextBlock.graph-node-palette-title">
-        <Setter Property="Margin" Value="0,0,0,6" />
-        <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
-        <Setter Property="FontSize" Value="12" />
-        <Setter Property="FontWeight" Value="SemiBold" />
-    </Style>
     <Styles.Resources>
         <ResourceDictionary>
-            <!-- Arc 全局 TextBox 主题是自绘 Field 管线，普通 TextBox 在缺资源的宿主里会渲染成隐形；
-                 此处为模型库搜索框提供自包含模板，保证任何主题环境下都可见。 -->
+            <!-- Arc 全局 TextBox/ListBox 主题是自绘 Field 管线，普通控件在缺资源的宿主里会渲染成隐形；
+                 此处为模型库搜索框与命令面板列表提供自包含模板，保证任何主题环境下都可见。 -->
             <ControlTheme x:Key="GraphPaletteSearchTheme" TargetType="TextBox" x:DataType="TextBox">
                 <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource SemiColorText3}" />
@@ -37,7 +28,7 @@
                                                CaretBrush="{TemplateBinding CaretBrush}"
                                                VerticalAlignment="Center" />
                                 <TextBlock IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"
-                                           Text="{TemplateBinding PlaceholderText}"
+                                           Text="{TemplateBinding Watermark}"
                                            FontSize="12"
                                            Foreground="#747C78"
                                            VerticalAlignment="Center" />
@@ -54,6 +45,40 @@
                     </ControlTemplate>
                 </Setter>
             </ControlTheme>
+            <ControlTheme x:Key="GraphPaletteListTheme" TargetType="ListBox" x:DataType="ListBox">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Template">
+                    <ControlTemplate>
+                        <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                                <ItemsPresenter Margin="0,4" />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter>
+                <ControlTheme.Resources>
+                    <ControlTheme x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
+                        <Setter Property="MinHeight" Value="30" />
+                        <Setter Property="Padding" Value="8,4" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="CornerRadius" Value="4" />
+                        <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
+                        <Setter Property="Template">
+                            <ControlTemplate>
+                                <Border Name="PART_ContentBorder"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="{TemplateBinding CornerRadius}"
+                                        Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter Name="PART_ContentPresenter"
+                                                      Content="{TemplateBinding Content}"
+                                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                      Foreground="{TemplateBinding Foreground}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter>
+                    </ControlTheme>
+                </ControlTheme.Resources>
+            </ControlTheme>
         </ResourceDictionary>
     </Styles.Resources>
     <Style Selector="TextBox.graph-node-palette-search">
@@ -61,6 +86,14 @@
         <Setter Property="MinHeight" Value="32" />
         <Setter Property="Margin" Value="0,0,0,6" />
         <Setter Property="Theme" Value="{StaticResource GraphPaletteSearchTheme}" />
+    </Style>
+    <!-- Arc 未提供 ListBox 主题（未主题化 ListBox 渲染为 0 高度），命令面板列表走自包含模板。 -->
+    <Style Selector="ListBox.graph-node-palette-list">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="MaxHeight" Value="340" />
+        <Setter Property="Margin" Value="0,8,0,0" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="Theme" Value="{StaticResource GraphPaletteListTheme}" />
     </Style>
     <Style Selector="PathIcon.graph-node-palette-search-icon">
         <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />

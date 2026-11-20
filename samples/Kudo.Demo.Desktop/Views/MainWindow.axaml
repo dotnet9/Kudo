@@ -186,5 +186,40 @@
         </Border>
         </Grid>
         <views:StatusBarView Grid.Row="1" />
+        <Panel x:Name="CommandPaletteHost"
+               Grid.RowSpan="2"
+               IsVisible="{Binding IsCommandPaletteOpen}">
+            <Border Background="#0A000000" PointerPressed="HandlePaletteBackdropPressed" />
+            <Border Width="520"
+                    MaxHeight="420"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0,48,0,0"
+                    CornerRadius="8"
+                    Background="{DynamicResource DemoSurfaceBrush}"
+                    BorderBrush="{DynamicResource DemoBorderBrush}"
+                    BorderThickness="1">
+                <StackPanel Margin="10">
+                    <TextBox x:Name="CommandPaletteQuery"
+                             Classes="graph-node-palette-search"
+                             Watermark="搜索命令（Ctrl+K）" />
+                    <ListBox x:Name="CommandPaletteList"
+                             Classes="graph-node-palette-list"
+                             BorderThickness="0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="views:PaletteCommand" x:CompileBindings="False">
+                                <Grid ColumnDefinitions="*,Auto" Margin="6,3">
+                                    <TextBlock Text="{Binding Title}" FontSize="12" />
+                                    <TextBlock Grid.Column="1"
+                                               Text="{Binding Gesture}"
+                                               FontSize="11"
+                                               Opacity="0.6" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </Border>
+        </Panel>
     </Grid>
 </arc:ArcWindow>

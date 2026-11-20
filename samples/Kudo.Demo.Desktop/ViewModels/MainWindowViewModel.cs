@@ -37,6 +37,7 @@ public sealed class MainWindowViewModel : ReactiveObject, IDisposable
     private bool _isDraftRestoreCompleted;
     private int _restoredDraftCount;
     private bool _isUpdatingLanguage;
+    private bool _isCommandPaletteOpen;
     private bool _isUpdatingTheme;
     private bool _isUpdatingZoom;
     private bool _isDisposed;
@@ -62,6 +63,7 @@ public sealed class MainWindowViewModel : ReactiveObject, IDisposable
         RefreshLanguageOptions();
         Themes = new ObservableCollection<DemoBrandTheme>(DemoBrandThemes.All);
         _selectedTheme = _themeService.Current;
+        ToggleCommandPaletteCommand = ReactiveCommand.Create(ToggleCommandPalette);
         I18nManager.Instance.CultureChanged += HandleCultureChanged;
         AddNodeCommand = ReactiveCommand.Create<GraphNodeDefinition>(
             definition => _actions?.AddNode(definition));
@@ -80,6 +82,15 @@ public sealed class MainWindowViewModel : ReactiveObject, IDisposable
     public ObservableCollection<DemoLanguageOption> Languages { get; }
 
     public ObservableCollection<DemoBrandTheme> Themes { get; }
+
+    /// <summary>命令面板可见性（Ctrl+K 经 ToggleCommandPaletteCommand 切换）。</summary>
+    public bool IsCommandPaletteOpen
+    {
+        get => _isCommandPaletteOpen;
+        set => this.RaiseAndSetIfChanged(ref _isCommandPaletteOpen, value);
+    }
+
+    public ICommand ToggleCommandPaletteCommand { get; }
 
     /// <summary>当前程序集版本（设置窗口关于段展示）。</summary>
     public string AppVersion => typeof(MainWindowViewModel).Assembly.GetName().Version?.ToString() ?? "-";
@@ -213,6 +224,8 @@ public sealed class MainWindowViewModel : ReactiveObject, IDisposable
         get => _restoredDraftCount;
         internal set => this.RaiseAndSetIfChanged(ref _restoredDraftCount, value);
     }
+
+    public void ToggleCommandPalette() => IsCommandPaletteOpen = !IsCommandPaletteOpen;
 
     public void ZoomOut() => _actions?.ZoomBy(1 / 1.2);
 
