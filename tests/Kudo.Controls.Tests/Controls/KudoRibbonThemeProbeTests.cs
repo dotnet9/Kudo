@@ -15,7 +15,7 @@ public sealed class KudoRibbonThemeProbeTests
     [AvaloniaTheory]
     [InlineData(false)]
     [InlineData(true)]
-    public void Ribbon_template_wins_over_semi(bool withLegacyStyles)
+    public void Ribbon_template_wins_over_semi(bool withSemiTheme)
     {
         var ribbon = new KudoRibbon();
         ribbon.Styles.AddRange(new KudoRibbonStyles());
