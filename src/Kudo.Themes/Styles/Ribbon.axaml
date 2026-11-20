@@ -1,5 +1,6 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:arc="https://github.com/AIDotNet/TKCode.Arc"
         xmlns:k="https://codewf.com">
   <Design.PreviewWith>
     <Border Padding="20">
@@ -62,12 +63,12 @@
     <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderPointeroverForeground}" />
   </Style>
   <Style Selector="TabStripItem.RibbonMenuTab:selected">
-    <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderSelectedForeground}" />
+    <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource Accent}" />
     <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Emphasis.FontWeight}" />
     <Setter Property="Background" Value="{DynamicResource Kudo.Brand.Ribbon.Tab.SelectedBackground}" />
   </Style>
   <Style Selector="TabStripItem.RibbonMenuTab:selected TextBlock">
-    <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderSelectedForeground}" />
+    <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource Accent}" />
   </Style>
   <Style Selector="TabStripItem.RibbonMenuTab.Start:selected">
     <Setter Property="Background" Value="{DynamicResource Kudo.Brand.Ribbon.Tab.StartSelectedBackground}" />
@@ -127,12 +128,12 @@
     <Setter Property="VerticalContentAlignment" Value="Center" />
   </Style>
   <Style Selector="k|IconButton.RibbonCommand:pointerover">
-    <Setter Property="Background" Value="{DynamicResource RibbonCommandPointeroverBackground}" />
-    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandPointeroverForeground}" />
+    <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
+    <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource AccentStrong}" />
   </Style>
   <Style Selector="k|IconButton.RibbonCommand:pressed">
-    <Setter Property="Background" Value="{DynamicResource RibbonCommandPressedBackground}" />
-    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandPressedForeground}" />
+    <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
+    <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource AccentStrong}" />
   </Style>
   <Style Selector="k|IconButton.RibbonCommand:disabled">
     <Setter Property="Opacity" Value="{StaticResource RibbonCommandDisabledOpacity}" />
@@ -205,16 +206,16 @@
     <Setter Property="Foreground" Value="{DynamicResource RibbonCommandForeground}" />
   </Style>
   <Style Selector="MenuItem.RibbonFlyoutItem:selected /template/ Border#PART_LayoutRoot">
-    <Setter Property="Background" Value="{DynamicResource RibbonCommandPointeroverBackground}" />
+    <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
   </Style>
   <Style Selector="MenuItem.RibbonFlyoutItem:selected /template/ ContentPresenter#PART_HeaderPresenter">
-    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandPointeroverForeground}" />
+    <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource AccentStrong}" />
   </Style>
   <Style Selector="MenuItem.RibbonFlyoutItem:pressed /template/ Border#PART_LayoutRoot:pointerover">
-    <Setter Property="Background" Value="{DynamicResource RibbonCommandPressedBackground}" />
+    <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
   </Style>
   <Style Selector="MenuItem.RibbonFlyoutItem:pressed /template/ ContentPresenter#PART_HeaderPresenter">
-    <Setter Property="Foreground" Value="{DynamicResource RibbonCommandPressedForeground}" />
+    <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource AccentStrong}" />
   </Style>
   <Style Selector="MenuItem.RibbonFlyoutItem:disabled /template/ ContentPresenter#PART_HeaderPresenter">
     <Setter Property="Foreground" Value="{DynamicResource RibbonFieldInputDisabledForeground}" />
@@ -223,7 +224,7 @@
     <Setter Property="Theme" Value="{StaticResource InnerPathIcon}" />
     <Setter Property="Width" Value="{StaticResource RibbonMenuIconSize}" />
     <Setter Property="Height" Value="{StaticResource RibbonMenuIconSize}" />
-    <Setter Property="Foreground" Value="{DynamicResource RibbonMenuIconForeground}" />
+    <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource Accent}" />
   </Style>
   <Style Selector="PathIcon.MenuItem">
     <Setter Property="Width" Value="{StaticResource RibbonMenuItemIconSize}" />
@@ -261,7 +262,7 @@
   </Style>
   <Style Selector="TextBox.RibbonFieldInput:focus">
     <Setter Property="Background" Value="{DynamicResource RibbonFieldInputBackground}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputFocusBorderBrush}" />
+    <Setter Property="BorderBrush" Value="{arc:ArcDesignTokenResource Accent}" />
   </Style>
   <Style Selector="TextBox.RibbonFieldInput:disabled">
     <Setter Property="Background" Value="{DynamicResource RibbonFieldInputDisabledBackground}" />
@@ -284,7 +285,7 @@
   </Style>
   <Style Selector="NumericUpDown.RibbonFieldNumeric:focus">
     <Setter Property="Background" Value="{DynamicResource RibbonFieldInputBackground}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputFocusBorderBrush}" />
+    <Setter Property="BorderBrush" Value="{arc:ArcDesignTokenResource Accent}" />
   </Style>
   <Style Selector=":is(NumericUpDown).RibbonFieldNumeric:disabled">
     <Setter Property="Background" Value="{DynamicResource RibbonFieldInputDisabledBackground}" />
@@ -316,7 +317,7 @@
   </Style>
   <Style Selector="ComboBox.RibbonFieldComboBox:focus">
     <Setter Property="Background" Value="{DynamicResource RibbonFieldInputBackground}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource RibbonFieldInputFocusBorderBrush}" />
+    <Setter Property="BorderBrush" Value="{arc:ArcDesignTokenResource Accent}" />
   </Style>
   <Style Selector="ComboBox.RibbonFieldComboBox:disabled">
     <Setter Property="Background" Value="{DynamicResource RibbonFieldInputDisabledBackground}" />

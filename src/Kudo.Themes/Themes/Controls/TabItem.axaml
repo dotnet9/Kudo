@@ -1,8 +1,0 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-  <SolidColorBrush x:Key="TabItemLineHeaderPointeroverForeground">#0E9F8A</SolidColorBrush>
-  <SolidColorBrush x:Key="TabItemLineHeaderSelectedForeground">#0E9F8A</SolidColorBrush>
-  <SolidColorBrush x:Key="TabItemLinePipePointeroverBorderBrush">#0E9F8A</SolidColorBrush>
-  <SolidColorBrush x:Key="TabItemLinePipeSelectedBackground">#0E9F8A</SolidColorBrush>
-</ResourceDictionary>

@@ -1,5 +1,5 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:arc="https://github.com/AIDotNet/TKCode.Arc">
   <Design.PreviewWith>
     <Border Padding="20">
       <!-- Add Controls for Previewer Here -->
@@ -54,21 +54,21 @@
     <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
   </Style>
   <Style Selector="TreeViewItem:pointerover">
-    <Setter Property="Background" Value="{DynamicResource TreeViewItemPointeroverBackground}" />
-    <Setter Property="Foreground" Value="{DynamicResource TreeViewItemPointeroverForeground}" />
+    <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
+    <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource Accent}" />
   </Style>
   <Style Selector="TreeViewItem:selected">
-    <Setter Property="Background" Value="{DynamicResource TreeViewItemSelectedBackground}" />
-    <Setter Property="Foreground" Value="{DynamicResource TreeViewItemSelectedForeground}" />
+    <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
   </Style>
   <Style Selector="TreeViewItem TextBlock">
     <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
   </Style>
   <Style Selector="TreeViewItem:pointerover TextBlock">
-    <Setter Property="Foreground" Value="{DynamicResource TreeViewItemPointeroverForeground}" />
+    <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource Accent}" />
   </Style>
   <Style Selector="TreeViewItem:selected TextBlock">
-    <Setter Property="Foreground" Value="{DynamicResource TreeViewItemSelectedForeground}" />
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
   </Style>
   <Style Selector="Border.EmptyState">
     <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />

@@ -14,7 +14,7 @@
     <Setter Property="VerticalAlignment" Value="Center" />
   </Style>
   <Style Selector="TextBlock.CommonDialogAlertText">
-    <Setter Property="Foreground" Value="{DynamicResource Kudo.Text.Primary}" />
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
     <Setter Property="FontFamily" Value="{StaticResource NotoSansSC}" />
     <Setter Property="FontSize" Value="{DynamicResource Kudo.Typography.Body.FontSize}" />
     <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Regular.FontWeight}" />
@@ -22,11 +22,11 @@
     <Setter Property="VerticalAlignment" Value="Center" />
   </Style>
   <Style Selector="TextBlock.CommonDialogLead">
-    <Setter Property="Foreground" Value="{DynamicResource Kudo.Text.Primary}" />
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
     <Setter Property="VerticalAlignment" Value="Center" />
   </Style>
   <Style Selector="TextBlock.CommonDialogLabel">
-    <Setter Property="Foreground" Value="{DynamicResource Kudo.Text.Secondary}" />
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />
     <Setter Property="FontFamily" Value="{StaticResource NotoSansSC}" />
     <Setter Property="FontSize" Value="{DynamicResource Kudo.Typography.Body.FontSize}" />
     <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Regular.FontWeight}" />
@@ -34,7 +34,7 @@
     <Setter Property="VerticalAlignment" Value="Center" />
   </Style>
   <Style Selector="TextBlock.CommonDialogValue">
-    <Setter Property="Foreground" Value="{DynamicResource Kudo.Text.Primary}" />
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
     <Setter Property="FontFamily" Value="{StaticResource NotoSansSC}" />
     <Setter Property="FontSize" Value="{DynamicResource Kudo.Typography.Body.FontSize}" />
     <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Strong.FontWeight}" />
@@ -42,13 +42,13 @@
     <Setter Property="VerticalAlignment" Value="Center" />
   </Style>
   <Style Selector="TextBlock.CommonDialogSecondaryText, TextBlock.CommonDialogOptionText">
-    <Setter Property="Foreground" Value="{DynamicResource Kudo.Text.Secondary}" />
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />
   </Style>
   <Style Selector="TextBlock.CommonDialogDangerText">
     <Setter Property="Foreground" Value="{DynamicResource Kudo.State.Danger}" />
   </Style>
   <Style Selector="TextBlock.CommonDialogMessage, SelectableTextBlock.CommonDialogMessage">
-    <Setter Property="Foreground" Value="{DynamicResource Kudo.Text.Primary}" />
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
     <Setter Property="VerticalAlignment" Value="Center" />
   </Style>
   <Style Selector="Border.CommonDialogOption">
@@ -60,7 +60,7 @@
     <Setter Property="CornerRadius" Value="{DynamicResource Kudo.Shape.Control.CornerRadius}" />
   </Style>
   <Style Selector="TextBlock.CommonDialogOptionTitle">
-    <Setter Property="Foreground" Value="{DynamicResource Kudo.Text.Primary}" />
+    <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
     <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Emphasis.FontWeight}" />
   </Style>
 </Styles>

@@ -33,7 +33,7 @@
             </Grid>
           </Border>
           <Border Grid.Row="1"
-                  Background="#FFFFFF"
+                  Background="{DynamicResource SemiColorBackground0}"
                   BorderThickness="0"
                   ClipToBounds="True">
             <ContentControl Name="PART_ContentHost"

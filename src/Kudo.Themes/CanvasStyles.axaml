@@ -2,19 +2,34 @@
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:k="https://codewf.com"
+        xmlns:arc="https://github.com/AIDotNet/TKCode.Arc"
 >
     <StyleInclude Source="avares://Kudo.Themes/Styles/GraphNodePalette.axaml" />
     <StyleInclude Source="avares://Kudo.Themes/Styles/GraphPropertiesView.axaml" />
     <Styles.Resources>
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
-                <ResourceInclude x:Key="Default" Source="avares://Kudo.Themes/Tokens/Light.axaml" />
-                <ResourceInclude x:Key="Light" Source="avares://Kudo.Themes/Tokens/Light.axaml" />
-                <ResourceInclude x:Key="Dark" Source="avares://Kudo.Themes/Tokens/Dark.axaml" />
+                <ResourceDictionary x:Key="Default">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceInclude Source="avares://Kudo.Themes/Tokens/Light.axaml" />
+                        <ResourceInclude Source="avares://Kudo.Themes/Tokens/SemiShim.axaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Light">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceInclude Source="avares://Kudo.Themes/Tokens/Light.axaml" />
+                        <ResourceInclude Source="avares://Kudo.Themes/Tokens/SemiShim.axaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceInclude Source="avares://Kudo.Themes/Tokens/Dark.axaml" />
+                        <ResourceInclude Source="avares://Kudo.Themes/Tokens/NeutralsDark.axaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="avares://Kudo.Themes/Tokens/Shared.axaml" />
-                <ResourceInclude Source="avares://Kudo.Themes/Tokens/SemiShim.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
@@ -26,18 +41,18 @@
         <Setter Property="CanvasBackgroundBrush" Value="{DynamicResource SemiColorBackground0}" />
         <Setter Property="NodeFillBrush" Value="{DynamicResource SemiColorBackground1}" />
         <Setter Property="NodeStrokeBrush" Value="{DynamicResource SemiColorText3}" />
-        <Setter Property="SelectedNodeStrokeBrush" Value="{DynamicResource SemiColorPrimary}" />
-        <Setter Property="GroupFillBrush" Value="{DynamicResource KudoGroupFillBrush}" />
-        <Setter Property="GroupHeaderFillBrush" Value="{DynamicResource KudoGroupHeaderFillBrush}" />
-        <Setter Property="GroupStrokeBrush" Value="{DynamicResource SemiColorPrimaryLightActive}" />
-        <Setter Property="SelectedGroupStrokeBrush" Value="{DynamicResource SemiColorPrimary}" />
+        <Setter Property="SelectedNodeStrokeBrush" Value="{arc:ArcDesignTokenResource Accent}" />
+        <Setter Property="GroupFillBrush" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
+        <Setter Property="GroupHeaderFillBrush" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
+        <Setter Property="GroupStrokeBrush" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
+        <Setter Property="SelectedGroupStrokeBrush" Value="{arc:ArcDesignTokenResource Accent}" />
         <Setter Property="GroupTitleBrush" Value="{DynamicResource SemiColorText1}" />
         <Setter Property="AnnotationFillBrush" Value="{DynamicResource SemiColorWarningLight}" />
         <Setter Property="AnnotationStrokeBrush" Value="{DynamicResource SemiColorWarningLightActive}" />
-        <Setter Property="SelectedAnnotationStrokeBrush" Value="{DynamicResource SemiColorPrimary}" />
+        <Setter Property="SelectedAnnotationStrokeBrush" Value="{arc:ArcDesignTokenResource Accent}" />
         <Setter Property="AnnotationTextBrush" Value="{DynamicResource SemiColorText0}" />
         <Setter Property="RuntimeActiveBrush" Value="{DynamicResource SemiColorSuccess}" />
-        <Setter Property="EdgeBrush" Value="{DynamicResource SemiColorPrimary}" />
+        <Setter Property="EdgeBrush" Value="{arc:ArcDesignTokenResource Accent}" />
         <Setter Property="SelectedEdgeBrush" Value="{DynamicResource SemiColorWarning}" />
         <Setter Property="RuntimeSignalBrush" Value="{DynamicResource SemiColorSuccess}" />
         <Setter Property="OverlayStrokeBrush" Value="{DynamicResource SemiColorBackground1}" />
@@ -50,7 +65,7 @@
         <Setter Property="InputPortBrush" Value="{DynamicResource KudoInputPortBrush}" />
         <Setter Property="OutputPortBrush" Value="{DynamicResource KudoOutputPortBrush}" />
         <Setter Property="BidirectionalPortBrush" Value="{DynamicResource KudoBidirectionalPortBrush}" />
-        <Setter Property="ReferencePortBrush" Value="{DynamicResource KudoReferencePortBrush}" />
+        <Setter Property="ReferencePortBrush" Value="{arc:ArcDesignTokenResource Accent}" />
         <Setter Property="InvalidPortFillBrush" Value="{DynamicResource KudoInvalidPortFillBrush}" />
         <Setter Property="InvalidPortStrokeBrush" Value="{DynamicResource KudoInvalidPortStrokeBrush}" />
         <Setter Property="PortGlyphRadius" Value="{DynamicResource KudoPortGlyphRadius}" />
@@ -75,23 +90,23 @@
         <Setter Property="TitleBrush" Value="{DynamicResource SemiColorText0}" />
         <Setter Property="DescriptionBrush" Value="{DynamicResource KudoDescriptionBrush}" />
         <Setter Property="PortTextBrush" Value="{DynamicResource SemiColorText2}" />
-        <Setter Property="SelectionFillBrush" Value="{DynamicResource KudoSelectionFillBrush}" />
+        <Setter Property="SelectionFillBrush" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
         <Setter Property="GridMinorBrush" Value="{DynamicResource SemiColorBorder}" />
         <Setter Property="GridMajorBrush" Value="{DynamicResource SemiColorText3}" />
         <Setter Property="AlignmentGuideBrush" Value="{DynamicResource SemiColorWarning}" />
-        <Setter Property="PlacementPreviewFillBrush" Value="{DynamicResource SemiColorPrimaryLight}" />
+        <Setter Property="PlacementPreviewFillBrush" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
         <Setter Property="InvalidPlacementPreviewFillBrush" Value="{DynamicResource SemiColorDangerLight}" />
         <Setter Property="DangerBrush" Value="{DynamicResource SemiColorDanger}" />
     </Style>
     <Style Selector="k|GraphMinimap">
         <Setter Property="BackgroundBrush" Value="{DynamicResource SemiColorBackground1}" />
         <Setter Property="NodeBrush" Value="{DynamicResource SemiColorText3}" />
-        <Setter Property="SelectedNodeBrush" Value="{DynamicResource SemiColorPrimary}" />
-        <Setter Property="GroupBrush" Value="{DynamicResource KudoMinimapGroupBrush}" />
-        <Setter Property="SelectedGroupBrush" Value="{DynamicResource KudoMinimapSelectedGroupBrush}" />
-        <Setter Property="EdgeBrush" Value="{DynamicResource SemiColorPrimary}" />
-        <Setter Property="ViewportFillBrush" Value="{DynamicResource KudoMinimapViewportFillBrush}" />
-        <Setter Property="ViewportStrokeBrush" Value="{DynamicResource SemiColorPrimary}" />
+        <Setter Property="SelectedNodeBrush" Value="{arc:ArcDesignTokenResource Accent}" />
+        <Setter Property="GroupBrush" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
+        <Setter Property="SelectedGroupBrush" Value="{arc:ArcDesignTokenResource Accent}" />
+        <Setter Property="EdgeBrush" Value="{arc:ArcDesignTokenResource Accent}" />
+        <Setter Property="ViewportFillBrush" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
+        <Setter Property="ViewportStrokeBrush" Value="{arc:ArcDesignTokenResource Accent}" />
         <Setter Property="BorderBrush" Value="{DynamicResource SemiColorBorder}" />
     </Style>
     <Style Selector="k|GraphRuler">
@@ -101,13 +116,14 @@
         <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />
         <Setter Property="BorderBrush" Value="{DynamicResource SemiColorBorder}" />
     </Style>
-    <Style Selector="k|GraphDesignerPanel">
+    <!-- 类选择器精确匹配类型：抽象基类选择器永远打不中密封子类实例（亮色主题下默认值恰好遮掩了这一点） -->
+    <Style Selector="k|GraphNodePalette, k|GraphDocumentList, k|GraphDocumentView, k|GraphCallStackView, k|GraphBreakpointsView, k|GraphVariablesView">
         <Setter Property="PanelBrush" Value="{DynamicResource SemiColorBackground1}" />
         <Setter Property="ElevatedBrush" Value="{DynamicResource SemiColorFill0}" />
         <Setter Property="DividerBrush" Value="{DynamicResource SemiColorBorder}" />
         <Setter Property="PrimaryTextBrush" Value="{DynamicResource SemiColorText0}" />
         <Setter Property="SecondaryTextBrush" Value="{DynamicResource SemiColorText2}" />
-        <Setter Property="AccentBrush" Value="{DynamicResource SemiColorPrimary}" />
+        <Setter Property="AccentBrush" Value="{arc:ArcDesignTokenResource Accent}" />
         <Setter Property="SuccessBrush" Value="{DynamicResource SemiColorSuccess}" />
         <Setter Property="WarningBrush" Value="{DynamicResource SemiColorWarning}" />
         <Setter Property="ErrorBrush" Value="{DynamicResource SemiColorDanger}" />

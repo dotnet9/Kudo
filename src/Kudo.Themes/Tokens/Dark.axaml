@@ -3,13 +3,7 @@
     <SolidColorBrush x:Key="KudoInputPortBrush" Color="#69F0AE" />
     <SolidColorBrush x:Key="KudoOutputPortBrush" Color="#FFD166" />
     <SolidColorBrush x:Key="KudoBidirectionalPortBrush" Color="#E879F9" />
-    <StaticResource x:Key="KudoReferencePortBrush" ResourceKey="SemiColorSecondary" />
-    <StaticResource x:Key="KudoInvalidPortFillBrush" ResourceKey="SemiColorDangerLight" />
+        <StaticResource x:Key="KudoInvalidPortFillBrush" ResourceKey="SemiColorDangerLight" />
     <StaticResource x:Key="KudoInvalidPortStrokeBrush" ResourceKey="SemiColorDanger" />
     <StaticResource x:Key="KudoDescriptionBrush" ResourceKey="SemiColorText2" />
-    <SolidColorBrush x:Key="KudoGroupFillBrush" Color="{DynamicResource SemiBlue5Color}" Opacity="0.18" />
-    <SolidColorBrush x:Key="KudoGroupHeaderFillBrush" Color="{DynamicResource SemiBlue5Color}" Opacity="0.28" />
-    <SolidColorBrush x:Key="KudoSelectionFillBrush" Color="{DynamicResource SemiBlue5Color}" Opacity="0.22" />
-    <StaticResource x:Key="KudoMinimapGroupBrush" ResourceKey="SemiColorSecondaryLightActive" />
-    <StaticResource x:Key="KudoMinimapSelectedGroupBrush" ResourceKey="SemiColorPrimary" />
-</ResourceDictionary>
+                    </ResourceDictionary>

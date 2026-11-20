@@ -1,4 +1,4 @@
-<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codewf="https://codewf.com">
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codewf="https://codewf.com" xmlns:arc="https://github.com/AIDotNet/TKCode.Arc">
   <Style Selector="StackPanel.ShellLoadingMessagePanel">
     <Setter Property="Margin" Value="{StaticResource ShellLoadingMessagePanelMargin}" />
     <Setter Property="HorizontalAlignment" Value="Center" />
@@ -30,9 +30,9 @@
     <Setter Property="Padding" Value="{StaticResource Kudo.Dialog.Button.Padding}" />
     <Setter Property="FontSize" Value="{StaticResource Kudo.Dialog.Button.FontSize}" />
     <Setter Property="FontWeight" Value="{DynamicResource Kudo.Typography.Emphasis.FontWeight}" />
-    <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimary}" />
-    <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource SemiColorPrimary}" />
+    <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource Accent}" />
+    <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
+    <Setter Property="BorderBrush" Value="{arc:ArcDesignTokenResource Accent}" />
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="CornerRadius" Value="6" />
   </Style>
@@ -45,13 +45,13 @@
     </Setter>
   </Style>
   <Style Selector="Button.ShellLoadingCancelButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimaryPointerover}" />
-    <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLightPointerover}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource SemiColorPrimaryPointerover}" />
+    <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource AccentStrong}" />
+    <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
+    <Setter Property="BorderBrush" Value="{arc:ArcDesignTokenResource AccentStrong}" />
   </Style>
   <Style Selector="Button.ShellLoadingCancelButton:pressed /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimaryActive}" />
-    <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLightActive}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource SemiColorPrimaryActive}" />
+    <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource AccentStrong}" />
+    <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
+    <Setter Property="BorderBrush" Value="{arc:ArcDesignTokenResource AccentStrong}" />
   </Style>
 </Styles>

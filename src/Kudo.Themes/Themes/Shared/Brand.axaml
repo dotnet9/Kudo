@@ -1,15 +1,4 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <ImageBrush x:Key="Kudo.Brand.Ribbon.Tab.SelectedBackground"
-              Source="avares://Kudo.Themes/Assets/Brand/tab-current.png"
-              Stretch="Fill" />
-  <ImageBrush x:Key="Kudo.Brand.Ribbon.Tab.StartSelectedBackground"
-              Source="avares://Kudo.Themes/Assets/Brand/tab-current-start.png"
-              Stretch="Fill" />
-  <ImageBrush x:Key="Kudo.Brand.Ribbon.Tab.EndSelectedBackground"
-              Source="avares://Kudo.Themes/Assets/Brand/tab-current-end.png"
-              Stretch="Fill" />
-  <ImageBrush x:Key="Kudo.Brand.Shell.TitleBarPathBackground"
-              Source="avares://Kudo.Themes/Assets/Brand/bg-address.png"
-              Stretch="Fill" />
+  <!-- 品牌艺术画刷（页签/路条）由应用的主题服务按品牌在运行时发布。 -->
 </ResourceDictionary>

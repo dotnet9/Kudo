@@ -1,0 +1,24 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!--
+    Kudo 中性令牌暗色档（与 SemiShim.axaml 键位一一对应）。
+    SemiShim 已迁入 CanvasStyles 的 ThemeDictionaries：Light 变体挂 SemiShim，Dark 变体挂本文件，
+    由 Arc 主题引擎切换 RequestedThemeVariant 时自动生效。
+  -->
+  <SolidColorBrush x:Key="SemiColorText0" Color="#E8ECEF" />
+  <SolidColorBrush x:Key="SemiColorText1" Opacity="0.8" Color="#E8ECEF" />
+  <SolidColorBrush x:Key="SemiColorText2" Opacity="0.62" Color="#E8ECEF" />
+  <SolidColorBrush x:Key="SemiColorText3" Opacity="0.35" Color="#E8ECEF" />
+  <SolidColorBrush x:Key="SemiColorBackground0" Color="#1E232A" />
+  <SolidColorBrush x:Key="SemiColorBackground1" Color="#232830" />
+  <SolidColorBrush x:Key="SemiColorBorder" Opacity="0.08" Color="#F2F5F7" />
+  <SolidColorBrush x:Key="SemiColorFill0" Opacity="0.05" Color="#E8ECEF" />
+  <SolidColorBrush x:Key="SemiColorSuccess" Color="#4CC45A" />
+  <SolidColorBrush x:Key="SemiColorSuccessLight" Color="#1D2E18" />
+  <SolidColorBrush x:Key="SemiColorSuccessLightPointerover" Color="#24391E" />
+  <SolidColorBrush x:Key="SemiColorDanger" Color="#F55B44" />
+  <SolidColorBrush x:Key="SemiColorDangerLight" Color="#3A1D1B" />
+  <SolidColorBrush x:Key="SemiColorWarning" Color="#FDA844" />
+  <SolidColorBrush x:Key="SemiColorWarningLight" Color="#33291A" />
+  <SolidColorBrush x:Key="SemiColorWarningLightActive" Color="#4A3A22" />
+</ResourceDictionary>

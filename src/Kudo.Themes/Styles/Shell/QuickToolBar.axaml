@@ -1,4 +1,4 @@
-<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codewf="https://codewf.com" xmlns:k="https://codewf.com">
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:codewf="https://codewf.com" xmlns:k="https://codewf.com" xmlns:arc="https://github.com/AIDotNet/TKCode.Arc">
   <Style Selector="Border.QuickToolBarRoot">
     <Setter Property="Height" Value="{StaticResource QuickToolBarHeight}" />
     <Setter Property="Margin" Value="{StaticResource QuickToolBarMargin}" />
@@ -14,15 +14,15 @@
     <Setter Property="MinHeight" Value="{StaticResource QuickToolButtonHeight}" />
     <Setter Property="Padding" Value="{StaticResource QuickToolButtonPadding}" />
     <Setter Property="Margin" Value="{StaticResource QuickToolButtonMargin}" />
-    <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimary}" />
+    <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource Accent}" />
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="CornerRadius" Value="{StaticResource QuickToolButtonCornerRadius}" />
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
   </Style>
   <Style Selector="k|IconButton.QuickToolButton:pointerover">
-    <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimaryPointerover}" />
-    <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
+    <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource AccentStrong}" />
+    <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
   </Style>
   <Style Selector="Border.QuickToolBarRoot.RibbonHeader">
     <Setter Property="Height" Value="32" />
@@ -48,10 +48,10 @@
   </Style>
   <Style Selector="Border.QuickToolBarRoot.RibbonHeader k|IconButton.QuickToolButton:pointerover">
     <Setter Property="Foreground" Value="{DynamicResource RibbonMenuTabHeaderPointeroverForeground}" />
-    <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
+    <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
   </Style>
   <Style Selector="Border.QuickToolBarRoot.RibbonHeader k|IconButton.QuickToolButton:pointerover /template/ Border#PART_Border">
-    <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
+    <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
   </Style>
   <Style Selector="TextBlock.QuickToolBarTitle">
     <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />

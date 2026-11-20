@@ -1,4 +1,4 @@
-<Styles xmlns="https://github.com/avaloniaui">
+<Styles xmlns="https://github.com/avaloniaui"        xmlns:arc="https://github.com/AIDotNet/TKCode.Arc">
     <Style Selector="Border.graph-node-palette-root">
         <Setter Property="Background" Value="{DynamicResource SemiColorBackground1}" />
     </Style>
@@ -30,11 +30,11 @@
         <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
     </Style>
     <Style Selector="Button.graph-node-palette-group:pointerover, Button.graph-node-palette-group.selected">
-        <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
-        <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimary}" />
+        <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
+        <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource Accent}" />
     </Style>
     <Style Selector="TextBlock.graph-node-palette-group-icon">
-        <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimary}" />
+        <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource Accent}" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="FontWeight" Value="SemiBold" />
     </Style>
@@ -70,7 +70,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center" />
     </Style>
     <Style Selector="Button.graph-node-palette-model:pointerover">
-        <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
+        <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
     </Style>
     <Style Selector="Border.graph-node-palette-icon">
         <Setter Property="Background" Value="Transparent" />
@@ -78,7 +78,7 @@
         <Setter Property="CornerRadius" Value="3" />
     </Style>
     <Style Selector="Border.graph-node-palette-icon TextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimary}" />
+        <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource Accent}" />
     </Style>
     <Style Selector="TextBlock.graph-node-palette-model-title">
         <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />

@@ -32,7 +32,6 @@
   <SolidColorBrush x:Key="TreeViewItemPointeroverBackground" Color="#E4F5F1" />
   <SolidColorBrush x:Key="TreeViewItemPressedBackground" Color="#D8F0E9" />
   <StaticResource x:Key="TreeViewItemSelectedForeground" ResourceKey="SemiColorText0" />
-  <StaticResource x:Key="TreeViewItemSelectedBackground" ResourceKey="SemiColorPrimaryLight" />
   <SolidColorBrush x:Key="TreeViewItemDisabledBackground" Color="Transparent" />
   <StaticResource x:Key="TreeViewItemSelectedDisabledBackground" ResourceKey="SemiColorDisabledFill" />
 
@@ -46,10 +45,6 @@
   <StaticResource x:Key="Kudo.Surface.Overlay" ResourceKey="SemiColorBackground3" />
   <StaticResource x:Key="Kudo.Border.Default" ResourceKey="SemiColorBorder" />
   <StaticResource x:Key="Kudo.Border.Focus" ResourceKey="SemiColorFocusBorder" />
-  <StaticResource x:Key="Kudo.Action.Primary" ResourceKey="SemiColorPrimary" />
-  <StaticResource x:Key="Kudo.Action.PrimaryHover" ResourceKey="SemiColorPrimaryPointerover" />
-  <StaticResource x:Key="Kudo.Action.PrimaryPressed" ResourceKey="SemiColorPrimaryActive" />
-  <StaticResource x:Key="Kudo.Action.PrimarySubtle" ResourceKey="SemiColorPrimaryLight" />
   <StaticResource x:Key="Kudo.Action.Close" ResourceKey="SemiColorText2" />
   <StaticResource x:Key="Kudo.State.Info" ResourceKey="SemiColorInformation" />
   <StaticResource x:Key="Kudo.State.Success" ResourceKey="SemiColorSuccess" />

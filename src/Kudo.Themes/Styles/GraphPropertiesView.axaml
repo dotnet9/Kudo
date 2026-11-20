@@ -1,4 +1,4 @@
-<Styles xmlns="https://github.com/avaloniaui">
+<Styles xmlns="https://github.com/avaloniaui"        xmlns:arc="https://github.com/AIDotNet/TKCode.Arc">
     <Style Selector="Border.graph-properties-root">
         <Setter Property="Background" Value="{DynamicResource SemiColorBackground1}" />
     </Style>
@@ -74,13 +74,13 @@
         <Setter Property="BorderBrush" Value="{DynamicResource SemiColorBorder}" />
     </Style>
     <Style Selector="TextBox.graph-property-editor:focus, ComboBox.graph-property-editor:focus, ComboBox.graph-property-editor:dropdownopen, NumericUpDown.graph-property-editor:focus-within">
-        <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource SemiColorPrimary}" />
+        <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
+        <Setter Property="BorderBrush" Value="{arc:ArcDesignTokenResource Accent}" />
     </Style>
     <Style Selector="Grid.graph-property-row:pointerover Border.graph-property-key, Grid.graph-property-row:pointerover Border.graph-property-value">
-        <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
+        <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
     </Style>
     <Style Selector="Grid.graph-property-row:focus-within Border.graph-property-key, Grid.graph-property-row:focus-within Border.graph-property-value">
-        <Setter Property="Background" Value="{DynamicResource SemiColorPrimaryLight}" />
+        <Setter Property="Background" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
     </Style>
 </Styles>
