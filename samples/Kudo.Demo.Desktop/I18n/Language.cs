@@ -791,6 +791,12 @@ namespace Localization.Kudo_Demo_Desktop.Views
         public const string ViewportNodesSelected = "Localization.Kudo_Demo_Desktop.Views.MainWindow.ViewportNodesSelected";
         public const string WaypointsCleared = "Localization.Kudo_Demo_Desktop.Views.MainWindow.WaypointsCleared";
         public const string WaypointsClearedDetails = "Localization.Kudo_Demo_Desktop.Views.MainWindow.WaypointsClearedDetails";
+        public const string WelcomeOpenSample = "Localization.Kudo_Demo_Desktop.Views.MainWindow.WelcomeOpenSample";
+        public const string WelcomeStart = "Localization.Kudo_Demo_Desktop.Views.MainWindow.WelcomeStart";
+        public const string WelcomeStep1 = "Localization.Kudo_Demo_Desktop.Views.MainWindow.WelcomeStep1";
+        public const string WelcomeStep2 = "Localization.Kudo_Demo_Desktop.Views.MainWindow.WelcomeStep2";
+        public const string WelcomeStep3 = "Localization.Kudo_Demo_Desktop.Views.MainWindow.WelcomeStep3";
+        public const string WelcomeTitle = "Localization.Kudo_Demo_Desktop.Views.MainWindow.WelcomeTitle";
         public const string WindowTitle = "Localization.Kudo_Demo_Desktop.Views.MainWindow.WindowTitle";
         public const string WorkbenchStarted = "Localization.Kudo_Demo_Desktop.Views.MainWindow.WorkbenchStarted";
         public const string WorkspaceLayoutRestored = "Localization.Kudo_Demo_Desktop.Views.MainWindow.WorkspaceLayoutRestored";

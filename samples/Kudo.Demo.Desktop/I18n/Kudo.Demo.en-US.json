@@ -745,7 +745,13 @@
           "SettingsAbout": "About",
           "SettingsVersion": "Version",
           "SettingsRepository": "Repository",
-          "DebugPanel": "Debug"
+          "DebugPanel": "Debug",
+          "WelcomeTitle": "Welcome to Kudo",
+          "WelcomeStep1": "① Drag primitives from the model library to start modeling",
+          "WelcomeStep2": "② Connect edges to express data flow",
+          "WelcomeStep3": "③ Run to validate your canvas",
+          "WelcomeOpenSample": "Open sample canvas",
+          "WelcomeStart": "Get started"
         }
       }
     }

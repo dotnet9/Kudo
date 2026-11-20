@@ -745,7 +745,13 @@
           "SettingsAbout": "关于",
           "SettingsVersion": "版本",
           "SettingsRepository": "代码仓库",
-          "DebugPanel": "调试"
+          "DebugPanel": "调试",
+          "WelcomeTitle": "欢迎使用 Kudo",
+          "WelcomeStep1": "① 从左侧模型库拖入图元，开始建模",
+          "WelcomeStep2": "② 连线表达数据流",
+          "WelcomeStep3": "③ 运行验证你的画布",
+          "WelcomeOpenSample": "打开示例画布",
+          "WelcomeStart": "开始使用"
         }
       }
     }

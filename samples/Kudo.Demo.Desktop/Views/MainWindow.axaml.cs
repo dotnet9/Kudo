@@ -42,12 +42,15 @@ public partial class MainWindow : ArcWindow
     {
     }
 
+    private readonly DemoApplicationSettingsStore _settingsStore;
+
     private MainWindow(
         DemoApplicationSettingsStore settingsStore,
         GraphDocumentDraftStore? draftStore,
         TimeSpan? draftAutosaveDelay,
         MainWindowViewModel? viewModel)
     {
+        _settingsStore = settingsStore;
         InitializeComponent();
         DataContext = viewModel ?? DataContext;
         if (this.FindControl<global::Avalonia.Controls.Button>("TitleBarSettingsButton") is { } settingsButton)
@@ -82,21 +85,9 @@ public partial class MainWindow : ArcWindow
             paletteList.DoubleTapped += HandlePaletteListExecute;
         }
 
-        // 临时验证钩子：KUDO_OPEN_PALETTE=1 时启动即打开命令面板（验证后移除）。
-        if (Environment.GetEnvironmentVariable("KUDO_OPEN_PALETTE") == "1")
-        {
-            Dispatcher.UIThread.Post(() =>
-            {
-                if (DataContext is MainWindowViewModel paletteViewModel)
-                {
-                    paletteViewModel.IsCommandPaletteOpen = true;
-                }
+        // 首启欢迎卡：窗口加载后按持久化状态决定是否展示。
+        Loaded += (_, _) => ShowWelcomeCardIfFirstRun();
 
-                File.WriteAllText(Path.Combine(Path.GetTempPath(), "kudo_palette_state.txt"),
-                    $"vmOpen={(DataContext as MainWindowViewModel)?.IsCommandPaletteOpen.ToString() ?? "noVm"} " +
-                    $"hostVisible={CommandPaletteHost.IsVisible} hostBounds={CommandPaletteHost.Bounds}");
-            });
-        }
     }
 
     /// <summary>Ctrl+K 唤出命令面板；Esc 在面板打开时关闭。</summary>
@@ -291,5 +282,41 @@ public partial class MainWindow : ArcWindow
         }
 
         args.Handled = true;
+    }
+
+    /// <summary>首启欢迎卡：仅未展示过时出现，任意交互即收起并记忆。</summary>
+    private void ShowWelcomeCardIfFirstRun()
+    {
+        if (!_settingsStore.LoadWelcomed())
+        {
+            WelcomeCardHost.IsVisible = true;
+        }
+    }
+
+    private void DismissWelcomeCard()
+    {
+        WelcomeCardHost.IsVisible = false;
+        _settingsStore.TrySaveWelcomed(true);
+    }
+
+    private void HandleWelcomeBackdropPressed(object? sender, PointerPressedEventArgs args)
+    {
+        DismissWelcomeCard();
+        args.Handled = true;
+    }
+
+    private void HandleWelcomeStart(object? sender, RoutedEventArgs args)
+    {
+        DismissWelcomeCard();
+    }
+
+    /// <summary>打开示例画布（默认订单风控样例）。</summary>
+    private void HandleWelcomeOpenSample(object? sender, RoutedEventArgs args)
+    {
+        DismissWelcomeCard();
+        var ribbon = this.FindControl<MainRibbonView>(MainWindowControlNames.Ribbon)?.DataContext as MainRibbonViewModel;
+        var sample = ribbon?.SampleTasks.FirstOrDefault(item => item.Id == "order-risk-control") ??
+                     ribbon?.SampleTasks.FirstOrDefault();
+        sample?.Command.Execute(sample);
     }
 }

@@ -14,6 +14,7 @@ public sealed class DemoApplicationSettingsStore
     private const string ThemeKey = "Application.Theme";
     private const string RibbonExpandedKey = "Workspace.IsRibbonExpanded";
     private const string CanvasHintKey = "Workspace.CanvasHint";
+    private const string WelcomedKey = "Workspace.Welcomed";
     private const string ToolVisibilityKey = "Workspace.ToolVisibility";
 
     public DemoApplicationSettingsStore(string filePath)
@@ -84,6 +85,26 @@ public sealed class DemoApplicationSettingsStore
         try
         {
             AppConfigHelper.SetOrAdd(FilePath, CanvasHintKey, visible ? "True" : "False");
+            return true;
+        }
+        catch (Exception exception) when (exception is
+            IOException or UnauthorizedAccessException or InvalidOperationException)
+        {
+            return false;
+        }
+    }
+
+    /// <summary>是否已展示过首启欢迎卡（默认未展示）。</summary>
+    public bool LoadWelcomed() =>
+        AppConfigHelper.TryGet(FilePath, WelcomedKey, out string? welcomed) &&
+        bool.TryParse(welcomed, out var parsed) &&
+        parsed;
+
+    public bool TrySaveWelcomed(bool welcomed)
+    {
+        try
+        {
+            AppConfigHelper.SetOrAdd(FilePath, WelcomedKey, welcomed ? "True" : "False");
             return true;
         }
         catch (Exception exception) when (exception is

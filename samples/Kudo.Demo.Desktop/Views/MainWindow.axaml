@@ -176,6 +176,58 @@
             </Grid>
         </Border>
         </Grid>
+        <Panel x:Name="WelcomeCardHost"
+               IsVisible="False">
+            <Border Background="#40000000" PointerPressed="HandleWelcomeBackdropPressed" />
+            <Border Width="430"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    CornerRadius="8"
+                    Background="{DynamicResource DemoSurfaceBrush}"
+                    BorderBrush="{DynamicResource DemoBorderBrush}"
+                    BorderThickness="1"
+                    Padding="24,20">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="{i18n:I18n {x:Static lang:MainWindow.WelcomeTitle}}"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource DemoTextBrush}"
+                               HorizontalAlignment="Center" />
+                    <TextBlock Text="{i18n:I18n {x:Static lang:MainWindow.WelcomeStep1}}"
+                               FontSize="12"
+                               Foreground="{DynamicResource DemoTextBrush}" />
+                    <TextBlock Text="{i18n:I18n {x:Static lang:MainWindow.WelcomeStep2}}"
+                               FontSize="12"
+                               Foreground="{DynamicResource DemoTextBrush}" />
+                    <TextBlock Text="{i18n:I18n {x:Static lang:MainWindow.WelcomeStep3}}"
+                               FontSize="12"
+                               Foreground="{DynamicResource DemoTextBrush}" />
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="10"
+                                HorizontalAlignment="Center"
+                                Margin="0,8,0,0">
+                        <Button x:Name="WelcomeOpenSampleButton"
+                                Padding="14,6"
+                                CornerRadius="4"
+                                Click="HandleWelcomeOpenSample">
+                            <TextBlock Text="{i18n:I18n {x:Static lang:MainWindow.WelcomeOpenSample}}"
+                                       FontSize="12"
+                                       Foreground="{DynamicResource DemoAccentBrush}" />
+                        </Button>
+                        <Button x:Name="WelcomeStartButton"
+                                Padding="14,6"
+                                CornerRadius="4"
+                                BorderBrush="{DynamicResource DemoBorderBrush}"
+                                BorderThickness="1"
+                                Click="HandleWelcomeStart">
+                            <TextBlock Text="{i18n:I18n {x:Static lang:MainWindow.WelcomeStart}}"
+                                       FontSize="12"
+                                       Foreground="{DynamicResource DemoTextBrush}" />
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Panel>
         <views:StatusBarView Grid.Row="1" />
         <Panel x:Name="CommandPaletteHost"
                Grid.RowSpan="2"
