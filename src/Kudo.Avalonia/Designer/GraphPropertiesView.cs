@@ -156,6 +156,7 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
     private string _contextTitle = GraphLocalization.Get(PropertiesLanguage.Properties);
     private readonly Border _root;
     private readonly TKCode.Arc.PropertyGrid _propertyGrid = new();
+    private readonly TextBlock _contextHeader;
     private IDisposable? _customContentLifetime;
     private GraphPropertyPanelItems? _panelItems;
 
@@ -164,12 +165,28 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
         PropertyEditorProviders.Changed += (_, _) => RefreshCore(EditorContext);
         _propertyGrid.Background = PanelBrush;
         _propertyGrid.SearchPlaceholder = GraphLocalization.Get(PropertiesLanguage.SearchPlaceholder);
+        _contextHeader = new TextBlock
+        {
+            Margin = new Thickness(12, 10, 12, 0),
+            FontSize = 12,
+            FontWeight = global::Avalonia.Media.FontWeight.SemiBold,
+            Foreground = SecondaryTextBrush
+        };
         _root = new Border
         {
             Background = PanelBrush,
-            Child = new ScrollViewer
+            Child = new global::Avalonia.Controls.Grid
             {
-                Content = _propertyGrid
+                RowDefinitions = new global::Avalonia.Controls.RowDefinitions("Auto,*"),
+                Children =
+                {
+                    _contextHeader,
+                    new ScrollViewer
+                    {
+                        [global::Avalonia.Controls.Grid.RowProperty] = 1,
+                        Content = _propertyGrid
+                    }
+                }
             }
         };
         _root.Classes.Add("graph-properties-root");
@@ -363,7 +380,14 @@ public sealed class GraphPropertiesView : GraphDesignerPanel
     private void NotifyBackgroundImageRequested(GraphNodeBackgroundImageRequest request) =>
         BackgroundImageRequested?.Invoke(request);
 
-    private void SetContext(string title) => _contextTitle = title;
+    private void SetContext(string title)
+    {
+        _contextTitle = title;
+        if (_contextHeader is not null)
+        {
+            _contextHeader.Text = title;
+        }
+    }
 
     private void HandleCultureChanged(object? sender, EventArgs e)
     {
