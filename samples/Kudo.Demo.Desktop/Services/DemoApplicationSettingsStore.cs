@@ -87,7 +87,7 @@ public sealed class DemoApplicationSettingsStore
                 RibbonExpandedKey,
                 out bool ribbonExpanded)
                 ? ribbonExpanded
-                : true;
+                : false;
             var toolVisibility = new Dictionary<string, bool>(StringComparer.Ordinal);
             if (AppConfigHelper.TryGet(FilePath, ToolVisibilityKey, out string? visibilityJson) &&
                 !string.IsNullOrWhiteSpace(visibilityJson))
@@ -139,7 +139,7 @@ public sealed class DemoApplicationSettingsStore
 
 public sealed class DemoWorkspaceSettings
 {
-    public bool IsRibbonExpanded { get; init; } = true;
+    public bool IsRibbonExpanded { get; init; } = false;
 
     public Dictionary<string, bool> ToolVisibility { get; init; } = new(StringComparer.Ordinal);
 }

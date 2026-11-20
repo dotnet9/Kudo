@@ -23,7 +23,7 @@ public class KudoRibbon : TabStrip
         AvaloniaProperty.Register<KudoRibbon, object?>(nameof(QuickAccessContent));
 
     public static readonly StyledProperty<bool> IsExpandedProperty =
-        AvaloniaProperty.Register<KudoRibbon, bool>(nameof(IsExpanded), true);
+        AvaloniaProperty.Register<KudoRibbon, bool>(nameof(IsExpanded), false);
 
     public static readonly StyledProperty<double> ContentHeightProperty =
         AvaloniaProperty.Register<KudoRibbon, double>(nameof(ContentHeight), 74);
