@@ -13,6 +13,7 @@ public sealed class DemoApplicationSettingsStore
     private const string LanguageKey = "Application.Language";
     private const string ThemeKey = "Application.Theme";
     private const string RibbonExpandedKey = "Workspace.IsRibbonExpanded";
+    private const string CanvasHintKey = "Workspace.CanvasHint";
     private const string ToolVisibilityKey = "Workspace.ToolVisibility";
 
     public DemoApplicationSettingsStore(string filePath)
@@ -63,6 +64,26 @@ public sealed class DemoApplicationSettingsStore
         try
         {
             AppConfigHelper.SetOrAdd(FilePath, ThemeKey, themeKey?.Trim() ?? string.Empty);
+            return true;
+        }
+        catch (Exception exception) when (exception is
+            IOException or UnauthorizedAccessException or InvalidOperationException)
+        {
+            return false;
+        }
+    }
+
+    /// <summary>画布交互提示是否可见；用户关闭后记住选择（默认可见）。</summary>
+    public bool LoadCanvasHintVisible() =>
+        !AppConfigHelper.TryGet(FilePath, CanvasHintKey, out string? visible) ||
+        !bool.TryParse(visible, out var parsed) ||
+        parsed;
+
+    public bool TrySaveCanvasHintVisible(bool visible)
+    {
+        try
+        {
+            AppConfigHelper.SetOrAdd(FilePath, CanvasHintKey, visible ? "True" : "False");
             return true;
         }
         catch (Exception exception) when (exception is

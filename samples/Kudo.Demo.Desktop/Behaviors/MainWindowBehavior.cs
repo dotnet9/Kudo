@@ -132,6 +132,12 @@ internal sealed class MainWindowBehavior : IDisposable
             _properties,
             () => UpdateWorkspace(),
             () => UpdateWorkspace(_viewModel.StatusText));
+        _documentHost.ApplyInteractionHintVisibility(_settingsStore.LoadCanvasHintVisible());
+        _documentHost.InteractionHintDismissed += (_, _) =>
+        {
+            _settingsStore.TrySaveCanvasHintVisible(false);
+            _documentHost.ApplyInteractionHintVisibility(false);
+        };
         _runtimeTools = new MainWindowRuntimeTools(
             _runtimeVariables,
             _runtimeBreakpoints,

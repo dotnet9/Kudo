@@ -65,6 +65,21 @@ internal sealed class MainWindowDocumentHost : IDisposable
 
     public IEnumerable<GraphDocumentView> Views => _views.Values;
 
+    /// <summary>任一画布的交互提示被用户关闭时触发（每个视图一次）。</summary>
+    public event EventHandler? InteractionHintDismissed;
+
+    private bool _interactionHintVisible = true;
+
+    /// <summary>统一应用交互提示可见性到全部画布，并对新画布生效。</summary>
+    public void ApplyInteractionHintVisibility(bool visible)
+    {
+        _interactionHintVisible = visible;
+        foreach (var view in _views.Values)
+        {
+            view.IsInteractionHintVisible = visible;
+        }
+    }
+
     public void Configure(
         Func<IGraphNodeCatalog> getNodeCatalog,
         Func<GraphDocumentView, ContextMenu> createContextMenu,
@@ -169,6 +184,8 @@ internal sealed class MainWindowDocumentHost : IDisposable
             new DemoGraphRuntimeStateProvider(_graphTextProvider));
         _runtimeSessions[session] = runtimeSession;
         var view = new GraphDocumentView(session, runtimeSession);
+        view.IsInteractionHintVisible = _interactionHintVisible;
+        view.InteractionHintDismissed += (_, _) => InteractionHintDismissed?.Invoke(this, EventArgs.Empty);
         view.NodeCatalog = getNodeCatalog();
         view.NodeFactory = GraphNodeDefinitionFactory.Instance;
         view.NodeDropHandler = _nodeDropHandler;

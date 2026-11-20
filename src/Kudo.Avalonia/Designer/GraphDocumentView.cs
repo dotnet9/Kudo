@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Data;
 using Avalonia.Input;
+using Avalonia.Media;
 using Avalonia.Layout;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
@@ -149,7 +150,23 @@ public sealed class GraphDocumentView : GraphDesignerPanel, IDisposable, IGraphV
         {
             Text = L(DocumentViewLanguage.InteractionHint),
             FontSize = 11,
+            Foreground = SecondaryTextBrush,
+            VerticalAlignment = VerticalAlignment.Center
+        };
+        var hintClose = new Button
+        {
+            Content = new TextBlock { Text = "✕", FontSize = 10 },
+            Background = Brushes.Transparent,
+            BorderThickness = new Thickness(0),
+            Padding = new Thickness(4, 0),
+            Margin = new Thickness(8, 0, 0, 0),
+            VerticalAlignment = VerticalAlignment.Center,
             Foreground = SecondaryTextBrush
+        };
+        hintClose.Click += (_, _) =>
+        {
+            SetCurrentValue(IsInteractionHintVisibleProperty, false);
+            InteractionHintDismissed?.Invoke(this, EventArgs.Empty);
         };
         _hint = new Border
         {
@@ -162,7 +179,11 @@ public sealed class GraphDocumentView : GraphDesignerPanel, IDisposable, IGraphV
             BorderBrush = DividerBrush,
             BorderThickness = new Thickness(1),
             CornerRadius = new CornerRadius(4),
-            Child = _hintText
+            Child = new StackPanel
+            {
+                Orientation = Orientation.Horizontal,
+                Children = { _hintText, hintClose }
+            }
         };
         canvasHost.Children.Add(_hint);
 
@@ -284,6 +305,9 @@ public sealed class GraphDocumentView : GraphDesignerPanel, IDisposable, IGraphV
     }
 
     public Rect? VisibleGraphBounds => Canvas.VisibleGraphBounds;
+
+    /// <summary>Raised when the user closes the interaction hint bar.</summary>
+    public event EventHandler? InteractionHintDismissed;
 
     public GraphMinimap Minimap { get; }
 

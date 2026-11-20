@@ -144,7 +144,6 @@ namespace Localization.Kudo_Demo_Desktop.Models
 namespace Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort
 {
 
-
     public static class CheckValve
     {
         public const string Inlet = "Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.CheckValve.Inlet";
@@ -195,7 +194,6 @@ namespace Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort
         public const string Outlet = "Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.Pump.Outlet";
     }
 
-
     public static class ReferenceTable
     {
         public const string Reference = "Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.ReferenceTable.Reference";
@@ -211,7 +209,6 @@ namespace Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort
     {
         public const string Reference = "Localization.Kudo_Demo_Desktop.Models.ModelCatalogPort.Start.Reference";
     }
-
 
     public static class Valve
     {
@@ -304,6 +301,7 @@ namespace Localization.Kudo_Demo_Desktop.Views
         public const string CanvasFit = "Localization.Kudo_Demo_Desktop.Views.MainWindow.CanvasFit";
         public const string CanvasGroup = "Localization.Kudo_Demo_Desktop.Views.MainWindow.CanvasGroup";
         public const string CanvasHasNoNodes = "Localization.Kudo_Demo_Desktop.Views.MainWindow.CanvasHasNoNodes";
+        public const string CanvasHintBar = "Localization.Kudo_Demo_Desktop.Views.MainWindow.CanvasHintBar";
         public const string CanvasLoadFailed = "Localization.Kudo_Demo_Desktop.Views.MainWindow.CanvasLoadFailed";
         public const string CanvasLoading = "Localization.Kudo_Demo_Desktop.Views.MainWindow.CanvasLoading";
         public const string CanvasTheme = "Localization.Kudo_Demo_Desktop.Views.MainWindow.CanvasTheme";
@@ -353,13 +351,13 @@ namespace Localization.Kudo_Demo_Desktop.Views
         public const string CutStatus = "Localization.Kudo_Demo_Desktop.Views.MainWindow.CutStatus";
         public const string DeleteSelection = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DeleteSelection";
         public const string DeleteSelectionAction = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DeleteSelectionAction";
+        public const string DialogCancel = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DialogCancel";
+        public const string DialogConfirm = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DialogConfirm";
+        public const string DialogDiscard = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DialogDiscard";
         public const string Direct = "Localization.Kudo_Demo_Desktop.Views.MainWindow.Direct";
         public const string DisableSnap = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DisableSnap";
         public const string DiscardMultipleCanvases = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DiscardMultipleCanvases";
         public const string DiscardSingleCanvas = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DiscardSingleCanvas";
-        public const string DialogConfirm = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DialogConfirm";
-        public const string DialogCancel = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DialogCancel";
-        public const string DialogDiscard = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DialogDiscard";
         public const string Distribute = "Localization.Kudo_Demo_Desktop.Views.MainWindow.Distribute";
         public const string DistributeHorizontalCommand = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DistributeHorizontalCommand";
         public const string DistributeHorizontalCompleted = "Localization.Kudo_Demo_Desktop.Views.MainWindow.DistributeHorizontalCompleted";
@@ -450,6 +448,8 @@ namespace Localization.Kudo_Demo_Desktop.Views
         public const string HistoryAnnotation = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryAnnotation";
         public const string HistoryArrangeNodes = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryArrangeNodes";
         public const string HistoryBatchEdit = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryBatchEdit";
+        public const string HistoryBooleanFalse = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryBooleanFalse";
+        public const string HistoryBooleanTrue = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryBooleanTrue";
         public const string HistoryCanvas = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryCanvas";
         public const string HistoryConnection = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryConnection";
         public const string HistoryConnectionEndpoint = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryConnectionEndpoint";
@@ -459,17 +459,19 @@ namespace Localization.Kudo_Demo_Desktop.Views
         public const string HistoryDeleteGroup = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryDeleteGroup";
         public const string HistoryDeleteNode = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryDeleteNode";
         public const string HistoryDocument = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryDocument";
+        public const string HistoryDocumentCreatedAt = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryDocumentCreatedAt";
+        public const string HistoryDocumentCreatedBy = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryDocumentCreatedBy";
+        public const string HistoryDocumentDescription = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryDocumentDescription";
+        public const string HistoryDocumentTitle = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryDocumentTitle";
         public const string HistoryEditAnnotation = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryEditAnnotation";
         public const string HistoryEditCanvas = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryEditCanvas";
         public const string HistoryEditConnection = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryEditConnection";
         public const string HistoryEditDocument = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryEditDocument";
         public const string HistoryEditGroup = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryEditGroup";
         public const string HistoryEditNode = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryEditNode";
-        public const string HistoryEditNodeParameters = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryEditNodeParameters";
         public const string HistoryEditNodeAppearance = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryEditNodeAppearance";
+        public const string HistoryEditNodeParameters = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryEditNodeParameters";
         public const string HistoryEmptyValue = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryEmptyValue";
-        public const string HistoryBooleanFalse = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryBooleanFalse";
-        public const string HistoryBooleanTrue = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryBooleanTrue";
         public const string HistoryExecuteChanges = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryExecuteChanges";
         public const string HistoryExecuteProperty = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryExecuteProperty";
         public const string HistoryExecuteValue = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryExecuteValue";
@@ -485,15 +487,11 @@ namespace Localization.Kudo_Demo_Desktop.Views
         public const string HistoryNodeNumber = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryNodeNumber";
         public const string HistoryNodePosition = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryNodePosition";
         public const string HistoryNodeRotation = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryNodeRotation";
-        public const string HistoryDocumentTitle = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryDocumentTitle";
-        public const string HistoryDocumentCreatedBy = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryDocumentCreatedBy";
-        public const string HistoryDocumentCreatedAt = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryDocumentCreatedAt";
-        public const string HistoryDocumentDescription = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryDocumentDescription";
+        public const string HistoryReconnectConnection = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryReconnectConnection";
         public const string HistoryRedoChanges = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryRedoChanges";
         public const string HistoryRedoOperation = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryRedoOperation";
         public const string HistoryRedoProperty = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryRedoProperty";
         public const string HistoryRedoValue = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryRedoValue";
-        public const string HistoryReconnectConnection = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryReconnectConnection";
         public const string HistoryResizeAnnotation = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryResizeAnnotation";
         public const string HistoryResizeNode = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryResizeNode";
         public const string HistoryUndoChanges = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryUndoChanges";
@@ -501,17 +499,6 @@ namespace Localization.Kudo_Demo_Desktop.Views
         public const string HistoryUndoProperty = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryUndoProperty";
         public const string HistoryUndoValue = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryUndoValue";
         public const string HistoryValueSeparator = "Localization.Kudo_Demo_Desktop.Views.MainWindow.HistoryValueSeparator";
-        public const string OperationAddNode = "Localization.Kudo_Demo_Desktop.Views.MainWindow.OperationAddNode";
-        public const string OperationDropNode = "Localization.Kudo_Demo_Desktop.Views.MainWindow.OperationDropNode";
-        public const string OperationDuplicate = "Localization.Kudo_Demo_Desktop.Views.MainWindow.OperationDuplicate";
-        public const string OperationPaste = "Localization.Kudo_Demo_Desktop.Views.MainWindow.OperationPaste";
-        public const string LogLevelCritical = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LogLevelCritical";
-        public const string LogLevelDebug = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LogLevelDebug";
-        public const string LogLevelError = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LogLevelError";
-        public const string LogLevelInformation = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LogLevelInformation";
-        public const string LogLevelNone = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LogLevelNone";
-        public const string LogLevelTrace = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LogLevelTrace";
-        public const string LogLevelWarning = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LogLevelWarning";
         public const string ImageFileType = "Localization.Kudo_Demo_Desktop.Views.MainWindow.ImageFileType";
         public const string InstrumentNode = "Localization.Kudo_Demo_Desktop.Views.MainWindow.InstrumentNode";
         public const string InvertSelection = "Localization.Kudo_Demo_Desktop.Views.MainWindow.InvertSelection";
@@ -535,6 +522,13 @@ namespace Localization.Kudo_Demo_Desktop.Views
         public const string LocateCycles = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LocateCycles";
         public const string LockSelection = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LockSelection";
         public const string LockSelectionAction = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LockSelectionAction";
+        public const string LogLevelCritical = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LogLevelCritical";
+        public const string LogLevelDebug = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LogLevelDebug";
+        public const string LogLevelError = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LogLevelError";
+        public const string LogLevelInformation = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LogLevelInformation";
+        public const string LogLevelNone = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LogLevelNone";
+        public const string LogLevelTrace = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LogLevelTrace";
+        public const string LogLevelWarning = "Localization.Kudo_Demo_Desktop.Views.MainWindow.LogLevelWarning";
         public const string Manual = "Localization.Kudo_Demo_Desktop.Views.MainWindow.Manual";
         public const string MinimapHidden = "Localization.Kudo_Demo_Desktop.Views.MainWindow.MinimapHidden";
         public const string MinimapShown = "Localization.Kudo_Demo_Desktop.Views.MainWindow.MinimapShown";
@@ -576,6 +570,10 @@ namespace Localization.Kudo_Demo_Desktop.Views
         public const string OpenFailedStatus = "Localization.Kudo_Demo_Desktop.Views.MainWindow.OpenFailedStatus";
         public const string OpenFile = "Localization.Kudo_Demo_Desktop.Views.MainWindow.OpenFile";
         public const string OpenGraphDialogTitle = "Localization.Kudo_Demo_Desktop.Views.MainWindow.OpenGraphDialogTitle";
+        public const string OperationAddNode = "Localization.Kudo_Demo_Desktop.Views.MainWindow.OperationAddNode";
+        public const string OperationDropNode = "Localization.Kudo_Demo_Desktop.Views.MainWindow.OperationDropNode";
+        public const string OperationDuplicate = "Localization.Kudo_Demo_Desktop.Views.MainWindow.OperationDuplicate";
+        public const string OperationPaste = "Localization.Kudo_Demo_Desktop.Views.MainWindow.OperationPaste";
         public const string OrderRiskSample = "Localization.Kudo_Demo_Desktop.Views.MainWindow.OrderRiskSample";
         public const string Orthogonal = "Localization.Kudo_Demo_Desktop.Views.MainWindow.Orthogonal";
         public const string Output = "Localization.Kudo_Demo_Desktop.Views.MainWindow.Output";

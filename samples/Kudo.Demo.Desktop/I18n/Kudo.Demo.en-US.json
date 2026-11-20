@@ -738,7 +738,8 @@
           "RuntimeStarting": "Starting",
           "RuntimeStopping": "Stopping",
           "RuntimeFaulted": "Faulted",
-          "RuntimeStopped": "Stopped"
+          "RuntimeStopped": "Stopped",
+          "CanvasHintBar": "Space-drag to pan · Scroll to zoom · Double-click group to fold"
         }
       }
     }
