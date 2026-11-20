@@ -37,7 +37,7 @@
                                                CaretBrush="{TemplateBinding CaretBrush}"
                                                VerticalAlignment="Center" />
                                 <TextBlock IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"
-                                           Text="{TemplateBinding Watermark}"
+                                           Text="{TemplateBinding PlaceholderText}"
                                            FontSize="12"
                                            Foreground="#747C78"
                                            VerticalAlignment="Center" />

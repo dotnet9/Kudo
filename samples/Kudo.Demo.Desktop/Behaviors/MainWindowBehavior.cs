@@ -784,23 +784,7 @@ internal sealed class MainWindowBehavior : IDisposable
         IReadOnlyList<DemoSampleTaskDefinition> sampleTasks,
         CancellationToken cancellationToken)
     {
-        var startupTask = sampleTasks.FirstOrDefault(task =>
-                string.Equals(
-                    task.Id,
-                    DemoSampleTaskLibrary.DefaultStartupTaskId,
-                    StringComparison.Ordinal)) ??
-            sampleTasks.FirstOrDefault();
-        if (startupTask is not null)
-        {
-            var directory = Path.TrimEndingDirectorySeparator(Path.GetFullPath(startupTask.TaskDirectory));
-            var document = await LoadDocumentAsync(directory, cancellationToken).ConfigureAwait(false);
-            return await Dispatcher.UIThread.InvokeAsync(
-                () => _documents.Sessions.Count == 0
-                    ? _documents.Add(document, directory)
-                    : null,
-                DispatcherPriority.Background);
-        }
-
+        // 产品化首启：启动直接给一张空画布；示例（订单风控等）经「打开示例」按需载入。
         return await Dispatcher.UIThread.InvokeAsync(
             () => _documents.Sessions.Count == 0
                 ? _documents.Create(F(MainWindowLanguage.UntitledCanvasSequence, 1))

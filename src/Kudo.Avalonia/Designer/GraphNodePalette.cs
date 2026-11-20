@@ -77,7 +77,7 @@ public sealed class GraphNodePalette : GraphDesignerPanel
     private readonly TextBox _search = new()
     {
         Name = "GraphNodePaletteSearchBox",
-        Watermark = GraphLocalization.Get(PaletteLanguage.SearchPlaceholder)
+        PlaceholderText = GraphLocalization.Get(PaletteLanguage.SearchPlaceholder)
     };
     private readonly RowDefinition _groupRow;
     private readonly RowDefinition _splitterRow;
