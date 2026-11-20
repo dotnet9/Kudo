@@ -3,7 +3,7 @@
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>0.0.0.1</Version>
+    $10.0.0.1</Version>
     <TreatWarningsAsErrors Condition="'$(Configuration)' == 'Release'">true</TreatWarningsAsErrors>
     <Deterministic>true</Deterministic>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
@@ -39,3 +39,4 @@
           Visible="false" />
   </ItemGroup>
 </Project>
+

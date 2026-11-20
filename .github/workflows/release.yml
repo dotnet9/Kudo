@@ -1,0 +1,185 @@
+name: release
+
+# 推送 v* 标签发布 Kudo 五平台安装包：
+# win-x64 用 Inno Setup 生成 setup.exe（NativeAOT），绿色版 zip；
+# linux-x64 / linux-arm64 生成 deb + 绿色版 tar.gz；
+# osx-x64 / osx-arm64 生成 dmg（ad-hoc 签名）+ 绿色版 zip。
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '版本号（不含 v），例如 0.0.0.1'
+        required: true
+        type: string
+      source_ref:
+        description: '恢复发布时使用的源码标签或提交；留空使用所选分支'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    name: 发布 ${{ matrix.rid }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - rid: win-x64
+            os: windows-latest
+          - rid: linux-x64
+            os: ubuntu-latest
+          - rid: linux-arm64
+            os: ubuntu-24.04-arm
+          - rid: osx-x64
+            os: macos-15-intel
+          - rid: osx-arm64
+            os: macos-15-intel
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_ref || github.ref }}
+
+      - name: 安装 .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            11.0.x
+            10.0.x
+
+      - name: 计算版本号
+        id: version
+        shell: pwsh
+        run: |
+          if ('${{ github.event_name }}' -eq 'workflow_dispatch') {
+            $version = '${{ inputs.version }}'.TrimStart('v', 'V')
+          } else {
+            $version = '${{ github.ref_name }}'.TrimStart('v', 'V')
+          }
+          [xml] $props = Get-Content -LiteralPath Directory.Build.props -Raw
+          if ($version -ne $props.Project.PropertyGroup.Version) {
+            throw "Release version $version must match Directory.Build.props."
+          }
+          "APP_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "version=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          Write-Host "版本：$version"
+
+      - name: 安装 NativeAOT 依赖 (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y clang zlib1g-dev
+
+      - name: 发布（scripts/publish.ps1）
+        shell: pwsh
+        run: ./scripts/publish.ps1 -RuntimeIdentifier '${{ matrix.rid }}' -Version '${{ steps.version.outputs.version }}'
+
+      - name: 验证 Windows 原生产物可启动
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $exe = (Resolve-Path './artifacts/publish/win-x64/Kudo.Demo.Desktop/Kudo.Demo.Desktop.exe').Path
+          $process = [Diagnostics.Process]::Start([Diagnostics.ProcessStartInfo]::new($exe))
+          Start-Sleep -Seconds 8
+          if ($process.HasExited) { throw 'AOT 产物启动后立即退出，运行时验证失败。' }
+          $process.Kill()
+          Write-Host 'AOT 产物启动验证通过（存活 8 秒）。'
+
+      - name: 打包 Linux deb + sha256
+        if: startsWith(matrix.rid, 'linux-')
+        shell: pwsh
+        run: pwsh scripts/package_linux_deb.ps1 -RuntimeIdentifier '${{ matrix.rid }}' -Version '${{ steps.version.outputs.version }}' -Force
+
+      - name: 打包 Linux 绿色版 tar.gz + sha256
+        if: startsWith(matrix.rid, 'linux-')
+        shell: bash
+        run: |
+          rid='${{ matrix.rid }}'
+          version='${{ steps.version.outputs.version }}'
+          mkdir -p artifacts/release
+          tar -czf "artifacts/release/Kudo-v$version-$rid.tar.gz" -C "artifacts/publish/$rid/Kudo.Demo.Desktop" .
+          (cd artifacts/release && sha256sum "Kudo-v$version-$rid.tar.gz" > "Kudo-v$version-$rid.tar.gz.sha256")
+
+      - name: 打包 macOS dmg + 绿色版 zip（ad-hoc 签名）
+        if: startsWith(matrix.rid, 'osx-')
+        shell: bash
+        run: |
+          chmod +x scripts/package_macos.sh
+          ./scripts/package_macos.sh '${{ matrix.rid }}'
+          rid='${{ matrix.rid }}'
+          version='${{ steps.version.outputs.version }}'
+          mkdir -p artifacts/release
+          zip -r "artifacts/release/Kudo-v$version-$rid.zip" "artifacts/macos/work/$rid/Kudo.app"
+          (cd artifacts/release && shasum -a 256 "Kudo-v$version-$rid.zip" > "Kudo-v$version-$rid.zip.sha256")
+
+      - name: 构建 Windows 安装包（Inno Setup）
+        if: startsWith(matrix.rid, 'win-')
+        uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
+        with:
+          path: scripts/Kudo.iss
+          options: >-
+            /DAppVersion=${{ steps.version.outputs.version }}
+            /DSourceDir=${{ github.workspace }}\artifacts\publish\${{ matrix.rid }}\Kudo.Demo.Desktop
+            /DOutputDir=${{ github.workspace }}\artifacts\release
+
+      - name: 计算 Windows 安装包与绿色版 SHA-256
+        if: startsWith(matrix.rid, 'win-')
+        shell: pwsh
+        run: |
+          $version = '${{ steps.version.outputs.version }}'
+          foreach ($name in @("Kudo-v$version-win-x64-setup.exe", "Kudo-v$version-win-x64.zip")) {
+            $path = Join-Path 'artifacts/release' $name
+            if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw "产物缺失：$name" }
+            $sha = (Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash.ToLowerInvariant()
+            "$sha  $name" | Set-Content -LiteralPath "$path.sha256" -Encoding ASCII
+          }
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: Kudo-${{ matrix.rid }}
+          path: artifacts/release/*
+          if-no-files-found: error
+
+  release:
+    name: 创建 GitHub Release
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_ref || github.ref }}
+
+      - name: 下载构建产物
+        uses: actions/download-artifact@v4
+        with:
+          pattern: Kudo-*
+          path: artifacts/release
+          merge-multiple: true
+
+      - name: 校验五平台安装包与绿色版
+        shell: pwsh
+        run: ./scripts/verify_release_installers.ps1 -Version '${{ inputs.version || github.ref_name }}'
+
+      - name: 准备发布说明
+        shell: pwsh
+        run: ./scripts/prepare_release_notes.ps1 -Version '${{ inputs.version || github.ref_name }}' -OutputPath artifacts/release-body.md -FetchTag
+
+      - name: 创建 GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name || format('v{0}', inputs.version) }}
+          name: Kudo v${{ inputs.version || github.ref_name }}
+          body_path: artifacts/release-body.md
+          generate_release_notes: true
+          files: |
+            artifacts/release/*.exe
+            artifacts/release/*.deb
+            artifacts/release/*.dmg
+            artifacts/release/*.zip
+            artifacts/release/*.tar.gz
+            artifacts/release/*.sha256
