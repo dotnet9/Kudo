@@ -739,7 +739,12 @@
           "RuntimeStopping": "正在停止",
           "RuntimeFaulted": "故障",
           "RuntimeStopped": "已停止",
-          "CanvasHintBar": "空格拖移 · 滚轮缩放 · 双击分组折叠"
+          "CanvasHintBar": "空格拖移 · 滚轮缩放 · 双击分组折叠",
+          "SettingsTitle": "设置",
+          "SettingsAppearance": "外观",
+          "SettingsAbout": "关于",
+          "SettingsVersion": "版本",
+          "SettingsRepository": "代码仓库"
         }
       }
     }

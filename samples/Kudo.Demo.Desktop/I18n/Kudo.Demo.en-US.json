@@ -739,7 +739,12 @@
           "RuntimeStopping": "Stopping",
           "RuntimeFaulted": "Faulted",
           "RuntimeStopped": "Stopped",
-          "CanvasHintBar": "Space-drag to pan · Scroll to zoom · Double-click group to fold"
+          "CanvasHintBar": "Space-drag to pan · Scroll to zoom · Double-click group to fold",
+          "SettingsTitle": "Settings",
+          "SettingsAppearance": "Appearance",
+          "SettingsAbout": "About",
+          "SettingsVersion": "Version",
+          "SettingsRepository": "Repository"
         }
       }
     }

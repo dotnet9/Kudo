@@ -81,6 +81,9 @@ public sealed class MainWindowViewModel : ReactiveObject, IDisposable
 
     public ObservableCollection<DemoBrandTheme> Themes { get; }
 
+    /// <summary>当前程序集版本（设置窗口关于段展示）。</summary>
+    public string AppVersion => typeof(MainWindowViewModel).Assembly.GetName().Version?.ToString() ?? "-";
+
     /// <summary>切换品牌主题：应用引擎 + 品牌资产并持久化选择。</summary>
     public DemoBrandTheme? SelectedTheme
     {

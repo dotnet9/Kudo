@@ -716,6 +716,11 @@ namespace Localization.Kudo_Demo_Desktop.Views
         public const string SelectionGroup = "Localization.Kudo_Demo_Desktop.Views.MainWindow.SelectionGroup";
         public const string SelectionMissingCutCancelled = "Localization.Kudo_Demo_Desktop.Views.MainWindow.SelectionMissingCutCancelled";
         public const string SessionGroup = "Localization.Kudo_Demo_Desktop.Views.MainWindow.SessionGroup";
+        public const string SettingsAbout = "Localization.Kudo_Demo_Desktop.Views.MainWindow.SettingsAbout";
+        public const string SettingsAppearance = "Localization.Kudo_Demo_Desktop.Views.MainWindow.SettingsAppearance";
+        public const string SettingsRepository = "Localization.Kudo_Demo_Desktop.Views.MainWindow.SettingsRepository";
+        public const string SettingsTitle = "Localization.Kudo_Demo_Desktop.Views.MainWindow.SettingsTitle";
+        public const string SettingsVersion = "Localization.Kudo_Demo_Desktop.Views.MainWindow.SettingsVersion";
         public const string ShortestPathSelected = "Localization.Kudo_Demo_Desktop.Views.MainWindow.ShortestPathSelected";
         public const string ShowGrid = "Localization.Kudo_Demo_Desktop.Views.MainWindow.ShowGrid";
         public const string ShowGuides = "Localization.Kudo_Demo_Desktop.Views.MainWindow.ShowGuides";

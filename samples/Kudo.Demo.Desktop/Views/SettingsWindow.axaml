@@ -1,0 +1,70 @@
+<arc:ArcWindow xmlns="https://github.com/avaloniaui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:arc="https://github.com/AIDotNet/TKCode.Arc"
+               xmlns:i18n="using:CodeWF.Avalonia.Lang.MarkupExtensions"
+               xmlns:common="using:Localization.Kudo_Demo_Desktop.Application"
+               xmlns:lang="using:Localization.Kudo_Demo_Desktop.Views"
+               xmlns:vm="using:Kudo.Demo.Desktop.ViewModels"
+               x:Class="Kudo.Demo.Desktop.Views.SettingsWindow"
+               x:DataType="vm:MainWindowViewModel"
+               Title="{i18n:I18n {x:Static lang:MainWindow.SettingsTitle}}"
+               Width="460"
+               Height="430"
+               MinWidth="420"
+               MinHeight="360"
+               Background="{DynamicResource DemoWorkspaceBrush}"
+               CanResize="False"
+                 ExtendClientAreaToDecorationsHint="True"
+                 WindowDecorations="Full"
+                 TransparencyLevelHint="None"
+                 WindowStartupLocation="CenterOwner">
+    <ScrollViewer>
+        <StackPanel Margin="20,16" Spacing="14">
+            <TextBlock Text="{i18n:I18n {x:Static lang:MainWindow.SettingsAppearance}}"
+                       FontSize="12"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource DemoTextBrush}" />
+            <arc:Select HorizontalAlignment="Stretch"
+                        DisplayMemberBinding="{Binding DisplayName}"
+                        ItemsSource="{Binding Themes}"
+                        SelectedItem="{Binding SelectedTheme, Mode=TwoWay}" />
+            <Separator Background="{DynamicResource DemoBorderBrush}" Margin="0,4" />
+            <TextBlock Text="{i18n:I18n {x:Static common:Common.Language}}"
+                       FontSize="12"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource DemoTextBrush}" />
+            <arc:Select HorizontalAlignment="Stretch"
+                        DisplayMemberBinding="{Binding DisplayName}"
+                        ItemsSource="{Binding Languages}"
+                        SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
+            <Separator Background="{DynamicResource DemoBorderBrush}" Margin="0,4" />
+            <TextBlock Text="{i18n:I18n {x:Static lang:MainWindow.SettingsAbout}}"
+                       FontSize="12"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource DemoTextBrush}" />
+            <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="8">
+                <TextBlock Grid.Row="0" Grid.Column="0"
+                           Text="{i18n:I18n {x:Static lang:MainWindow.SettingsVersion}}"
+                           FontSize="12"
+                           Foreground="{DynamicResource DemoSecondaryTextBrush}" />
+                <TextBlock Grid.Row="0" Grid.Column="1"
+                           FontSize="12"
+                           Foreground="{DynamicResource DemoTextBrush}"
+                           Text="{Binding AppVersion}" />
+                <TextBlock Grid.Row="1" Grid.Column="0"
+                           Text="{i18n:I18n {x:Static lang:MainWindow.SettingsRepository}}"
+                           FontSize="12"
+                           Foreground="{DynamicResource DemoSecondaryTextBrush}" />
+                <Button Grid.Row="1" Grid.Column="2"
+                        Padding="10,4"
+                        CornerRadius="4"
+                        Background="Transparent"
+                        BorderBrush="{DynamicResource DemoBorderBrush}"
+                        Foreground="{DynamicResource DemoAccentBrush}"
+                        Click="HandleOpenRepository">
+                    <TextBlock Text="github.com/dotnet9/Kudo" FontSize="12" />
+                </Button>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</arc:ArcWindow>
