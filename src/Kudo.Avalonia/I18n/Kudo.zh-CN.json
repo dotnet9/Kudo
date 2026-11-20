@@ -7,7 +7,7 @@
       "Designer": {
         "GraphPropertiesView": {
           "Properties": "属性",
-          "NoActiveDocument": "没有活动画板。",
+          "NoActiveDocument": "没有活动画布。",
           "MultiSelectionProperties": "批量组件属性",
           "MultiGroupProperties": "批量分组属性",
           "ComponentProperties": "组件属性",
@@ -20,7 +20,7 @@
           "SelectionInformation": "选择信息",
           "SelectedComponents": "已选中",
           "SelectedGroups": "已选分组",
-          "ComponentCount": "{0} 个部件",
+          "ComponentCount": "{0} 个节点",
           "GroupCount": "{0} 个分组",
           "BatchSelectionHint": "可批量拖动、删除、复制、剪切、粘贴和创建副本。",
           "BatchGroupSelectionHint": "多个分组已选中；请选择单个分组以编辑标题、内边距、状态和扩展属性。",
@@ -179,7 +179,7 @@
           "EditEdgePropertiesCommand": "编辑连线属性",
           "EditAnnotationPropertiesCommand": "编辑便签属性",
           "EditGroupPropertiesCommand": "编辑分组属性",
-          "EditCanvasPropertiesCommand": "编辑画板属性",
+          "EditCanvasPropertiesCommand": "编辑画布属性",
           "EditCanvasSettingsCommand": "编辑画布设置",
           "RuntimeStarting": "正在启动",
           "RuntimeRunning": "运行中",
@@ -215,7 +215,7 @@
           "RuntimeStopped": "已停止"
         },
         "GraphValidationView": {
-          "NoActiveCanvas": "没有活动画板",
+          "NoActiveCanvas": "没有活动画布",
           "SelectIssues": "选择问题",
           "FilterAll": "全部",
           "FilterError": "错误",
@@ -224,7 +224,7 @@
           "RulesContainNull": "校验规则集合不能包含 null。",
           "ValidationFailed": "校验执行失败：{0}",
           "SelectTaskHint": "选择任务后显示校验结果。",
-          "UntitledCanvas": "未命名画板",
+          "UntitledCanvas": "未命名画布",
           "Summary": "{0} · 共 {1} 项问题",
           "NoIssues": "未发现问题。",
           "NoIssuesAtCurrentLevel": "当前级别没有问题。",
@@ -256,12 +256,12 @@
           "DuplicateBackgroundImageMapping": "节点定义“{1}”中的背景图映射“{0}”重复。"
         },
         "GraphBreakpointsView": {
-          "NoActiveCanvas": "没有活动画板",
+          "NoActiveCanvas": "没有活动画布",
           "ClearAll": "全部清除",
           "SelectAll": "全部选择",
-          "UntitledCanvas": "未命名画板",
+          "UntitledCanvas": "未命名画布",
           "Summary": "{0} · {1} 个断点",
-          "EmptyHint": "当前画板没有节点断点。选中节点后按 F9 添加。",
+          "EmptyHint": "当前画布没有节点断点。选中节点后按 F9 添加。",
           "NodeContext": "节点 {0}",
           "Remove": "移除",
           "RemovedMessage": "已移除节点断点：{0}",
@@ -269,12 +269,12 @@
           "SelectedMessage": "已选择 {0} 个断点节点"
         },
         "GraphVariablesView": {
-          "NoActiveCanvas": "没有活动画板",
+          "NoActiveCanvas": "没有活动画布",
           "WatchPlaceholder": "输入变量名或 Watch 表达式",
           "Add": "添加",
           "WatchSection": "Watch",
           "SnapshotVariables": "Snapshot 变量",
-          "UntitledCanvas": "未命名画板",
+          "UntitledCanvas": "未命名画布",
           "Summary": "{0} · {1} 个 Watch · {2} 个变量",
           "WatchHint": "输入表达式后添加；未提供求值器时按变量名查找。",
           "VariablesEmpty": "Runtime 尚未产生变量。运行或单步后可查看当前 Snapshot。",
@@ -288,15 +288,15 @@
           "NodeContext": "{0} · {1} · 节点 {2}"
         },
         "GraphCallStackView": {
-          "NoActiveCanvas": "没有活动画板",
-          "UntitledCanvas": "未命名画板",
+          "NoActiveCanvas": "没有活动画布",
+          "UntitledCanvas": "未命名画布",
           "Summary": "{0} · {1} 个 Frame",
           "EmptyHint": "Runtime 尚未产生调用栈。运行或单步后可查看当前节点。",
           "NodeDetail": "节点 {0}",
           "NodeDetailWithContext": "节点 {0} · {1}"
         },
         "GraphRuntimeTraceView": {
-          "NoActiveCanvas": "没有活动画板",
+          "NoActiveCanvas": "没有活动画布",
           "Clear": "清空",
           "SelectNodes": "选择节点",
           "FilterAll": "全部",
@@ -304,7 +304,7 @@
           "FilterInformation": "信息",
           "FilterWarning": "警告",
           "FilterError": "错误",
-          "UntitledCanvas": "未命名画板",
+          "UntitledCanvas": "未命名画布",
           "Summary": "{0} · {1} 条记录 · {2} 个错误",
           "EmptyHint": "运行或单步后显示当前任务的最近执行记录。",
           "NoRecordsAtCurrentLevel": "当前级别没有执行记录。",
@@ -354,10 +354,10 @@
       },
       "Docking": {
         "KudoDocking": {
-          "UntitledCanvas": "未命名画板",
-          "Canvas": "画板",
-          "NoOpenCanvas": "暂无打开的画板",
-          "OpenCanvasHint": "请从工程树中打开画板",
+          "UntitledCanvas": "未命名画布",
+          "Canvas": "画布",
+          "NoOpenCanvas": "暂无打开的画布",
+          "OpenCanvasHint": "请从工程树中打开画布",
           "WorkspaceTitle": "Kudo 工作区"
         }
       },
@@ -365,7 +365,7 @@
         "GraphCanvas": {
           "ConnectionReconnected": "连线已重连",
           "DefaultGroupTitle": "分组 {0}",
-          "ReadOnlyReason": "画板处于只读模式",
+          "ReadOnlyReason": "画布处于只读模式",
           "LockedNodeReason": "节点已锁定",
           "EditNodeTitleCommand": "编辑节点标题",
           "EditEdgeLabelCommand": "编辑连线标签",
