@@ -2,35 +2,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
         <ResourceDictionary>
-            <LinearGradientBrush x:Key="DemoHeaderBrush" StartPoint="0%,50%" EndPoint="100%,50%">
-                <GradientStop Color="#0B6B58" Offset="0" />
-                <GradientStop Color="#128F76" Offset="0.56" />
-                <GradientStop Color="#56C2A8" Offset="1" />
-            </LinearGradientBrush>
-            <ImageBrush x:Key="DemoHeaderImageBrush"
-                        Source="avares://Kudo.Demo.Desktop/Assets/header-background.png"
-                        Stretch="Fill" />
-            <ImageBrush x:Key="RibbonMenuTabHeaderSelectedBackground"
-                        Source="avares://Kudo.Demo.Desktop/Assets/tab-current.png"
-                        Stretch="Fill" />
-            <ImageBrush x:Key="RibbonMenuTabHeaderStartSelectedBackground"
-                        Source="avares://Kudo.Demo.Desktop/Assets/tab-current-start.png"
-                        Stretch="Fill" />
-            <ImageBrush x:Key="RibbonMenuTabHeaderEndSelectedBackground"
-                        Source="avares://Kudo.Demo.Desktop/Assets/tab-current-end.png"
-                        Stretch="Fill" />
-            <LinearGradientBrush x:Key="DemoHeaderOverlayBrush" StartPoint="0%,0%" EndPoint="0%,100%">
-                <GradientStop Color="#08006B58" Offset="0" />
-                <GradientStop Color="#18004A3C" Offset="0.62" />
-                <GradientStop Color="#34002620" Offset="1" />
-            </LinearGradientBrush>
-            <SolidColorBrush x:Key="DemoAccentBrush" Color="#0E9F8A" />
-            <SolidColorBrush x:Key="DemoAccentLightBrush" Color="#E4F5F1" />
-            <SolidColorBrush x:Key="DemoSurfaceBrush" Color="#FFFFFF" />
-            <SolidColorBrush x:Key="DemoWorkspaceBrush" Color="#F2F7F5" />
-            <SolidColorBrush x:Key="DemoBorderBrush" Color="#E3E9E6" />
-            <SolidColorBrush x:Key="DemoTextBrush" Color="#1F2A37" />
-            <SolidColorBrush x:Key="DemoSecondaryTextBrush" Color="#708196" />
+            <!--
+              中性界面色按明暗变体提供（Arc 主题引擎切换 RequestedThemeVariant 时自动生效）；
+              品牌性资源（头部渐变/横幅艺术/页签艺术）由 DemoThemeService 按品牌在运行时发布到应用资源。
+            -->
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <SolidColorBrush x:Key="DemoSurfaceBrush" Color="#FFFFFF" />
+                    <SolidColorBrush x:Key="DemoWorkspaceBrush" Color="#F2F7F5" />
+                    <SolidColorBrush x:Key="DemoBorderBrush" Color="#E3E9E6" />
+                    <SolidColorBrush x:Key="DemoTextBrush" Color="#1F2A37" />
+                    <SolidColorBrush x:Key="DemoSecondaryTextBrush" Color="#708196" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="DemoSurfaceBrush" Color="#FFFFFF" />
+                    <SolidColorBrush x:Key="DemoWorkspaceBrush" Color="#F2F7F5" />
+                    <SolidColorBrush x:Key="DemoBorderBrush" Color="#E3E9E6" />
+                    <SolidColorBrush x:Key="DemoTextBrush" Color="#1F2A37" />
+                    <SolidColorBrush x:Key="DemoSecondaryTextBrush" Color="#708196" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="DemoSurfaceBrush" Color="#1E232A" />
+                    <SolidColorBrush x:Key="DemoWorkspaceBrush" Color="#16191E" />
+                    <SolidColorBrush x:Key="DemoBorderBrush" Color="#2C323B" />
+                    <SolidColorBrush x:Key="DemoTextBrush" Color="#E8ECEF" />
+                    <SolidColorBrush x:Key="DemoSecondaryTextBrush" Color="#8A94A0" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
             <Color x:Key="CaptionButtonForeground">#FFFFFF</Color>
         </ResourceDictionary>
     </Styles.Resources>

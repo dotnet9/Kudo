@@ -20,6 +20,7 @@ public sealed class MainWindowViewModel : ReactiveObject, IDisposable
         [10, 25, 50, 75, 100, 125, 150, 200, 250, 300, 400, 500];
 
     private readonly DemoLocalizationService _localizationService;
+    private readonly DemoThemeService _themeService;
     private IMainWindowActions? _actions;
     private string _activeDocumentTitle;
     private string _statusText;
@@ -28,6 +29,7 @@ public sealed class MainWindowViewModel : ReactiveObject, IDisposable
     private string _zoomDisplayText = "100%";
     private string _zoomRangeText = "10%–500%";
     private DemoLanguageOption? _selectedLanguage;
+    private DemoBrandTheme? _selectedTheme;
     private double _zoomSliderPosition;
     private double _minimumZoom = GraphViewportOptions.Default.MinimumZoom;
     private double _maximumZoom = GraphViewportOptions.Default.MaximumZoom;
@@ -35,19 +37,22 @@ public sealed class MainWindowViewModel : ReactiveObject, IDisposable
     private bool _isDraftRestoreCompleted;
     private int _restoredDraftCount;
     private bool _isUpdatingLanguage;
+    private bool _isUpdatingTheme;
     private bool _isUpdatingZoom;
     private bool _isDisposed;
 
     public MainWindowViewModel() : this(new DemoLocalizationService(
         DemoApplicationSettingsStore.CreateDefault(),
         CultureInfo.CurrentUICulture,
-        Environment.GetEnvironmentVariable(DemoLocalizationService.CultureOverrideEnvironmentVariable)))
+        Environment.GetEnvironmentVariable(DemoLocalizationService.CultureOverrideEnvironmentVariable)),
+        new DemoThemeService(DemoApplicationSettingsStore.CreateDefault()))
     {
     }
 
-    public MainWindowViewModel(DemoLocalizationService localizationService)
+    public MainWindowViewModel(DemoLocalizationService localizationService, DemoThemeService themeService)
     {
         _localizationService = localizationService ?? throw new ArgumentNullException(nameof(localizationService));
+        _themeService = themeService ?? throw new ArgumentNullException(nameof(themeService));
         _activeDocumentTitle = L(MainWindowLanguage.WorkspaceTitle);
         _statusText = L(MainWindowLanguage.Ready);
         _selectedComponentsText = F(MainWindowLanguage.SelectedComponents, 0, 0);
@@ -55,6 +60,8 @@ public sealed class MainWindowViewModel : ReactiveObject, IDisposable
         UpdateZoomPresets(GraphViewportOptions.Default);
         Languages = new ObservableCollection<DemoLanguageOption>();
         RefreshLanguageOptions();
+        Themes = new ObservableCollection<DemoBrandTheme>(DemoBrandThemes.All);
+        _selectedTheme = _themeService.Current;
         I18nManager.Instance.CultureChanged += HandleCultureChanged;
         AddNodeCommand = ReactiveCommand.Create<GraphNodeDefinition>(
             definition => _actions?.AddNode(definition));
@@ -71,6 +78,34 @@ public sealed class MainWindowViewModel : ReactiveObject, IDisposable
     public ObservableCollection<ZoomPresetOption> ZoomPresets { get; }
 
     public ObservableCollection<DemoLanguageOption> Languages { get; }
+
+    public ObservableCollection<DemoBrandTheme> Themes { get; }
+
+    /// <summary>切换品牌主题：应用引擎 + 品牌资产并持久化选择。</summary>
+    public DemoBrandTheme? SelectedTheme
+    {
+        get => _selectedTheme;
+        set
+        {
+            if (this.RaiseAndSetIfChanged(ref _selectedTheme, value) is null ||
+                _isUpdatingTheme ||
+                value is null ||
+                value.Key == _themeService.Current.Key)
+            {
+                return;
+            }
+
+            _isUpdatingTheme = true;
+            try
+            {
+                _themeService.Apply(value);
+            }
+            finally
+            {
+                _isUpdatingTheme = false;
+            }
+        }
+    }
 
     public DemoLanguageOption? SelectedLanguage
     {
@@ -265,6 +300,29 @@ public sealed class MainWindowViewModel : ReactiveObject, IDisposable
         }
 
         RefreshLanguageOptions();
+        RefreshThemeOptions();
+    }
+
+    /// <summary>品牌名随界面语言变化，重建选项集合（保持选中项不变）。</summary>
+    private void RefreshThemeOptions()
+    {
+        var current = _selectedTheme;
+        _isUpdatingTheme = true;
+        try
+        {
+            Themes.Clear();
+            foreach (var theme in DemoBrandThemes.All)
+            {
+                Themes.Add(theme);
+            }
+
+            _selectedTheme = DemoBrandThemes.All.FirstOrDefault(theme => theme.Key == current?.Key);
+            this.RaisePropertyChanged(nameof(SelectedTheme));
+        }
+        finally
+        {
+            _isUpdatingTheme = false;
+        }
     }
 
     private void RefreshLanguageOptions()

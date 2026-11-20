@@ -11,6 +11,7 @@ public sealed class DemoApplicationSettingsStore
 
     private const string SettingsFileName = "Kudo.Demo.Desktop.config";
     private const string LanguageKey = "Application.Language";
+    private const string ThemeKey = "Application.Theme";
     private const string RibbonExpandedKey = "Workspace.IsRibbonExpanded";
     private const string ToolVisibilityKey = "Workspace.ToolVisibility";
 
@@ -42,6 +43,26 @@ public sealed class DemoApplicationSettingsStore
         try
         {
             AppConfigHelper.SetOrAdd(FilePath, LanguageKey, cultureName?.Trim() ?? string.Empty);
+            return true;
+        }
+        catch (Exception exception) when (exception is
+            IOException or UnauthorizedAccessException or InvalidOperationException)
+        {
+            return false;
+        }
+    }
+
+    public string? LoadTheme() =>
+        AppConfigHelper.TryGet(FilePath, ThemeKey, out string? theme) &&
+        !string.IsNullOrWhiteSpace(theme)
+            ? theme
+            : null;
+
+    public bool TrySaveTheme(string? themeKey)
+    {
+        try
+        {
+            AppConfigHelper.SetOrAdd(FilePath, ThemeKey, themeKey?.Trim() ?? string.Empty);
             return true;
         }
         catch (Exception exception) when (exception is

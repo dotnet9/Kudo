@@ -1,4 +1,5 @@
-<Styles xmlns="https://github.com/avaloniaui">
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:arc="https://github.com/AIDotNet/TKCode.Arc">
     <Style Selector="Border.graph-document-list-root">
         <Setter Property="Background" Value="#FFFFFF" />
     </Style>
@@ -18,16 +19,16 @@
         <Setter Property="Background" Value="#E8F3FF" />
     </Style>
     <Style Selector="Button.graph-document-item.active TextBlock.graph-document-title">
-        <Setter Property="Foreground" Value="#0B7A6B" />
+        <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource Accent}" />
     </Style>
     <Style Selector="Border.graph-document-icon">
         <Setter Property="Background" Value="#EDF6FF" />
-        <Setter Property="BorderBrush" Value="#9ADFD4" />
+        <Setter Property="BorderBrush" Value="{arc:ArcDesignTokenResource AccentSubtle}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="3" />
     </Style>
     <Style Selector="Border.graph-document-icon TextBlock">
-        <Setter Property="Foreground" Value="#0B7A6B" />
+        <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource Accent}" />
     </Style>
     <Style Selector="TextBlock.graph-document-title">
         <Setter Property="Foreground" Value="#1F2329" />

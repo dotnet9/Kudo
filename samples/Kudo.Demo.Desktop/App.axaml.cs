@@ -18,6 +18,7 @@ public partial class App : Application
 
     private DemoApplicationSettingsStore _applicationSettingsStore = null!;
     private DemoLocalizationService _localizationService = null!;
+    private DemoThemeService _themeService = null!;
 
     public override void Initialize()
     {
@@ -29,10 +30,12 @@ public partial class App : Application
         _localizationService.Initialize(Path.Combine(AppContext.BaseDirectory, "I18n"));
         AvaloniaXamlLoader.Load(this);
         _localizationService.ApplyControlCultures(this);
+        _themeService = new DemoThemeService(_applicationSettingsStore);
 
         var services = new ServiceCollection();
         services.AddSingleton(_applicationSettingsStore);
         services.AddSingleton(_localizationService);
+        services.AddSingleton(_themeService);
         services.AddSingleton<MainWindowViewModel>();
         services.AddSingleton<MainRibbonViewModel>();
         Services = services.BuildServiceProvider();
@@ -42,6 +45,9 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
+            // 先恢复持久化的品牌主题，再创建主窗口，避免首帧闪错主题。
+            _themeService.ApplySaved();
+
             var window = new MainWindow(Services.GetRequiredService<DemoApplicationSettingsStore>());
             window.DataContext = Services.GetRequiredService<MainWindowViewModel>();
             if (window.FindControl<MainRibbonView>(MainWindowControlNames.Ribbon) is { } ribbon)

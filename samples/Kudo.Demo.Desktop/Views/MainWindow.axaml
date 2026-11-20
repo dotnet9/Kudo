@@ -24,13 +24,13 @@
                      Height="800"
                      MinWidth="960"
                      MinHeight="640"
-                     Background="#F2F7F5"
+                     Background="{DynamicResource DemoWorkspaceBrush}"
                      ExtendClientAreaToDecorationsHint="True"
                      WindowDecorations="Full"
                      TransparencyLevelHint="None"
                      WindowStartupLocation="CenterScreen">
     <arc:ArcWindow.TitleBar>
-        <arc:TitleBar Title="" Background="{StaticResource DemoHeaderBrush}">
+        <arc:TitleBar Title="" Background="{DynamicResource DemoHeaderBrush}">
             <arc:TitleBar.LeftContent>
                 <StackPanel Classes="ShellTitleBarLeftContent"
                             Margin="8,0,0,0"
@@ -70,6 +70,12 @@
                            Foreground="#FFFFFF"
                            Text="{i18n:I18n {x:Static lang:MainWindow.ComponentDemo}}" />
             </Border>
+            <arc:Select x:Name="ThemeComboBox"
+                      Classes="ShellTitleBarComboBox"
+                      Width="120"
+                      DisplayMemberBinding="{Binding DisplayName}"
+                      ItemsSource="{Binding Themes}"
+                      SelectedItem="{Binding SelectedTheme, Mode=TwoWay}" />
             <arc:Select x:Name="LanguageComboBox"
                       Classes="ShellTitleBarComboBox"
                       Width="132"
@@ -85,17 +91,17 @@
     <Grid RowDefinitions="*,28">
         <Grid Grid.Row="0"
               RowDefinitions="Auto,*"
-              Background="#F2F7F5"
+              Background="{DynamicResource DemoWorkspaceBrush}"
               ClipToBounds="True">
         <Border Grid.Row="0"
                 Grid.RowSpan="2"
                 Height="132"
                 VerticalAlignment="Top"
                 IsHitTestVisible="False"
-                Background="{StaticResource DemoHeaderBrush}">
+                Background="{DynamicResource DemoHeaderBrush}">
             <Grid ClipToBounds="True">
-                <Border Background="{StaticResource DemoHeaderImageBrush}" />
-                <Border Background="{StaticResource DemoHeaderOverlayBrush}" />
+                <Border Background="{DynamicResource DemoHeaderImageBrush}" />
+                <Border Background="{DynamicResource DemoHeaderOverlayBrush}" />
             </Grid>
         </Border>
         <Border Grid.Row="0"

@@ -21,10 +21,13 @@ public sealed class MainWindowViewModelTests
             DemoApplicationSettingsStore.CreateDefault(),
             CultureInfo.GetCultureInfo("en-US"),
             cultureOverride: null);
+        var themeService = new DemoThemeService(DemoApplicationSettingsStore.CreateDefault());
 
-        using var viewModel = new MainWindowViewModel(localization);
+        using var viewModel = new MainWindowViewModel(localization, themeService);
 
         viewModel.ShouldNotBeNull();
+        viewModel.Themes.Count.ShouldBeGreaterThan(0);
+        viewModel.SelectedTheme.ShouldNotBeNull();
         viewModel.Dispose();
     }
 }
