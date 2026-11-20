@@ -13,15 +13,16 @@ $expected = @{
     'win-x64' = "Kudo-v$releaseVersion-win-x64-setup.exe"
     'linux-x64' = "Kudo-v$releaseVersion-linux-x64.deb"
     'linux-arm64' = "Kudo-v$releaseVersion-linux-arm64.deb"
-    'osx-x64' = "Kudo-v$releaseVersion-osx-x64.dmg"
-    'osx-arm64' = "Kudo-v$releaseVersion-osx-arm64.dmg"
+    # macOS 产物沿用 Vex 约定：dmg/zip 文件名不带 v。
+    'osx-x64' = "Kudo-$releaseVersion-osx-x64.dmg"
+    'osx-arm64' = "Kudo-$releaseVersion-osx-arm64.dmg"
 }
 $archives = @{
     'win-x64' = "Kudo-v$releaseVersion-win-x64.zip"
     'linux-x64' = "Kudo-v$releaseVersion-linux-x64.tar.gz"
     'linux-arm64' = "Kudo-v$releaseVersion-linux-arm64.tar.gz"
-    'osx-x64' = "Kudo-v$releaseVersion-osx-x64.zip"
-    'osx-arm64' = "Kudo-v$releaseVersion-osx-arm64.zip"
+    'osx-x64' = "Kudo-$releaseVersion-osx-x64.zip"
+    'osx-arm64' = "Kudo-$releaseVersion-osx-arm64.zip"
 }
 $allowed = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
 foreach ($map in @($expected, $archives)) {
